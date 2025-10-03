@@ -8,6 +8,7 @@ export interface Card {
   description: string;
   icon: string;
   category: string;
+  image?: string; // To hold the base64 image data
 }
 
 export interface CardCollection {
@@ -20,7 +21,6 @@ export const generateCards = async (theme: string, context: string): Promise<Car
   const response = await axios.post(`${API_URL}/cards/generate`, { theme, context });
   return response.data;
 };
-
 export const createCollection = async (name: string, cards: Card[]): Promise<CardCollection> => {
   const response = await axios.post(`${API_URL}/collections`, { name, cards });
   return response.data;
@@ -28,5 +28,15 @@ export const createCollection = async (name: string, cards: Card[]): Promise<Car
 
 export const getCollections = async (): Promise<CardCollection[]> => {
   const response = await axios.get(`${API_URL}/collections`);
+  return response.data;
+};
+
+export const getCollectionById = async (id: string): Promise<CardCollection> => {
+  const response = await axios.get(`${API_URL}/collections/${id}`);
+  return response.data;
+};
+
+export const updateCollection = async (id: string, name: string, cards: Card[]): Promise<CardCollection> => {
+  const response = await axios.put(`${API_URL}/collections/${id}`, { name, cards });
   return response.data;
 };

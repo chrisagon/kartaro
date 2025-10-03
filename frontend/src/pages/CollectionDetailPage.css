@@ -1,0 +1,13 @@
+.print-button {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.print-button:hover {
+  background-color: #e0e0e0;
+}

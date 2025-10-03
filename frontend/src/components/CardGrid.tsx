@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card as CardData } from '../services/ApiService';
 import Card from './Card';
+import './CardGrid.css';
 
 interface CardGridProps {
   cards: CardData[];
@@ -8,7 +9,7 @@ interface CardGridProps {
 
 const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <div className="card-grid">
       {cards.map((card) => (
         <Card key={card.id} card={card} />
       ))}

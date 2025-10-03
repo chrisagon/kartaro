@@ -1,3 +1,1298 @@
 {
-  "collections": []
+  "collections": [
+    {
+      "id": "1759330698590",
+      "name": "Archeologie_Lot1",
+      "cards": [
+        {
+          "title": "Fouille Stratigraphique",
+          "description": "La méthode clé pour comprendre l'ordre des couches archéologiques, comme lire un livre d'histoire à l'envers.",
+          "icon": "⛏️",
+          "category": "Processus"
+        },
+        {
+          "title": "Datation au Carbone 14",
+          "description": "Une technique scientifique qui permet de déterminer l'âge approximatif des matières organiques.",
+          "icon": "☢️",
+          "category": "Étapes"
+        },
+        {
+          "title": "Pot de Terre Cuite Fragmenté",
+          "description": "Un vestige courant qui, une fois assemblé, peut révéler des informations sur la vie quotidienne, la technologie et le commerce d'une époque.",
+          "icon": "🏺",
+          "category": "Composants"
+        },
+        {
+          "title": "Dessin de Vestige",
+          "description": "Documenter méticuleusement chaque découverte par des croquis précis pour une analyse ultérieure.",
+          "icon": "✍️",
+          "category": "Actions"
+        },
+        {
+          "title": "Découverte Inattendue",
+          "description": "Un trésor ou un artefact exceptionnel qui bouleverse les hypothèses initiales de la fouille.",
+          "icon": "🌟",
+          "category": "Bonus"
+        },
+        {
+          "title": "Intempéries",
+          "description": "La pluie ou le vent peuvent endommager les vestiges fragiles et ralentir le travail sur le site.",
+          "icon": "🌧️",
+          "category": "Malus"
+        },
+        {
+          "title": "Céramiques",
+          "description": "Restes de poteries, indiquant souvent l'usage domestique, la culture et le niveau technologique d'une civilisation.",
+          "icon": "🍪",
+          "category": "Catégories et Critères"
+        },
+        {
+          "title": "Site de Pompéi",
+          "description": "Une ville romaine figée dans le temps par une éruption volcanique, offrant une vue unique sur la vie quotidienne de l'Antiquité.",
+          "icon": "🌋",
+          "category": "Lieux/sites"
+        },
+        {
+          "title": "Outil en silex",
+          "description": "Un instrument taillé utilisé par nos ancêtres pour couper, gratter ou chasser.",
+          "icon": "🔪",
+          "category": "Choses/Objets"
+        },
+        {
+          "title": "Le Collecteur",
+          "description": "Un archéologue spécialisé dans la collecte et la classification des artefacts, avec un œil pour les détails. (Joueur)",
+          "icon": "🧐",
+          "category": "Personas"
+        },
+        {
+          "title": "Hypothèse",
+          "description": "Une idée ou une explication possible basée sur les preuves disponibles, qui sera testée et potentiellement réfutée ou confirmée.",
+          "icon": "🤔",
+          "category": "Concepts"
+        },
+        {
+          "title": "Analyse de Laboratoire",
+          "description": "Examen approfondi des artefacts en laboratoire pour en déterminer la composition, l'origine et la fonction.",
+          "icon": "🔬",
+          "category": "Étapes"
+        },
+        {
+          "title": "Épigraphiste",
+          "description": "L'expert qui déchiffre les inscriptions anciennes pour révéler des textes et des histoires oubliées.",
+          "icon": "📜",
+          "category": "Personas"
+        },
+        {
+          "title": "Habitat Troglodyte",
+          "description": "Des abris creusés dans la roche, témoins d'adaptations architecturales et sociales anciennes.",
+          "icon": "🏠",
+          "category": "Lieux/sites"
+        },
+        {
+          "title": "Théorie de l'Évolution",
+          "description": "Le cadre scientifique qui explique le développement de la vie sur Terre, y compris l'évolution humaine.",
+          "icon": "🧬",
+          "category": "Concepts"
+        },
+        {
+          "title": "Cartographie du Site",
+          "description": "Établir un plan précis du site de fouille pour localiser chaque découverte par rapport à son environnement d'origine.",
+          "icon": "🗺️",
+          "category": "Actions"
+        },
+        {
+          "title": "Mausolée",
+          "description": "Une structure monumentale construite pour abriter des sépultures, révélant des croyances sur la mort et la vie après la mort.",
+          "icon": "🏛️",
+          "category": "Choses/Objets"
+        },
+        {
+          "title": "Ostraca",
+          "description": "Fragments de poterie ou de pierre utilisés comme supports d'écriture provisoire ou d'annotations.",
+          "icon": "✍️",
+          "category": "Composants"
+        },
+        {
+          "title": "Protection des Vestiges",
+          "description": "Assurer la conservation des découvertes sur le site et pendant leur transport pour éviter leur détérioration.",
+          "icon": "🛡️",
+          "category": "Processus"
+        },
+        {
+          "title": "Outils de Fouille",
+          "description": "Les instruments essentiels pour dégager délicatement les vestiges du sol (pelles, brosses, pics...).",
+          "icon": "🛠️",
+          "category": "Composants"
+        },
+        {
+          "title": "Paléontologue",
+          "description": "Un expert qui étudie les fossiles pour comprendre la vie préhistorique, y compris les dinosaures.",
+          "icon": "🦖",
+          "category": "Personas"
+        },
+        {
+          "title": "Site de Caractère National",
+          "description": "Un lieu d'une importance archéologique et historique majeure, nécessitant une protection et une gestion spécifiques.",
+          "icon": "🛡️",
+          "category": "Lieux/sites"
+        },
+        {
+          "title": "Interprétation des Indices",
+          "description": "Relier les différents artefacts et indices contextuels pour reconstituer des pans de l'histoire.",
+          "icon": "🧩",
+          "category": "Concepts"
+        },
+        {
+          "title": "Documentation Photographique",
+          "description": "Prendre des clichés de haute qualité de chaque étape de la fouille et de chaque objet découvert pour un enregistrement visuel complet.",
+          "icon": "📸",
+          "category": "Actions"
+        },
+        {
+          "title": "Artefact Inédit",
+          "description": "Une découverte qui n'a jamais été observée auparavant, ouvrant de nouvelles pistes de recherche.",
+          "icon": "💎",
+          "category": "Bonus"
+        },
+        {
+          "title": "Dégradation par l'Environnement",
+          "description": "L'exposition prolongée aux éléments peut rendre les artefacts fragiles et difficiles à conserver.",
+          "icon": "💨",
+          "category": "Malus"
+        },
+        {
+          "title": "Objets Métalliques",
+          "description": "Armes, outils, bijoux et monnaies en métal qui témoignent des avancées technologiques et des échanges commerciaux.",
+          "icon": "🗡️",
+          "category": "Catégories et Critères"
+        },
+        {
+          "title": "Culture Matérielle",
+          "description": "L'ensemble des objets créés et utilisés par une société, reflétant ses pratiques, ses croyances et son organisation.",
+          "icon": "🧰",
+          "category": "Concepts"
+        },
+        {
+          "title": "Préparation du Terrain",
+          "description": "Les premières actions sur un site : délimitation, dégagement de la végétation, installation des aires de travail.",
+          "icon": "🚧",
+          "category": "Étapes"
+        },
+        {
+          "title": "Le Conservateur",
+          "description": "Un archéologue spécialisé dans la préservation et la restauration des artefacts, garantissant leur longévité. (Joueur)",
+          "icon": "⛑️",
+          "category": "Personas"
+        },
+        {
+          "title": "Fossiles",
+          "description": "Traces d'organismes anciens conservées dans la roche, offrant un aperçu de la vie disparue.",
+          "icon": "🦴",
+          "category": "Choses/Objets"
+        },
+        {
+          "title": "Zone de Fouille",
+          "description": "Une portion délimitée du terrain où les recherches archéologiques sont menées activement.",
+          "icon": "🟩",
+          "category": "Lieux/sites"
+        },
+        {
+          "title": "Chronologie Relative",
+          "description": "Déterminer l'ordre des événements et des couches archéologiques sans attribuer de dates précises.",
+          "icon": "⏳",
+          "category": "Concepts"
+        },
+        {
+          "title": "Reconstitution de l'Habitat",
+          "description": "À partir des vestiges, tenter de recréer l'apparence et la fonction d'un lieu de vie ancien.",
+          "icon": "🏠",
+          "category": "Actions"
+        },
+        {
+          "title": "Publication Scientifique",
+          "description": "Partager les résultats de la recherche avec la communauté scientifique pour contribuer à la connaissance collective.",
+          "icon": "📖",
+          "category": "Étapes"
+        },
+        {
+          "title": "Art Rupestre",
+          "description": "Peintures ou gravures réalisées sur des parois rocheuses, représentant des scènes de vie, des rituels ou des mythes.",
+          "icon": "🎨",
+          "category": "Choses/Objets"
+        },
+        {
+          "title": "Données Génomiques",
+          "description": "Analyse de l'ADN ancien pour étudier les migrations, les relations familiales et les caractéristiques physiques des populations anciennes.",
+          "icon": "🧬",
+          "category": "Concepts"
+        },
+        {
+          "title": "Les Anthropologues",
+          "description": "Des spécialistes qui étudient le comportement humain et les sociétés, apportant des perspectives culturelles à l'archéologie.",
+          "icon": "👥",
+          "category": "Personas"
+        },
+        {
+          "title": "Outils Lithiques",
+          "description": "Objets fabriqués en pierre, des plus simples éclats aux outils façonnés, témoins des premières technologies humaines.",
+          "icon": "🪞",
+          "category": "Catégories et Critères"
+        },
+        {
+          "title": "Reconstruction Virtuelle",
+          "description": "Utilisation d'outils numériques pour recréer des sites ou des objets disparus en 3D.",
+          "icon": "💻",
+          "category": "Actions"
+        },
+        {
+          "title": "Risque de Destruction",
+          "description": "Certains sites sont menacés par des projets de construction, des pillages ou des catastrophes naturelles.",
+          "icon": "💥",
+          "category": "Malus"
+        },
+        {
+          "title": "Site Religieux",
+          "description": "Lieux dédiés aux pratiques spirituelles : temples, autels, sanctuaires, révélant les croyances et les rituels d'une civilisation.",
+          "icon": "🙏",
+          "category": "Lieux/sites"
+        },
+        {
+          "title": "Découverte Exceptionnelle",
+          "description": "Un objet d'une valeur historique, artistique ou scientifique inestimable qui marque un tournant dans la recherche.",
+          "icon": "🏆",
+          "category": "Bonus"
+        },
+        {
+          "title": "Découverte Inattendue",
+          "description": "Un trésor ou un artefact exceptionnel qui bouleverse les hypothèses initiales de la fouille.",
+          "icon": "🌟",
+          "category": "Composants"
+        },
+        {
+          "title": "Histoire Orale",
+          "description": "Les récits transmis de génération en génération, qui peuvent parfois compléter ou contredire les données archéologiques.",
+          "icon": "🗣️",
+          "category": "Concepts"
+        },
+        {
+          "title": "Méthodes de Conservation",
+          "description": "Techniques appliquées pour stabiliser et préserver les artefacts fragiles contre la dégradation future.",
+          "icon": "🩹",
+          "category": "Processus"
+        },
+        {
+          "title": "Analyse Palynologique",
+          "description": "Étude des pollens fossilisés pour reconstituer les environnements anciens et les pratiques agricoles.",
+          "icon": "🌸",
+          "category": "Étapes"
+        },
+        {
+          "title": "Le Détective du Passé",
+          "description": "Un archéologue spécialisé dans la mise en relation des indices et la construction de récits cohérents. (Joueur)",
+          "icon": "🕵️",
+          "category": "Personas"
+        },
+        {
+          "title": "Instruments de Musique Anciens",
+          "description": "Vestiges d'objets utilisés pour produire des sons, révélant l'importance de la musique dans les cultures anciennes.",
+          "icon": "🎶",
+          "category": "Choses/Objets"
+        },
+        {
+          "title": "Objets de Parure",
+          "description": "Bijoux, ornements et autres éléments décoratifs qui indiquent le statut social, les croyances ou les préférences esthétiques.",
+          "icon": "💍",
+          "category": "Catégories et Critères"
+        },
+        {
+          "title": "Site Funéraire",
+          "description": "Lieu de sépulture, comme des tombes, des nécropoles ou des cairns, fournissant des informations sur les rites mortuaires et l'organisation sociale.",
+          "icon": "⚰️",
+          "category": "Lieux/sites"
+        },
+        {
+          "title": "Le Temps Long",
+          "description": "La perspective archéologique qui considère des échelles de temps très vastes, de la préhistoire à des époques plus récentes.",
+          "icon": "🕰️",
+          "category": "Concepts"
+        }
+      ]
+    },
+    {
+      "id": "1759433786509",
+      "name": "Archeologie_Lot2",
+      "cards": [
+        {
+          "title": "Le Chantier de Fouille",
+          "description": "Plongez au cœur d'un chantier de fouille archéologique, où chaque stratigraphie révèle des secrets enfouis. Définissez vos zones d'exploration, gérez vos équipes et prenez des décisions cruciales pour la préservation du site.",
+          "icon": "⛏️",
+          "category": "Process",
+          "image": null
+        },
+        {
+          "title": "La Stratigraphie Expliquée",
+          "description": "Comprenez la superposition des couches du sol comme un livre d'histoire. Identifiez les différentes strates, leurs âges relatifs et les indices qu'elles renferment sur les occupations passées.",
+          "icon": "📜",
+          "category": "Steps",
+          "image": null
+        },
+        {
+          "title": "Les Outils du Fouilleur",
+          "description": "Chaque artefact et chaque indice nécessite un outil adapté. Listez et décrivez les instruments essentiels du quotidien de l'archéologue, de la brosse douce aux appareils de numérisation 3D.",
+          "icon": "🛠️",
+          "category": "Components",
+          "image": null
+        },
+        {
+          "title": "Documenter et Analyser",
+          "description": "Une fouille n'est rien sans une documentation rigoureuse. Photographiez, dessinez, décrivez chaque découverte. Analysez les données pour reconstituer le passé.",
+          "icon": "📝",
+          "category": "Actions",
+          "image": null
+        },
+        {
+          "title": "La Ruine Inattendue",
+          "description": "Malus : Une découverte monumentale mais fragile nécessite des mesures de conservation urgentes et coûteuses. Ralentissez votre progression pour ne pas la détruire.",
+          "icon": "💥",
+          "category": "Malus",
+          "image": null
+        },
+        {
+          "title": "L'Artefact Parfait",
+          "description": "Bonus : Vous découvrez un objet exceptionnellement bien conservé et d'une grande valeur scientifique. Cela accélère vos recherches et vous apporte une renommée supplémentaire.",
+          "icon": "💎",
+          "category": "Bonus",
+          "image": null
+        },
+        {
+          "title": "Périodes Chronologiques",
+          "description": "Délimitez les grandes époques de l'histoire humaine étudiées par l'archéologie (Préhistoire, Antiquité, Moyen Âge, etc.) et identifiez les caractéristiques de chaque période.",
+          "icon": "⏳",
+          "category": "Categories and Criteria",
+          "image": null
+        },
+        {
+          "title": "Les Vestiges Oubliés",
+          "description": "Les ruines d'une ancienne cité médiévale se révèlent sous vos yeux. Décrivez les structures architecturales et imaginez la vie quotidienne de ses habitants.",
+          "icon": "🏰",
+          "category": "Locations/Sites",
+          "image": null
+        },
+        {
+          "title": "La Poterie Brisée",
+          "description": "Un fragment de poterie décorée. Sa forme, sa matière et son décor peuvent révéler des informations sur la culture, le commerce et les techniques de l'époque.",
+          "icon": "🏺",
+          "category": "Things/Objects",
+          "image": null
+        },
+        {
+          "title": "Le Collectionneur",
+          "description": "Persona : Un individu passionné qui a accumulé des objets archéologiques sans respecter les règles scientifiques. Comment gérez-vous cette situation, entre respect de la propriété et préservation du patrimoine ?",
+          "icon": "🧐",
+          "category": "Personas",
+          "image": null
+        },
+        {
+          "title": "L'Évolution des Sociétés",
+          "description": "L'archéologie nous permet de comprendre comment les sociétés humaines se sont transformées au fil du temps, leurs innovations, leurs migrations et leurs interactions.",
+          "icon": "🌍",
+          "category": "Concepts",
+          "image": null
+        },
+        {
+          "title": "La Cartographie du Site",
+          "description": "Établissez une carte précise de votre zone de fouille. Repérez les anomalies et les zones d'intérêt potentiel. La précision est la clé.",
+          "icon": "🗺️",
+          "category": "Steps",
+          "image": null
+        },
+        {
+          "title": "La Conservation des Artefacts",
+          "description": "Une fois découverts, les objets doivent être protégés. Décrivez les méthodes de conservation préventive et curative pour assurer leur pérennité.",
+          "icon": "🛡️",
+          "category": "Actions",
+          "image": null
+        },
+        {
+          "title": "Le Site Inaccessible",
+          "description": "Malus : Un glissement de terrain rend une partie du site de fouille dangereuse d'accès. Vous devez trouver des solutions pour contourner l'obstacle ou renoncer à cette zone.",
+          "icon": "⛰️",
+          "category": "Malus",
+          "image": null
+        },
+        {
+          "title": "La Culture Matérielle",
+          "description": "L'ensemble des objets créés et utilisés par une société. L'analyse de la culture matérielle, des plus humbles aux plus précieux, est fondamentale en archéologie.",
+          "icon": "🏛️",
+          "category": "Concepts",
+          "image": null
+        },
+        {
+          "title": "L'Archéobotaniste",
+          "description": "Persona : Un spécialiste de l'étude des restes végétaux anciens. Son expertise est cruciale pour comprendre l'agriculture, l'alimentation et l'environnement des populations passées.",
+          "icon": "🌱",
+          "category": "Personas",
+          "image": null
+        },
+        {
+          "title": "Le Foyer Domestique",
+          "description": "Les restes d'un ancien foyer. Analyse des cendres, des charbons de bois et des restes de nourriture pour reconstituer les habitudes culinaires et l'organisation de l'habitat.",
+          "icon": "🔥",
+          "category": "Things/Objects",
+          "image": null
+        },
+        {
+          "title": "Le Choix Méthodologique",
+          "description": "Décidez des méthodes de fouille les plus appropriées en fonction du site et des objectifs de votre recherche. Fouille en quadrats, par sondage, etc.",
+          "icon": "🧭",
+          "category": "Process",
+          "image": null
+        },
+        {
+          "title": "La Datation Absolue",
+          "description": "Utilisez des techniques scientifiques (radiocarbone, thermoluminescence, dendrochronologie) pour déterminer l'âge précis des objets et des structures.",
+          "icon": "🕰️",
+          "category": "Steps",
+          "image": null
+        },
+        {
+          "title": "Les Objets Rituel",
+          "description": "Des objets ayant une signification religieuse ou spirituelle. Leur étude permet de comprendre les croyances et les pratiques des populations anciennes.",
+          "icon": "✨",
+          "category": "Things/Objects",
+          "image": null
+        },
+        {
+          "title": "La Communication Scientifique",
+          "description": "Rédigez un rapport de fouille, publiez vos découvertes ou présentez vos résultats lors d'une conférence. Partagez votre savoir avec la communauté scientifique et le public.",
+          "icon": "📢",
+          "category": "Actions",
+          "image": null
+        },
+        {
+          "title": "Le Site Industriel Ancien",
+          "description": "Les vestiges d'une ancienne forge. Analysez les scories, les outils et les structures pour comprendre les techniques métallurgiques et l'économie de l'époque.",
+          "icon": "⚙️",
+          "category": "Locations/Sites",
+          "image": null
+        },
+        {
+          "title": "Le Piratage de Données",
+          "description": "Malus : Un concurrent tente de voler vos données de recherche avant leur publication officielle. Protégez vos informations !",
+          "icon": "💻",
+          "category": "Malus",
+          "image": null
+        },
+        {
+          "title": "L'Archéozoologue",
+          "description": "Persona : Un expert en étude des restes animaux. Il vous aide à identifier les espèces animales présentes, leur domestication et leur utilisation par les hommes.",
+          "icon": "🐾",
+          "category": "Personas",
+          "image": null
+        },
+        {
+          "title": "Le Critère de Pertinence",
+          "description": "Définissez quels types de découvertes sont les plus importants pour votre recherche. Qu'est-ce qui vous permet de répondre à vos questions ?",
+          "icon": "❓",
+          "category": "Categories and Criteria",
+          "image": null
+        },
+        {
+          "title": "La Transmission du Savoir",
+          "description": "Bonus : Vous recevez une subvention pour développer des outils pédagogiques innovants pour diffuser vos découvertes auprès des plus jeunes. Valorisez votre travail !",
+          "icon": "💡",
+          "category": "Bonus",
+          "image": null
+        },
+        {
+          "title": "La Migration des Peuples",
+          "description": "L'archéologie peut révéler les mouvements de populations à travers le monde. Analysez les indices matériels pour retracer ces déplacements et leurs impacts.",
+          "icon": "🚶",
+          "category": "Concepts",
+          "image": null
+        },
+        {
+          "title": "La Mégalithe",
+          "description": "Un immense bloc de pierre dressé dans un paysage mystérieux. Quelle était sa fonction ? Qui l'a érigé et pourquoi ?",
+          "icon": "🗿",
+          "category": "Things/Objects",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "1759435923925",
+      "name": "Archeologie_Lot3",
+      "cards": [
+        {
+          "title": "Fouille Stratigraphique",
+          "description": "Comprendre la superposition des couches archéologiques pour dater les découvertes.",
+          "icon": "⛏️",
+          "category": "Process",
+          "image": null
+        },
+        {
+          "title": "Datation au Carbone 14",
+          "description": "Analyser la décomposition radioactive pour estimer l'âge des matières organiques.",
+          "icon": "⚛️",
+          "category": "Steps",
+          "image": null
+        },
+        {
+          "title": "Artefact",
+          "description": "Objet fabriqué ou modifié par l'homme, témoin d'une culture passée.",
+          "icon": "🏺",
+          "category": "Components",
+          "image": null
+        },
+        {
+          "title": "Interpréter une Inscription",
+          "description": "Décrypter les textes anciens pour comprendre des récits, des lois ou des croyances.",
+          "icon": "📜",
+          "category": "Actions",
+          "image": null
+        },
+        {
+          "title": "Faux Fouilleur",
+          "description": "Un acteur malveillant qui dégrade des sites pour fausses découvertes ou profit. Malus : perte d'informations cruciales.",
+          "icon": "🚫",
+          "category": "Bonus and Malus",
+          "image": null
+        },
+        {
+          "title": "Période Préhistorique",
+          "description": "Époque avant l'invention de l'écriture. Focus sur les outils, l'art rupestre et les premières sociétés.",
+          "icon": "🗿",
+          "category": "Categories and Criteria",
+          "image": null
+        },
+        {
+          "title": "Vallée des Rois",
+          "description": "Site égyptien célèbre pour ses tombeaux de pharaons, révélant l'organisation sociale et religieuse de l'Égypte antique.",
+          "icon": "👑",
+          "category": "Locations/Sites and Things/Objects",
+          "image": null
+        },
+        {
+          "title": "L'Érudit Curieux",
+          "description": "Personnage qui pose des questions pertinentes et cherche à relier les découvertes à des connaissances plus larges.",
+          "icon": "🧐",
+          "category": "Personas",
+          "image": null
+        },
+        {
+          "title": "Culture Matérielle",
+          "description": "L'ensemble des objets créés et utilisés par une société, reflétant ses techniques, ses croyances et son organisation.",
+          "icon": "💡",
+          "category": "Concepts",
+          "image": null
+        },
+        {
+          "title": "Tranchée d'Essai",
+          "description": "Méthode de sondage rapide pour évaluer le potentiel archéologique d'une zone.",
+          "icon": "📏",
+          "category": "Steps",
+          "image": null
+        },
+        {
+          "title": "Silex Taillé",
+          "description": "Outil préhistorique façonnés par percussion, révélant les techniques de chasse et de vie quotidienne.",
+          "icon": "🔪",
+          "category": "Components",
+          "image": null
+        },
+        {
+          "title": "Comparer des Cultures",
+          "description": "Analyser les similitudes et différences entre des sociétés distinctes basées sur leurs vestiges archéologiques.",
+          "icon": "⚖️",
+          "category": "Actions",
+          "image": null
+        },
+        {
+          "title": "Découverte Fortuite",
+          "description": "Une trouvaille inattendue lors d'un autre projet (chantier, promenade). Bonus : peut révéler des éléments inédits.",
+          "icon": "🍀",
+          "category": "Bonus and Malus",
+          "image": null
+        },
+        {
+          "title": "Période Antique",
+          "description": "Civilisations comme la Grèce, Rome, ou la Mésopotamie. Focus sur l'architecture, la politique, et les débuts de la philosophie.",
+          "icon": "🏛️",
+          "category": "Categories and Criteria",
+          "image": null
+        },
+        {
+          "title": "Le Labyrinthe de Knossos",
+          "description": "Site minoen en Crète, associé à des mythes et une organisation palatiale complexe.",
+          "icon": "♉",
+          "category": "Locations/Sites and Things/Objects",
+          "image": null
+        },
+        {
+          "title": "L'Artisan Ingénieux",
+          "description": "Personnage qui analyse la fabrication des objets pour comprendre les techniques et l'ingéniosité des anciennes populations.",
+          "icon": "⚙️",
+          "category": "Personas",
+          "image": null
+        },
+        {
+          "title": "Archéologie Expérimentale",
+          "description": "Reconstituer des gestes et des techniques anciennes pour mieux comprendre leur faisabilité et leur efficacité.",
+          "icon": "🔨",
+          "category": "Concepts",
+          "image": null
+        },
+        {
+          "title": "Géoarchéologie",
+          "description": "Étude des formations géologiques et des sols pour comprendre l'environnement dans lequel les vestiges se sont déposés.",
+          "icon": "🌍",
+          "category": "Process",
+          "image": null
+        },
+        {
+          "title": "Photogrammétrie",
+          "description": "Créer des modèles 3D précis d'objets et de sites à partir de photographies pour la documentation et la restitution.",
+          "icon": "📸",
+          "category": "Steps",
+          "image": null
+        },
+        {
+          "title": "Ostracon",
+          "description": "Fragment de poterie ou de calcaire utilisé pour écrire, souvent pour des décrets, des listes ou des notes.",
+          "icon": "🪞",
+          "category": "Components",
+          "image": null
+        },
+        {
+          "title": "Mettre en Scène une Exposition",
+          "description": "Organiser et présenter les découvertes pour les rendre accessibles et pédagogiques au grand public.",
+          "icon": "🖼️",
+          "category": "Actions",
+          "image": null
+        },
+        {
+          "title": "Oubli Archéologique",
+          "description": "Un site ou un artefact dont l'importance a été négligée ou oubliée, rendant sa redécouverte précieuse. Bonus : potentiel de nouvelles compréhensions.",
+          "icon": "❓",
+          "category": "Bonus and Malus",
+          "image": null
+        },
+        {
+          "title": "Période Médiévale",
+          "description": "De la chute de l'Empire Romain à la Renaissance. Focus sur les châteaux, les villes, et les échanges commerciaux.",
+          "icon": "🏰",
+          "category": "Categories and Criteria",
+          "image": null
+        },
+        {
+          "title": "Pompéi",
+          "description": "Ville romaine figée dans le temps par l'éruption du Vésuve, offrant un aperçu exceptionnel de la vie quotidienne.",
+          "icon": "🌋",
+          "category": "Locations/Sites and Things/Objects",
+          "image": null
+        },
+        {
+          "title": "Le Contrôleur de Préservation",
+          "description": "Personnage soucieux de la conservation des sites et des objets, rappelant les bonnes pratiques pour éviter la dégradation.",
+          "icon": "🛡️",
+          "category": "Personas",
+          "image": null
+        },
+        {
+          "title": "Chronologie",
+          "description": "Ordre dans lequel les événements se sont produits, essentiel pour reconstituer l'histoire et comprendre les évolutions.",
+          "icon": "⏳",
+          "category": "Concepts",
+          "image": null
+        },
+        {
+          "title": "Prospection Aérienne",
+          "description": "Utilisation de drones ou d'avions pour repérer des anomalies au sol qui pourraient indiquer la présence de vestiges archéologiques.",
+          "icon": "🚁",
+          "category": "Process",
+          "image": null
+        },
+        {
+          "title": "Analyse Archéobotanique",
+          "description": "Étude des restes végétaux (graines, pollens) pour reconstituer les cultures, l'alimentation et l'environnement ancien.",
+          "icon": "🌱",
+          "category": "Steps",
+          "image": null
+        },
+        {
+          "title": "Monnaie Antique",
+          "description": "Pièce de métal frappée, indiquant des échanges économiques, des représentations politiques et des technologies métallurgiques.",
+          "icon": "💰",
+          "category": "Components",
+          "image": null
+        },
+        {
+          "title": "Reproduire un Geste Technique",
+          "description": "Essayer de refaire un outil ou une construction à l'ancienne pour comprendre la difficulté et le savoir-faire requis.",
+          "icon": "🖐️",
+          "category": "Actions",
+          "image": null
+        },
+        {
+          "title": "Destruction Involontaire",
+          "description": "Un site peut être endommagé par des travaux ou des catastrophes naturelles. Malus : perte d'informations irrécupérables.",
+          "icon": "💥",
+          "category": "Bonus and Malus",
+          "image": null
+        },
+        {
+          "title": "Période Moderne",
+          "description": "De la Renaissance à la Révolution Industrielle. Focus sur les explorations, les grandes découvertes scientifiques et artistiques.",
+          "icon": "⛵",
+          "category": "Categories and Criteria",
+          "image": null
+        },
+        {
+          "title": "Machu Picchu",
+          "description": "Cité inca perchée dans les Andes, remarquable pour son architecture et son intégration au paysage.",
+          "icon": "⛰️",
+          "category": "Locations/Sites and Things/Objects",
+          "image": null
+        },
+        {
+          "title": "Le Cartographe Précis",
+          "description": "Personnage qui documente méticuleusement la localisation et la disposition des découvertes sur le site.",
+          "icon": "🗺️",
+          "category": "Personas",
+          "image": null
+        },
+        {
+          "title": "Architecture",
+          "description": "Étude des constructions humaines anciennes, révélant les techniques, les besoins sociaux et les idéologies.",
+          "icon": "🧱",
+          "category": "Concepts",
+          "image": null
+        },
+        {
+          "title": "Analyse Sédimentaire",
+          "description": "Examiner la composition et la structure des sols pour comprendre les processus de formation du site et les activités humaines passées.",
+          "icon": "🪨",
+          "category": "Process",
+          "image": null
+        },
+        {
+          "title": "Datation par Thermoluminescence",
+          "description": "Mesurer la lumière émise par la chaleur d'un objet en céramique pour estimer la dernière fois qu'il a été exposé à une température élevée.",
+          "icon": "🔥",
+          "category": "Steps",
+          "image": null
+        },
+        {
+          "title": "Fragment de Fresque",
+          "description": "Morceau de peinture murale antique, offrant des indices sur l'art, les croyances et la vie quotidienne des occupants.",
+          "icon": "🎨",
+          "category": "Components",
+          "image": null
+        },
+        {
+          "title": "Établir des Hypothèses",
+          "description": "Formuler des explications plausibles sur le rôle et la fonction des objets et des structures trouvés.",
+          "icon": "🤔",
+          "category": "Actions",
+          "image": null
+        },
+        {
+          "title": "Site Sur-Exploité",
+          "description": "Un site archéologique qui a subi de nombreuses excavations sans documentation rigoureuse. Malus : informations perdues ou fragmentées.",
+          "icon": "📉",
+          "category": "Bonus and Malus",
+          "image": null
+        },
+        {
+          "title": "Archéologie Sous-Marine",
+          "description": "Exploration des sites et des épaves situés sous l'eau, révélant des aspects du commerce, des migrations et des conflits maritimes.",
+          "icon": "⚓",
+          "category": "Categories and Criteria",
+          "image": null
+        },
+        {
+          "title": "Stonehenge",
+          "description": "Monument mégalithique énigmatique en Angleterre, soulevant des questions sur son astronomie, sa construction et sa signification.",
+          "icon": "⭕",
+          "category": "Locations/Sites and Things/Objects",
+          "image": null
+        },
+        {
+          "title": "Le Communiquant Persuasif",
+          "description": "Personnage qui sait rendre les découvertes intéressantes et accessibles, en créant des récits captivants.",
+          "icon": "📣",
+          "category": "Personas",
+          "image": null
+        },
+        {
+          "title": "Symbolisme",
+          "description": "Comprendre la signification cachée derrière les motifs, les figures et les objets, qui renvoient à des croyances ou des concepts.",
+          "icon": "✨",
+          "category": "Concepts",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "1759478350142",
+      "name": "Archeologie_Lot4",
+      "cards": [
+        {
+          "title": "Fouille Stratigraphique",
+          "description": "Comprendre les couches de terre comme les pages d'un livre de l'histoire. Chaque couche révèle des indices sur le passé.",
+          "icon": "⛏️",
+          "category": "Process",
+          "image": "/images/collections/1759478350144-z7rz6w.png"
+        },
+        {
+          "title": "Datation au Carbone 14",
+          "description": "Une méthode scientifique pour estimer l'âge des matières organiques. La science au service de la découverte temporelle !",
+          "icon": "⏳",
+          "category": "Steps",
+          "image": "/images/collections/1759478350148-rtrnf.png"
+        },
+        {
+          "title": "Artefact Archéologique",
+          "description": "Objet manufacturé par l'homme, témoin d'une activité passée. Chaque poterie, outil ou bijou raconte une histoire.",
+          "icon": "🏺",
+          "category": "Components",
+          "image": "/images/collections/1759478350150-hp0ckd.png"
+        },
+        {
+          "title": "Interpréter les Indices",
+          "description": "Observer attentivement, comparer et déduire. L'archéologie, c'est comme résoudre une grande enquête historique !",
+          "icon": "🧐",
+          "category": "Actions",
+          "image": "/images/collections/1759478350153-ynuu65.png"
+        },
+        {
+          "title": "Contexte Perdu",
+          "description": "Un artefact découvert sans information sur son emplacement ou son environnement. On perd beaucoup de ses secrets !",
+          "icon": "❓",
+          "category": "Malus",
+          "image": "/images/collections/1759478350156-n959u.png"
+        },
+        {
+          "title": "Civilisations Antiques",
+          "description": "L'étude des sociétés humaines passées, de leurs cultures, de leurs modes de vie. Les grands noms de l'histoire à redécouvrir.",
+          "icon": "🏛️",
+          "category": "Categories and Criteria",
+          "image": "/images/collections/1759478350160-281rdf.png"
+        },
+        {
+          "title": "Cité Engloutie",
+          "description": "Une ancienne ville, aujourd'hui recouverte par les eaux. Un trésor archéologique sous-marin à explorer.",
+          "icon": "🌊",
+          "category": "Locations/Sites",
+          "image": "/images/collections/1759478350162-dlzgz8.png"
+        },
+        {
+          "title": "Outil Préhistorique",
+          "description": "Un objet en pierre taillée servant à couper, gratter ou chasser. L'ingéniosité de nos ancêtres.",
+          "icon": "🔪",
+          "category": "Things/Objects",
+          "image": "/images/collections/1759478350165-9ivgcn.png"
+        },
+        {
+          "title": "L'Archéologue Débutant",
+          "description": "Un personnage curieux et motivé, prêt à apprendre les bases de l'archéologie et à participer aux fouilles.",
+          "icon": "🤓",
+          "category": "Personas",
+          "image": "/images/collections/1759478350168-awtok.png"
+        },
+        {
+          "title": "Culture Matérielle",
+          "description": "L'ensemble des objets créés et utilisés par une société. C'est ce qui reste de nous pour les futurs archéologues !",
+          "icon": "📦",
+          "category": "Concepts",
+          "image": "/images/collections/1759478350170-no4i3k.png"
+        },
+        {
+          "title": "Analyse des Sédiments",
+          "description": "Étudier la composition du sol pour comprendre les activités passées : feux, sépultures, habitations.",
+          "icon": "🔬",
+          "category": "Steps",
+          "image": "/images/collections/1759478350173-vbf9z.png"
+        },
+        {
+          "title": "Cartographie du Site",
+          "description": "Dessiner précisément le plan du site de fouilles, y compris la position de chaque découverte.",
+          "icon": "🗺️",
+          "category": "Actions",
+          "image": "/images/collections/1759478350176-lavoe7.png"
+        },
+        {
+          "title": "Documentation Visuelle",
+          "description": "Prendre des photos et filmer pendant les fouilles. Des images qui parlent plus que mille mots !",
+          "icon": "📸",
+          "category": "Actions",
+          "image": "/images/collections/1759478350180-13z681k.png"
+        },
+        {
+          "title": "Méthode Comparative",
+          "description": "Comparer des découvertes similaires de différents sites pour identifier des liens culturels ou des évolutions.",
+          "icon": "⚖️",
+          "category": "Concepts",
+          "image": null
+        },
+        {
+          "title": "Faux Artefact",
+          "description": "Un objet qui imite un vestige archéologique mais qui est une création récente. Attention aux pièges !",
+          "icon": "🎭",
+          "category": "Malus",
+          "image": "/images/collections/1759478350184-ut2pu.png"
+        },
+        {
+          "title": "Site Protégé",
+          "description": "Un lieu d'importance archéologique dont la préservation est assurée. Un trésor national à sauvegarder.",
+          "icon": "🛡️",
+          "category": "Locations/Sites",
+          "image": "/images/collections/1759478350186-fi7th5.png"
+        },
+        {
+          "title": "Le Spécialiste",
+          "description": "Un archéologue expert dans un domaine précis (céramique, ossements, métallurgie). Un savoir encyclopédique.",
+          "icon": "👨‍🏫",
+          "category": "Personas",
+          "image": null
+        },
+        {
+          "title": "Datation Relative",
+          "description": "Déterminer l'ordre chronologique des événements ou des objets sans donner d'âge précis. Plus ancien ou plus récent ?",
+          "icon": "➡️",
+          "category": "Concepts",
+          "image": "/images/collections/1759478350190-sjwiec.png"
+        },
+        {
+          "title": "Reconstitution 3D",
+          "description": "Utiliser des technologies modernes pour recréer virtuellement des objets ou des sites disparus.",
+          "icon": "🖨️",
+          "category": "Components",
+          "image": "/images/collections/1759478350195-813a8c.png"
+        },
+        {
+          "title": "Analyse Palynologique",
+          "description": "Étudier les pollens fossiles pour connaître la végétation et le climat d'une époque révolue.",
+          "icon": "🌸",
+          "category": "Steps",
+          "image": "/images/collections/1759478350199-phwzjm.png"
+        },
+        {
+          "title": "Vestiges In Situ",
+          "description": "Découvertes laissées à leur emplacement d'origine. La meilleure façon de comprendre leur usage.",
+          "icon": "📍",
+          "category": "Bonus",
+          "image": "/images/collections/1759478350203-wxcnza.png"
+        },
+        {
+          "title": "Hypothèse Archéologique",
+          "description": "Une explication possible pour une découverte ou un phénomène. À tester et confirmer !",
+          "icon": "💡",
+          "category": "Concepts",
+          "image": null
+        },
+        {
+          "title": "Mécène Généreux",
+          "description": "Une personne ou une organisation qui finance les recherches archéologiques. Sans eux, beaucoup de découvertes seraient impossibles.",
+          "icon": "💰",
+          "category": "Personas",
+          "image": "/images/collections/1759478350208-dtrcg.png"
+        },
+        {
+          "title": "Réglementation Archéologique",
+          "description": "Les lois et les procédures qui encadrent les fouilles et la conservation du patrimoine. Essentiel pour la protection.",
+          "icon": "📜",
+          "category": "Categories and Criteria",
+          "image": "/images/collections/1759478350212-bxud47.png"
+        },
+        {
+          "title": "Trésor Caché",
+          "description": "Une découverte exceptionnelle et rare, apportant un éclairage nouveau sur une période ou une culture.",
+          "icon": "💎",
+          "category": "Bonus",
+          "image": "/images/collections/1759478350215-p03ts.png"
+        },
+        {
+          "title": "Outils de Fouille",
+          "description": "Petites truelles, pinceaux, tamis... les instruments du quotidien de l'archéologue. Précision et délicatesse.",
+          "icon": "🖌️",
+          "category": "Components",
+          "image": null
+        },
+        {
+          "title": "Camp de Fouilles",
+          "description": "Le lieu de vie et de travail temporaire des archéologues sur un site. Une aventure humaine et scientifique.",
+          "icon": "🏕️",
+          "category": "Locations/Sites",
+          "image": null
+        },
+        {
+          "title": "L'Archéologie Expérimentale",
+          "description": "Reproduire des gestes et des techniques anciennes pour comprendre leur faisabilité et leur efficacité.",
+          "icon": "🛠️",
+          "category": "Process",
+          "image": "/images/collections/1759478350218-wl0ajm.png"
+        },
+        {
+          "title": "Bilan de Fouilles",
+          "description": "Rédiger un rapport détaillé des découvertes, des méthodes utilisées et des conclusions tirées.",
+          "icon": "✍️",
+          "category": "Actions",
+          "image": "/images/collections/1759478350221-03w7or.png"
+        }
+      ]
+    },
+    {
+      "id": "1759500435828",
+      "name": "Archeologie_Lot6",
+      "cards": [
+        {
+          "title": "La Fouille Stratigraphique",
+          "description": "Plongez dans l'ordre des couches de terre pour comprendre la chronologie des événements. Chaque strate est une page d'histoire ! Quel objet se trouve le plus bas ? Il est le plus ancien !",
+          "icon": "⛏️",
+          "category": "Process",
+          "image": "/images/collections/1759502387421-6b5dsk.png"
+        },
+        {
+          "title": "Le Sondage Préliminaire",
+          "description": "Avant de creuser en grand, faites un petit trou (sondage) pour voir si ça vaut le coup ! C'est comme humer l'air avant de plonger dans un vieux livre.",
+          "icon": "🔎",
+          "category": "Steps",
+          "image": "/images/collections/1759502387426-is7i5r.png"
+        },
+        {
+          "title": "Les Outils du Fouilleur",
+          "description": "Trowel, pinceau, niveau, mètre... chaque outil a son rôle pour déterrer et mesurer avec précision. Comme un chirurgien avec ses instruments, mais pour le passé !",
+          "icon": "🛠️",
+          "category": "Components",
+          "image": "/images/collections/1759502387429-s7q9ry.png"
+        },
+        {
+          "title": "La Documentation Rigoureuse",
+          "description": "Prenez des notes, dessinez, photographiez chaque découverte. L'information est aussi précieuse que l'objet lui-même. Sans ça, l'histoire se perd !",
+          "icon": "📝",
+          "category": "Actions",
+          "image": "/images/collections/1759502387432-6xf8.png"
+        },
+        {
+          "title": "Le Trésor Caché (Bonus)",
+          "description": "Vous trouvez un objet exceptionnel et inédit ! Il enrichit considérablement notre connaissance. Gain de points de savoir et de prestige pour votre équipe.",
+          "icon": "💎",
+          "category": "Bonus and Malus",
+          "image": "/images/collections/1759502387435-gtrwpc.png"
+        },
+        {
+          "title": "La Destruction Accidentelle (Malus)",
+          "description": "Oups ! Une mauvaise manipulation et un artefact est endommagé. Perte de points et nécessité de documenter la perte. L'humilité est de mise.",
+          "icon": "💥",
+          "category": "Bonus and Malus",
+          "image": "/images/collections/1759502387437-jpdtyq.png"
+        },
+        {
+          "title": "Archéologie de Surface",
+          "description": "Observer et collecter des vestiges visibles sans excavation. Parfait pour un premier aperçu d'un site ou pour des zones fragiles.",
+          "icon": "🚶",
+          "category": "Categories and Criteria",
+          "image": "/images/collections/1759502387440-zw96r.png"
+        },
+        {
+          "title": "Le Site du Grand Dolmen",
+          "description": "Un site mégalithique mystérieux avec des pierres dressées impressionnantes. Que s'est-il passé ici ? Un lieu de culte ou une tombe ancestrale ?",
+          "icon": "🪦",
+          "category": "Locations/Sites",
+          "image": "/images/collections/1759502387443-a4h0cs.png"
+        },
+        {
+          "title": "Les Ostraca",
+          "description": "Fragments de poterie ou de pierre sur lesquels on écrivait. Des messages du quotidien, des listes, des écrits d'écoliers... les 'post-it' de l'Antiquité !",
+          "icon": "📜",
+          "category": "Things/Objects",
+          "image": "/images/collections/1759502387447-modvg.png"
+        },
+        {
+          "title": "L'Archéologue Pédagogue",
+          "description": "Votre rôle ! Votre mission est de rendre le passé accessible et passionnant pour tous. Posez des questions, animez, partagez votre savoir.",
+          "icon": "🧑‍🏫",
+          "category": "Personas",
+          "image": "/images/collections/1759502387450-mfaa13.png"
+        },
+        {
+          "title": "La Mémoire Collective",
+          "description": "L'ensemble des connaissances et des récits que l'archéologie permet de reconstituer. C'est ce que nous construisons ensemble, génération après génération.",
+          "icon": "🧠",
+          "category": "Concepts",
+          "image": "/images/collections/1759502387453-2iyrr.png"
+        },
+        {
+          "title": "L'Analyse des Sédiments",
+          "description": "Étudier la composition de la terre pour y trouver des indices sur l'environnement, les cultures et les activités humaines passées. La terre parle si on sait l'écouter !",
+          "icon": "🔬",
+          "category": "Steps",
+          "image": "/images/collections/1759502387456-ryng0e.png"
+        },
+        {
+          "title": "La Conservation des Artefacts",
+          "description": "Une fois déterrés, les objets doivent être protégés et stabilisés pour ne pas se dégrader. Une étape cruciale pour la transmission.",
+          "icon": "🛡️",
+          "category": "Actions",
+          "image": "/images/collections/1759502387461-qsz0gn.png"
+        },
+        {
+          "title": "La Méthode de Carroyage",
+          "description": "Diviser un site en carrés pour une organisation et une localisation précises des découvertes. Comme une carte au trésor ultra précise !",
+          "icon": "⬜",
+          "category": "Process",
+          "image": "/images/collections/1759502387465-ea615.png"
+        },
+        {
+          "title": "Les Témoins Archéologiques",
+          "description": "Ce qui reste du passé : bâtiments, objets, traces d'activités. Chaque vestige est une pièce du puzzle.",
+          "icon": "🧩",
+          "category": "Components",
+          "image": "/images/collections/1759502387468-sch7t6.png"
+        },
+        {
+          "title": "La Datation Radiocarbone",
+          "description": "Une méthode scientifique pour dater des matières organiques. Un outil magique pour situer des événements dans le temps.",
+          "icon": "⏳",
+          "category": "Steps",
+          "image": "/images/collections/1759502387471-22j67e.png"
+        },
+        {
+          "title": "La Chronologie Relative",
+          "description": "Déterminer l'ordre des événements sans date précise. Le plus ancien, le plus récent, celui qui est arrivé avant...",
+          "icon": "➡️",
+          "category": "Concepts",
+          "image": "/images/collections/1759502387474-ddzyp8.png"
+        },
+        {
+          "title": "Le Musée Imaginaire",
+          "description": "Créez votre propre exposition avec les artefacts que vous découvrez et documentez. Imaginez le récit que vous voulez raconter.",
+          "icon": "🏛️",
+          "category": "Actions",
+          "image": "/images/collections/1759502387476-5s0iwk.png"
+        },
+        {
+          "title": "La Poterie Brisée (Malus)",
+          "description": "Vous avez mal identifié un tesson et l'avez jeté. Une information potentiellement précieuse est perdue. Erreur d'interprétation, coût en savoir.",
+          "icon": "💔",
+          "category": "Bonus and Malus",
+          "image": "/images/collections/1759502387478-ry4hab.png"
+        },
+        {
+          "title": "La Reconstruction Virtuelle (Bonus)",
+          "description": "Grâce à vos données, vous parvenez à reconstituer virtuellement un bâtiment ou un objet disparu. Gain de points de savoir et de reconnaissance.",
+          "icon": "✨",
+          "category": "Bonus and Malus",
+          "image": "/images/collections/1759502387481-a28qll.png"
+        },
+        {
+          "title": "Archéologie Subaquatique",
+          "description": "Explorer les sites sous l'eau. Navires coulés, villes englouties... un monde fascinant et plein de défis !",
+          "icon": "🌊",
+          "category": "Categories and Criteria",
+          "image": "/images/collections/1759502387484-qtn5bi.png"
+        },
+        {
+          "title": "Les Ruines Romaines de Lutèce",
+          "description": "Découvrez les vestiges de l'ancienne capitale gallo-romaine au cœur de Paris. Bains, arènes, aqueducs... une ville qui revit grâce à vous !",
+          "icon": "🏟️",
+          "category": "Locations/Sites",
+          "image": "/images/collections/1759502387488-rqnrps.png"
+        },
+        {
+          "title": "Les Lampes à Huile",
+          "description": "Indispensables pour s'éclairer dans l'Antiquité. Leur forme et leur décoration nous renseignent sur les habitudes et l'art de l'époque.",
+          "icon": "💡",
+          "category": "Things/Objects",
+          "image": "/images/collections/1759502387492-71u6w.png"
+        },
+        {
+          "title": "Le Cartographe Archéologique",
+          "description": "Spécialiste de la représentation des sites et des découvertes. Vos cartes permettent de comprendre la disposition et les relations entre les éléments.",
+          "icon": "🗺️",
+          "category": "Personas",
+          "image": "/images/collections/1759502387493-0kbijb.svg"
+        },
+        {
+          "title": "L'Interprétation des Données",
+          "description": "Transformer les découvertes brutes en récits cohérents et compréhensibles. C'est le cœur du métier : donner du sens au passé.",
+          "icon": "💬",
+          "category": "Concepts",
+          "image": "/images/collections/1759502387495-gfatp8.png"
+        },
+        {
+          "title": "L'Étude des Pollens",
+          "description": "Analyser les pollens fossiles pour reconstituer l'environnement et la végétation d'une époque. Le passé végétal nous éclaire sur le passé humain.",
+          "icon": "🌸",
+          "category": "Steps",
+          "image": "/images/collections/1759502387497-dp0mus.png"
+        },
+        {
+          "title": "Le Plan de Fouille",
+          "description": "Une carte détaillée qui organise l'exploration d'un site, définissant les zones à creuser et les objectifs. Une stratégie pour ne rien laisser au hasard.",
+          "icon": "📍",
+          "category": "Components",
+          "image": "/images/collections/1759502387499-6bfmlb.png"
+        },
+        {
+          "title": "La Mise en Réseau des Découvertes",
+          "description": "Identifier les liens entre les différents artefacts et sites pour comprendre les échanges, les migrations et les influences culturelles.",
+          "icon": "🔗",
+          "category": "Actions",
+          "image": "/images/collections/1759502387500-anoerc.svg"
+        },
+        {
+          "title": "La Stratification Inversée (Malus)",
+          "description": "Un trou de cambrioleur ou une perturbation du sol a mélangé les couches. Difficile de savoir ce qui est ancien et ce qui est récent. Confusion et perte d'information.",
+          "icon": "🌪️",
+          "category": "Bonus and Malus",
+          "image": "/images/collections/1759502387502-a6yw7a.png"
+        },
+        {
+          "title": "La Réunion d'Experts (Bonus)",
+          "description": "Grâce à votre travail, une table ronde d'historiens, d'anthropologues et d'autres spécialistes est organisée pour déchiffrer une découverte majeure. Gain de prestige et d'influence.",
+          "icon": "🤝",
+          "category": "Bonus and Malus",
+          "image": "/images/collections/1759502387504-kvd1k.png"
+        },
+        {
+          "title": "Archéozoologie",
+          "description": "L'étude des restes animaux (os, coquillages) pour comprendre l'alimentation, l'élevage et l'environnement passé.",
+          "icon": "🦴",
+          "category": "Categories and Criteria",
+          "image": "/images/collections/1759502387506-zvf1uk.svg"
+        },
+        {
+          "title": "Le Site de Pompéi",
+          "description": "Une ville romaine figée dans le temps par une éruption volcanique. Une fenêtre unique sur la vie quotidienne de l'Empire Romain.",
+          "icon": "🌋",
+          "category": "Locations/Sites",
+          "image": "/images/collections/1759502387509-ojin1.png"
+        },
+        {
+          "title": "Les Fibules",
+          "description": "Des broches décoratives utilisées pour attacher les vêtements. Leur style évolue avec le temps et les cultures.",
+          "icon": "📌",
+          "category": "Things/Objects",
+          "image": "/images/collections/1759502387513-oc0e5.png"
+        },
+        {
+          "title": "Le Conservateur de Musée",
+          "description": "Responsable de la préservation, de l'étude et de l'exposition des collections archéologiques. Il veille sur les trésors du passé.",
+          "icon": "🧐",
+          "category": "Personas",
+          "image": "/images/collections/1759502387517-odro9.png"
+        },
+        {
+          "title": "La Notion de Culture Matérielle",
+          "description": "L'ensemble des objets fabriqués et utilisés par les sociétés humaines. Elle nous renseigne sur leurs modes de vie, leurs croyances et leurs techniques.",
+          "icon": "👜",
+          "category": "Concepts",
+          "image": "/images/collections/1759502387521-gst9jh.png"
+        }
+      ]
+    }
+  ]
 }
