@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card as CardData, CardCollection, generateCards, getCollections, getCollectionById } from '../services/ApiService';
+import { Card as CardData, CardCollection, generateCards, getCollections, getCollectionById, generatePdfForCards, GenerateCardsMetrics } from '../services/ApiService';
 import InputForm from '../components/InputForm';
 import CardGrid from '../components/CardGrid';
 import CardEditor from '../components/CardEditor';
@@ -12,6 +12,8 @@ const MainPage: React.FC = () => {
   const [collections, setCollections] = useState<CardCollection[]>([]);
   const [currentCollection, setCurrentCollection] = useState<CardCollection | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [metrics, setMetrics] = useState<GenerateCardsMetrics | null>(null);
 
   // Fetch collections on component mount
   useEffect(() => {
@@ -31,16 +33,19 @@ const MainPage: React.FC = () => {
   const handleGenerate = async (theme: string, context: string) => {
     setIsGenerating(true);
     try {
-      const generatedCards = await generateCards(theme, context);
-      if (Array.isArray(generatedCards)) {
-        setCards(generatedCards);
+      const result = await generateCards(theme, context);
+      if (Array.isArray(result?.cards)) {
+        setCards(result.cards);
+        setMetrics(result.metrics);
       } else {
         alert('Received an invalid response from the server.');
         setCards([]);
+        setMetrics(null);
       }
     } catch (error) {
       alert('Failed to generate cards');
       setCards([]);
+      setMetrics(null);
     } finally {
       setIsGenerating(false);
     }
@@ -75,6 +80,7 @@ const MainPage: React.FC = () => {
   const handleNewCollection = () => {
     setCurrentCollection(null);
     setCards([]);
+    setMetrics(null);
   };
 
   const handleSaveCard = (updatedCard: CardData) => {
@@ -82,6 +88,31 @@ const MainPage: React.FC = () => {
     // For now, leaving as is.
     setCards(cards.map((card) => (card.id === selectedCard?.id ? updatedCard : card)));
     setSelectedCard(null);
+  };
+
+  const handleGeneratePdf = async () => {
+    if (cards.length === 0 || isGeneratingPdf) return;
+
+    setIsGeneratingPdf(true);
+    try {
+      const pdfBlob = await generatePdfForCards(cards);
+
+      // Télécharger le PDF
+      const url = window.URL.createObjectURL(pdfBlob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = `generated-cards-${Date.now()}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please try again.');
+    } finally {
+      setIsGeneratingPdf(false);
+    }
   };
 
   return (
@@ -92,7 +123,51 @@ const MainPage: React.FC = () => {
       {selectedCard ? (
         <CardEditor card={selectedCard} onSave={handleSaveCard} />
       ) : (
-        <CardGrid cards={cards} />
+        <>
+          <CardGrid cards={cards} />
+          {metrics && (
+            <div style={{ marginTop: '12px', textAlign: 'center' }}>
+              <p style={{ margin: '4px 0' }}>
+                <strong>Total requests:</strong> {metrics.totalRequests} (text: {metrics.textRequests}, images: {metrics.imageRequests}, failed images: {metrics.imageFailures})
+              </p>
+              <p style={{ margin: '4px 0' }}>
+                <strong>Payload size:</strong> {metrics.responseKilobytes} KB ({metrics.responseBytes} bytes)
+              </p>
+            </div>
+          )}
+          {cards.length > 0 && (
+            <div style={{ textAlign: 'center', margin: '20px 0' }}>
+              <button
+                onClick={handleGeneratePdf}
+                disabled={isGeneratingPdf}
+                style={{
+                  backgroundColor: isGeneratingPdf ? '#6c757d' : '#007bff',
+                  color: 'white',
+                  border: 'none',
+                  padding: '10px 20px',
+                  borderRadius: '5px',
+                  cursor: isGeneratingPdf ? 'not-allowed' : 'pointer',
+                  fontSize: '16px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
+              >
+                {isGeneratingPdf && (
+                  <span style={{
+                    width: '16px',
+                    height: '16px',
+                    border: '2px solid #ffffff',
+                    borderTop: '2px solid transparent',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite'
+                  }}></span>
+                )}
+                {isGeneratingPdf ? 'Generating PDF...' : 'Print to PDF'}
+              </button>
+            </div>
+          )}
+        </>
       )}
       <hr />
       <CollectionManager

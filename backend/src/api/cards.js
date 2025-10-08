@@ -1,5 +1,5 @@
 const express = require('express');
-const GeminiService = require('../services/GeminiService');
+const { generateCards } = require('../services/GeminiService');
 
 const router = express.Router();
 
@@ -11,8 +11,8 @@ router.post('/generate', async (req, res) => {
   }
 
   try {
-    const cards = await GeminiService.generateCards(theme, context);
-    res.json(cards);
+    const result = await generateCards(theme, context);
+    res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

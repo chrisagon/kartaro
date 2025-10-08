@@ -1293,6 +1293,2637 @@
           "image": "/images/collections/1759502387521-gst9jh.png"
         }
       ]
+    },
+    {
+      "id": "1759679507708",
+      "name": "Archeologie_Lot7",
+      "cards": [
+        {
+          "title": "La Fouille Stratigraphique",
+          "description": "Comprends comment les couches de terre révèlent l'histoire d'un site archéologique, du plus récent au plus ancien. Imagine découvrir des artefacts en remontant le temps !",
+          "icon": " stratigraphic digging",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759679507709-azcki9.png"
+        },
+        {
+          "title": "Le Carroyage",
+          "description": "Apprends à diviser un site en carrés pour un relevé précis. Chaque carré est une petite zone d'exploration où des trésors cachés attendent d'être déterrés.",
+          "icon": " grid",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759679507713-p1d78.png"
+        },
+        {
+          "title": "La Poterie Ancienne",
+          "description": "Examine les fragments de poteries pour comprendre les techniques de fabrication, les usages et le style des civilisations passées. Chaque tesson raconte une histoire.",
+          "icon": " ancient pottery",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759679507717-ftso6.png"
+        },
+        {
+          "title": "Documenter une Découverte",
+          "description": "Décris avec précision le contexte de ta découverte : où, comment, et en association avec quoi a-t-elle été trouvée ? Un bon archéologue est un bon journaliste !",
+          "icon": " document",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759679507720-bhu0ye.png"
+        },
+        {
+          "title": "La Malédiction de l'Artefact",
+          "description": "Oh non ! Tu as dérangé une tombe sacrée. Perds une action ou une carte de ressource.",
+          "icon": " cursed artifact",
+          "category": "Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507724-nrpobu.png"
+        },
+        {
+          "title": "Les Outils de l'Archéologue",
+          "description": "Cartes représentant divers outils : pinceau, pelle, tamis, GPS. Chaque outil débloque de nouvelles actions ou améliore l'efficacité.",
+          "icon": " trowel",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759679507728-werzk.png"
+        },
+        {
+          "title": "Pompei",
+          "description": "Explore les vestiges figés dans le temps de cette ville romaine. Imagine la vie d'avant l'éruption.",
+          "icon": " volcano",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507731-p1gznt.png"
+        },
+        {
+          "title": "Le Squelette d'un Dinosaure",
+          "description": "Découvre les restes d'une créature préhistorique. Aide à le reconstituer pour en apprendre davantage sur son mode de vie.",
+          "icon": " dinosaur skeleton",
+          "category": "Things/Objects",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507735-tndunt.png"
+        },
+        {
+          "title": "Le Curieux",
+          "description": "Un personnage qui pose beaucoup de questions et est avide d'apprendre. Gagne un bonus lorsque tu réponds correctement à une question.",
+          "icon": " curious person",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759679507737-95hdl.svg"
+        },
+        {
+          "title": "La Datation au Carbone 14",
+          "description": "Comprends comment cette méthode scientifique permet de dater des matériaux organiques. Un outil essentiel pour ordonner le passé.",
+          "icon": " carbon dating",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759679507740-ac0cgb9.png"
+        },
+        {
+          "title": "Le Tamisage",
+          "description": "Fouille les terres excavées pour y trouver des petits artefacts oubliés. La patience est ta meilleure alliée !",
+          "icon": " sieve",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759679507742-zua3e.png"
+        },
+        {
+          "title": "La Photographie Archéologique",
+          "description": "Apprends l'importance de documenter chaque étape de la fouille avec des photographies précises et contextuelles. Capture l'instant pour l'éternité.",
+          "icon": " camera",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759679507744-fze7c8.png"
+        },
+        {
+          "title": "Un Artéfact Inattendu",
+          "description": "Bravo ! Tu as découvert un objet rare et précieux. Pioche une carte Bonus.",
+          "icon": " sparkling treasure",
+          "category": "Bonus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507746-73w8g.png"
+        },
+        {
+          "title": "La Cité Engloutie",
+          "description": "Plonge dans les profondeurs pour explorer les vestiges d'une civilisation disparue sous les eaux. Une aventure aquatique !",
+          "icon": " sunken city",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507751-4o7iil.png"
+        },
+        {
+          "title": "L'Amphore Romaine",
+          "description": "Analyse ces récipients pour comprendre le commerce, le transport et la conservation des denrées dans l'Antiquité. Que transportait-elle ?",
+          "icon": " amphora",
+          "category": "Things/Objects",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507754-4x77b.png"
+        },
+        {
+          "title": "Le Spécialiste des Écritures Anciennes",
+          "description": "Ce personnage déchiffre les langues oubliées. Permet d'interpréter des inscriptions et d'obtenir des informations cruciales.",
+          "icon": " ancient scroll",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759679507758-9de3ze.png"
+        },
+        {
+          "title": "L'Hypothèse Archéologique",
+          "description": "Formule une idée sur la fonction d'un site ou d'un objet avant de commencer la fouille. Teste tes théories !",
+          "icon": " magnifying glass",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759679507761-9o8ojj.png"
+        },
+        {
+          "title": "Le Relevé Photogrammétrique",
+          "description": "Utilise des techniques de modélisation 3D pour recréer virtuellement un site ou un objet. La technologie au service de l'histoire.",
+          "icon": " 3d model",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759679507766-9w140g.png"
+        },
+        {
+          "title": "Les Stratégies de Fouille",
+          "description": "Choisis la meilleure approche pour explorer ton site : systématique, par sondage, etc. Chaque méthode a ses avantages.",
+          "icon": " strategy board",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759679507768-5iru3w.png"
+        },
+        {
+          "title": "Les Déplacements Interdits",
+          "description": "Tu as marché sur une zone fragile ! Perds une action de déplacement ou une carte d'outil.",
+          "icon": " warning sign",
+          "category": "Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507772-q67leh.png"
+        },
+        {
+          "title": "Le Journal de Bord",
+          "description": "Garde une trace de tes activités, découvertes et hypothèses. Un bon archéologue n'oublie jamais rien.",
+          "icon": " notebook",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759679507776-vpuldc.png"
+        },
+        {
+          "title": "La Période Paléolithique",
+          "description": "Explore la vie des premiers hommes, leurs outils en pierre et leurs peintures rupestres. Un voyage aux origines.",
+          "icon": " cave painting",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759679507779-2coyid.png"
+        },
+        {
+          "title": "Le Donjon Médiéval",
+          "description": "Examine les ruines d'un château pour découvrir les secrets de la vie à l'époque médiévale. Qui y vivait et comment ?",
+          "icon": " castle",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507782-v7zmjf.png"
+        },
+        {
+          "title": "La Lame d'Obsidienne",
+          "description": "Analyse cette arme tranchante pour comprendre les techniques de taille de la pierre et les usages préhistoriques. Qu'a-t-elle servi à découper ?",
+          "icon": " obsidian blade",
+          "category": "Things/Objects",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507782-hrk3oc.svg"
+        },
+        {
+          "title": "Le Cartographe",
+          "description": "Ce personnage crée des cartes précises des sites. Aide à mieux visualiser l'étendue et la structure des découvertes.",
+          "icon": " map",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759679507784-9m143.png"
+        },
+        {
+          "title": "Les Instruments de Mesure",
+          "description": "Cartes représentant un mètre, une boussole, un niveau à bulle. Indispensables pour relever les dimensions et les orientations.",
+          "icon": " measuring tape",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759679507786-9lnmzq.png"
+        },
+        {
+          "title": "La Reconstruction Virtuelle",
+          "description": "Utilise des indices pour imaginer à quoi ressemblait le site dans son état d'origine. Redonne vie au passé dans ton esprit.",
+          "icon": " virtual reality",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759679507788-igbuqf.png"
+        },
+        {
+          "title": "Le Scepticisme Bien Placé",
+          "description": "Ne crois pas tout ce que tu lis ou entends ! Vérifie tes sources et demande des preuves. Un bonus si tu mets en doute une interprétation fausse.",
+          "icon": " question mark",
+          "category": "Bonus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759679507790-20hli.png"
+        },
+        {
+          "title": "Le Labo d'Analyse",
+          "description": "Envoye tes découvertes pour des analyses scientifiques (datation, composition). Une carte qui révèle des informations cachées.",
+          "icon": " laboratory",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759679507792-9qbph9.png"
+        },
+        {
+          "title": "La Culture Totémique",
+          "description": "Explore les croyances et pratiques religieuses des peuples anciens à travers leurs symboles et objets rituels.",
+          "icon": " totem",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759679507793-856vhs.svg"
+        }
+      ]
+    },
+    {
+      "id": "1759682319048",
+      "name": "Archeologie_Lot8",
+      "cards": [
+        {
+          "title": "La Fouille Stratigraphique",
+          "description": "Comprendre l'ordre chronologique des couches de sédiments pour dater les découvertes. Chaque strate est une page de l'histoire.",
+          "icon": "⛏️",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759682319051-cs0xap.png"
+        },
+        {
+          "title": "L'Étude du Contexte",
+          "description": "Analyser l'environnement immédiat de l'objet découvert : est-il isolé, en association avec d'autres éléments ? Le contexte est crucial pour l'interprétation.",
+          "icon": "🧐",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759682319067-h85wf.png"
+        },
+        {
+          "title": "Les Outils du Fouilleur",
+          "description": "Une carte représentant la truelle, le pinceau, le tamis... Ces outils sont essentiels pour extraire délicatement les vestiges sans les endommager.",
+          "icon": "🛠️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759682319069-85ss6f.png"
+        },
+        {
+          "title": "La Datation Relative",
+          "description": "Comparer l'âge d'un objet par rapport à d'autres objets ou couches, sans donner de date précise. Ce qui est en bas est plus vieux que ce qui est au-dessus.",
+          "icon": "⏳",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759682319072-mbzvy7.png"
+        },
+        {
+          "title": "Découverte Fortuite",
+          "description": "Vous tombez sur un objet exceptionnel par hasard lors d'une activité non archéologique. +1 point de renommée mais un point de pénalité pour le manque de méthode.",
+          "icon": "🍀",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759682319074-1gj0k6.png"
+        },
+        {
+          "title": "Typologie des Céramiques",
+          "description": "Identifier et classer les poteries selon leur forme, leur matière et leur décoration. C'est comme reconnaître des styles de musique anciens.",
+          "icon": "🏺",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759682319077-0goqo.png"
+        },
+        {
+          "title": "Le Site de Pompéi",
+          "description": "Une ville romaine figée dans le temps par une éruption volcanique. Une mine d'or pour comprendre la vie quotidienne antique.",
+          "icon": "🌋",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759682319079-ogdizp.png"
+        },
+        {
+          "title": "Une Fibule Antique",
+          "description": "Une petite broche utilisée pour attacher les vêtements à l'époque romaine. Sa forme et son style donnent des indices sur la période et le statut social.",
+          "icon": "🧷",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759682319082-lgfm2n.png"
+        },
+        {
+          "title": "L'Archéologue du Terrain",
+          "description": "Représente l'archéologue sur le site de fouilles, méticuleux et attentif à chaque détail. Son rôle est de découvrir et documenter.",
+          "icon": "🧑‍🔬",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759682319085-l86tvo.png"
+        },
+        {
+          "title": "L'Analyse Fonctionnelle",
+          "description": "Comprendre l'usage probable d'un objet en se basant sur sa forme, son usure, et sa présence dans un contexte spécifique.",
+          "icon": "💡",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319091-1fh8j.png"
+        },
+        {
+          "title": "La Carte du Trésor (Fausse Piste)",
+          "description": "Vous trouvez une carte qui promet un trésor archéologique immense. Après vérification, il s'agit d'une fabrication moderne. -2 points de crédibilité.",
+          "icon": "🗺️",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759682319095-8gedne.png"
+        },
+        {
+          "title": "Le Silex Taillé",
+          "description": "Un outil préhistorique fabriqué par l'homme. Son étude révèle des techniques de taille et des savoir-faire anciens.",
+          "icon": "🔪",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759682319099-mndbwi.png"
+        },
+        {
+          "title": "Le Laboratoire d'Analyses",
+          "description": "L'endroit où les objets sont nettoyés, conservés et étudiés en détail (datation, composition, etc.). C'est la phase post-fouille.",
+          "icon": "🔬",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759682319104-mjcwlj.png"
+        },
+        {
+          "title": "Le Conservateur du Musée",
+          "description": "Le gardien du patrimoine, responsable de la préservation et de la présentation des artefacts. Son rôle est de transmettre.",
+          "icon": "🏛️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759682319110-7kyofp.png"
+        },
+        {
+          "title": "L'Interprétation des Graffiti",
+          "description": "Décrypter les inscriptions et dessins laissés par les anciens sur les murs. Une fenêtre sur leurs pensées et leurs vies quotidiennes.",
+          "icon": "✍️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759682319114-lkbjup.png"
+        },
+        {
+          "title": "La Reconstruction Virtuelle",
+          "description": "Utiliser des technologies modernes pour recréer numériquement des sites ou des objets disparus. Une manière de les faire revivre.",
+          "icon": "💻",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759682319117-7h4vxs.png"
+        },
+        {
+          "title": "Le Stratotype",
+          "description": "Une couche sédimentaire particulièrement représentative et bien définie, servant de référence pour la datation d'autres sites.",
+          "icon": "📏",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759682319121-cjrwn.png"
+        },
+        {
+          "title": "L'Analyse Microscopique",
+          "description": "Observer les objets sous un microscope pour y déceler des traces d'usage, des résidus ou des informations cachées.",
+          "icon": "🔍",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759682319125-ce85yv.png"
+        },
+        {
+          "title": "La Règle du 'Ne Rien Laisser Derrière'",
+          "description": "La règle d'or du fouilleur : tout ce qui est découvert doit être documenté et prélevé avec le plus grand soin. Aucune trace ne doit être oubliée.",
+          "icon": "📝",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319130-29xgwr.png"
+        },
+        {
+          "title": "Le Scanner 3D",
+          "description": "Un appareil permettant de numériser en trois dimensions des objets archéologiques, pour la conservation, l'étude ou la restitution.",
+          "icon": "⚡",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759682319135-ytq48c.png"
+        },
+        {
+          "title": "Le Site de Carnac",
+          "description": "Un alignement impressionnant de menhirs préhistoriques. Leur fonction exacte reste mystérieuse et sujette à interprétation.",
+          "icon": "🗿",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759682319139-2965v3.png"
+        },
+        {
+          "title": "Le Fragment de Mosaïque",
+          "description": "Un petit morceau d'un pavement décoratif. Sa reconstitution peut révéler des scènes mythologiques ou de la vie quotidienne.",
+          "icon": "🧩",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759682319143-vhe2mc.png"
+        },
+        {
+          "title": "Le Spécialiste des Ossements (Ostéologue)",
+          "description": "L'expert qui étudie les restes osseux pour comprendre l'alimentation, la santé et les pratiques funéraires des populations anciennes.",
+          "icon": "🦴",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759682319147-cl9ye8.png"
+        },
+        {
+          "title": "Le Scepticisme Scientifique",
+          "description": "Toujours remettre en question les interprétations hâtives et chercher des preuves solides avant de tirer des conclusions. La prudence est de mise.",
+          "icon": "🤔",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319151-ho3vei.png"
+        },
+        {
+          "title": "Erreur de Transcription",
+          "description": "Vous interprétez mal une inscription ou un symbole, menant à une conclusion erronée. -1 point de précision.",
+          "icon": "❌",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759682319155-h1pa3k.png"
+        },
+        {
+          "title": "Le Plan de Fouille",
+          "description": "La carte détaillée de la zone où se déroule la fouille, divisée en carrés pour une organisation rigoureuse. C'est la feuille de route de l'archéologue.",
+          "icon": "🗺️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759682319159-6yjl0o.png"
+        },
+        {
+          "title": "La Documentation Photographique",
+          "description": "Prendre des photos de chaque objet et de chaque couche avant, pendant et après son extraction. Une image vaut mille mots, surtout en archéologie.",
+          "icon": "📸",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759682319162-q6ep6f.png"
+        },
+        {
+          "title": "Le Site de Göbekli Tepe",
+          "description": "L'un des plus anciens complexes religieux connus au monde, remettant en question nos idées sur le développement des civilisations.",
+          "icon": "🌳",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759682319167-o3cyfk.png"
+        },
+        {
+          "title": "La Lame d'Outil en Bronze",
+          "description": "Un vestige technologique marquant le passage à l'âge du bronze. Son analyse révèle les techniques de métallurgie de l'époque.",
+          "icon": "🗡️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759682319170-vmahgs.png"
+        },
+        {
+          "title": "L'Archéologue Virtuel (Héritier)",
+          "description": "Un jeune archéologue qui reprend le travail de ses prédécesseurs, en utilisant de nouvelles technologies pour réinterpréter les découvertes anciennes.",
+          "icon": "👶",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759682319174-6dggek.png"
+        },
+        {
+          "title": "Le Principe d'Analogies",
+          "description": "Comparer des artefacts ou des sites actuels avec ceux du passé pour tenter de comprendre leur fonction ou leur signification. Attention aux raccourcis !",
+          "icon": "↔️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319178-x87v2.png"
+        },
+        {
+          "title": "Fouille Non Autorisée",
+          "description": "Vous explorez un site sans permission officielle. Vous trouvez quelque chose, mais cela met en péril la crédibilité de votre équipe et du projet. -3 points de réputation.",
+          "icon": "🚫",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759682319183-5y3er.png"
+        },
+        {
+          "title": "La Réalité Augmentée",
+          "description": "Visualiser des reconstructions de sites ou d'objets directement sur le terrain via une tablette ou un smartphone. Une immersion dans le passé.",
+          "icon": "🕶️",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759682319187-jm247l.png"
+        },
+        {
+          "title": "Le Critère de Provenance",
+          "description": "La localisation exacte où un objet a été trouvé. Une information essentielle pour son interprétation historique et culturelle.",
+          "icon": "📍",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759682319190-mj7kv.png"
+        },
+        {
+          "title": "Le Nettoyage et la Conservation",
+          "description": "Les étapes cruciales pour stabiliser et protéger les artefacts découverts afin qu'ils durent dans le temps. Préserver le passé pour l'avenir.",
+          "icon": "🧼",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759682319194-eznpxc.png"
+        },
+        {
+          "title": "L'Hypothèse de Travail",
+          "description": "Formuler une idée sur la fonction ou la signification d'un vestige, qui sera ensuite testée et validée ou infirmée par d'autres découvertes.",
+          "icon": "💡",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319197-383m9a.png"
+        },
+        {
+          "title": "Le Pinceau à Poils Souples",
+          "description": "Indispensable pour dépoussiérer délicatement les surfaces fragiles sans les rayer ou les abîmer. La patience est une vertu d'archéologue.",
+          "icon": "🖌️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759682319201-2jn5mg.png"
+        },
+        {
+          "title": "Le Site de Machu Picchu",
+          "description": "Une cité inca perchée dans les Andes. Son architecture et son ingénierie témoignent de la grandeur de cette civilisation.",
+          "icon": "⛰️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759682319206-op2xa.png"
+        },
+        {
+          "title": "Une Monnaie Ancienne",
+          "description": "Un objet qui porte la marque d'un souverain ou d'un État. Elle permet de dater précisément une période et de comprendre les échanges commerciaux.",
+          "icon": "💰",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759682319210-vag5fo.png"
+        },
+        {
+          "title": "L'Historiographe",
+          "description": "Celui qui compile et analyse toutes les données archéologiques et historiques pour raconter l'histoire d'une période ou d'une civilisation.",
+          "icon": "📚",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759682319214-i4ks7.png"
+        },
+        {
+          "title": "Le Principe de Superposition",
+          "description": "Dans une série de couches de sédiments non perturbées, les couches les plus anciennes se trouvent en dessous des couches plus récentes. La base de la datation relative.",
+          "icon": "⬇️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319216-t6yevo.svg"
+        },
+        {
+          "title": "La Bonne Nouvelle (Découverte Majeure)",
+          "description": "Vous faites une découverte d'une importance capitale qui change la compréhension d'une période historique. +3 points de renommée et +2 points de financement.",
+          "icon": "🌟",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759682319219-fmhvsz.png"
+        },
+        {
+          "title": "La Carte Géo-archéologique",
+          "description": "Une carte qui combine des informations géologiques et archéologiques pour prédire la présence de sites potentiels ou comprendre l'environnement passé.",
+          "icon": "🌍",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759682319223-s7rpag.png"
+        },
+        {
+          "title": "L'Analyse des Pollens",
+          "description": "Étudier les grains de pollen fossilisés pour reconstituer la végétation passée et comprendre le climat de l'époque.",
+          "icon": "🌿",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759682319226-b3e52q.png"
+        },
+        {
+          "title": "La Comparaison avec les Sources Écrites",
+          "description": "Mettre en relation les découvertes archéologiques avec les textes anciens pour confirmer ou infirmer les récits historiques. La recherche de corroboration.",
+          "icon": "📜",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759682319230-04ljiv.png"
+        },
+        {
+          "title": "Le Champ de Fouille (Trench)",
+          "description": "Une tranchée creusée dans le sol pour explorer une zone spécifique. C'est la fenêtre principale sur le passé.",
+          "icon": "🔪",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759682319234-504hbo.png"
+        },
+        {
+          "title": "Une Armure Médiévale",
+          "description": "Un ensemble de pièces métalliques protégeant un guerrier. Son analyse révèle les techniques de forge et le style militaire de l'époque.",
+          "icon": "🛡️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759682319238-2hhqm.png"
+        },
+        {
+          "title": "L'Archéologue Numérique",
+          "description": "Expert en modélisation 3D, bases de données et SIG, il rend les découvertes accessibles et analysables à l'ère digitale.",
+          "icon": "👩‍💻",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759682319241-peb9jv.png"
+        },
+        {
+          "title": "La Datation Absolue",
+          "description": "Utiliser des méthodes scientifiques (comme le carbone 14) pour déterminer une date précise pour un artefact ou un site. La précision est le maître mot.",
+          "icon": "📅",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319245-qwrr59.png"
+        },
+        {
+          "title": "La Mauvaise Interprétation",
+          "description": "Vous tirez une conclusion erronée à partir d'une découverte par manque d'informations ou par biais cognitif. -2 points de savoir-faire.",
+          "icon": "🧠",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759682319248-m82b0q.png"
+        },
+        {
+          "title": "La Grille de Fouille",
+          "description": "Le système de quadrillage qui divise le site de fouille en unités spatiales précises pour une documentation méticuleuse.",
+          "icon": "▦",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759682319252-05gf3u.png"
+        },
+        {
+          "title": "La Simulation de Vie Quotidienne",
+          "description": "Imaginer et recréer les gestes et les activités de la vie quotidienne des populations anciennes à partir des vestiges matériels. Se mettre à leur place.",
+          "icon": "🚶",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759682319256-mhtsyo.png"
+        },
+        {
+          "title": "La Grotte de Lascaux",
+          "description": "Un site d'art rupestre préhistorique exceptionnel, offrant un aperçu unique de la pensée symbolique de nos ancêtres.",
+          "icon": "🎨",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759682319259-lmealn.png"
+        },
+        {
+          "title": "Un Ostracon (Témoin Écrit)",
+          "description": "Un fragment de poterie ou de pierre sur lequel est inscrite une note, un nom ou un dessin. Un témoignage direct de la vie quotidienne.",
+          "icon": "✍️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759682319263-hazvj9.png"
+        },
+        {
+          "title": "Le Géomaticien",
+          "description": "Spécialiste des Systèmes d'Information Géographique (SIG) et de la télédétection, il aide à cartographier et analyser les sites archéologiques.",
+          "icon": "🛰️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759682319266-qls04u.png"
+        },
+        {
+          "title": "L'Interdisciplinarité",
+          "description": "La collaboration avec d'autres disciplines (anthropologie, histoire de l'art, géologie, etc.) pour une compréhension plus complète du passé.",
+          "icon": "🤝",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319270-lm90a1.png"
+        },
+        {
+          "title": "La Mauvaise Conservation",
+          "description": "Un vestige précieux est endommagé par une mauvaise manipulation ou un stockage inapproprié. -1 point d'intégrité.",
+          "icon": "💔",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759682319275-vsk9w1b7.png"
+        },
+        {
+          "title": "Le Scanner LiDar",
+          "description": "Technologie de mesure à distance utilisant des impulsions laser pour créer des modèles 3D précis de paysages et de sites archéologiques, même sous la végétation.",
+          "icon": "✨",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759682319326-naqe2k.png"
+        },
+        {
+          "title": "Le Recours à l'Expérimentation",
+          "description": "Reproduire des gestes ou des techniques anciennes (taille de pierre, construction) pour mieux comprendre les contraintes et les savoir-faire des anciens.",
+          "icon": "🧪",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759682319331-u1sc7c.png"
+        },
+        {
+          "title": "Le Site d'Angkor Vat",
+          "description": "Un ensemble monumental d'art et d'architecture khmère. Il témoigne de la puissance et de la spiritualité de cet empire.",
+          "icon": "🕌",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759682319333-eqw1yc.png"
+        },
+        {
+          "title": "Un Sarcophage Antique",
+          "description": "Un coffre funéraire souvent richement décoré. Son contenu et ses inscriptions révèlent des croyances sur la mort et la vie après la mort.",
+          "icon": "⚰️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759682319337-ky8vqc.png"
+        },
+        {
+          "title": "Le Détective Archéologique",
+          "description": "Chaque archéologue est un peu un détective, rassemblant des indices pour résoudre les mystères du passé. Le jeu de rôle est constant !",
+          "icon": "🕵️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759682319341-tl4x7qa.png"
+        },
+        {
+          "title": "La Reconstruction Sociale",
+          "description": "Tenter de comprendre l'organisation sociale, politique et économique des sociétés anciennes à partir des vestiges matériels.",
+          "icon": "👨‍👩‍👧‍👦",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319346-l62eb.png"
+        },
+        {
+          "title": "La Découverte Non Documentée",
+          "description": "Vous trouvez un objet mais avez oublié de noter sa localisation exacte. L'information est perdue, la valeur scientifique diminuée. -2 points de rigueur.",
+          "icon": "❓",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759682319351-p66jjg.png"
+        },
+        {
+          "title": "La Base de Données Archéologiques",
+          "description": "Un système informatisé qui compile toutes les informations sur les découvertes, les sites et les artefacts. La mémoire collective de l'archéologie.",
+          "icon": "💾",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759682319355-a17yw6.png"
+        },
+        {
+          "title": "L'Interprétation des Rites Funéraires",
+          "description": "Analyser la manière dont les anciens enterraient leurs morts pour comprendre leurs croyances spirituelles et leurs structures sociales.",
+          "icon": "💀",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759682319357-xxpen.svg"
+        },
+        {
+          "title": "La Mésopotamie (Cité d'Ur)",
+          "description": "Le berceau des premières civilisations, où sont apparus l'écriture, les villes et les lois. Une source inépuisable de découvertes.",
+          "icon": "🏛️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759682319359-362f4c.png"
+        },
+        {
+          "title": "Un Fragment de Statue",
+          "description": "Un morceau d'une sculpture. Par son style, sa matière et son iconographie, il renseigne sur l'art, la religion ou le pouvoir de l'époque.",
+          "icon": "🗿",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759682319363-vppzc.png"
+        },
+        {
+          "title": "Le Vulgarisateur Scientifique",
+          "description": "Celui qui rend les découvertes archéologiques accessibles et passionnantes pour le grand public. Son rôle est d'éduquer et d'inspirer.",
+          "icon": "🗣️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759682319364-e7ywkq.svg"
+        },
+        {
+          "title": "La Mémoire des Matériaux",
+          "description": "Chaque objet porte en lui des informations sur les techniques de fabrication, l'origine des matériaux et les échanges commerciaux.",
+          "icon": "🧽",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319366-0hy5wb.png"
+        },
+        {
+          "title": "La Mauvaise Communication",
+          "description": "Une mauvaise communication au sein de l'équipe entraîne une confusion ou une erreur dans le travail. -1 point de collaboration.",
+          "icon": "🗣️",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759682319369-5zug5t.png"
+        },
+        {
+          "title": "L'Analyse du Sédiment",
+          "description": "Étudier la composition du sol pour comprendre l'environnement passé, les activités humaines et les processus de conservation des vestiges.",
+          "icon": "⛰️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759682319372-kgwgsn.png"
+        },
+        {
+          "title": "La Construction d'une Hypothèse",
+          "description": "Combiner les indices archéologiques et les connaissances existantes pour proposer une explication plausible sur le passé. C'est le cœur de la démarche scientifique.",
+          "icon": "🧩",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759682319376-t3cll.png"
+        },
+        {
+          "title": "La Néolithique (Outils en Pierre Polie)",
+          "description": "Une période de transition majeure, marquée par l'agriculture et la sédentarisation, dont témoignent les outils en pierre polie.",
+          "icon": "🌾",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759682319379-t6txcm.png"
+        },
+        {
+          "title": "La Géochronologie",
+          "description": "Utiliser des méthodes géologiques pour dater des couches de sédiments et des événements passés, fournissant un cadre chronologique plus large.",
+          "icon": "🕰️",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759682319381-4cpaf.png"
+        }
+      ]
+    },
+    {
+      "id": "1759684279000",
+      "name": "Archeologie_Lot12",
+      "cards": [
+        {
+          "title": "Fouille Stratigraphique",
+          "description": "Comprends les différentes couches de terre et comment elles révèlent l'histoire d'un site. Chaque couche est une page du passé !",
+          "icon": "⛏️",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759693090894-bj400q.png"
+        },
+        {
+          "title": "Datation Radiocarbone",
+          "description": "Utilise la science pour estimer l'âge d'un matériau organique découvert. Combien de temps a vécu cet objet ?",
+          "icon": "⏳",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693090900-wd63kb.png"
+        },
+        {
+          "title": "Outils de Fouille",
+          "description": "Identifie et utilise les outils de base de l'archéologue : brosses, truelles, pelles. Chaque outil a sa mission !",
+          "icon": "🖌️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759693090904-d2mvp.png"
+        },
+        {
+          "title": "Analyse de Vestiges",
+          "description": "Examine attentivement les objets trouvés pour en comprendre leur fonction, leur origine et leur signification.",
+          "icon": "🔍",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693090907-ejxfhh.png"
+        },
+        {
+          "title": "Découverte Majeure",
+          "description": "Tu as trouvé un artefact exceptionnel qui change notre compréhension du passé ! Bravo !",
+          "icon": "🌟",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693090910-yalo4d.png"
+        },
+        {
+          "title": "Destruction de Site",
+          "description": "Une négligence ou un événement extérieur a endommagé une partie du site. Il faut faire attention !",
+          "icon": "💥",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693090913-34c8gep.png"
+        },
+        {
+          "title": "Archéologie Préventive",
+          "description": "Intervenir avant la construction pour sauver le patrimoine archéologique caché sous terre.",
+          "icon": "🏗️",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759693090915-4g0h9a.png"
+        },
+        {
+          "title": "Pompéi",
+          "description": "Explore cette cité romaine figée dans le temps par une éruption volcanique. Une capsule temporelle incroyable !",
+          "icon": "🌋",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759693090918-xhwg7f.png"
+        },
+        {
+          "title": "Poterie Antique",
+          "description": "Une poterie brisée mais dont les fragments racontent des histoires sur les techniques de fabrication, l'art et la vie quotidienne.",
+          "icon": "🏺",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693090920-xyuwxn.png"
+        },
+        {
+          "title": "Le Conservateur",
+          "description": "Ton rôle est de préserver les découvertes et de les rendre accessibles au public. Tu es le gardien de la mémoire.",
+          "icon": "👨‍🏫",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693090923-u4exe8.png"
+        },
+        {
+          "title": "Culture Matérielle",
+          "description": "Comprends comment les objets créés et utilisés par les sociétés du passé nous renseignent sur leurs modes de vie.",
+          "icon": "💡",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693090925-58981d.png"
+        },
+        {
+          "title": "Interprétation des Indices",
+          "description": "Assemble les différentes pièces du puzzle pour reconstituer le scénario le plus probable de ce qui s'est passé.",
+          "icon": "🧩",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693090929-v1l2fe.png"
+        },
+        {
+          "title": "Photographie Archéologique",
+          "description": "Documente chaque découverte avec précision pour le rapport et les archives. Une image vaut mille mots (et découvertes) !",
+          "icon": "📸",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693090931-j9cdnv.png"
+        },
+        {
+          "title": "Site Souterrain Secret",
+          "description": "Tu as déniché un site archéologique caché et inconnu du grand public. Le mystère est entier !",
+          "icon": "🤫",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759693090934-w45w2k.png"
+        },
+        {
+          "title": "Le Spécialiste des Os",
+          "description": "Tu es l'expert qui analyse les restes osseux pour en savoir plus sur l'alimentation, la santé et les pratiques funéraires.",
+          "icon": "🦴",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693090937-b99q8e.png"
+        },
+        {
+          "title": "Contexte Archéologique",
+          "description": "Chaque objet n'a de sens que dans son environnement. Ne pas comprendre le contexte, c'est perdre l'information.",
+          "icon": "🗺️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693090940-q74ou.png"
+        },
+        {
+          "title": "Techniques de Conservation",
+          "description": "Apprends comment stabiliser et protéger les artefacts fragiles pour qu'ils traversent les siècles.",
+          "icon": "🛡️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693090943-xdj3lf.png"
+        },
+        {
+          "title": "Reconstitution Virtuelle",
+          "description": "Utilise la technologie pour recréer numériquement des bâtiments ou des objets disparus. Donne vie au passé !",
+          "icon": "💻",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693090945-o0o7w.svg"
+        },
+        {
+          "title": "Outil Manquant",
+          "description": "Un outil essentiel pour une étape cruciale a été perdu ou endommagé. Il faut trouver une solution alternative !",
+          "icon": "❌",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693090947-ngubk.png"
+        },
+        {
+          "title": "Découverte Inattendue",
+          "description": "Tu tombes sur un artefact qui n'était absolument pas attendu dans ce contexte. Une surprise qui ouvre de nouvelles pistes !",
+          "icon": "😮",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693090951-ry2l9.png"
+        },
+        {
+          "title": "Artefact Unique",
+          "description": "Un objet singulier, jamais vu auparavant, qui pose de nombreuses questions sur la créativité et les compétences de ses créateurs.",
+          "icon": "💎",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693090954-snqt6e.png"
+        },
+        {
+          "title": "L'Archéo-Anthropologue",
+          "description": "Tu étudies les cultures humaines du passé à travers leurs vestiges matériels. Qu'est-ce que cela nous dit de nous-mêmes aujourd'hui ?",
+          "icon": "🧑‍🤝‍🧑",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693090957-3fsn7h.png"
+        },
+        {
+          "title": "Archéologie Sous-Marine",
+          "description": "Explore les secrets des épaves et des cités englouties. Une aventure dans les profondeurs !",
+          "icon": "🌊",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759693090960-0mrozd.png"
+        },
+        {
+          "title": "Carottage",
+          "description": "Prélever des échantillons de sol pour étudier leur composition et leur histoire sans perturber le site.",
+          "icon": "🕳️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693090963-6gb9pj.png"
+        },
+        {
+          "title": "Le Cartographe",
+          "description": "Crée des plans précis du site et de la localisation de chaque découverte. Une carte est essentielle pour comprendre l'organisation spatiale.",
+          "icon": "🗺️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693090967-3r96xa.png"
+        },
+        {
+          "title": "Le Géologue Archéologue",
+          "description": "Analyse les sols, les roches et les matériaux naturels pour comprendre l'environnement passé et les techniques de construction.",
+          "icon": "⛰️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693090971-dh5h8k.png"
+        },
+        {
+          "title": "La Mésopotamie Antique",
+          "description": "Plonge dans le berceau de la civilisation, entre le Tigre et l'Euphrate. Découvre les premières villes et écritures.",
+          "icon": "📜",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759693090974-kag1ol.png"
+        },
+        {
+          "title": "La Détermination de l'Âge par Stratigraphie",
+          "description": "L'âge des couches de terre donne une indication relative de l'âge des objets trouvés à l'intérieur. Le plus profond est souvent le plus ancien.",
+          "icon": "⬇️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693090976-b2z247.png"
+        },
+        {
+          "title": "La Reconstitution du Passé",
+          "description": "Le but ultime : reconstruire un récit cohérent de la vie des gens qui ont habité le site il y a des siècles.",
+          "icon": "✍️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693090978-5e9ipw.png"
+        },
+        {
+          "title": "La Protection du Patrimoine",
+          "description": "Ton rôle est crucial pour que ces traces du passé ne disparaissent pas. La transmission est essentielle.",
+          "icon": "💖",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693090981-ljussc.png"
+        },
+        {
+          "title": "La Photogrammétrie",
+          "description": "Crée des modèles 3D à partir de photographies pour une documentation ultra-précise des objets et des structures.",
+          "icon": "🌐",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693090984-6kjypv.png"
+        },
+        {
+          "title": "Une Fouille Illégale",
+          "description": "Quelqu'un a fouillé le site sans autorisation, pillant potentiellement des objets et détruisant le contexte. C'est un coup dur !",
+          "icon": "🏴‍☠️",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693090987-4wle4h.png"
+        },
+        {
+          "title": "Une Nouvelle Théorie",
+          "description": "Tes découvertes ou analyses remettent en question une idée reçue et ouvrent une nouvelle perspective fascinante !",
+          "icon": "💡",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693090990-q4jz2p.png"
+        },
+        {
+          "title": "La Méthodologie Archéologique",
+          "description": "L'ensemble des techniques et des principes qui guident la recherche archéologique pour une exploration rigoureuse et systématique.",
+          "icon": "📚",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693090994-6r1uwi.png"
+        },
+        {
+          "title": "La Prospection Archéologique",
+          "description": "Première étape : identifier les zones potentiellement riches en vestiges, souvent à l'aide de cartes et de reconnaissance du terrain.",
+          "icon": "🛰️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693090998-femww.png"
+        },
+        {
+          "title": "Le Lithicien",
+          "description": "Spécialiste de l'étude des outils en pierre taillée. Chaque éclat raconte une histoire de fabrication et d'utilisation.",
+          "icon": "🪨",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693091003-lcm89.png"
+        },
+        {
+          "title": "La Documentation Scientifique",
+          "description": "Chaque étape, chaque découverte doit être méticuleusement enregistrée pour garantir la fiabilité et la reproductibilité des recherches.",
+          "icon": "📝",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693091008-1ecgp.png"
+        },
+        {
+          "title": "Les Objets du Quotidien",
+          "description": "Découvre des outils, des ustensiles, des jouets qui te révèlent la vie de tous les jours des habitants du passé.",
+          "icon": "🏠",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693091011-p42r0g.png"
+        },
+        {
+          "title": "Le Musée d'Archéologie",
+          "description": "Le lieu où le passé est exposé et expliqué. Un pont entre les découvertes et le public.",
+          "icon": "🏛️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759693091016-cioeo5.png"
+        },
+        {
+          "title": "La Conservation des Données",
+          "description": "Garantir que toutes les informations collectées soient stockées de manière sécurisée et accessible pour les générations futures.",
+          "icon": "💾",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693091019-jige7.png"
+        },
+        {
+          "title": "La Réflexion Critque",
+          "description": "Ne jamais accepter une explication trop rapidement. Toujours se poser des questions et chercher des preuves pour étayer les hypothèses.",
+          "icon": "🤔",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091023-5567rc.png"
+        },
+        {
+          "title": "Le Dessin Archéologique",
+          "description": "Représenter avec précision les artefacts et les structures sur papier. Un art essentiel pour la documentation.",
+          "icon": "✏️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693091027-xwg5m.png"
+        },
+        {
+          "title": "Les Rites Funéraires",
+          "description": "Étudie les sépultures et les pratiques entourant la mort pour comprendre les croyances et les structures sociales du passé.",
+          "icon": "⚰️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091030-36hfvwr.png"
+        },
+        {
+          "title": "Le Site Archéologique Volatile",
+          "description": "Un site particulièrement fragile et menacé par l'érosion, le développement urbain ou le climat. Il faut agir vite !",
+          "icon": "💨",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759693091034-j1aty.png"
+        },
+        {
+          "title": "L'Archéométallurgiste",
+          "description": "Analyse les objets en métal pour comprendre les techniques de travail des métaux et les échanges commerciaux.",
+          "icon": "🔩",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693091035-f8r0zm.svg"
+        },
+        {
+          "title": "La Découverte Inattendue et Préservée",
+          "description": "Tu as trouvé un objet rare dans un état de conservation exceptionnel. Une aubaine pour la recherche !",
+          "icon": "💎",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091038-kdysfo.png"
+        },
+        {
+          "title": "La Mauvaise Interprétation",
+          "description": "Tu as mal interprété un indice et cela t'a conduit sur une fausse piste. Repars à zéro !",
+          "icon": "🤕",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091040-0k1898.png"
+        },
+        {
+          "title": "Les Enduits et Pigments",
+          "description": "Étudie les restes de peintures et de décorations pour reconstituer l'esthétique et la richesse visuelle des civilisations passées.",
+          "icon": "🎨",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693091043-of1ahb.png"
+        },
+        {
+          "title": "L'Archéologie Expérimentale",
+          "description": "Reproduis des techniques anciennes pour mieux comprendre comment les objets étaient fabriqués et utilisés.",
+          "icon": "🛠️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693091046-32ca4w.png"
+        },
+        {
+          "title": "Le Chef de Projet Archéologique",
+          "description": "Coordonne l'équipe, gère le budget et veille au respect des normes scientifiques et éthiques. La responsabilité est grande !",
+          "icon": "👷",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693091048-t6d08h.png"
+        },
+        {
+          "title": "Les Paléoenvironnements",
+          "description": "Étudie les traces laissées par la nature (pollen, graines, etc.) pour comprendre le climat et la végétation du passé.",
+          "icon": "🌱",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091051-2fdsei.png"
+        },
+        {
+          "title": "La Validation des Hypothèses",
+          "description": "Tes découvertes permettent de confirmer ou d'infirmer une théorie avancée par la communauté scientifique. Un moment clé !",
+          "icon": "✅",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091056-8ihjv.png"
+        },
+        {
+          "title": "La Méthode du Transect",
+          "description": "Parcourir une zone de manière systématique pour y détecter d'éventuels vestiges archéologiques.",
+          "icon": "🚶",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693091058-565gv4.png"
+        },
+        {
+          "title": "Les Inscriptions Anciennes",
+          "description": "Décrypte les textes anciens pour accéder directement aux pensées, lois et récits des peuples du passé.",
+          "icon": "🔤",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693091060-kncwgb.png"
+        },
+        {
+          "title": "La Collaboration Interdisciplinaire",
+          "description": "Travailler avec des spécialistes d'autres domaines (historiens, biologistes, géologues) enrichit considérablement la compréhension.",
+          "icon": "🤝",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091063-5rgzwc.png"
+        },
+        {
+          "title": "Le Laboratoire d'Analyses",
+          "description": "Un lieu où les objets sont étudiés en détail, souvent à l'aide de technologies de pointe.",
+          "icon": "🔬",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759693091066-yn0e5.png"
+        },
+        {
+          "title": "L'Archéobotaniste",
+          "description": "Spécialiste de l'étude des restes végétaux (graines, fruits, bois) pour comprendre l'agriculture, l'alimentation et l'environnement passé.",
+          "icon": "🌿",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693091070-6gcomh.png"
+        },
+        {
+          "title": "Une Découverte Révolutionnaire",
+          "description": "Tu mets au jour un élément qui bouleverse toute notre compréhension d'une période historique.",
+          "icon": "🤯",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091073-5qrfuid.png"
+        },
+        {
+          "title": "La Perte d'Informations Cruciales",
+          "description": "Une partie de tes notes ou de tes photos a été perdue, rendant certaines analyses difficiles, voire impossibles.",
+          "icon": "😭",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091076-5ejbnu.png"
+        },
+        {
+          "title": "L'Évaluation du Potentiel Archéologique",
+          "description": "Avant une intervention, il faut estimer la richesse et l'importance des vestiges potentiels pour planifier la mission.",
+          "icon": "⚖️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693091080-8ftnbw.png"
+        },
+        {
+          "title": "La Documentation des Techniques Anciennes",
+          "description": "Comprendre comment les ancêtres construisaient, fabriquaient et vivaient, par l'étude de leurs réalisations.",
+          "icon": "⚙️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091084-j7y2o.png"
+        },
+        {
+          "title": "Les Gravures Rupestres",
+          "description": "Découvre les peintures et gravures laissées sur les parois rocheuses, témoignages artistiques et symboliques.",
+          "icon": "🗿",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693091088-vlr112j.png"
+        },
+        {
+          "title": "L'Archéologie Géochimique",
+          "description": "Utilise l'analyse chimique des sols et des matériaux pour reconstituer les activités humaines passées (cuisine, métallurgie, etc.).",
+          "icon": "🧪",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693091092-a7ou3.png"
+        },
+        {
+          "title": "L'Égyptologue",
+          "description": "Spécialiste de l'Égypte ancienne, de ses pharaons, de ses pyramides et de ses hiéroglyphes.",
+          "icon": "🐍",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693091095-zebsb.png"
+        },
+        {
+          "title": "Le Grand Site Maya",
+          "description": "Explore les mystérieuses cités perdues de la civilisation Maya, leurs temples majestueux et leur calendrier complexe.",
+          "icon": "🗿",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759693091100-6bbn27.png"
+        },
+        {
+          "title": "La Reconstruction d'un Outil Complexe",
+          "description": "Tu as réussi à reconstituer le fonctionnement d'un outil dont on ne comprenait pas l'usage. Un bond en avant dans la connaissance !",
+          "icon": "💡",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091102-qzpnv.png"
+        },
+        {
+          "title": "La Contamination d'un Échantillon",
+          "description": "Un échantillon essentiel est contaminé, rendant son analyse impossible. Il faut recommencer la collecte.",
+          "icon": "🦠",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091105-rq2bjc.png"
+        },
+        {
+          "title": "La Préparation du Rapport de Fouille",
+          "description": "Synthétise toutes les données recueillies pour présenter les résultats de manière claire et scientifique.",
+          "icon": "📖",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693091107-yxlots.png"
+        },
+        {
+          "title": "La Paléopathologie",
+          "description": "Étudie les maladies et les blessures sur les restes humains pour comprendre la santé et les conditions de vie du passé.",
+          "icon": "🩹",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091110-zg7q8j.png"
+        },
+        {
+          "title": "Les Monnaies Anciennes",
+          "description": "Découvre les pièces de monnaie qui révèlent l'économie, les échanges commerciaux et le pouvoir des dirigeants du passé.",
+          "icon": "💰",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693091114-cp2c7k.png"
+        },
+        {
+          "title": "Le Scan Laser 3D",
+          "description": "Utilise la technologie pour cartographier un site ou un objet avec une précision inégalée.",
+          "icon": "⚡",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693091117-q5dmxo.png"
+        },
+        {
+          "title": "L'Anthropologue Physique",
+          "description": "Spécialiste de l'étude des restes humains pour comprendre l'évolution, la génétique et la morphologie des populations anciennes.",
+          "icon": "💀",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693091121-3q29w.png"
+        },
+        {
+          "title": "La Reconstruction des Réseaux Commerciaux",
+          "description": "À partir de l'origine des matériaux découverts, tu peux tracer les routes d'échanges du passé.",
+          "icon": "🚚",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091125-lw2tt7.png"
+        },
+        {
+          "title": "Les Premiers Outils en Métal",
+          "description": "Découvre les innovations qui ont marqué le passage de la pierre au métal dans la fabrication d'outils.",
+          "icon": "🗡️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693091128-377mz.png"
+        },
+        {
+          "title": "L'Analyse des Isotopes",
+          "description": "Étudie la composition isotopique des restes (ossements, dents) pour déterminer l'alimentation, la mobilité et les origines des individus.",
+          "icon": "⚛️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693091131-53gkb.png"
+        },
+        {
+          "title": "Le Responsable de la Diffusion",
+          "description": "Partage tes découvertes avec le public, à travers des conférences, des expositions ou des publications. Rendre l'histoire accessible à tous.",
+          "icon": "📢",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693091178-xugvbw.png"
+        },
+        {
+          "title": "Le Site Néolithique",
+          "description": "Explore les premières communautés sédentaires, leurs habitations, leurs outils agricoles et leurs rites.",
+          "icon": "🛖",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759693091184-sqiwk.png"
+        },
+        {
+          "title": "La Découverte d'une Nouvelle Langue",
+          "description": "Tu trouves des indices qui suggèrent l'existence d'une langue inconnue jusqu'à présent. Une prouesse intellectuelle !",
+          "icon": "💬",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091187-ecnlhg.png"
+        },
+        {
+          "title": "Le Sabotage de la Fouille",
+          "description": "Une action malveillante a délibérément détruit des informations ou des artefacts. Un acte regrettable !",
+          "icon": "😈",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091191-j5v8n.png"
+        },
+        {
+          "title": "Les Tissus Anciens",
+          "description": "Les fragments de tissus, même très anciens, peuvent révéler des techniques de tissage, des couleurs et des styles de vêtements.",
+          "icon": "👗",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693091195-9g8pr2.png"
+        },
+        {
+          "title": "La Simulation Numérique",
+          "description": "Crée des modèles informatiques pour simuler des processus anciens (érosion, construction, etc.) et mieux comprendre leur impact.",
+          "icon": "📈",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693091199-hrn034.png"
+        },
+        {
+          "title": "Le Consultant en Patrimoine",
+          "description": "Conseille les gouvernements ou les entreprises sur la manière de préserver et de gérer les sites archéologiques.",
+          "icon": "⚖️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693091202-kx7flu.png"
+        },
+        {
+          "title": "Le Régime Alimentaire Ancien",
+          "description": "Grâce à l'analyse des restes et des indices environnementaux, tu peux reconstituer ce que mangeaient les gens du passé.",
+          "icon": "🍎",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091206-vbfed.png"
+        },
+        {
+          "title": "Les Formes de Gouvernance Anciennes",
+          "description": "Les structures des cités, les inscriptions et les objets de pouvoir te renseignent sur la manière dont les sociétés étaient organisées.",
+          "icon": "👑",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759693091209-dzqbw.png"
+        },
+        {
+          "title": "La Fouille d'Urgence",
+          "description": "Intervenir rapidement sur un site menacé par une catastrophe imminente pour sauver le maximum d'informations.",
+          "icon": "🚨",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759693091213-gm5fv.png"
+        },
+        {
+          "title": "La Musique et les Instruments Anciens",
+          "description": "Trouve des traces d'instruments ou des représentations de musiciens pour imaginer les sons et l'ambiance des sociétés anciennes.",
+          "icon": "🎶",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759693091216-2gae8s.png"
+        },
+        {
+          "title": "L'Archéologie Aérienne",
+          "description": "Utilise des photographies aériennes ou des drones pour repérer des structures invisibles depuis le sol.",
+          "icon": "🚁",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759693091220-x09f89.png"
+        },
+        {
+          "title": "Le Spécialiste des Civilisations Disparues",
+          "description": "Tu te concentres sur des cultures qui ont laissé peu de traces, relevant le défi de les reconstituer.",
+          "icon": "❓",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759693091223-j1tbrm.png"
+        },
+        {
+          "title": "La Forge Antique",
+          "description": "Trouve les traces d'ateliers de forgerons et les outils qu'ils utilisaient pour travailler le métal.",
+          "icon": "🔥",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759693091227-wtabm.png"
+        },
+        {
+          "title": "Une Découverte qui Change la Chronologie",
+          "description": "Tes travaux montrent que des événements se sont déroulés plus tôt (ou plus tard) que ce que l'on pensait. Un coup de jeune ou de vieux !",
+          "icon": "🔄",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091231-j6xm4h.png"
+        },
+        {
+          "title": "La Dégradation Naturelle Accélérée",
+          "description": "Des conditions climatiques extrêmes ou une catastrophe naturelle ont accéléré la détérioration d'un site. Il faut réagir vite !",
+          "icon": "🌪️",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759693091235-pcbzkn.png"
+        }
+      ]
+    },
+    {
+      "id": "1759684646987",
+      "name": "Archeologie_Lot11",
+      "cards": [
+        {
+          "title": "La Fouille Stratigraphique",
+          "description": "Apprends à excaver en couches successives pour dater précisément les vestiges. C'est la clé pour comprendre l'histoire d'un site !",
+          "icon": "⛏️",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759684646990-xs2ue9.png"
+        },
+        {
+          "title": "Le Relevé Topographique",
+          "description": "Documente la position exacte de chaque découverte. Sans mesures précises, les artefacts perdent une grande partie de leur information.",
+          "icon": "📐",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759684646997-piapf9.png"
+        },
+        {
+          "title": "La Céramique Fragmentée",
+          "description": "Chaque tesson raconte une histoire. Apprends à identifier les styles, les techniques et les origines de la poterie ancienne.",
+          "icon": "🏺",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759684647001-asi3i.png"
+        },
+        {
+          "title": "Analyser un Outil en Silex",
+          "description": "Observe la forme, les traces d'usage et les techniques de taille pour comprendre la fonction et le savoir-faire de nos ancêtres.",
+          "icon": "🗡️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759684647005-uie8fq.png"
+        },
+        {
+          "title": "Le Laiton Corrodé",
+          "description": "Cette pièce en bronze est difficile à identifier. Le temps et la corrosion ont laissé leur marque. La datation sera plus incertaine.",
+          "icon": "❌",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759684647010-2qr509.png"
+        },
+        {
+          "title": "Art Préhistorique",
+          "description": "Peintures rupestres, gravures, statuettes... explore les premières manifestations artistiques de l'humanité.",
+          "icon": "🎨",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759684647014-90z5xh.png"
+        },
+        {
+          "title": "Pompéi",
+          "description": "Une ville figée dans le temps par l'éruption du Vésuve. Un témoignage exceptionnel de la vie romaine.",
+          "icon": "🌋",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759684647017-ir8m8j.png"
+        },
+        {
+          "title": "Une Fibule Romaine",
+          "description": "Une petite broche utilisée pour fixer les vêtements. Sa forme et son décor peuvent indiquer la période et le statut social.",
+          "icon": "🎀",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759684647019-9hpq9.svg"
+        },
+        {
+          "title": "L'Archéologue de Terrain",
+          "description": "Celui qui creuse, observe et documente sur le site. Il est le premier à toucher l'histoire.",
+          "icon": "🧑‍🔬",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759684647020-omscp.svg"
+        },
+        {
+          "title": "La Chronologie Relative",
+          "description": "Déterminer l'ordre des événements sans connaître leur date exacte. L'âge des couches archéologiques nous aide à cela.",
+          "icon": "⏳",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759684647021-46hrgl.png"
+        },
+        {
+          "title": "La Conservation des Vestiges",
+          "description": "Une fois déterrés, les objets fragiles doivent être manipulés avec soin et protégés des agents de dégradation.",
+          "icon": "🩹",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759684647026-yqj8fe.png"
+        },
+        {
+          "title": "Le Cadastre Ancien",
+          "description": "Des documents cartographiques du passé qui aident à comprendre l'organisation du territoire et l'emplacement des anciens sites.",
+          "icon": "🗺️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759684647029-11eroq.png"
+        },
+        {
+          "title": "Analyser des Ossements",
+          "description": "Étudie la morphologie, les signes de maladies ou de blessures pour en apprendre plus sur l'alimentation, la santé et le mode de vie des populations anciennes.",
+          "icon": "🦴",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759684647032-jgt6mh.png"
+        },
+        {
+          "title": "Le Texte Incomplet",
+          "description": "Une inscription partiellement effacée. Il faudra faire preuve d'ingéniosité pour reconstituer le message et en tirer des informations.",
+          "icon": "❓",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759684647035-x2fkcm.png"
+        },
+        {
+          "title": "Archéologie Sous-Marine",
+          "description": "L'étude des sites et des épaves engloutis. Un environnement exigeant qui demande des techniques spécifiques.",
+          "icon": "🌊",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759684647036-a1bdhb.svg"
+        },
+        {
+          "title": "Les Pyramides d'Égypte",
+          "description": "Des monuments funéraires monumentaux, témoins de la puissance des pharaons et de l'ingéniosité de leurs bâtisseurs.",
+          "icon": "🔺",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759684647036-8hjkrs.svg"
+        },
+        {
+          "title": "Une Mosaïque Romaine",
+          "description": "Des milliers de petits tesselles assemblées pour former de magnifiques tableaux. Un art décoratif qui révèle des scènes de la vie quotidienne ou mythologique.",
+          "icon": "🖼️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759684647041-r0dcvr.png"
+        },
+        {
+          "title": "Le Conservateur de Musée",
+          "description": "Il veille à la préservation, l'étude et la présentation des collections archéologiques pour le public.",
+          "icon": "🏛️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759684647046-ns077m.png"
+        },
+        {
+          "title": "La Datation au Carbone 14",
+          "description": "Une méthode scientifique pour dater les matières organiques (os, bois, charbon) jusqu'à environ 50 000 ans.",
+          "icon": "☢️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759684647048-er1t5.svg"
+        },
+        {
+          "title": "L'Étude des Pollens",
+          "description": "Analyser les grains de pollen fossilisés pour reconstituer les paysages végétaux et climatiques du passé.",
+          "icon": "🌸",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759684647050-tlh6at.png"
+        },
+        {
+          "title": "La Photogrammétrie 3D",
+          "description": "Créer des modèles tridimensionnels de sites et d'objets à partir de photographies. Un outil de documentation numérique puissant.",
+          "icon": "📸",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759684647052-3efmed.svg"
+        },
+        {
+          "title": "Les Monnaies Anciennes",
+          "description": "Des pièces de métal portant des effigies et des inscriptions. Elles renseignent sur l'économie, la politique et la propagande des civilisations.",
+          "icon": "💰",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759684647054-us1czd.png"
+        },
+        {
+          "title": "Identifier des Traces de Construction",
+          "description": "Repérer les fondations, les murs, les sols et autres structures pour comprendre l'architecture et l'organisation des habitats anciens.",
+          "icon": "🧱",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759684647058-865fr.png"
+        },
+        {
+          "title": "La Découverte Inattendue",
+          "description": "Un objet exceptionnel, non recherché, qui vient enrichir la compréhension du site. Un coup de chance pour l'archéologue !",
+          "icon": "🌟",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759684647062-3v5b62.png"
+        },
+        {
+          "title": "Archéologie Expérimentale",
+          "description": "Reproduire des gestes et des techniques anciennes pour mieux comprendre comment les objets étaient fabriqués et utilisés.",
+          "icon": "🛠️",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759684647066-d4sste.png"
+        },
+        {
+          "title": "Machu Picchu",
+          "description": "La cité perdue des Incas, perchée sur les Andes. Un chef-d'œuvre d'architecture et d'adaptation à l'environnement.",
+          "icon": "⛰️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759684647070-pibm24.png"
+        },
+        {
+          "title": "Une Lampe à Huile en Terre Cuite",
+          "description": "Un objet du quotidien qui éclaire les habitudes et les technologies domestiques des populations passées.",
+          "icon": "💡",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759684647074-3pwfip.png"
+        },
+        {
+          "title": "L'Étudiant en Archéologie",
+          "description": "Apprend les méthodes et les théories, participe aux fouilles pour acquérir de l'expérience et découvrir sa vocation.",
+          "icon": "📚",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759684647078-agu95.png"
+        },
+        {
+          "title": "L'Interprétation des Sources",
+          "description": "Croiser les données archéologiques avec les textes anciens, les représentations iconographiques et les études ethnographiques pour construire une narration cohérente.",
+          "icon": "🧐",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759684647082-jl3xo.png"
+        },
+        {
+          "title": "La Prospection Aérienne",
+          "description": "Utiliser des drones ou des avions pour repérer des anomalies dans le paysage qui pourraient indiquer la présence de vestiges enfouis.",
+          "icon": "✈️",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759684647086-yx1z69.png"
+        },
+        {
+          "title": "Le Tri et le Nettoyage des Trouvailles",
+          "description": "Après la fouille, chaque objet est lavé, étiqueté et préparé pour l'étude en laboratoire.",
+          "icon": "🧼",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759684647090-lhm5ld.png"
+        },
+        {
+          "title": "Les Outils en Os",
+          "description": "Aiguilles, spatules, poinçons... ces objets témoignent de l'ingéniosité et de la maîtrise des matières animales.",
+          "icon": "🪡",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759684647093-496gl4.png"
+        },
+        {
+          "title": "Décrypter des Écritures Anciennes",
+          "description": "Apprendre les alphabets, les syllabaires et les systèmes d'écriture pour lire les messages laissés par nos ancêtres.",
+          "icon": "📜",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759684647097-204o1c.png"
+        },
+        {
+          "title": "La Mauvaise Météo",
+          "description": "La pluie ou le vent fort peuvent ralentir la fouille, endommager les vestiges fragiles ou rendre la documentation difficile.",
+          "icon": "🌧️",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759684647101-qh09kl.png"
+        },
+        {
+          "title": "Archéologie Préventive",
+          "description": "Intervenir avant des travaux de construction pour sauvegarder les sites archéologiques menacés.",
+          "icon": "🏗️",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759684647104-zol2mx.png"
+        },
+        {
+          "title": "Stonehenge",
+          "description": "Un cercle de mégalithes mystérieux dont la fonction et la construction continuent de fasciner et d'interroger.",
+          "icon": " Stonehenge",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759684647107-s0elzw.png"
+        },
+        {
+          "title": "Une Armure Mérovingienne",
+          "description": "Témoin de l'artisanat guerrier et de l'organisation militaire des peuples germaniques de l'Antiquité tardive.",
+          "icon": "🛡️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759684647109-f03z27.svg"
+        },
+        {
+          "title": "L'Archéo-Anthropologue",
+          "description": "Combine les méthodes archéologiques avec l'étude des restes humains pour comprendre la vie, la mort et les pratiques sociales des populations anciennes.",
+          "icon": "💀",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759684647112-y8n878.png"
+        },
+        {
+          "title": "La Culture Matérielle",
+          "description": "L'ensemble des objets créés et utilisés par l'homme. L'archéologie étudie ces traces pour reconstituer le passé.",
+          "icon": "👜",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759684647114-xfvto.png"
+        },
+        {
+          "title": "L'Analyse Géophysique",
+          "description": "Utiliser des techniques non destructives (radar de sol, magnétomètre) pour détecter des structures enfouies avant la fouille.",
+          "icon": "📡",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759684647118-pbf5v.png"
+        },
+        {
+          "title": "La Réalisation de Plans et de Dessins",
+          "description": "Documenter précisément les structures et les artefacts sur le terrain pour une analyse ultérieure détaillée.",
+          "icon": "✏️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759684647121-8kjm5.png"
+        },
+        {
+          "title": "Les Pigments Naturels",
+          "description": "Les couleurs utilisées dans les peintures et les décorations anciennes, extraites de minéraux, de plantes ou d'animaux.",
+          "icon": "🌈",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759684647126-fn4tf.png"
+        },
+        {
+          "title": "Extraire de l'ADN Ancien",
+          "description": "Analyser le matériel génétique retrouvé dans les restes pour comprendre les migrations, les parentés et les maladies des populations du passé.",
+          "icon": "🧬",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759684647129-ajb2h9.png"
+        },
+        {
+          "title": "Le Manque d'Information Contextuelle",
+          "description": "Une trouvaille magnifique, mais son emplacement exact sur le site est mal documenté. Son interprétation sera plus difficile.",
+          "icon": "📉",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759684647131-69nd4m.png"
+        },
+        {
+          "title": "Archéologie du Paysage",
+          "description": "Étudier comment les sociétés humaines ont transformé et interagi avec leur environnement au fil du temps.",
+          "icon": "🌳",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759684647134-fuvn7m.png"
+        },
+        {
+          "title": "Les Ruines de Carthage",
+          "description": "Vestiges d'une puissance méditerranéenne qui a rivalisé avec Rome, témoignant de son histoire complexe et de sa destruction.",
+          "icon": "🏛️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759684647137-xh7uo7.png"
+        },
+        {
+          "title": "Un Scaphandre de Plongeur Ancien",
+          "description": "Indique les débuts de l'archéologie sous-marine et les défis techniques rencontrés par les pionniers.",
+          "icon": "🤿",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759684647140-ehvytk.png"
+        },
+        {
+          "title": "Le Spécialiste en Conservation",
+          "description": "Assure la pérennité des découvertes archéologiques en appliquant des techniques de stabilisation et de restauration.",
+          "icon": "👨‍⚕️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759684647144-83nui.png"
+        },
+        {
+          "title": "L'Interdisciplinarité",
+          "description": "La collaboration avec d'autres sciences (géologie, biologie, histoire de l'art) enrichit l'analyse des vestiges archéologiques.",
+          "icon": "🤝",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759684647147-aq6h09.png"
+        },
+        {
+          "title": "La Datation Relative",
+          "description": "Comprendre l'ordre des événements en analysant la superposition des couches archéologiques. Les couches inférieures sont plus anciennes que les couches supérieures.",
+          "icon": "📜",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759684647151-xekitn.png"
+        },
+        {
+          "title": "Le Marquage et l'Étiquetage des Trouvailles",
+          "description": "Chaque objet doit être identifié avec soin (numéro de site, niveau, date) pour ne jamais perdre sa trace.",
+          "icon": "🏷️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759684647153-gpqih.png"
+        },
+        {
+          "title": "Les Métaux Anciens",
+          "description": "Fer, bronze, cuivre... leur analyse révèle les techniques métallurgiques et les échanges commerciaux des populations du passé.",
+          "icon": "⚙️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759684647155-bqq664.png"
+        },
+        {
+          "title": "Reconstituer un Squelette Humain",
+          "description": "Assembler les ossements pour comprendre la morphologie, la stature et les caractéristiques physiques d'un individu ancien.",
+          "icon": "🦴",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759684647160-fzr8j1b.png"
+        },
+        {
+          "title": "La Documentation Perdue",
+          "description": "Des notes de terrain mal conservées ou des photos endommagées peuvent rendre difficile la restitution des découvertes.",
+          "icon": "🚫",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759684647163-1g2azd.png"
+        },
+        {
+          "title": "Archéologie Urbaine",
+          "description": "L'étude des villes anciennes, des leurs plans aux vestiges enterrés sous les constructions modernes.",
+          "icon": "🏙️",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759684647166-y2p88f.png"
+        },
+        {
+          "title": "Les Moaïs de l'Île de Pâques",
+          "description": "Statues monumentales dont la fabrication et le transport restent des énigmes fascinantes.",
+          "icon": "🗿",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759684647170-eur41.png"
+        },
+        {
+          "title": "Un Fragment de Fresque Murale",
+          "description": "Des traces de couleurs et de motifs qui nous donnent un aperçu de l'art décoratif et des scènes représentées dans les habitations anciennes.",
+          "icon": "🎨",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759684647174-p8ligo.png"
+        },
+        {
+          "title": "Le Scientifique Spécialisé (ex: Palynologue)",
+          "description": "Analyse des échantillons spécifiques (pollen, graines) pour reconstituer les environnements passés.",
+          "icon": "🔬",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759684647177-mbq62b.png"
+        },
+        {
+          "title": "La Mobilisation des Savoirs",
+          "description": "L'archéologie ne se limite pas à la fouille, elle implique aussi la recherche, l'analyse et la diffusion des connaissances acquises.",
+          "icon": "💡",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759684647180-mlq4eb.png"
+        },
+        {
+          "title": "La Documentation Photographique",
+          "description": "Immortaliser chaque étape de la fouille, les contextes et les objets pour une archive visuelle complète.",
+          "icon": "📷",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759684647183-yzb02w.png"
+        },
+        {
+          "title": "L'Inventaire des Trouvailles",
+          "description": "Répertorier méticuleusement tous les objets découverts, en notant leurs caractéristiques et leur provenance.",
+          "icon": "📝",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759684647188-tyukz.png"
+        },
+        {
+          "title": "Les Textiles Anciens",
+          "description": "Des fragments de tissus qui nous renseignent sur les fibres utilisées, les techniques de tissage et les vêtements portés.",
+          "icon": "👕",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759684647191-rxla3.png"
+        },
+        {
+          "title": "Identifier des Traces d'Activités Artisanales",
+          "description": "Repérer les déchets de production, les outils brisés ou les vestiges d'ateliers pour comprendre les savoir-faire anciens.",
+          "icon": "🔨",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759684647195-vgyi4.png"
+        },
+        {
+          "title": "La Protection du Site après Fouille",
+          "description": "Une fois la fouille terminée, il est essentiel de protéger les vestiges mis au jour pour les préserver pour l'avenir.",
+          "icon": "✅",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759684647200-bl8epp.png"
+        },
+        {
+          "title": "Archéologie Publique",
+          "description": "Rendre les découvertes archéologiques accessibles et compréhensibles pour le grand public, à travers des expositions, des conférences et des publications.",
+          "icon": "🗣️",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759684647204-kp7gem.png"
+        },
+        {
+          "title": "Angkor Vat",
+          "description": "Un complexe de temples khmers majestueux, témoignant de la grandeur d'un empire et de son art architectural.",
+          "icon": "🕉️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759684647207-uxohb.png"
+        },
+        {
+          "title": "Un Outil Agricole en Fer",
+          "description": "Une houe, une faucille... ces instruments nous éclairent sur les techniques agricoles et l'alimentation des populations du passé.",
+          "icon": "🌾",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759684647211-cmtvfl.png"
+        },
+        {
+          "title": "Le Chercheur en Laboratoire",
+          "description": "Analyse les objets, les échantillons et les données collectées sur le terrain pour en tirer des conclusions scientifiques.",
+          "icon": "🧪",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759684647242-v27kt.png"
+        },
+        {
+          "title": "La Chronologie Absolue",
+          "description": "Déterminer la date exacte d'un événement ou d'un objet grâce à des méthodes de datation scientifique (carbone 14, dendrochronologie).",
+          "icon": "📅",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759684647246-3n0s3.png"
+        }
+      ]
+    },
+    {
+      "id": "1759696675793",
+      "name": "Archeologie_Lot14",
+      "cards": [
+        {
+          "title": "La Fouille Stratigraphique",
+          "description": "Apprends à déterrer patiemment les couches du passé, une découverte à la fois, en respectant leur ordre d'enfouissement. Chaque strate raconte une histoire différente !",
+          "icon": "⛏️",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759869383778-swvev.png"
+        },
+        {
+          "title": "Le Tamisage Minutieux",
+          "description": "Ne laisse rien au hasard ! Tamise la terre pour retrouver les plus petits fragments, indices précieux de la vie d'autrefois.",
+          "icon": "🔍",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759869383782-af6bvf.svg"
+        },
+        {
+          "title": "Les Outils du Fouilleur",
+          "description": "Découvre les instruments indispensables de l'archéologue : brosses, pelles, truelles... Chacun a sa fonction pour extraire les trésors sans les abîmer.",
+          "icon": "🛠️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759869383785-leacpt.png"
+        },
+        {
+          "title": "L'Interprétation des Vestiges",
+          "description": "Que te disent ces poteries cassées ou ces outils usés ? Développe ton esprit d'analyse pour reconstituer les modes de vie et les savoir-faire d'une civilisation.",
+          "icon": "🧠",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759869383789-arcsqg.png"
+        },
+        {
+          "title": "Le Bonus du Mécène",
+          "description": "Une subvention inattendue arrive ! Tu disposes de plus de moyens pour accélérer tes recherches ou acquérir du matériel sophistiqué.",
+          "icon": "💰",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759869383793-ukjzfsv.png"
+        },
+        {
+          "title": "Le Malus de la Pollution Temporelle",
+          "description": "Une mauvaise manipulation a altéré tes découvertes. Une partie de ton site est contaminée ou endommagée, retardant ton travail.",
+          "icon": "☣️",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759869383798-osm2h.png"
+        },
+        {
+          "title": "Catégorie : Céramique",
+          "description": "Ces fragments de poterie sont des témoins privilégiés de la vie quotidienne, de l'artisanat et des échanges commerciaux des sociétés anciennes.",
+          "icon": "🏺",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759869383802-ecrhe7.png"
+        },
+        {
+          "title": "Critère : Authenticité",
+          "description": "Est-ce un objet original de la période étudiée ou une réplique ? La datation et l'analyse scientifique sont primordiales.",
+          "icon": "✅",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759869383805-hrmemo.png"
+        },
+        {
+          "title": "Site : Pompéi",
+          "description": "Explore cette cité romaine figée dans le temps par une éruption volcanique. Un témoignage exceptionnel de la vie à l'époque romaine.",
+          "icon": "🌋",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759869383808-slzv4.png"
+        },
+        {
+          "title": "Objet : Une Monnaie Antique",
+          "description": "Trouve cette pièce de monnaie ! Elle peut te renseigner sur l'économie, le pouvoir et les représentations symboliques de l'époque.",
+          "icon": "💰",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759869383811-kzl51b.png"
+        },
+        {
+          "title": "Persona : L'Archéo-Détective",
+          "description": "Ton rôle : assembler tous les indices pour résoudre un mystère archéologique. Qui vivait ici et comment ?",
+          "icon": "🕵️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759869383813-wl7fjq.png"
+        },
+        {
+          "title": "Concept : Le Paradigme Archéologique",
+          "description": "Comprends les différentes approches théoriques qui guident l'interprétation des découvertes archéologiques au fil du temps.",
+          "icon": "🏛️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759869383816-bjc6gd.png"
+        },
+        {
+          "title": "Process : La Conservation Préventive",
+          "description": "Une fois découverts, les objets fragiles doivent être protégés. Apprends les bonnes pratiques pour assurer leur survie à long terme.",
+          "icon": "🛡️",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1759869383819-sg7bfg.png"
+        },
+        {
+          "title": "Steps : La Documentation Précise",
+          "description": "Chaque trouvaille doit être enregistrée avec soin : localisation, contexte, description. Sans documentation, une découverte perd une grande partie de sa valeur scientifique.",
+          "icon": "📝",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1759869383823-dho4hg.png"
+        },
+        {
+          "title": "Components : Le Laboratoire d'Analyse",
+          "description": "Les objets ne parlent pas seuls ! Ton laboratoire est l'endroit où la science révèle leurs secrets : datation au carbone 14, analyse ADN, etc.",
+          "icon": "🔬",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1759869383826-7zygms.png"
+        },
+        {
+          "title": "Actions : La Restitution Virtuelle",
+          "description": "Utilise les données collectées pour recréer numériquement un site ou un objet. Permets aux autres de se projeter dans le passé.",
+          "icon": "💻",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1759869383828-yeyh5l.png"
+        },
+        {
+          "title": "Bonus : Le Financement Participatif",
+          "description": "Une campagne de crowdfunding réussie te donne les moyens de réaliser une fouille attendue ou d'acquérir un équipement de pointe.",
+          "icon": "👥",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759869383832-kkdgr6.png"
+        },
+        {
+          "title": "Malus : La Mauvaise Communciation",
+          "description": "Une mauvaise interprétation ou une diffusion hâtive de tes découvertes a créé un tollé. Ton équipe est sous pression et ta crédibilité est entachée.",
+          "icon": "🗣️",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1759869383836-7nr52oq.png"
+        },
+        {
+          "title": "Catégorie : Lithique",
+          "description": "Les outils en pierre, même modestes, sont des marqueurs essentiels de l'évolution technologique et comportementale de nos ancêtres.",
+          "icon": "🗿",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759869383839-1o1ewq.png"
+        },
+        {
+          "title": "Critère : Concordance Contextuelle",
+          "description": "Un objet trouvé dans un contexte inattendu peut soulever des questions. Est-il déplacé, est-ce une nouvelle découverte ?",
+          "icon": "❓",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1759869383844-bm7rnh.png"
+        },
+        {
+          "title": "Site : Les Grottes de Lascaux",
+          "description": "Plonge dans l'art préhistorique ! Découvre les peintures rupestres et imagine la vie des premiers artistes de l'humanité.",
+          "icon": "🎨",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1759869383849-cj1mz8.png"
+        },
+        {
+          "title": "Objet : Un Silex Taillé",
+          "description": "Ce simple outil en pierre révèle des techniques de taille complexes. Il témoigne de l'ingéniosité des hommes préhistoriques.",
+          "icon": "🔪",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1759869383855-7atea.png"
+        },
+        {
+          "title": "Persona : L'Archéo-Éducateur",
+          "description": "Ton défi : rendre l'archéologie accessible et fascinante pour tous. Crée des expériences engageantes pour partager tes connaissances.",
+          "icon": "👩‍🏫",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1759869383862-gv845f.png"
+        },
+        {
+          "title": "Concept : L'Archéologie Expérimentale",
+          "description": "Reproduis des gestes anciens (taille de pierre, construction, cuisson) pour mieux comprendre les contraintes et le savoir-faire des populations passées.",
+          "icon": "💡",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1759869383867-a19qv9.png"
+        }
+      ]
     }
   ]
 }

@@ -109,6 +109,38 @@ router.post('/', async (req, res) => {
   res.status(201).json(newCollection);
 });
 
+// Generate PDF for a temporary collection (POST)
+router.post('/temp/pdf', async (req, res) => {
+  try {
+    console.log('PDF generation request received');
+    console.log('Request body:', JSON.stringify(req.body, null, 2));
+
+    const { name, cards } = req.body;
+
+    if (!name || !cards || !Array.isArray(cards)) {
+      console.error('Invalid request data:', { name: !!name, cards: !!cards, isArray: Array.isArray(cards) });
+      return res.status(400).json({ error: 'Name and cards array are required' });
+    }
+
+    console.log(`Processing PDF for collection "${name}" with ${cards.length} cards`);
+
+    // Create a temporary collection object
+    const tempCollection = { id: 'temp', name, cards };
+
+    console.log('Calling PdfService.generatePdf...');
+    const pdfBuffer = await PdfService.generatePdf(tempCollection);
+    console.log(`PDF generated successfully, size: ${pdfBuffer.length} bytes`);
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=${name}.pdf`);
+    res.send(pdfBuffer);
+  } catch (error) {
+    console.error('Error generating temporary PDF:', error);
+    console.error('Error stack:', error.stack);
+    res.status(500).json({ error: 'Failed to generate PDF' });
+  }
+});
+
 // Get PDF for a single collection by ID
 router.get('/:id/pdf', async (req, res) => {
   const db = await dbPromise;
