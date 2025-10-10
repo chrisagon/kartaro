@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card as CardData } from '../services/ApiService';
+import { CardData } from '../types/app';
 
 interface CardEditorProps {
   card: CardData;

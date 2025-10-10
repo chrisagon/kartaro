@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CardCollection, getCollections } from '../services/ApiService';
+import { CardCollection } from '../types/app';
+import * as ApiService from '../services/ApiService';
 
 const CollectionsPage: React.FC = () => {
   const [collections, setCollections] = useState<CardCollection[]>([]);
@@ -10,7 +11,7 @@ const CollectionsPage: React.FC = () => {
   useEffect(() => {
     const fetchCollections = async () => {
       try {
-        const fetchedCollections = await getCollections();
+        const fetchedCollections = await ApiService.getCollections();
         setCollections(fetchedCollections);
       } catch (err) {
         setError('Failed to fetch collections.');

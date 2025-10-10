@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Card as CardData, generatePdfForCards } from '../services/ApiService';
+import { CardData } from '../types/app';
+import * as ApiService from '../services/ApiService';
 import Card from './Card';
 import './CardGrid.css';
 
@@ -15,7 +16,7 @@ const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
 
     setIsGeneratingPdf(true);
     try {
-      const pdfBlob = await generatePdfForCards(cards);
+      const pdfBlob = await ApiService.generatePdfForCards(cards);
 
       // Télécharger le PDF
       const url = window.URL.createObjectURL(pdfBlob);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import CardGrid from './CardGrid';
-import { Card as CardData } from '../services/ApiService';
+import { CardData } from '../types/app';
 
 jest.mock('./Card', () => ({ card }: { card: CardData }) => (
     <div data-testid="card">
@@ -11,8 +11,8 @@ jest.mock('./Card', () => ({ card }: { card: CardData }) => (
 
 test('renders a grid of cards', () => {
   const cards: CardData[] = [
-    { id: '1', title: 'Card 1', description: 'Desc 1', icon: '1', category: 'Cat 1' },
-    { id: '2', title: 'Card 2', description: 'Desc 2', icon: '2', category: 'Cat 2' },
+    { id: '1', title: 'Card 1', description: 'Desc 1', icon: '1', category: 'Cat 1', createdAt: new Date(), updatedAt: new Date() },
+    { id: '2', title: 'Card 2', description: 'Desc 2', icon: '2', category: 'Cat 2', createdAt: new Date(), updatedAt: new Date() },
   ];
 
   render(<CardGrid cards={cards} />);

@@ -1,4 +1,4 @@
-// src/App.tsx - Version finale avec tous les composants modernisés
+// src/AppModern.tsx - Version simplifiée
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {

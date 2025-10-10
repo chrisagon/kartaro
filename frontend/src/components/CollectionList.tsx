@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardCollection } from '../services/ApiService';
+import { CardCollection } from '../types/app';
 
 interface CollectionListProps {
   collections: CardCollection[];

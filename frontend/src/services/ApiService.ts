@@ -1,73 +1,67 @@
 import axios from 'axios';
+import { CardData, CardCollection, GenerationResult } from '../types/app';
 
-const API_URL = 'http://localhost:3001/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
 
-export interface Card {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  category: string;
-  image?: string; // To hold the base64 image data
-  categoryOriginal?: string;
-  categoryColor?: string;
+async function request<T>(url: string, options?: any): Promise<T> {
+  try {
+    const response = await axios({
+      url: `${API_BASE_URL}${url}`,
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.response?.data?.message || error.message);
+    }
+    throw error;
+  }
 }
 
-export interface CardCollection {
-  id: string;
-  name: string;
-  cards: Card[];
-}
-
-export interface GenerateCardsMetrics {
-  textRequests: number;
-  imageRequests: number;
-  imageFailures: number;
-  responseBytes: number;
-  responseKilobytes: number;
-  totalRequests: number;
-}
-
-export interface GenerateCardsResponse {
-  cards: Card[];
-  metrics: GenerateCardsMetrics;
-}
-
-export const generateCards = async (theme: string, context: string): Promise<GenerateCardsResponse> => {
-  const response = await axios.post(`${API_URL}/cards/generate`, { theme, context });
-  return response.data;
-};
-
-export const createCollection = async (name: string, cards: Card[]): Promise<CardCollection> => {
-  const response = await axios.post(`${API_URL}/collections`, { name, cards });
-  return response.data;
-};
-
-export const getCollections = async (): Promise<CardCollection[]> => {
-  const response = await axios.get(`${API_URL}/collections`);
-  return response.data;
-};
-
-export const getCollectionById = async (id: string): Promise<CardCollection> => {
-  const response = await axios.get(`${API_URL}/collections/${id}`);
-  return response.data;
-};
-
-export const updateCollection = async (id: string, name: string, cards: Card[]): Promise<CardCollection> => {
-  const response = await axios.put(`${API_URL}/collections/${id}`, { name, cards });
-  return response.data;
-};
-
-export const generatePdfForCards = async (cards: Card[]): Promise<Blob> => {
-  // Créer une collection temporaire avec les cartes actuelles
-  const tempCollection = {
-    id: 'temp',
-    name: 'Generated Cards',
-    cards: cards
-  };
-
-  const response = await axios.post(`${API_URL}/collections/temp/pdf`, tempCollection, {
-    responseType: 'blob'
+export function generateCards(theme: string, context: string): Promise<GenerationResult> {
+  return request<GenerationResult>('/cards/generate', {
+    method: 'POST',
+    data: { theme, context },
   });
+}
+
+export function getCollections(): Promise<CardCollection[]> {
+  return request<CardCollection[]>('/collections');
+}
+
+export function getCollectionById(id: string): Promise<CardCollection> {
+  return request<CardCollection>(`/collections/${id}`);
+}
+
+export function createCollection(collection: Omit<CardCollection, 'id' | 'createdAt' | 'updatedAt'>): Promise<CardCollection> {
+  return request<CardCollection>('/collections', {
+    method: 'POST',
+    data: collection,
+  });
+}
+
+export function updateCollection(collection: CardCollection): Promise<CardCollection> {
+  return request<CardCollection>(`/collections/${collection.id}`, {
+    method: 'PUT',
+    data: collection,
+  });
+}
+
+export function deleteCollection(id: string): Promise<void> {
+  return request<void>(`/collections/${id}`, {
+    method: 'DELETE',
+  });
+}
+
+export async function generatePdfForCards(cards: CardData[]): Promise<Blob> {
+  const response = await axios.post(
+    `${API_BASE_URL}/cards/generate-pdf`,
+    { cards },
+    { responseType: 'blob' }
+  );
   return response.data;
-};
+}

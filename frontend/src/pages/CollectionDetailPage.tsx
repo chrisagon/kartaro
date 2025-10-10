@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { CardCollection, getCollectionById } from '../services/ApiService';
+import { CardCollection } from '../types/app';
+import * as ApiService from '../services/ApiService';
 import CardGrid from '../components/CardGrid';
 import axios from 'axios';
 import './CollectionDetailPage.css';
@@ -16,7 +17,7 @@ const CollectionDetailPage: React.FC = () => {
 
     const fetchCollection = async () => {
       try {
-        const fetchedCollection = await getCollectionById(id);
+        const fetchedCollection = await ApiService.getCollectionById(id);
         setCollection(fetchedCollection);
       } catch (err) {
         setError('Failed to fetch collection details.');
@@ -64,7 +65,7 @@ const CollectionDetailPage: React.FC = () => {
     <div>
       <h1>{collection.name}</h1>
       <button onClick={handlePrint} className="print-button">Print to PDF</button>
-      <CardGrid cards={collection.cards} />
+      <CardGrid cards={collection.cards || []} />
     </div>
   );
 };

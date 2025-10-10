@@ -1,12 +1,12 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import CollectionManager from './CollectionManager';
+import { CardData, CardCollection } from '../types/app';
 import * as ApiService from '../services/ApiService';
-import { Card as CardData } from '../services/ApiService';
 
 jest.mock('../services/ApiService');
 
 const mockCards: CardData[] = [
-  { id: '1', title: 'Card 1', description: 'Desc 1', icon: '1', category: 'Cat 1' },
+  { id: '1', title: 'Card 1', description: 'Desc 1', icon: '1', category: 'Cat 1', createdAt: new Date(), updatedAt: new Date() },
 ];
 
 // Create a mock function for the new prop

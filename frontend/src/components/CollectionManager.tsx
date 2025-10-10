@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Card, CardCollection, createCollection, updateCollection } from '../services/ApiService';
+import { CardData, CardCollection } from '../types/app';
+import * as ApiService from '../services/ApiService';
 
 interface CollectionManagerProps {
-  cards: Card[];
+  cards: CardData[];
   onCollectionCreated: (newCollection: CardCollection) => void;
   onCollectionUpdated?: (updatedCollection: CardCollection) => void;
   currentCollection?: CardCollection | null; // Collection currently being edited
@@ -36,14 +37,22 @@ const CollectionManager: React.FC<CollectionManagerProps> = ({
 
       if (currentCollection) {
         // Update existing collection
-        savedCollection = await updateCollection(currentCollection.id, collectionName.trim(), cards);
+        savedCollection = await ApiService.updateCollection({
+          ...currentCollection,
+          name: collectionName.trim(),
+          cards: cards
+        });
         if (onCollectionUpdated) {
           onCollectionUpdated(savedCollection);
         }
         alert('Collection updated successfully!');
       } else {
         // Create new collection
-        savedCollection = await createCollection(collectionName.trim(), cards);
+        savedCollection = await ApiService.createCollection({
+          name: collectionName.trim(),
+          cards: cards,
+          isPublic: false
+        });
         onCollectionCreated(savedCollection);
         alert('Collection created successfully!');
         setCollectionName(''); // Clear input after creation

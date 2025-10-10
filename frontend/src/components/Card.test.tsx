@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Card from './Card';
-import { Card as CardData } from '../services/ApiService';
+import { CardData } from '../types/app';
 
 test('renders card content', () => {
   const card: CardData = {
@@ -10,6 +10,8 @@ test('renders card content', () => {
     description: 'Test Description',
     icon: '🧪',
     category: 'Test Category',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   };
 
   render(<Card card={card} />);

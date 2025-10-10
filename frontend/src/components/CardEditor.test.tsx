@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import CardEditor from './CardEditor';
-import { Card as CardData } from '../services/ApiService';
+import { CardData } from '../types/app';
 
 const mockCard: CardData = {
   id: '1',
@@ -9,6 +9,8 @@ const mockCard: CardData = {
   description: 'Test Description',
   icon: '🧪',
   category: 'Test Category',
+  createdAt: new Date(),
+  updatedAt: new Date(),
 };
 
 test('renders card editor and calls onSave', () => {

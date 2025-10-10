@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card as CardData, CardCollection, generateCards, getCollections, getCollectionById, generatePdfForCards, GenerateCardsMetrics } from '../services/ApiService';
+import { CardData, CardCollection, GenerateCardsMetrics } from '../types/app';
+import * as ApiService from '../services/ApiService';
 import InputForm from '../components/InputForm';
 import CardGrid from '../components/CardGrid';
 import CardEditor from '../components/CardEditor';
@@ -19,7 +20,7 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     const fetchCollections = async () => {
       try {
-        const fetchedCollections = await getCollections();
+        const fetchedCollections = await ApiService.getCollections();
         setCollections(fetchedCollections);
       } catch (error) {
         console.error('Failed to fetch collections');
@@ -33,7 +34,7 @@ const MainPage: React.FC = () => {
   const handleGenerate = async (theme: string, context: string) => {
     setIsGenerating(true);
     try {
-      const result = await generateCards(theme, context);
+      const result = await ApiService.generateCards(theme, context);
       if (Array.isArray(result?.cards)) {
         setCards(result.cards);
         setMetrics(result.metrics);
@@ -64,7 +65,7 @@ const MainPage: React.FC = () => {
     try {
       // If collection doesn't have cards, fetch the complete collection
       if (!collection.cards) {
-        const fullCollection = await getCollectionById(collection.id);
+        const fullCollection = await ApiService.getCollectionById(collection.id);
         setCurrentCollection(fullCollection);
         setCards(fullCollection.cards || []);
       } else {
@@ -95,7 +96,7 @@ const MainPage: React.FC = () => {
 
     setIsGeneratingPdf(true);
     try {
-      const pdfBlob = await generatePdfForCards(cards);
+      const pdfBlob = await ApiService.generatePdfForCards(cards);
 
       // Télécharger le PDF
       const url = window.URL.createObjectURL(pdfBlob);
