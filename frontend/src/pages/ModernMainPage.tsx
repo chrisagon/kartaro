@@ -1,31 +1,90 @@
 // src/pages/ModernMainPage.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   Typography,
   Box,
   Fab,
   Zoom,
-  useScrollTrigger,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  CircularProgress,
   Divider,
 } from '@mui/material';
-import { Add as AddIcon } from '@mui/icons-material';
+import { 
+  Add as AddIcon,
+  Save as SaveIcon,
+  Print as PrintIcon,
+} from '@mui/icons-material';
 import { motion } from 'framer-motion';
 
 import ModernInputForm from '../components/ModernInputForm';
 import ModernCardGrid from '../components/ModernCardGrid';
 import GenerationMetrics from '../components/GenerationMetrics';
 import { useCards, useCollections, useApp } from '../context/AppContext';
+import { generatePdfFromCards } from '../services/PdfService';
+import * as ApiService from '../services/ApiService';
 
 export const ModernMainPage: React.FC = () => {
-  const { cards, selectedCard, setSelectedCard } = useCards();
-  const { collections, getCollections } = useCollections();
+  const { cards } = useCards();
+  const { getCollections } = useCollections();
   const { state } = useApp();
+  
+  const [isSavingQuick, setIsSavingQuick] = useState(false);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [saveDialogOpen, setSaveDialogOpen] = useState(false);
+  const [collectionName, setCollectionName] = useState('');
 
   // Chargement initial des collections
   useEffect(() => {
     getCollections();
   }, [getCollections]);
+
+  const handleQuickSave = () => {
+    setSaveDialogOpen(true);
+    setCollectionName('');
+  };
+
+  const handleSaveConfirm = async () => {
+    if (!collectionName.trim() || cards.length === 0) {
+      return;
+    }
+
+    setIsSavingQuick(true);
+    try {
+      await ApiService.createCollection({
+        name: collectionName.trim(),
+        cards: cards,
+        isPublic: false
+      });
+      await getCollections();
+      setSaveDialogOpen(false);
+      setCollectionName('');
+    } catch (error) {
+      console.error('Error saving collection:', error);
+      alert('Failed to save collection. Please try again.');
+    } finally {
+      setIsSavingQuick(false);
+    }
+  };
+
+  const handleGeneratePdf = async () => {
+    if (cards.length === 0 || isGeneratingPdf) return;
+
+    setIsGeneratingPdf(true);
+    try {
+      await generatePdfFromCards(cards, `cards-${Date.now()}.pdf`);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please try again.');
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
 
   // Animation des éléments principaux
   const containerVariants = {
@@ -101,6 +160,57 @@ export const ModernMainPage: React.FC = () => {
           <ModernCardGrid />
         </motion.div>
 
+        {/* Boutons d'action */}
+        {cards.length > 0 && (
+          <motion.div variants={itemVariants}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, my: 4 }}>
+              <Button
+                variant="contained"
+                size="large"
+                startIcon={isSavingQuick ? <CircularProgress size={20} color="inherit" /> : <SaveIcon />}
+                onClick={handleQuickSave}
+                disabled={isSavingQuick}
+                sx={{
+                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  color: '#ffffff',
+                  px: 4,
+                  py: 1.5,
+                  borderRadius: 3,
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+                    boxShadow: '0 6px 8px rgba(0, 0, 0, 0.15)',
+                  },
+                }}
+              >
+                {isSavingQuick ? 'Sauvegarde...' : 'Sauvegarder la Collection'}
+              </Button>
+
+              <Button
+                variant="contained"
+                size="large"
+                startIcon={isGeneratingPdf ? <CircularProgress size={20} color="inherit" /> : <PrintIcon />}
+                onClick={handleGeneratePdf}
+                disabled={isGeneratingPdf}
+                sx={{
+                  background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+                  color: '#ffffff',
+                  px: 4,
+                  py: 1.5,
+                  borderRadius: 3,
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)',
+                    boxShadow: '0 6px 8px rgba(0, 0, 0, 0.15)',
+                  },
+                }}
+              >
+                {isGeneratingPdf ? 'Génération...' : 'Télécharger PDF 3'}
+              </Button>
+            </Box>
+          </motion.div>
+        )}
+
         {/* État de génération */}
         {state.isGenerating && (
           <motion.div variants={itemVariants}>
@@ -140,13 +250,45 @@ export const ModernMainPage: React.FC = () => {
                 right: 24,
                 background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
               }}
-              onClick={() => setSelectedCard(null)}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               <AddIcon />
             </Fab>
           </Zoom>
         )}
       </motion.div>
+
+      {/* Dialog de sauvegarde */}
+      <Dialog open={saveDialogOpen} onClose={() => setSaveDialogOpen(false)} maxWidth="sm" fullWidth>
+        <DialogTitle>Sauvegarder la Collection</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Nom de la collection"
+            type="text"
+            fullWidth
+            variant="outlined"
+            value={collectionName}
+            onChange={(e) => setCollectionName(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' && collectionName.trim()) {
+                handleSaveConfirm();
+              }
+            }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setSaveDialogOpen(false)}>Annuler</Button>
+          <Button 
+            onClick={handleSaveConfirm} 
+            variant="contained"
+            disabled={!collectionName.trim() || isSavingQuick}
+          >
+            {isSavingQuick ? 'Sauvegarde...' : 'Sauvegarder'}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };

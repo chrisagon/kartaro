@@ -19,8 +19,10 @@ import { AppProvider, useApp } from './context/AppContext';
 // Composants modernisés
 import ModernHeader from './components/ModernHeader';
 
-// Pages modernisées
+// Pages
 import ModernMainPage from './pages/ModernMainPage';
+import CollectionsPage from './pages/CollectionsPage';
+import CollectionDetailPage from './pages/CollectionDetailPage';
 
 // Composant Scroll to Top
 const ScrollToTop = () => {
@@ -52,16 +54,14 @@ const ScrollToTop = () => {
 
 // Layout principal avec le nouveau thème
 const AppLayout: React.FC = () => {
-  const { state } = useApp();
-
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
       <ModernHeader />
       <Container maxWidth="xl" sx={{ py: 4 }}>
         <Routes>
           <Route path="/" element={<ModernMainPage />} />
-          <Route path="/collections" element={<div>Collections Page (à moderniser)</div>} />
-          <Route path="/collections/:id" element={<div>Collection Detail Page (à moderniser)</div>} />
+          <Route path="/collections" element={<CollectionsPage />} />
+          <Route path="/collections/:id" element={<CollectionDetailPage />} />
         </Routes>
       </Container>
       <ScrollToTop />

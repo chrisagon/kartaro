@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { CardCollection } from '../types/app';
 import * as ApiService from '../services/ApiService';
 import CardGrid from '../components/CardGrid';
-import axios from 'axios';
 import './CollectionDetailPage.css';
 
 const CollectionDetailPage: React.FC = () => {
@@ -42,29 +41,23 @@ const CollectionDetailPage: React.FC = () => {
     return <div>Collection not found.</div>;
   }
 
-    const handlePrint = async () => {
-    if (!id) return;
-    try {
-      const response = await axios.get(`http://localhost:3001/api/collections/${id}/pdf`, {
-        responseType: 'blob',
-      });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', `${collection?.name || 'collection'}.pdf`);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    } catch (err) {
-      setError('Failed to generate PDF.');
-      console.error(err);
-    }
-  };
 
   return (
-    <div>
-      <h1>{collection.name}</h1>
-      <button onClick={handlePrint} className="print-button">Print to PDF</button>
+    <div className="collection-detail-page">
+      <div className="detail-header">
+        <div>
+          <h1>{collection.name}</h1>
+          {collection.description && (
+            <p className="collection-description">{collection.description}</p>
+          )}
+          <p className="collection-meta">
+            {collection.cards?.length || 0} cards • Created: {new Date(collection.createdAt).toLocaleDateString()}
+          </p>
+        </div>
+        <div className="header-actions">
+          <Link to="/collections" className="btn btn-back">← Back to Library</Link>
+        </div>
+      </div>
       <CardGrid cards={collection.cards || []} />
     </div>
   );

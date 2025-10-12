@@ -11,6 +11,7 @@ import {
   Fade,
 } from '@mui/material';
 import { CardData } from '../types/app';
+import { getCategoryColor } from '../constants/categories';
 
 interface ModernCardProps {
   card: CardData;
@@ -25,6 +26,8 @@ export const ModernCard: React.FC<ModernCardProps> = ({
   onEdit,
   elevation = 2,
 }) => {
+  const categoryColor = getCategoryColor(card.category);
+  
   return (
     <Fade in timeout={600}>
       <MuiCard
@@ -43,6 +46,7 @@ export const ModernCard: React.FC<ModernCardProps> = ({
           },
           borderRadius: 3,
           overflow: 'hidden',
+          borderTop: `4px solid ${categoryColor}`,
         }}
       >
         {card.image && (
@@ -104,10 +108,13 @@ export const ModernCard: React.FC<ModernCardProps> = ({
             <Chip
               label={card.category}
               size="small"
-              variant="outlined"
               sx={{
                 borderRadius: 2,
                 fontWeight: 500,
+                backgroundColor: `${categoryColor}15`,
+                borderColor: categoryColor,
+                color: categoryColor,
+                border: `1px solid ${categoryColor}`,
               }}
             />
 

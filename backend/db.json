@@ -3924,6 +3924,474 @@
           "image": "/images/collections/1759869383867-a19qv9.png"
         }
       ]
+    },
+    {
+      "id": "1760287264875",
+      "name": "Archéologie test 20",
+      "cards": [
+        {
+          "title": "La Fouille Stratigraphique",
+          "description": "Apprenez à excaver méthodiquement en identifiant les couches de sol successives. Chaque strate révèle une période d'occupation distincte, essentielle pour dater les vestiges.",
+          "icon": "⛏️",
+          "category": "Processus",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1760287264875-wb9cd3.svg"
+        },
+        {
+          "title": "Le Principe d'Horizontale",
+          "description": "Une fois une couche identifiée, l'excavation se fait horizontalement. C'est le moment de découvrir les vestiges qui y sont enfouis, comme une partie de la vie quotidienne du passé.",
+          "icon": "↔️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760287264881-8253f.svg"
+        },
+        {
+          "title": "Les Outils du Fouilleur",
+          "description": "Du simple pinceau aux outils de mesure de précision, chaque instrument a son rôle. Leur utilisation correcte permet de dégager et documenter les découvertes sans les endommager.",
+          "icon": "🛠️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760287264882-kpbj6c.svg"
+        },
+        {
+          "title": "La Documentation Rigoureuse",
+          "description": "Prenez des notes, dessinez, photographiez ! Cette étape cruciale garantit que toutes les informations contextuelles des objets trouvés sont conservées pour l'analyse ultérieure.",
+          "icon": "📝",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760287264883-ham36q.svg"
+        },
+        {
+          "title": "Le Trésor Caché",
+          "description": "Vous trouvez un objet exceptionnel ! Avantage : vous gagnez des points de prestige et pouvez potentiellement débloquer de nouvelles pistes de recherche. Malus : attention à ne pas le manipuler trop vite sans le documenter !",
+          "icon": "💰",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760287264885-zgs0mh.svg"
+        },
+        {
+          "title": "Les Critères de Datation Relative",
+          "description": "Savoir comparer la position des objets dans les couches ou leur style permet de les dater les uns par rapport aux autres. Ces critères sont fondamentaux pour construire une chronologie.",
+          "icon": "📊",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1760287264886-naicr.svg"
+        },
+        {
+          "title": "Le Site Mégalithique",
+          "description": "Explorez les mystères des grands monuments de pierre construits par nos ancêtres. Ces sites, souvent chargés de symbolisme, nous en apprennent énormément sur leurs croyances et leur organisation sociale.",
+          "icon": "🗿",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760287264886-o37fvp.svg"
+        },
+        {
+          "title": "La Poterie Brisée",
+          "description": "Ces fragments de céramique, souvent abondants, sont de véritables mines d'informations. Leur forme, leur décor ou leur technologie révèlent beaucoup sur les cultures qui les ont produites.",
+          "icon": "🏺",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760287264887-izt3z3.svg"
+        },
+        {
+          "title": "L'Archéologue de Terrain",
+          "description": "Vous êtes sur le terrain, sous le soleil ou la pluie, à déterrer le passé. Votre rôle est de collecter les données brutes avec la plus grande précision possible.",
+          "icon": "🧑‍🔬",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760287264887-q6lsfi.svg"
+        },
+        {
+          "title": "Le Principe de Sédimentation",
+          "description": "Comprendre comment les couches de terre se déposent est la clé de la datation. Les couches les plus basses sont généralement les plus anciennes, un principe fondamental de l'archéologie.",
+          "icon": "🌍",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760287264888-5e4wmr.svg"
+        }
+      ]
+    },
+    {
+      "id": "1760297654814",
+      "name": "Archéologie test 21",
+      "cards": [
+        {
+          "title": "La Stratigraphie Expliquée",
+          "description": "Comprends l'empilement des couches archéologiques pour dater les vestiges. Chaque strate raconte une partie de l'histoire du site.",
+          "icon": "📚",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760297654818-nbt28l.png"
+        },
+        {
+          "title": "Première Fouille de Terrain",
+          "description": "Organise et supervise le début des travaux de terrain. Définis la zone à explorer et les méthodes d'excavation appropriées.",
+          "icon": "⛏️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760297654840-ugxpk.png"
+        },
+        {
+          "title": "Le Pinceau de Précision",
+          "description": "Utilise cet outil delicat pour dégager les objets les plus fragiles sans les endommager. Indispensable pour révéler les détails subtils.",
+          "icon": "🖌️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760297654846-o6pkub.png"
+        },
+        {
+          "title": "Identifier un Artefact",
+          "description": "Analyse la forme, la matière et le style d'un objet trouvé pour déterminer sa fonction et son origine. Un puzzle historique à reconstituer.",
+          "icon": "🧐",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760297654851-v0ro19.png"
+        },
+        {
+          "title": "Découverte Fortuite (+1)",
+          "description": "Vous tombez sur un vestige inattendu qui enrichit grandement la compréhension du site. Augmentez votre score d'interprétation.",
+          "icon": "✨",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760297654855-0ndh2.png"
+        },
+        {
+          "title": "Le Site de Pompéi",
+          "description": "Explore une cité romaine figée dans le temps par une éruption volcanique. Révèle des vies quotidiennes intactes.",
+          "icon": "🌋",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760297654860-kyn9hh.png"
+        },
+        {
+          "title": "La Poterie Ancienne",
+          "description": "Étudie les fragments de poteries pour comprendre les techniques de fabrication, l'art et les échanges commerciaux des civilisations passées.",
+          "icon": "🏺",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760297654866-20evs6.png"
+        },
+        {
+          "title": "L'Archéologue Débutant",
+          "description": "Ce personnage est enthousiaste mais manque d'expérience. Il a besoin de conseils pour ses premières étapes sur le terrain.",
+          "icon": "👶",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760297654872-jqqjf.png"
+        },
+        {
+          "title": "La Datation Relative",
+          "description": "Apprends à ordonner les événements et les objets dans le temps en te basant sur leur position relative et leur contexte. Les couches profondes sont plus anciennes.",
+          "icon": "⏳",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760297654879-rlv8ov.png"
+        },
+        {
+          "title": "Le Nettoyage des Vestiges",
+          "description": "Étape cruciale pour préparer les artefacts à l'étude et à la conservation. Utilise des méthodes douces pour retirer la terre et les dépôts.",
+          "icon": "🧼",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760297654885-rh4d8.png"
+        },
+        {
+          "title": "Le Marteau et le Ciseau",
+          "description": "Outils pour extraire des éléments plus résistants ou pour dégager de larges sections du terrain. Nécessitent une manipulation experte pour ne pas endommager.",
+          "icon": "🔨",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760297654890-wdovst.png"
+        },
+        {
+          "title": "Photographier la Découverte",
+          "description": "Documente chaque étape et chaque objet avec précision. Des photos claires sont essentielles pour la recherche ultérieure.",
+          "icon": "📸",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760297654898-xjt058.png"
+        },
+        {
+          "title": "Mauvaise Gestion des Données (-1)",
+          "description": "Une erreur dans l'enregistrement des informations peut mener à des interprétations erronées. Reculez d'une étape dans votre analyse.",
+          "icon": "❌",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760297654904-b8xhm.png"
+        },
+        {
+          "title": "Le Site de Machu Picchu",
+          "description": "Explore cette cité inca perchée dans les Andes. Comprends l'ingénierie et l'organisation d'une civilisation disparue.",
+          "icon": "⛰️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760297654910-zr37m.png"
+        },
+        {
+          "title": "Les Outils en Métal",
+          "description": "Analysez la composition et la fabrication d'outils métalliques pour comprendre les avancées technologiques et les ressources disponibles.",
+          "icon": "⚔️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760297654915-mpm8g.png"
+        },
+        {
+          "title": "L'Archéologue Spécialiste",
+          "description": "Ce personnage excelle dans un domaine précis (céramique, numismatique, etc.). Il apporte une expertise pointue à l'équipe.",
+          "icon": "🎓",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760297654920-do9y68.png"
+        },
+        {
+          "title": "La Datation Absolue",
+          "description": "Utilise des méthodes scientifiques (radiocarbone, thermoluminescence) pour déterminer l'âge précis des objets et des sites. Une pièce clé pour la chronologie.",
+          "icon": "☢️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760297654926-xmdav.png"
+        },
+        {
+          "title": "Le Dessin d'Environnement",
+          "description": "Reproduis avec précision le paysage et la disposition des vestiges sur le terrain. Essentiel pour comprendre le contexte spatial.",
+          "icon": "✍️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760297654930-ihc78h.png"
+        },
+        {
+          "title": "Le GPS et la Station Totale",
+          "description": "Maîtrise ces outils de géolocalisation et de mesure pour enregistrer les coordonnées précises de chaque découverte. La précision est primordiale.",
+          "icon": "📍",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760297654934-wp9rup.png"
+        },
+        {
+          "title": "L'Interprétation des Indices",
+          "description": "Mets en relation les différents artefacts, structures et données environnementales pour construire une récit cohérent du passé. Fais preuve de logique et d'imagination.",
+          "icon": "💡",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760297654939-zg8c48.png"
+        }
+      ]
+    },
+    {
+      "id": "1760300069477",
+      "name": "archéologie21",
+      "cards": [
+        {
+          "title": "La Stratigraphie Expliquée",
+          "description": "Comprends l'empilement des couches archéologiques pour dater les vestiges. Chaque strate raconte une partie de l'histoire du site.",
+          "icon": "📚",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760300069481-rjklfl.png"
+        },
+        {
+          "title": "Première Fouille de Terrain",
+          "description": "Organise et supervise le début des travaux de terrain. Définis la zone à explorer et les méthodes d'excavation appropriées.",
+          "icon": "⛏️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760300069496-n58ndh.png"
+        },
+        {
+          "title": "Le Pinceau de Précision",
+          "description": "Utilise cet outil delicat pour dégager les objets les plus fragiles sans les endommager. Indispensable pour révéler les détails subtils.",
+          "icon": "🖌️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760300069503-382ond.png"
+        },
+        {
+          "title": "Identifier un Artefact",
+          "description": "Analyse la forme, la matière et le style d'un objet trouvé pour déterminer sa fonction et son origine. Un puzzle historique à reconstituer.",
+          "icon": "🧐",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760300069512-gyc89.png"
+        },
+        {
+          "title": "Découverte Fortuite (+1)",
+          "description": "Vous tombez sur un vestige inattendu qui enrichit grandement la compréhension du site. Augmentez votre score d'interprétation.",
+          "icon": "✨",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760300069520-9utz0e.png"
+        },
+        {
+          "title": "Le Site de Pompéi",
+          "description": "Explore une cité romaine figée dans le temps par une éruption volcanique. Révèle des vies quotidiennes intactes.",
+          "icon": "🌋",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760300069529-mawzh.png"
+        },
+        {
+          "title": "La Poterie Ancienne",
+          "description": "Étudie les fragments de poteries pour comprendre les techniques de fabrication, l'art et les échanges commerciaux des civilisations passées.",
+          "icon": "🏺",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760300069537-q6kn0s.png"
+        },
+        {
+          "title": "L'Archéologue Débutant",
+          "description": "Ce personnage est enthousiaste mais manque d'expérience. Il a besoin de conseils pour ses premières étapes sur le terrain.",
+          "icon": "👶",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760300069545-mqrqf.png"
+        },
+        {
+          "title": "La Datation Relative",
+          "description": "Apprends à ordonner les événements et les objets dans le temps en te basant sur leur position relative et leur contexte. Les couches profondes sont plus anciennes.",
+          "icon": "⏳",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760300069553-xr9xg.png"
+        },
+        {
+          "title": "Le Nettoyage des Vestiges",
+          "description": "Étape cruciale pour préparer les artefacts à l'étude et à la conservation. Utilise des méthodes douces pour retirer la terre et les dépôts.",
+          "icon": "🧼",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760300069561-8m7p69.png"
+        },
+        {
+          "title": "Le Marteau et le Ciseau",
+          "description": "Outils pour extraire des éléments plus résistants ou pour dégager de larges sections du terrain. Nécessitent une manipulation experte pour ne pas endommager.",
+          "icon": "🔨",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760300069571-pejunf.png"
+        },
+        {
+          "title": "Photographier la Découverte",
+          "description": "Documente chaque étape et chaque objet avec précision. Des photos claires sont essentielles pour la recherche ultérieure.",
+          "icon": "📸",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760300069579-ugxjcn.png"
+        },
+        {
+          "title": "Mauvaise Gestion des Données (-1)",
+          "description": "Une erreur dans l'enregistrement des informations peut mener à des interprétations erronées. Reculez d'une étape dans votre analyse.",
+          "icon": "❌",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760300069587-603tff.png"
+        },
+        {
+          "title": "Le Site de Machu Picchu",
+          "description": "Explore cette cité inca perchée dans les Andes. Comprends l'ingénierie et l'organisation d'une civilisation disparue.",
+          "icon": "⛰️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760300069595-c6wdw.png"
+        },
+        {
+          "title": "Les Outils en Métal",
+          "description": "Analysez la composition et la fabrication d'outils métalliques pour comprendre les avancées technologiques et les ressources disponibles.",
+          "icon": "⚔️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760300069601-eylfe6.png"
+        },
+        {
+          "title": "L'Archéologue Spécialiste",
+          "description": "Ce personnage excelle dans un domaine précis (céramique, numismatique, etc.). Il apporte une expertise pointue à l'équipe.",
+          "icon": "🎓",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760300069609-vbcsb.png"
+        },
+        {
+          "title": "La Datation Absolue",
+          "description": "Utilise des méthodes scientifiques (radiocarbone, thermoluminescence) pour déterminer l'âge précis des objets et des sites. Une pièce clé pour la chronologie.",
+          "icon": "☢️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760300069618-6398qzh.png"
+        },
+        {
+          "title": "Le Dessin d'Environnement",
+          "description": "Reproduis avec précision le paysage et la disposition des vestiges sur le terrain. Essentiel pour comprendre le contexte spatial.",
+          "icon": "✍️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760300069627-km63m.png"
+        },
+        {
+          "title": "Le GPS et la Station Totale",
+          "description": "Maîtrise ces outils de géolocalisation et de mesure pour enregistrer les coordonnées précises de chaque découverte. La précision est primordiale.",
+          "icon": "📍",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760300069635-trv9.png"
+        },
+        {
+          "title": "L'Interprétation des Indices",
+          "description": "Mets en relation les différents artefacts, structures et données environnementales pour construire une récit cohérent du passé. Fais preuve de logique et d'imagination.",
+          "icon": "💡",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760300069642-n0lkr9.png"
+        }
+      ]
     }
   ]
 }

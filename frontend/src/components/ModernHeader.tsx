@@ -1,5 +1,6 @@
 // src/components/ModernHeader.tsx
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -43,6 +44,8 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
+  const location = useLocation();
   const { state, dispatch } = useApp();
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -141,9 +144,9 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
         <Box sx={{ display: 'flex', gap: 1 }}>
           {/* Collections */}
           <Button
-            variant="outlined"
+            variant={location.pathname === '/collections' ? 'contained' : 'outlined'}
             startIcon={<CollectionsIcon />}
-            onClick={() => dispatch({ type: 'SET_CURRENT_VIEW', payload: 'collections' })}
+            onClick={() => navigate('/collections')}
             sx={{ borderRadius: 3 }}
           >
             Collections
@@ -151,12 +154,12 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
 
           {/* Nouvelle génération */}
           <Button
-            variant="contained"
+            variant={location.pathname === '/' ? 'contained' : 'outlined'}
             startIcon={<AddIcon />}
-            onClick={() => dispatch({ type: 'SET_CURRENT_VIEW', payload: 'cards' })}
+            onClick={() => navigate('/')}
             sx={{
               borderRadius: 3,
-              backgroundColor: theme.palette.primary.main,
+              backgroundColor: location.pathname === '/' ? theme.palette.primary.main : undefined,
             }}
           >
             Générer

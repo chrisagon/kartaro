@@ -7,6 +7,7 @@
     "test": "tests"
   },
   "scripts": {
+    "start": "node src/index.js",
     "test": "jest"
   },
   "keywords": [],
@@ -14,12 +15,14 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@google-cloud/vertexai": "^1.10.0",
     "@google/generative-ai": "^0.24.1",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "lowdb": "^7.0.1",
+    "node-fetch": "^2.7.0",
     "puppeteer": "^24.23.0"
   },
   "devDependencies": {

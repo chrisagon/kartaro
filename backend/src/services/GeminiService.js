@@ -1,9 +1,11 @@
 require('dotenv').config();
 
 const { GoogleGenerativeAI } = require('@google/generative-ai');
+const fetch = require('node-fetch');
 
 // IMPORTANT: Make sure to create a .env file in the backend directory with your API key
 const API_KEY = process.env.GEMINI_API_KEY;
+const STABILITY_API_KEY = process.env.STABILITY_API_KEY;
 
 if (!API_KEY) {
   console.warn('GEMINI_API_KEY is not defined. GeminiService will throw on usage.');
@@ -11,8 +13,16 @@ if (!API_KEY) {
 
 const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
 
+// Image generation provider
+const IMAGE_PROVIDER = process.env.IMAGE_PROVIDER || 'stability'; // 'stability' or 'vertex'
+
+// Stability AI configuration
+if (IMAGE_PROVIDER === 'stability' && !STABILITY_API_KEY) {
+  console.warn('STABILITY_API_KEY is not defined. Image generation will use fallback.');
+}
+
 const TEXT_MODEL = process.env.GEMINI_TEXT_MODEL || 'gemini-2.5-flash-lite';
-const IMAGE_MODEL = process.env.GEMINI_IMAGE_MODEL || 'gemini-2.5-flash-image';
+const STABILITY_MODEL = process.env.STABILITY_MODEL || 'stable-diffusion-xl-1024-v1-0';
 
 const CATEGORY_METADATA = [
   {
@@ -84,18 +94,6 @@ const FALLBACK_SVG = [
 ].join('');
 const FALLBACK_IMAGE_DATA_URL = `data:image/svg+xml;base64,${Buffer.from(FALLBACK_SVG).toString('base64')}`;
 
-const extractInlineImage = (response) => {
-  const candidates = response?.candidates || [];
-  for (const candidate of candidates) {
-    const parts = candidate?.content?.parts || [];
-    for (const part of parts) {
-      if (part.inlineData?.data) {
-        return part.inlineData.data;
-      }
-    }
-  }
-  return null;
-};
 
 const parseJsonArray = (raw) => {
   const parsed = JSON.parse(raw);
@@ -105,14 +103,29 @@ const parseJsonArray = (raw) => {
   return parsed;
 };
 
-const buildImagePrompt = (card, theme, context) => `You are an art director creating a single illustrative visual for a printed ideation card.
-Title: "${card.title}".
-Category: ${card.categoryOriginal || card.category}.
-Theme: ${theme}.
-Context: ${context}.
-Design a 1:1 aspect ratio illustration that conveys the card idea using bold shapes, rich colours, and no overlaid typography.
-Use modern flat illustration style, high contrast lighting, and ensure the main subject is centred.
-Return only the visual.`;
+const buildImagePrompt = (card, theme, context) => {
+  const categoryContext = card.categoryOriginal || card.category;
+  return `Create a professional, high-quality illustration for an educational workshop card.
+
+Title: "${card.title}"
+Description: ${card.description}
+Category: ${categoryContext}
+Theme: ${theme}
+Context: ${context}
+
+Style requirements:
+- Modern flat illustration style with bold, clean shapes
+- Rich, vibrant colors with ${card.categoryColor} as primary accent
+- High contrast lighting for clarity
+- Main subject centered and clearly visible
+- Professional and visually appealing design
+- NO text, labels, or typography anywhere in the image
+- Square format (1:1 aspect ratio), 1024x1024 pixels
+- Clean, minimalist composition suitable for printing
+- Illustrative style similar to modern tech/education materials
+
+The illustration should clearly and beautifully represent the concept of "${card.title}" in the context of ${theme}.`;
+};
 
 const generateCards = async (theme, context) => {
   if (!genAI) {
@@ -128,18 +141,29 @@ const generateCards = async (theme, context) => {
   try {
     const textModel = genAI.getGenerativeModel({ model: TEXT_MODEL });
 
-    const prompt = `Generate a JSON array of workshop cards for the theme "${theme}" and context "${context}".
-The categories are: Process, Steps, Components, Actions, Bonus and Malus, Categories and Criteria, Locations/Sites and Things/Objects, Personas, Concepts.
-Each card must provide a title, description, emoji icon, and category.
-Respond with a JSON array similar to:
+    const NUM_CARDS = parseInt(process.env.NUM_CARDS_TO_GENERATE || '10', 10);
+    
+    const prompt = `Generate a JSON array of exactly ${NUM_CARDS} workshop cards for the theme "${theme}" and context "${context}".
+
+Categories available: Process, Steps, Components, Actions, Bonus and Malus, Categories and Criteria, Locations/Sites and Things/Objects, Personas, Concepts.
+
+Each card must have:
+- title: A clear, concise title
+- description: A detailed description (2-3 sentences)
+- icon: A relevant emoji
+- category: One of the categories above
+
+Respond with ONLY a valid JSON array, no markdown, no explanations:
 [
   {
     "title": "Card title",
     "description": "Card description",
-    "icon": "*",
+    "icon": "🎯",
     "category": "Concept"
   }
-]`;
+]
+
+Generate exactly ${NUM_CARDS} cards with diverse categories.`;
 
     metrics.textRequests += 1;
 
@@ -237,15 +261,65 @@ const normalizeCategory = (value) => {
     .trim();
 };
 
-const appendImagesToCards = async (cards, theme, context, metrics = null) => {
-  if (!genAI) {
-    throw new Error('Gemini client is not initialised. Please set GEMINI_API_KEY.');
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Generate image with Stability AI
+const generateImageWithStability = async (prompt) => {
+  if (!STABILITY_API_KEY) {
+    throw new Error('STABILITY_API_KEY not configured');
   }
 
-  const imageModel = genAI.getGenerativeModel({ model: IMAGE_MODEL });
-  const cardsWithImages = [];
+  const response = await fetch(
+    `https://api.stability.ai/v1/generation/${STABILITY_MODEL}/text-to-image`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${STABILITY_API_KEY}`,
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        text_prompts: [
+          {
+            text: prompt,
+            weight: 1,
+          },
+        ],
+        cfg_scale: 7,
+        height: 1024,
+        width: 1024,
+        steps: 30,
+        samples: 1,
+        style_preset: '3d-model',
+      }),
+    }
+  );
 
-  for (const card of cards) {
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Stability AI API error: ${response.status} - ${errorText}`);
+  }
+
+  const data = await response.json();
+  
+  if (!data.artifacts || data.artifacts.length === 0) {
+    throw new Error('No image generated by Stability AI');
+  }
+
+  return `data:image/png;base64,${data.artifacts[0].base64}`;
+};
+
+const appendImagesToCards = async (cards, theme, context, metrics = null) => {
+  if (IMAGE_PROVIDER !== 'stability' || !STABILITY_API_KEY) {
+    console.warn('Stability AI not configured. Using fallback images for all cards.');
+    return cards.map(card => ({ ...card, image: FALLBACK_IMAGE_DATA_URL }));
+  }
+
+  const cardsWithImages = [];
+  const DELAY_BETWEEN_REQUESTS = parseInt(process.env.IMAGE_DELAY_MS || '1000', 10); // 1 seconde par défaut
+
+  for (let i = 0; i < cards.length; i++) {
+    const card = cards[i];
     const cardWithImage = { ...card };
 
     try {
@@ -253,24 +327,13 @@ const appendImagesToCards = async (cards, theme, context, metrics = null) => {
       if (metrics) {
         metrics.imageRequests += 1;
       }
-      const result = await imageModel.generateContent({
-        contents: [
-          {
-            role: 'user',
-            parts: [{ text: prompt }],
-          },
-        ],
-      });
-      const response = await result.response;
-      const inlineData = extractInlineImage(response);
 
-      if (!inlineData) {
-        console.warn(`Image model did not return inline data for card "${card.title}". Using fallback image.`);
-      }
+      console.log(`Generating image ${i + 1}/${cards.length} for "${card.title}"...`);
 
-      cardWithImage.image = inlineData
-        ? `data:image/png;base64,${inlineData}`
-        : FALLBACK_IMAGE_DATA_URL;
+      // Generate image with Stability AI
+      const imageDataUrl = await generateImageWithStability(prompt);
+      cardWithImage.image = imageDataUrl;
+      console.log(`✓ Image generated for "${card.title}"`);
     } catch (imageError) {
       console.error(
         `Failed to generate image for card "${card.title}":`,
@@ -283,6 +346,12 @@ const appendImagesToCards = async (cards, theme, context, metrics = null) => {
     }
 
     cardsWithImages.push(cardWithImage);
+
+    // Attendre avant la prochaine requête (sauf pour la dernière carte)
+    if (i < cards.length - 1) {
+      console.log(`Waiting ${DELAY_BETWEEN_REQUESTS / 1000}s before next request...`);
+      await sleep(DELAY_BETWEEN_REQUESTS);
+    }
   }
 
   return cardsWithImages;

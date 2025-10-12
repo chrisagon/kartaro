@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { CardData, CardCollection, GenerateCardsMetrics } from '../types/app';
 import * as ApiService from '../services/ApiService';
+import { generatePdfFromCards } from '../services/PdfService';
 import InputForm from '../components/InputForm';
 import CardGrid from '../components/CardGrid';
 import CardEditor from '../components/CardEditor';
@@ -14,6 +16,7 @@ const MainPage: React.FC = () => {
   const [currentCollection, setCurrentCollection] = useState<CardCollection | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [isSavingQuick, setIsSavingQuick] = useState(false);
   const [metrics, setMetrics] = useState<GenerateCardsMetrics | null>(null);
 
   // Fetch collections on component mount
@@ -78,12 +81,6 @@ const MainPage: React.FC = () => {
     }
   };
 
-  const handleNewCollection = () => {
-    setCurrentCollection(null);
-    setCards([]);
-    setMetrics(null);
-  };
-
   const handleSaveCard = (updatedCard: CardData) => {
     // This logic seems incorrect, it should probably use a unique ID.
     // For now, leaving as is.
@@ -96,18 +93,7 @@ const MainPage: React.FC = () => {
 
     setIsGeneratingPdf(true);
     try {
-      const pdfBlob = await ApiService.generatePdfForCards(cards);
-
-      // Télécharger le PDF
-      const url = window.URL.createObjectURL(pdfBlob);
-      const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = url;
-      a.download = `generated-cards-${Date.now()}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
+      await generatePdfFromCards(cards, `cards-${Date.now()}.pdf`);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
@@ -116,9 +102,49 @@ const MainPage: React.FC = () => {
     }
   };
 
+  const handleQuickSave = async () => {
+    if (cards.length === 0 || isSavingQuick) return;
+
+    const collectionName = prompt('Enter a name for this collection:');
+    if (!collectionName || !collectionName.trim()) {
+      return;
+    }
+
+    setIsSavingQuick(true);
+    try {
+      const savedCollection = await ApiService.createCollection({
+        name: collectionName.trim(),
+        cards: cards,
+        isPublic: false
+      });
+      setCollections([...collections, savedCollection]);
+      alert('Collection saved successfully!');
+    } catch (error) {
+      console.error('Error saving collection:', error);
+      alert('Failed to save collection. Please try again.');
+    } finally {
+      setIsSavingQuick(false);
+    }
+  };
+
   return (
     <div>
-      <h1>Card Generator</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <h1>Card Generator</h1>
+        <Link 
+          to="/collections" 
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#6c757d',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: '5px',
+            fontSize: '16px'
+          }}
+        >
+          📚 View Collections Library
+        </Link>
+      </div>
       <InputForm onGenerate={handleGenerate} isGenerating={isGenerating} />
       <hr />
       {selectedCard ? (
@@ -137,7 +163,36 @@ const MainPage: React.FC = () => {
             </div>
           )}
           {cards.length > 0 && (
-            <div style={{ textAlign: 'center', margin: '20px 0' }}>
+            <div style={{ textAlign: 'center', margin: '20px 0', display: 'flex', gap: '10px', justifyContent: 'center' }}>
+              <button
+                onClick={handleQuickSave}
+                disabled={isSavingQuick}
+                style={{
+                  backgroundColor: isSavingQuick ? '#6c757d' : '#28a745',
+                  color: 'white',
+                  border: 'none',
+                  padding: '10px 20px',
+                  borderRadius: '5px',
+                  cursor: isSavingQuick ? 'not-allowed' : 'pointer',
+                  fontSize: '16px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
+              >
+                {isSavingQuick && (
+                  <span style={{
+                    width: '16px',
+                    height: '16px',
+                    border: '2px solid #ffffff',
+                    borderTop: '2px solid transparent',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite'
+                  }}></span>
+                )}
+                {isSavingQuick ? 'Saving...' : '💾 Quick Save'}
+              </button>
+
               <button
                 onClick={handleGeneratePdf}
                 disabled={isGeneratingPdf}
@@ -164,7 +219,7 @@ const MainPage: React.FC = () => {
                     animation: 'spin 1s linear infinite'
                   }}></span>
                 )}
-                {isGeneratingPdf ? 'Generating PDF...' : 'Print to PDF'}
+                {isGeneratingPdf ? 'Generating PDF...' : '🖨️ Print to PDF'}
               </button>
             </div>
           )}

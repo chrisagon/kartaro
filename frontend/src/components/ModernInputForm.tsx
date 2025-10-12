@@ -34,11 +34,10 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
   // Suggestions de thèmes prédéfinis
   const themeSuggestions = [
     'Intelligence Artificielle',
-    'Développement Web',
-    'Science des Données',
+    'Responsabilité sociale de l\'entreprise',
     'Cybersécurité',
-    'Design UX/UI',
-    'Marketing Digital',
+    'Archéologie',
+    'Jeux vidéos',
     'Entrepreneuriat',
     'Santé et Bien-être',
   ];
@@ -91,7 +90,7 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
               </Typography>
               <TextField
                 fullWidth
-                placeholder="Ex: Intelligence Artificielle, Développement Web..."
+                placeholder="Ex: Intelligence Artificielle, Archéologie, Jeux vidéos..."
                 value={theme}
                 onChange={(e) => setTheme(e.target.value)}
                 disabled={isGenerating}

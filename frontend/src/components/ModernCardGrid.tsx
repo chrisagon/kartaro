@@ -1,14 +1,12 @@
 // src/components/ModernCardGrid.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Typography,
   Box,
   Button,
   Alert,
-  Skeleton,
   useMediaQuery,
   useTheme,
-  Stack,
 } from '@mui/material';
 import {
   Download as DownloadIcon,
@@ -16,9 +14,10 @@ import {
   ViewList as ListIcon,
 } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCards, useGeneration } from '../context/AppContext';
+import { useCards } from '../context/AppContext';
 import { CardData } from '../types/app';
 import ModernCard from './ModernCard';
+import { generatePdfFromCards } from '../services/PdfService';
 
 interface ModernCardGridProps {
   viewMode?: 'grid' | 'list';
@@ -32,28 +31,23 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { cards, selectedCard, setSelectedCard } = useCards();
-  const { isGeneratingPdf, generatePdfForCards } = useGeneration();
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   const handleCardClick = (card: CardData) => {
     setSelectedCard(selectedCard?.id === card.id ? null : card);
   };
 
   const handleDownloadPdf = async () => {
-    if (cards.length > 0) {
-      try {
-        const pdfBlob = await generatePdfForCards(cards);
-        const url = window.URL.createObjectURL(pdfBlob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = `cartes-${Date.now()}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-      } catch (error) {
-        console.error('Erreur lors de la génération du PDF:', error);
-      }
+    if (cards.length === 0 || isGeneratingPdf) return;
+
+    setIsGeneratingPdf(true);
+    try {
+      await generatePdfFromCards(cards, `cards-${Date.now()}.pdf`);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please try again.');
+    } finally {
+      setIsGeneratingPdf(false);
     }
   };
 
@@ -106,7 +100,7 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
             disabled={isGeneratingPdf || cards.length === 0}
             size={isMobile ? 'small' : 'medium'}
           >
-            {isGeneratingPdf ? 'Génération...' : 'Télécharger PDF'}
+            {isGeneratingPdf ? 'Génération...' : 'Télécharger PDF 1'}
           </Button>
 
           {/* Contrôles de vue (si callback fourni) */}
