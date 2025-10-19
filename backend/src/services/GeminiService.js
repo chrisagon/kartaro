@@ -109,7 +109,7 @@ const buildImagePrompt = (card, theme, context) => {
   const titleShort = card.title.substring(0, 80);
   
   // Simple, effective prompt in English
-  return `Professional illustration of "${titleShort}" for ${theme} educational card, Vector Art, Technical illustration, Graphic design, vibrant colors, centered composition, no text or labels, clean minimalist design, digital art`;
+  return `Professional illustration of "${titleShort}" for ${theme} educational card, Vector Art, concept art, Graphic design, vibrant colors, centered composition, no text or labels, clean minimalist design, digital art`;
 };
 
 const generateCards = async (theme, context, numCards = null) => {
