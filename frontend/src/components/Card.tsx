@@ -1,13 +1,35 @@
 import React from 'react';
 import { CardData } from '../types/app';
+import { IconButton } from '@mui/material';
+import { Edit as EditIcon } from '@mui/icons-material';
 
 interface CardProps {
   card: CardData;
+  onEdit?: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ card }) => {
+const Card: React.FC<CardProps> = ({ card, onEdit }) => {
   return (
-    <div style={{ border: '1px solid black', padding: '10px', margin: '10px', width: '200px' }}>
+    <div style={{ border: '1px solid black', padding: '10px', margin: '10px', width: '200px', position: 'relative' }}>
+      {onEdit && (
+        <IconButton
+          onClick={onEdit}
+          size="small"
+          sx={{
+            position: 'absolute',
+            top: 8,
+            right: 8,
+            bgcolor: 'background.paper',
+            boxShadow: 1,
+            '&:hover': {
+              bgcolor: 'primary.light',
+              color: 'white',
+            },
+          }}
+        >
+          <EditIcon fontSize="small" />
+        </IconButton>
+      )}
       {card.image && (
         <img
           src={card.image}

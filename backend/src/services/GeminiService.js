@@ -167,7 +167,12 @@ Generate exactly ${NUM_CARDS} cards with diverse categories.`;
     const text = await response.text();
 
     const cards = parseCardsFromText(text);
-    const cardsWithMetadata = cards.map(card => applyCategoryMetadata(card));
+    // Add unique IDs to each card
+    const cardsWithIds = cards.map((card, index) => ({
+      ...card,
+      id: `${Date.now()}-${index}-${Math.random().toString(36).substr(2, 9)}`,
+    }));
+    const cardsWithMetadata = cardsWithIds.map(card => applyCategoryMetadata(card));
     const enrichedCards = await appendImagesToCards(
       cardsWithMetadata,
       theme,
@@ -345,12 +350,34 @@ const appendImagesToCards = async (cards, theme, context, metrics = null) => {
   return cardsWithImages;
 };
 
+// Regenerate image for a single card
+const regenerateCardImage = async (card, theme = '', context = '') => {
+  if (IMAGE_PROVIDER !== 'stability' || !STABILITY_API_KEY) {
+    console.warn('Stability AI not configured. Using fallback image.');
+    return FALLBACK_IMAGE_DATA_URL;
+  }
+
+  try {
+    const prompt = buildImagePrompt(card, theme, context);
+    console.log(`Regenerating image for "${card.title}"...`);
+    
+    const imageDataUrl = await generateImageWithStability(prompt);
+    console.log(`✓ Image regenerated for "${card.title}"`);
+    
+    return imageDataUrl;
+  } catch (error) {
+    console.error(`Failed to regenerate image for card "${card.title}":`, error.message || error);
+    return FALLBACK_IMAGE_DATA_URL;
+  }
+};
+
 module.exports = {
   generateCards,
   parseCardsFromText,
   applyCategoryMetadata,
   normalizeCategory,
   appendImagesToCards,
+  regenerateCardImage,
   CATEGORY_METADATA,
 };
 

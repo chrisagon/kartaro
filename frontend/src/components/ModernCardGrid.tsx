@@ -14,9 +14,10 @@ import {
   ViewList as ListIcon,
 } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCards } from '../context/AppContext';
+import { useCards, useApp } from '../context/AppContext';
 import { CardData } from '../types/app';
 import ModernCard from './ModernCard';
+import { CardEditModal } from './CardEditModal';
 import { generatePdfFromCards } from '../services/PdfService';
 
 interface ModernCardGridProps {
@@ -30,11 +31,24 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const { cards = [], selectedCard, setSelectedCard } = useCards();
+  const { cards = [], selectedCard, setSelectedCard, updateCard } = useCards();
+  const { state } = useApp();
+  const [editingCard, setEditingCard] = useState<{ card: CardData; index: number } | null>(null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   const handleCardClick = (card: CardData) => {
     setSelectedCard(selectedCard?.id === card.id ? null : card);
+  };
+
+  const handleEditCard = (card: CardData, index: number) => {
+    setEditingCard({ card, index });
+  };
+
+  const handleSaveCard = (updatedCard: CardData) => {
+    console.log('Saving card with ID:', updatedCard.id);
+    console.log('Updated card:', updatedCard);
+    updateCard(updatedCard);
+    setEditingCard(null);
   };
 
   const handleDownloadPdf = async () => {
@@ -148,12 +162,23 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
                 <ModernCard
                   card={card}
                   onClick={() => handleCardClick(card)}
+                  onEdit={() => handleEditCard(card, index)}
                   elevation={selectedCard?.id === card.id ? 4 : 2}
                 />
               </motion.div>
           ))}
         </Box>
       </AnimatePresence>
+
+      {/* Modal d'édition */}
+      <CardEditModal
+        open={editingCard !== null}
+        card={editingCard?.card || null}
+        theme={state.lastGenerationResult?.cards[0]?.category || ''}
+        context={''}
+        onClose={() => setEditingCard(null)}
+        onSave={handleSaveCard}
+      />
 
       {/* Message de succès après génération */}
       {cards.length > 0 && (

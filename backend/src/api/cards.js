@@ -1,5 +1,5 @@
 const express = require('express');
-const { generateCards } = require('../services/GeminiService');
+const { generateCards, regenerateCardImage } = require('../services/GeminiService');
 
 const router = express.Router();
 
@@ -18,6 +18,22 @@ router.post('/generate', async (req, res) => {
   try {
     const result = await generateCards(theme, context, cardsToGenerate);
     res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Regenerate image for a single card
+router.post('/regenerate-image', async (req, res) => {
+  const { card, theme, context } = req.body;
+
+  if (!card || !card.title) {
+    return res.status(400).json({ error: 'Card data is required' });
+  }
+
+  try {
+    const newImageUrl = await regenerateCardImage(card, theme || '', context || '');
+    res.json({ image: newImageUrl });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

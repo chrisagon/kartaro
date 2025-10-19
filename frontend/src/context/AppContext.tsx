@@ -36,11 +36,17 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       return { ...state, cards: [...state.cards, action.payload] };
 
     case 'UPDATE_CARD':
+      console.log('UPDATE_CARD action:', action.payload);
+      console.log('Updating card with ID:', action.payload.id);
+      console.log('Current cards IDs:', state.cards.map(c => c.id));
+      const updatedCards = state.cards.map(card => {
+        const shouldUpdate = card.id === action.payload.id;
+        console.log(`Card ${card.id}: ${shouldUpdate ? 'UPDATING' : 'keeping'}`);
+        return shouldUpdate ? action.payload : card;
+      });
       return {
         ...state,
-        cards: state.cards.map(card =>
-          card.id === action.payload.id ? action.payload : card
-        ),
+        cards: updatedCards,
         selectedCard: state.selectedCard?.id === action.payload.id ? action.payload : state.selectedCard,
       };
 

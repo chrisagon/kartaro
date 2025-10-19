@@ -2,14 +2,30 @@ import React, { useState } from 'react';
 import { CardData } from '../types/app';
 import * as ApiService from '../services/ApiService';
 import Card from './Card';
+import { CardEditModal } from './CardEditModal';
 import './CardGrid.css';
 
 interface CardGridProps {
   cards: CardData[];
+  theme?: string;
+  context?: string;
+  onUpdateCard?: (index: number, updatedCard: CardData) => void;
 }
 
-const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
+const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, onUpdateCard }) => {
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [editingCard, setEditingCard] = useState<{ card: CardData; index: number } | null>(null);
+
+  const handleEditCard = (card: CardData, index: number) => {
+    setEditingCard({ card, index });
+  };
+
+  const handleSaveCard = (updatedCard: CardData) => {
+    if (editingCard && onUpdateCard) {
+      onUpdateCard(editingCard.index, updatedCard);
+    }
+    setEditingCard(null);
+  };
 
   const generatePdf = async () => {
     if (cards.length === 0 || isGeneratingPdf) return;
@@ -60,10 +76,24 @@ const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
         </button>
       </div>
       <div className="card-grid">
-        {cards.map((card) => (
-          <Card key={card.id} card={card} />
+        {cards.map((card, index) => (
+          <Card 
+            key={card.id} 
+            card={card} 
+            onEdit={() => handleEditCard(card, index)}
+          />
         ))}
       </div>
+
+      {/* Modal d'édition */}
+      <CardEditModal
+        open={editingCard !== null}
+        card={editingCard?.card || null}
+        theme={theme}
+        context={context}
+        onClose={() => setEditingCard(null)}
+        onSave={handleSaveCard}
+      />
     </div>
   );
 };

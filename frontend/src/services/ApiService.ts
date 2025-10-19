@@ -29,6 +29,13 @@ export function generateCards(theme: string, context: string, numCards?: number)
   });
 }
 
+export function regenerateCardImage(card: CardData, theme?: string, context?: string): Promise<{ image: string }> {
+  return request<{ image: string }>('/cards/regenerate-image', {
+    method: 'POST',
+    data: { card, theme, context },
+  });
+}
+
 export function getCollections(): Promise<CardCollection[]> {
   return request<CardCollection[]>('/collections');
 }

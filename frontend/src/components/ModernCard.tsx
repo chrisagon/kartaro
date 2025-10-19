@@ -9,7 +9,9 @@ import {
   Box,
   Chip,
   Fade,
+  IconButton,
 } from '@mui/material';
+import { Edit as EditIcon } from '@mui/icons-material';
 import { CardData } from '../types/app';
 import { getCategoryColor } from '../constants/categories';
 
@@ -39,6 +41,7 @@ export const ModernCard: React.FC<ModernCardProps> = ({
           flexDirection: 'column',
           cursor: onClick ? 'pointer' : 'default',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          position: 'relative',
           '&:hover': {
             transform: onClick ? 'translateY(-8px)' : 'none',
             elevation: elevation + 2,
@@ -49,6 +52,31 @@ export const ModernCard: React.FC<ModernCardProps> = ({
           borderTop: `4px solid ${categoryColor}`,
         }}
       >
+        {/* Bouton d'édition */}
+        {onEdit && (
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit();
+            }}
+            size="small"
+            sx={{
+              position: 'absolute',
+              top: 8,
+              right: 8,
+              bgcolor: 'background.paper',
+              boxShadow: 2,
+              zIndex: 1,
+              '&:hover': {
+                bgcolor: 'primary.main',
+                color: 'white',
+              },
+            }}
+          >
+            <EditIcon fontSize="small" />
+          </IconButton>
+        )}
+
         {card.image && (
           <CardMedia
             component="img"
