@@ -104,30 +104,15 @@ const parseJsonArray = (raw) => {
 };
 
 const buildImagePrompt = (card, theme, context) => {
-  const categoryContext = card.categoryOriginal || card.category;
-  return `Create a professional, high-quality illustration for an educational workshop card.
-
-Title: "${card.title}"
-Description: ${card.description}
-Category: ${categoryContext}
-Theme: ${theme}
-Context: ${context}
-
-Style requirements:
-- Modern flat illustration style with bold, clean shapes
-- Rich, vibrant colors with ${card.categoryColor} as primary accent
-- High contrast lighting for clarity
-- Main subject centered and clearly visible
-- Professional and visually appealing design
-- NO text, labels, or typography anywhere in the image
-- Square format (1:1 aspect ratio), 1024x1024 pixels
-- Clean, minimalist composition suitable for printing
-- Illustrative style similar to modern tech/education materials
-
-The illustration should clearly and beautifully represent the concept of "${card.title}" in the context of ${theme}.`;
+  // Keep prompt under 2000 chars for Stability AI
+  // Use only title and key style keywords in English
+  const titleShort = card.title.substring(0, 80);
+  
+  // Simple, effective prompt in English
+  return `Professional illustration of "${titleShort}" for ${theme} educational card, Vector Art, Technical illustration, Graphic design, vibrant colors, centered composition, no text or labels, clean minimalist design, digital art`;
 };
 
-const generateCards = async (theme, context) => {
+const generateCards = async (theme, context, numCards = null) => {
   if (!genAI) {
     throw new Error('Gemini client is not initialised. Please set GEMINI_API_KEY.');
   }
@@ -141,7 +126,10 @@ const generateCards = async (theme, context) => {
   try {
     const textModel = genAI.getGenerativeModel({ model: TEXT_MODEL });
 
-    const NUM_CARDS = parseInt(process.env.NUM_CARDS_TO_GENERATE || '10', 10);
+    // Use provided numCards or fallback to env variable (default 10)
+    const NUM_CARDS = numCards !== null 
+      ? numCards 
+      : parseInt(process.env.NUM_CARDS_TO_GENERATE || '10', 10);
     
     const prompt = `Generate a JSON array of exactly ${NUM_CARDS} workshop cards for the theme "${theme}" and context "${context}".
 
@@ -290,7 +278,7 @@ const generateImageWithStability = async (prompt) => {
         width: 1024,
         steps: 30,
         samples: 1,
-        style_preset: '3d-model',
+        style_preset: 'digital-art'
       }),
     }
   );

@@ -30,7 +30,7 @@ import { generatePdfFromCards } from '../services/PdfService';
 import * as ApiService from '../services/ApiService';
 
 export const ModernMainPage: React.FC = () => {
-  const { cards } = useCards();
+  const { cards = [] } = useCards();
   const { getCollections } = useCollections();
   const { state } = useApp();
   

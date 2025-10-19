@@ -4,14 +4,19 @@ const { generateCards } = require('../services/GeminiService');
 const router = express.Router();
 
 router.post('/generate', async (req, res) => {
-  const { theme, context } = req.body;
+  const { theme, context, numCards } = req.body;
 
   if (!theme || !context) {
     return res.status(400).json({ error: 'Theme and context are required' });
   }
 
+  // Validate numCards (optional, default from env, min 1, max 200)
+  const cardsToGenerate = numCards 
+    ? Math.min(Math.max(parseInt(numCards, 10), 1), 200) 
+    : undefined;
+
   try {
-    const result = await generateCards(theme, context);
+    const result = await generateCards(theme, context, cardsToGenerate);
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -29,6 +29,7 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
   const { isGenerating, generateCards } = useGeneration();
   const [theme, setTheme] = useState('');
   const [context, setContext] = useState('');
+  const [numCards, setNumCards] = useState<number>(10);
   const [error, setError] = useState<string | null>(null);
 
   // Suggestions de thèmes prédéfinis
@@ -53,7 +54,7 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
     setError(null);
 
     try {
-      await generateCards(theme.trim(), context.trim());
+      await generateCards(theme.trim(), context.trim(), numCards);
     } catch (err) {
       setError('Erreur lors de la génération. Veuillez réessayer.');
       console.error('Erreur de génération:', err);
@@ -146,6 +147,31 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
               />
               <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
                 Décrivez le contexte détaillé pour des cartes plus pertinentes
+              </Typography>
+            </Box>
+
+            {/* Nombre de cartes */}
+            <Box>
+              <Typography variant="subtitle1" gutterBottom fontWeight={500}>
+                🔢 Nombre de cartes
+              </Typography>
+              <TextField
+                fullWidth
+                type="number"
+                placeholder="Nombre de cartes à générer"
+                value={numCards}
+                onChange={(e) => setNumCards(Math.min(Math.max(parseInt(e.target.value) || 10, 1), 200))}
+                disabled={isGenerating}
+                variant="outlined"
+                inputProps={{ min: 1, max: 200, step: 1 }}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    backgroundColor: 'background.paper',
+                  },
+                }}
+              />
+              <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+                Choisissez entre 1 et 200 cartes (par défaut: 10)
               </Typography>
             </Box>
 

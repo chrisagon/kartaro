@@ -22,10 +22,10 @@ async function request<T>(url: string, options?: any): Promise<T> {
   }
 }
 
-export function generateCards(theme: string, context: string): Promise<GenerationResult> {
+export function generateCards(theme: string, context: string, numCards?: number): Promise<GenerationResult> {
   return request<GenerationResult>('/cards/generate', {
     method: 'POST',
-    data: { theme, context },
+    data: { theme, context, numCards },
   });
 }
 

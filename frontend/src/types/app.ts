@@ -98,7 +98,7 @@ export type AppAction =
 
 // Contexte pour les fonctions API
 export interface ApiContextType {
-  generateCards: (theme: string, context: string) => Promise<GenerationResult>;
+  generateCards: (theme: string, context: string, numCards?: number) => Promise<GenerationResult>;
   getCollections: () => Promise<CardCollection[]>;
   getCollectionById: (id: string) => Promise<CardCollection>;
   createCollection: (collection: Omit<CardCollection, 'id' | 'createdAt' | 'updatedAt'>) => Promise<CardCollection>;

@@ -4392,6 +4392,978 @@
           "image": "/images/collections/1760300069642-n0lkr9.png"
         }
       ]
+    },
+    {
+      "id": "1760902064823",
+      "name": "Archéologie 41",
+      "cards": [
+        {
+          "title": "Recherche de cartes anciennes",
+          "description": "Explorer les archives pour trouver des cartes historiques du site. Cela peut révéler des structures disparues ou des configurations de terrain antérieures.",
+          "icon": "🗺️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064827-gld8n.png"
+        },
+        {
+          "title": "Consultation de bibliographie",
+          "description": "Analyser les publications existantes et les études antérieures sur la région. Identifier les découvertes précédentes et les hypothèses scientifiques.",
+          "icon": "📚",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064843-f9ka6.png"
+        },
+        {
+          "title": "Analyse de sources écrites",
+          "description": "Décortiquer des textes anciens, des chroniques ou des documents administratifs pour glaner des indices sur l'histoire du site.",
+          "icon": "📜",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064851-cezgkp.png"
+        },
+        {
+          "title": "Recherche cartographique numérique",
+          "description": "Utiliser des bases de données géographiques et des outils SIG pour croiser des informations topographiques et historiques.",
+          "icon": "💻",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064857-3jnno.png"
+        },
+        {
+          "title": "Prospection pédestre",
+          "description": "Parcourir le terrain à la recherche d'indices en surface : tessons de poterie, éclats de silex, anomalies de végétation.",
+          "icon": "🚶",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064863-6d8p7t.png"
+        },
+        {
+          "title": "Utilisation de détecteurs de métaux",
+          "description": "Balayer le sol avec un détecteur pour repérer la présence d'objets métalliques enfouis potentiels.",
+          "icon": "🧲",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064869-9jby3d.png"
+        },
+        {
+          "title": "Photographie aérienne par drone",
+          "description": "Survoler le site avec un drone équipé d'une caméra pour obtenir une vue d'ensemble et identifier des anomalies de relief ou de végétation.",
+          "icon": "🚁",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064875-0nvj6m.png"
+        },
+        {
+          "title": "Relevé topographique par laser",
+          "description": "Utiliser un scanner laser pour créer un modèle 3D précis du terrain, révélant les moindres reliefs.",
+          "icon": "📏",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064883-ozcdqai.png"
+        },
+        {
+          "title": "Géoradar (GPR)",
+          "description": "Employer un géoradar pour sonder le sous-sol et détecter des structures enfouies grâce aux variations d'ondes électromagnétiques.",
+          "icon": "📡",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064891-svdiqo.png"
+        },
+        {
+          "title": "Magnétométrie",
+          "description": "Mesurer les variations du champ magnétique terrestre causées par des structures enfouies ou des activités humaines passées.",
+          "icon": "🧲",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064897-7pv96g.png"
+        },
+        {
+          "title": "Sondage archéologique",
+          "description": "Creuser de petites tranchées ciblées pour confirmer la présence de vestiges et estimer leur profondeur.",
+          "icon": "🕳️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064903-6qf1ur.png"
+        },
+        {
+          "title": "Caractérisation des niveaux",
+          "description": "Analyser la nature des sols et des couches sédimentaires pour comprendre leur formation et leur âge relatif.",
+          "icon": "🔬",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064910-l17w9s.png"
+        },
+        {
+          "title": "Évaluation de l'étendue des vestiges",
+          "description": "Déterminer la superficie et la répartition des structures identifiées avant de planifier une fouille.",
+          "icon": "📐",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064923-lktjr.png"
+        },
+        {
+          "title": "Fouille stratigraphique",
+          "description": "Excavation minutieuse en respectant l'ordre des couches de terre pour documenter l'histoire du site.",
+          "icon": "⛏️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064933-bnzsw.png"
+        },
+        {
+          "title": "Documentation photographique",
+          "description": "Immortaliser chaque étape de la fouille, les structures dégagées et les objets trouvés avec précision.",
+          "icon": "📸",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064942-4cbdrk.png"
+        },
+        {
+          "title": "Prélèvement d'échantillons",
+          "description": "Collecter des échantillons de terre, de charbon ou d'os pour des analyses scientifiques ultérieures.",
+          "icon": "🧪",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064949-j0m6nd.png"
+        },
+        {
+          "title": "Dessin de plan et de coupe",
+          "description": "Réaliser des relevés graphiques détaillés des structures dégagées et de la stratigraphie.",
+          "icon": "✍️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064956-uayt3j.png"
+        },
+        {
+          "title": "Nettoyage des objets",
+          "description": "Préserver les objets découverts de la dégradation en les nettoyant délicatement.",
+          "icon": "🧼",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064962-ow86up.png"
+        },
+        {
+          "title": "Conservation des artefacts",
+          "description": "Mettre en place les traitements nécessaires pour assurer la pérennité des objets fragiles ou en cours de décomposition.",
+          "icon": "🛡️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064969-wtnap.png"
+        },
+        {
+          "title": "Analyse typologique",
+          "description": "Classer les objets selon leur forme, leur matière et leur style pour déterminer leur fonction et leur datation.",
+          "icon": "🔎",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064976-oux7p5.png"
+        },
+        {
+          "title": "Datation par radiocarbone",
+          "description": "Analyser la teneur en carbone 14 d'un échantillon organique pour en déterminer l'âge.",
+          "icon": "⏳",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064988-l8wnan.png"
+        },
+        {
+          "title": "Analyses interdisciplinaires",
+          "description": "Collaborer avec d'autres experts (anthropologues, botanistes, géologues) pour interpréter les découvertes.",
+          "icon": "🤝",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902064994-ytq5ga.png"
+        },
+        {
+          "title": "Mise en base de données",
+          "description": "Enregistrer systématiquement toutes les informations collectées : localisations, descriptions, analyses.",
+          "icon": "💾",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902065000-bl2rhj.png"
+        },
+        {
+          "title": "Archivage des données",
+          "description": "Conserver soigneusement tous les documents, photographies et rapports liés à la fouille.",
+          "icon": "🗄️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760902065006-inv543.png"
+        },
+        {
+          "title": "Le plan du site",
+          "description": "Un document essentiel pour visualiser l'emplacement et l'étendue des découvertes potentielles.",
+          "icon": "📌",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760902065012-hkeb4j.png"
+        },
+        {
+          "title": "Les archives historiques",
+          "description": "Des documents précieux pour comprendre le contexte passé du site et orienter la recherche.",
+          "icon": "📂",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760902065018-o1umh5.png"
+        },
+        {
+          "title": "Les instruments de prospection",
+          "description": "Appareils utilisés pour sonder le sous-sol sans le perturber directement.",
+          "icon": "🔦",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760902065025-ctab1h.png"
+        },
+        {
+          "title": "Le matériel de sondage",
+          "description": "Outils de petite taille pour réaliser des investigations préliminaires ciblées.",
+          "icon": "🥄",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760902065031-itgqh6g.png"
+        },
+        {
+          "title": "Le site archéologique",
+          "description": "Le lieu concret où les vestiges d'activités humaines passées sont enfouis.",
+          "icon": "🏛️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760902065038-mgs94.png"
+        },
+        {
+          "title": "La stratigraphie",
+          "description": "L'empilement ordonné des couches de sédiments qui racontent l'histoire du site.",
+          "icon": "🧱",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760902065044-xdu5w.png"
+        },
+        {
+          "title": "Le vestige archéologique",
+          "description": "Toute trace matérielle laissée par l'activité humaine dans le passé.",
+          "icon": "💎",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760902065051-3u84ld.png"
+        },
+        {
+          "title": "L'artefact",
+          "description": "Un objet fabriqué ou modifié par l'homme, découvert lors d'une fouille.",
+          "icon": "🏺",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760902065056-7v3i5e.png"
+        },
+        {
+          "title": "La méthode scientifique",
+          "description": "L'approche rigoureuse et systématique pour comprendre le passé à travers ses traces matérielles.",
+          "icon": "💡",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760902065061-54qov.png"
+        },
+        {
+          "title": "Le carnet de terrain",
+          "description": "Le compagnon indispensable de l'archéologue pour noter observations et découvertes sur le vif.",
+          "icon": "📝",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760902065067-2odoqb.png"
+        },
+        {
+          "title": "L'archéologue pédagogue",
+          "description": "L'expert qui rend l'archéologie accessible et passionnante pour tous les publics.",
+          "icon": "👨‍🏫",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760902065072-746ta7.png"
+        },
+        {
+          "title": "La documentation photographique",
+          "description": "Un enregistrement visuel crucial pour la restitution des découvertes et des méthodes.",
+          "icon": "📷",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760902065078-1uv3i.png"
+        },
+        {
+          "title": "Le plan de fouille",
+          "description": "La représentation détaillée de ce qui est mis au jour, couche par couche.",
+          "icon": "🗺️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760902065084-w08z7g.png"
+        },
+        {
+          "title": "Le profil stratigraphique",
+          "description": "Le dessin d'une coupe verticale du sol montrant l'agencement des différentes couches.",
+          "icon": "📏",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760902065090-09iz6d.png"
+        },
+        {
+          "title": "Le laboratoire d'analyses",
+          "description": "Un lieu dédié aux études scientifiques approfondies des matériaux découverts.",
+          "icon": "🔬",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760902065095-furool.png"
+        },
+        {
+          "title": "La datation",
+          "description": "Déterminer l'âge des vestiges et des objets pour les replacer dans leur contexte chronologique.",
+          "icon": "⏱️",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760902065101-yvr4nv.png"
+        },
+        {
+          "title": "L'interprétation des données",
+          "description": "Donner du sens aux vestiges et aux analyses pour reconstituer le passé.",
+          "icon": "🤔",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760902065107-emmteb.png"
+        },
+        {
+          "title": "La prospection aérienne",
+          "description": "Observer le terrain depuis le ciel pour détecter des anomalies invisibles au sol.",
+          "icon": "⬆️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760902065115-ab0uxg.png"
+        },
+        {
+          "title": "Le diagnostic",
+          "description": "Une phase d'exploration limitée pour évaluer l'intérêt archéologique d'un site avant une fouille majeure.",
+          "icon": "⚖️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760902065121-u39eim.png"
+        },
+        {
+          "title": "La fouille",
+          "description": "L'opération de déblaiement méthodique visant à dégager et documenter les vestiges.",
+          "icon": " excavate",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760902065127-7lx5gbl.png"
+        },
+        {
+          "title": "L'étude post-fouille",
+          "description": "L'ensemble des travaux réalisés en laboratoire après la phase de terrain.",
+          "icon": "💡",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760902065133-lr0mb3.png"
+        },
+        {
+          "title": "La typologie céramique",
+          "description": "L'étude et la classification des fragments de poterie pour en déterminer l'origine et la date.",
+          "icon": "🏺",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760902065140-g29atr.png"
+        },
+        {
+          "title": "L'indice géophysique",
+          "description": "Un signal enregistré par un appareil indiquant une anomalie potentiellement liée à des vestiges enfouis.",
+          "icon": "❓",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760902065146-mry69s.png"
+        },
+        {
+          "title": "Le sondage positif",
+          "description": "Un sondage qui révèle la présence de vestiges archéologiques.",
+          "icon": "✅",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760902065151-yr2w27.png"
+        },
+        {
+          "title": "Le sondage négatif",
+          "description": "Un sondage qui ne révèle pas de vestiges archéologiques dans la zone explorée.",
+          "icon": "❌",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760902065157-k78ss.png"
+        },
+        {
+          "title": "La découverte majeure",
+          "description": "La trouvaille d'un objet exceptionnel ou d'une structure d'une grande importance historique.",
+          "icon": "🌟",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760902065163-u7z9nj.png"
+        },
+        {
+          "title": "La mauvaise conservation",
+          "description": "Un objet fragile qui se détériore lors de la fouille ou du nettoyage.",
+          "icon": "🥀",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760902065170-4duuti.png"
+        },
+        {
+          "title": "L'analyse interdisciplinaire réussie",
+          "description": "Une collaboration fructueuse avec d'autres spécialistes apportant un éclairage nouveau sur les découvertes.",
+          "icon": "🧠",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760902065176-3f3c9p.png"
+        },
+        {
+          "title": "Le manque de sources",
+          "description": "L'absence d'informations écrites ou cartographiques rendant la recherche documentaire plus ardue.",
+          "icon": "🤷",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760902065225-al58hf.png"
+        },
+        {
+          "title": "Le bon état de conservation",
+          "description": "Des vestiges ou des objets retrouvés dans un état excellent, facilitant leur étude.",
+          "icon": "💎",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760902065233-o5eps.png"
+        }
+      ],
+      "createdAt": "2025-10-19T19:27:44.823Z",
+      "updatedAt": "2025-10-19T19:27:44.823Z",
+      "description": ""
+    },
+    {
+      "id": "1760903053400",
+      "name": "Archéologie 42",
+      "cards": [
+        {
+          "title": "Exploration des Archives Anciennes",
+          "description": "Plonge dans les bibliothèques et les archives pour dénicher des cartes, des journaux et des récits qui peuvent révéler des indices sur des sites oubliés. Ces documents sont les premières clés pour comprendre l'histoire d'un lieu.",
+          "icon": "📚",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053415-ru9ngj.png"
+        },
+        {
+          "title": "Cartographie Historique Détaillée",
+          "description": "Analyse et compare différentes cartes anciennes et modernes pour repérer les changements du paysage et les zones potentiellement intéressantes. La cartographie est essentielle pour contextualiser la recherche.",
+          "icon": "🗺️",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760903053477-fd299m.png"
+        },
+        {
+          "title": "Bibliographies Essentielles",
+          "description": "Constitue une liste exhaustive des publications scientifiques et des ouvrages de référence traitant de la région ou de la période étudiée. Une bonne bibliographie guide tes recherches et assure leur rigueur.",
+          "icon": "📖",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760903053490-v9kmri.png"
+        },
+        {
+          "title": "Interrogation des Sources Primaires",
+          "description": "Examine directement les documents originaux comme des lettres, des testaments ou des registres pour obtenir des informations brutes et non interprétées. Ces sources offrent un aperçu direct du passé.",
+          "icon": "📜",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053499-5xmkaj.png"
+        },
+        {
+          "title": "Relevé Topographique Précis",
+          "description": "Utilise des instruments de mesure pour enregistrer avec exactitude le relief du terrain et les éléments naturels présents. Un relevé topographique est la base de toute étude de site.",
+          "icon": "📏",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760903053507-k5u6.png"
+        },
+        {
+          "title": "Analyse Photographique Aérienne",
+          "description": "Étudie les photographies aériennes, anciennes et récentes, pour détecter des anomalies dans la végétation ou le sol qui pourraient indiquer des structures enfouies. C'est une technique non invasive très efficace.",
+          "icon": "📸",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053514-174hy.png"
+        },
+        {
+          "title": "Utilisation des Drones Archéologiques",
+          "description": "Déploie des drones équipés de capteurs spéciaux pour cartographier le site en haute résolution et identifier des éléments cachés. Les drones permettent une vue d'ensemble rapide et détaillée.",
+          "icon": "🚁",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760903053520-rchcyr.png"
+        },
+        {
+          "title": "Prospection Géophysique",
+          "description": "Emploie des méthodes comme le radar de pénétration de sol ou la magnétométrie pour sonder le sous-sol sans creuser. Ces techniques révèlent des variations du sol qui peuvent signaler des vestiges.",
+          "icon": "📡",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760903053531-jndidt.png"
+        },
+        {
+          "title": "Identification de Signatures Géophysiques",
+          "description": "Interprète les données issues des prospections géophysiques pour distinguer les anomalies d'origine naturelle de celles potentiellement archéologiques. Cette étape demande une bonne connaissance des sols et des structures.",
+          "icon": "🔍",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053538-a6edef.png"
+        },
+        {
+          "title": "Sondages Préliminaires Stratégiques",
+          "description": "Réalise de petits sondages manuels pour vérifier la présence de vestiges identifiés par la prospection non invasive. Ces sondages confirment ou infirment les hypothèses initiales.",
+          "icon": "⛏️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760903053545-ikcfts.png"
+        },
+        {
+          "title": "Caractérisation des Vestiges",
+          "description": "Évalue la nature, la profondeur et l'étendue des découvertes faites lors des sondages. Ce diagnostic permet de planifier la suite des opérations.",
+          "icon": "📊",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760903053554-7c3x5r.png"
+        },
+        {
+          "title": "Planification de la Fouille",
+          "description": "Élabore un plan détaillé de la fouille, incluant les zones à explorer, les méthodes d'excavation et les objectifs scientifiques. Une bonne planification maximise l'efficacité et la pertinence des recherches.",
+          "icon": "📋",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760903053561-mqjf9.png"
+        },
+        {
+          "title": "Respect de la Stratigraphie",
+          "description": "Excave le site couche par couche, en veillant à respecter l'ordre chronologique des dépôts. La stratigraphie est le livre d'histoire du site, et son respect est fondamental.",
+          "icon": "⏳",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760903053567-w2xz06.png"
+        },
+        {
+          "title": "Documentation Méticuleuse",
+          "description": "Enregistre chaque étape de la fouille : croquis, photographies, relevés, descriptions textuelles. Une documentation complète assure la reproductibilité et la transmission des connaissances.",
+          "icon": "📝",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053575-vqfmv.png"
+        },
+        {
+          "title": "Dégagement des Structures",
+          "description": "Retire la terre avec soin pour mettre au jour et préserver les structures architecturales, les fosses ou les traces d'activités humaines. L'objectif est de révéler le passé dans son contexte.",
+          "icon": "🧱",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053583-si98bb.png"
+        },
+        {
+          "title": "Unités Stratigraphiques Claires",
+          "description": "Définit et documente chaque niveau de terre ou de débris comme une unité distincte, portant des informations sur une période ou un événement spécifique. Les unités stratigraphiques sont les chapitres de l'histoire du site.",
+          "icon": "🔢",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760903053589-fo24wr.png"
+        },
+        {
+          "title": "Collecte Systématique des Artefacts",
+          "description": "Récupère tous les objets découverts en notant précisément leur localisation et leur profondeur. Chaque artefact est un témoin direct des activités passées.",
+          "icon": "🏺",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053596-ra2sj9.png"
+        },
+        {
+          "title": "Nettoyage des Objets Trouvés",
+          "description": "Utilise des techniques douces pour retirer la terre et les incrustations des objets, révélant ainsi leurs détails et matériaux. Le nettoyage est une première étape essentielle de leur étude.",
+          "icon": "💧",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760903053604-7zqy3.png"
+        },
+        {
+          "title": "Conservation Préventive",
+          "description": "Applique des traitements pour stabiliser les objets fragiles et prévenir leur dégradation future. La conservation assure la pérennité des découvertes pour les générations futures.",
+          "icon": "🛡️",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053614-04aa5h.png"
+        },
+        {
+          "title": "Analyses Typologiques Détaillées",
+          "description": "Classe les objets par forme, matière, style et technique de fabrication pour comprendre leur usage et leur provenance. La typologie aide à dater les assemblages et à retracer les échanges.",
+          "icon": "🗂️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760903053624-u6emsm.png"
+        },
+        {
+          "title": "Datation Radiométrique Fiable",
+          "description": "Utilise des méthodes comme la datation au carbone 14 sur des matériaux organiques pour déterminer l'âge précis des vestiges. Cette technique offre une chronologie scientifique des sites.",
+          "icon": "☢️",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760903053632-jobyjzu.png"
+        },
+        {
+          "title": "Analyses Interdisciplinaires Approfondies",
+          "description": "Collabore avec des spécialistes (anthropologues, géologues, botanistes) pour interpréter les objets et les données sous différents angles. La collaboration enrichit grandement la compréhension du site.",
+          "icon": "🤝",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053639-b1j4lb.png"
+        },
+        {
+          "title": "Base de Données Archéologiques Complète",
+          "description": "Crée un système de gestion des informations collectées, incluant les données de fouille, les analyses d'objets et les recherches documentaires. Une base de données bien organisée est cruciale pour l'analyse globale.",
+          "icon": "💻",
+          "category": "Composants",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1760903053646-pu1zxk.png"
+        },
+        {
+          "title": "Reconstruction Virtuelle 3D",
+          "description": "Modélise en trois dimensions les structures et les objets découverts pour visualiser le site tel qu'il était autrefois. La modélisation 3D offre une nouvelle perspective sur le passé.",
+          "icon": "🌐",
+          "category": "Actions",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1760903053654-3duofl.png"
+        },
+        {
+          "title": "Interprétation Scientifique Finale",
+          "description": "Synthétise toutes les données recueillies pour proposer une interprétation cohérente et argumentée de l'histoire du site et de ses occupations. C'est l'aboutissement de tout le processus archéologique.",
+          "icon": "💡",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760903053662-cgq8ha.png"
+        },
+        {
+          "title": "Rédaction d'un Rapport Scientifique",
+          "description": "Consigne les résultats de la recherche dans un document structuré, destiné à la communauté scientifique et aux institutions. Le rapport est le moyen principal de partager les découvertes.",
+          "icon": "📄",
+          "category": "Étapes",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1760903053669-250nhk.png"
+        },
+        {
+          "title": "Archéologie Préventive",
+          "description": "Intervient avant des travaux d'aménagement pour identifier et étudier les vestiges susceptibles d'être détruits. Son rôle est de sauvegarder le patrimoine avant qu'il ne disparaisse.",
+          "icon": "🚧",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760903053676-cxn54.png"
+        },
+        {
+          "title": "Archéologie Programmée",
+          "description": "Mène des recherches planifiées sur des sites ou des thématiques spécifiques, motivées par des questions scientifiques. C'est une archéologie de découverte et de connaissance approfondie.",
+          "icon": "🌟",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760903053687-3pcjl.png"
+        },
+        {
+          "title": "Archéologie d'Urgence",
+          "description": "Intervient rapidement sur des sites menacés par des catastrophes naturelles ou des pillages pour sauver ce qui peut l'être. Sa mission est de réagir aux situations critiques.",
+          "icon": "🚨",
+          "category": "Concepts",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1760903053696-y9utth.png"
+        },
+        {
+          "title": "Le Géospatialiste Expert",
+          "description": "Professionnel qui maîtrise les outils de Sistemas d'Information Géographique (SIG) pour analyser et représenter spatialement les données archéologiques. Il transforme des points en cartes parlantes.",
+          "icon": "📍",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760903053704-mnuwi.png"
+        },
+        {
+          "title": "Le Photogrammètre Précis",
+          "description": "Spécialiste de la création de modèles 3D à partir de photographies, essentiel pour la documentation et la visualisation des découvertes. Il redonne vie aux vestiges en volumes.",
+          "icon": "📐",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760903053710-0s27jj.png"
+        },
+        {
+          "title": "Le Conservateur Patient",
+          "description": "Expert en traitement et stabilisation des matériaux anciens pour assurer leur préservation à long terme. Son rôle est de ralentir le temps et de stopper la dégradation.",
+          "icon": "⏳",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760903053717-ag8fd9.png"
+        },
+        {
+          "title": "Le Typologue Grübeur",
+          "description": "Archéologue spécialisé dans l'identification et la classification des objets par leurs caractéristiques. Il déchiffre les secrets des formes et des matières.",
+          "icon": "🧐",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760903053725-jp7di.png"
+        },
+        {
+          "title": "Le Radiologue de l'Histoire",
+          "description": "Scientifique qui utilise des techniques de datation comme le carbone 14 pour établir la chronologie des sites. Il est le gardien du temps archéologique.",
+          "icon": "🕰️",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760903053734-qo7lh8.png"
+        },
+        {
+          "title": "Le Stratigraphe Rigoureux",
+          "description": "Archéologue qui analyse l'empilement des couches de terre pour reconstituer l'histoire d'un site. Il lit le passé dans le sol.",
+          "icon": "📈",
+          "category": "Personas",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1760903053744-7lg0a9.png"
+        },
+        {
+          "title": "Les Zones Protégées",
+          "description": "Sites archéologiques reconnus et bénéficiant de mesures de protection pour leur valeur historique. Leur préservation est une priorité nationale.",
+          "icon": "🏛️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760903053751-fbcnqb.png"
+        },
+        {
+          "title": "Les Sites Subaquatiques",
+          "description": "Vestiges archéologiques situés sous l'eau, nécessitant des techniques de plongée et de fouille spécifiques. Ils révèlent des pans méconnus de notre histoire maritime.",
+          "icon": "🚢",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760903053758-3pxz6m.png"
+        },
+        {
+          "title": "Les Couches Fertiles",
+          "description": "Sols riches en matière organique et en objets, indiquant une occupation humaine prolongée. Ces couches sont des trésors d'informations.",
+          "icon": "🌿",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760903053764-vastoe.png"
+        },
+        {
+          "title": "Les Fosses de Rejet",
+          "description": "Cavités utilisées pour jeter des déchets, fournissant des indices précieux sur l'alimentation et les habitudes de vie des anciens habitants. Ces 'poubelles' du passé sont pleines d'enseignements.",
+          "icon": "🗑️",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760903053819-df9tal.png"
+        },
+        {
+          "title": "Les Traces d'Activités",
+          "description": "Marques laissées par les activités humaines, comme des foyers, des ateliers ou des chemins. Elles racontent comment les gens vivaient et travaillaient.",
+          "icon": "👣",
+          "category": "Locations/Sites",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1760903053827-pucue.png"
+        },
+        {
+          "title": "Les Poteries Brisées",
+          "description": "Fragments de céramiques qui, une fois analysés, aident à dater un site et à comprendre les échanges commerciaux. Chaque tesson est une pièce de puzzle.",
+          "icon": "🏺",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760903053835-s9b3ge.png"
+        },
+        {
+          "title": "Les Outils Oubliés",
+          "description": "Instruments en pierre, en métal ou en os utilisés par les hommes préhistoriques ou antiques. Ils témoignent de leur ingéniosité et de leur savoir-faire.",
+          "icon": "🔧",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760903053842-ja0fd.png"
+        },
+        {
+          "title": "Les Monnaies Anciennes",
+          "description": "Pièces métalliques qui donnent des informations précises sur les périodes de circulation, les pouvoirs en place et les échanges économiques. Elles sont des marqueurs chronologiques fiables.",
+          "icon": "💰",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760903053850-87snd6.png"
+        },
+        {
+          "title": "Les Sépultures",
+          "description": "Tombes contenant des restes humains et des offrandes, offrant des informations sur les rites funéraires, les croyances et la démographie. Elles nous parlent des défunts et de leurs espoirs.",
+          "icon": "⚰️",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760903053859-eoo1ij.png"
+        },
+        {
+          "title": "Les Murs et Fondations",
+          "description": "Vestiges d'anciennes constructions qui révèlent l'architecture, l'organisation spatiale et la taille des habitats. Ils sont les squelettes des villes et des maisons d'autrefois.",
+          "icon": "🏠",
+          "category": "Lieux/Sites et Objets",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1760903053868-3bikgp.png"
+        },
+        {
+          "title": "Bonus: Découverte Exceptionnelle",
+          "description": "Un artefact rare ou une structure inédite qui enrichit considérablement la compréhension du site et ouvre de nouvelles perspectives de recherche. C'est le coup de chance qui fait avancer la science.",
+          "icon": "💎",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760903053874-p12kf.png"
+        },
+        {
+          "title": "Malus: Pillage du Site",
+          "description": "Des voleurs ont dégradé le site, emportant des objets précieux et rendant l'étude difficile, voire impossible. La destruction du patrimoine est une perte irréparable.",
+          "icon": "💥",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760903053881-34w6e8.png"
+        },
+        {
+          "title": "Bonus: Financement Assuré",
+          "description": "Obtention d'un financement suffisant pour mener à bien toutes les phases de l'étude, y compris les analyses les plus coûteuses. La sécurité financière permet une recherche de qualité.",
+          "icon": "💰",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760903053890-d2r2yu.png"
+        },
+        {
+          "title": "Malus: Conditions Météorologiques Défavorables",
+          "description": "Pluie intense, chaleur extrême ou vent fort qui ralentissent considérablement le travail sur le terrain et peuvent endommager les vestiges. La nature peut être un obstacle redoutable.",
+          "icon": "🌧️",
+          "category": "Bonus et Malus",
+          "categoryOriginal": "Bonus and Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1760903053898-qepobm.png"
+        },
+        {
+          "title": "Critère d'Évaluation : Précision Documentaire",
+          "description": "La qualité et la rigueur des informations collectées lors de la recherche documentaire sont essentielles pour fonder toutes les étapes ultérieures. Une information juste est la base de la connaissance.",
+          "icon": "✅",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1760903053905-gir1dc.png"
+        },
+        {
+          "title": "Critère d'Évaluation : Fiabilité des Données Géophysiques",
+          "description": "La précision et la clarté des anomalies détectées par les méthodes géophysiques déterminent l'efficacité des sondages ultérieurs. Des données fiables orientent la prospection.",
+          "icon": "✔️",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1760903053911-9wk35bh.png"
+        },
+        {
+          "title": "Critère d'Évaluation : Qualité de la Documentation de Fouille",
+          "description": "L'exhaustivité et la précision des notes, croquis et photographies prises pendant la fouille sont cruciales pour l'interprétation post-fouille. Chaque détail compte pour raconter l'histoire du site.",
+          "icon": "💯",
+          "category": "Catégories et Critères",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1760903053921-eqg6tl.png"
+        }
+      ],
+      "createdAt": "2025-10-19T19:44:13.401Z",
+      "updatedAt": "2025-10-19T19:44:13.401Z",
+      "description": ""
     }
   ]
 }

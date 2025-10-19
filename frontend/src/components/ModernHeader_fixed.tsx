@@ -56,9 +56,10 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
   };
 
   const handleGeneratePdf = async () => {
-    if (state.cards.length > 0) {
+    const cards = state.cards || [];
+    if (cards.length > 0) {
       try {
-        const pdfBlob = await api.generatePdfForCards(state.cards);
+        const pdfBlob = await api.generatePdfForCards(cards);
         const url = window.URL.createObjectURL(pdfBlob);
         const a = document.createElement('a');
         a.style.display = 'none';
@@ -162,7 +163,7 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
         {/* Actions principales */}
         <Box sx={{ display: 'flex', gap: 1 }}>
           {/* Générer PDF */}
-          {state.cards.length > 0 && (
+          {(state.cards || []).length > 0 && (
             <IconButton
               color="primary"
               onClick={handleGeneratePdf}

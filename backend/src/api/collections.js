@@ -15,8 +15,15 @@ if (!fs.existsSync(imagesDir)) {
 // Get all collections
 router.get('/', async (req, res) => {
   const db = await dbPromise;
-  // Return only id and name for the list view
-  const collectionsMetadata = db.data.collections.map(({ id, name }) => ({ id, name }));
+  // Return collection metadata with card count but without full card data
+  const collectionsMetadata = db.data.collections.map(({ id, name, createdAt, updatedAt, description, cards }) => ({ 
+    id, 
+    name, 
+    createdAt: createdAt || new Date().toISOString(),
+    updatedAt: updatedAt || new Date().toISOString(),
+    description: description || '',
+    cards: cards || []
+  }));
   res.json(collectionsMetadata);
 });
 
@@ -65,7 +72,15 @@ router.put('/:id', async (req, res) => {
     return card;
   });
 
-  const updatedCollection = { id: req.params.id, name, cards: processedCards };
+  const existingCollection = db.data.collections[collectionIndex];
+  const updatedCollection = { 
+    ...existingCollection,
+    id: req.params.id, 
+    name, 
+    cards: processedCards,
+    updatedAt: new Date().toISOString(),
+    createdAt: existingCollection.createdAt || new Date().toISOString()
+  };
   db.data.collections[collectionIndex] = updatedCollection;
   await db.write();
 
@@ -81,6 +96,7 @@ router.post('/', async (req, res) => {
   }
 
   const collectionId = Date.now().toString();
+  const now = new Date().toISOString();
   const processedCards = cards.map(card => {
     if (card.image && card.image.startsWith('data:image/')) {
       const matches = card.image.match(/^data:image\/([a-zA-Z+]+);base64,(.*)$/);
@@ -101,7 +117,14 @@ router.post('/', async (req, res) => {
     return card;
   });
 
-  const newCollection = { id: collectionId, name, cards: processedCards };
+  const newCollection = { 
+    id: collectionId, 
+    name, 
+    cards: processedCards,
+    createdAt: now,
+    updatedAt: now,
+    description: req.body.description || ''
+  };
 
   db.data.collections.push(newCollection);
   await db.write();
@@ -139,6 +162,22 @@ router.post('/temp/pdf', async (req, res) => {
     console.error('Error stack:', error.stack);
     res.status(500).json({ error: 'Failed to generate PDF' });
   }
+});
+
+// Delete a collection by ID
+router.delete('/:id', async (req, res) => {
+  const db = await dbPromise;
+  const collectionIndex = db.data.collections.findIndex(c => c.id === req.params.id);
+  
+  if (collectionIndex === -1) {
+    return res.status(404).json({ error: 'Collection not found' });
+  }
+
+  // Remove the collection
+  db.data.collections.splice(collectionIndex, 1);
+  await db.write();
+
+  res.status(204).send();
 });
 
 // Get PDF for a single collection by ID

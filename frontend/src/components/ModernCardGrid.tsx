@@ -30,7 +30,7 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const { cards, selectedCard, setSelectedCard } = useCards();
+  const { cards = [], selectedCard, setSelectedCard } = useCards();
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   const handleCardClick = (card: CardData) => {

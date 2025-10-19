@@ -20,11 +20,12 @@ const CollectionsPage: React.FC = () => {
     try {
       setLoading(true);
       const fetchedCollections = await ApiService.getCollections();
-      setCollections(fetchedCollections);
+      setCollections(Array.isArray(fetchedCollections) ? fetchedCollections : []);
       setError(null);
     } catch (err) {
       setError('Failed to fetch collections.');
       console.error(err);
+      setCollections([]);
     } finally {
       setLoading(false);
     }
@@ -38,7 +39,7 @@ const CollectionsPage: React.FC = () => {
     setDeletingId(id);
     try {
       await ApiService.deleteCollection(id);
-      setCollections(collections.filter(col => col.id !== id));
+      setCollections((prevCollections) => (prevCollections || []).filter(col => col.id !== id));
     } catch (err) {
       console.error('Failed to delete collection:', err);
       alert('Failed to delete collection. Please try again.');
