@@ -133,10 +133,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Fonctions API avec gestion d'état intégrée
   const api: ApiContextType = {
-    generateCards: useCallback(async (theme: string, context: string, numCards?: number) => {
+    generateCards: useCallback(async (theme: string, context: string, numCards?: number, stylePreset?: string) => {
       dispatch({ type: 'SET_GENERATING', payload: true });
       try {
-        const result = await ApiService.generateCards(theme, context, numCards);
+        const result = await ApiService.generateCards(theme, context, numCards, stylePreset);
         dispatch({ type: 'SET_CARDS', payload: result.cards });
         dispatch({ type: 'SET_METRICS', payload: result.metrics });
         dispatch({ type: 'SET_GENERATION_RESULT', payload: result });

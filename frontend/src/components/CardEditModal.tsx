@@ -11,6 +11,10 @@ import {
   CircularProgress,
   IconButton,
   Alert,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from '@mui/material';
 import {
   Close as CloseIcon,
@@ -25,6 +29,7 @@ interface CardEditModalProps {
   card: CardData | null;
   theme?: string;
   context?: string;
+  stylePreset?: string;
   onClose: () => void;
   onSave: (updatedCard: CardData) => void;
 }
@@ -34,17 +39,31 @@ export const CardEditModal: React.FC<CardEditModalProps> = ({
   card,
   theme,
   context,
+  stylePreset,
   onClose,
   onSave,
 }) => {
   const [editedCard, setEditedCard] = useState<CardData | null>(card);
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [regenerationStyle, setRegenerationStyle] = useState<string>(stylePreset || 'isometric');
+
+  // Options de style disponibles pour Stability AI
+  const styleOptions = [
+    { value: 'anime', label: 'Anime' },
+    { value: 'comic-book', label: 'Comic Book' },
+    { value: 'digital-art', label: 'Digital Art' },
+    { value: 'enhance', label: 'Enhanced' },
+    { value: 'fantasy-art', label: 'Fantasy Art' },
+    { value: 'isometric', label: 'Isometric' },
+    { value: 'pixel-art', label: 'Pixel Art' },
+  ];
 
   React.useEffect(() => {
     setEditedCard(card);
     setError(null);
-  }, [card]);
+    setRegenerationStyle(stylePreset || 'isometric');
+  }, [card, stylePreset]);
 
   if (!editedCard) return null;
 
@@ -52,7 +71,7 @@ export const CardEditModal: React.FC<CardEditModalProps> = ({
     setIsRegenerating(true);
     setError(null);
     try {
-      const result = await ApiService.regenerateCardImage(editedCard, theme, context);
+      const result = await ApiService.regenerateCardImage(editedCard, theme, context, regenerationStyle);
       setEditedCard({ ...editedCard, image: result.image });
     } catch (err: any) {
       setError(err.message || 'Erreur lors de la régénération de l\'image');
@@ -145,6 +164,28 @@ export const CardEditModal: React.FC<CardEditModalProps> = ({
             >
               {isRegenerating ? 'Régénération en cours...' : 'Régénérer l\'image'}
             </Button>
+
+            {/* Sélecteur de style pour la régénération */}
+            <Box sx={{ mt: 2 }}>
+              <Typography variant="subtitle2" gutterBottom>
+                Style pour la régénération
+              </Typography>
+              <FormControl fullWidth size="small">
+                <InputLabel>Style d'image</InputLabel>
+                <Select
+                  value={regenerationStyle}
+                  onChange={(e) => setRegenerationStyle(e.target.value)}
+                  label="Style d'image"
+                  disabled={isRegenerating}
+                >
+                  {styleOptions.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
           </Box>
 
           {/* Title */}

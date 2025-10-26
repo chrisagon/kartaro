@@ -12,14 +12,19 @@ import {
   Chip,
   Stack,
   Paper,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from '@mui/material';
+import { useGeneration } from '../context/AppContext';
 import {
   AutoAwesome as GenerateIcon,
   Lightbulb as ThemeIcon,
   Description as ContextIcon,
   PlayArrow as StartIcon,
+  Palette as StyleIcon,
 } from '@mui/icons-material';
-import { useGeneration } from '../context/AppContext';
 
 interface ModernInputFormProps {
   onGenerate?: (theme: string, context: string) => void;
@@ -30,7 +35,19 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
   const [theme, setTheme] = useState('');
   const [context, setContext] = useState('');
   const [numCards, setNumCards] = useState<number>(10);
+  const [stylePreset, setStylePreset] = useState<string>('isometric');
   const [error, setError] = useState<string | null>(null);
+
+  // Options de style disponibles pour Stability AI
+  const stylePresetOptions = [
+    { value: 'anime', label: 'Anime' },
+    { value: 'comic-book', label: 'Comic Book' },
+    { value: 'digital-art', label: 'Digital Art' },
+    { value: 'enhance', label: 'Enhanced' },
+    { value: 'fantasy-art', label: 'Fantasy Art' },
+    { value: 'isometric', label: 'Isometric' },
+    { value: 'pixel-art', label: 'Pixel Art' },
+  ];
 
   // Suggestions de thèmes prédéfinis
   const themeSuggestions = [
@@ -54,7 +71,7 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
     setError(null);
 
     try {
-      await generateCards(theme.trim(), context.trim(), numCards);
+      await generateCards(theme.trim(), context.trim(), numCards, stylePreset);
     } catch (err) {
       setError('Erreur lors de la génération. Veuillez réessayer.');
       console.error('Erreur de génération:', err);
@@ -172,6 +189,37 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
               />
               <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
                 Choisissez entre 1 et 200 cartes (par défaut: 10)
+              </Typography>
+            </Box>
+
+            {/* Style preset pour Stability AI */}
+            <Box>
+              <Typography variant="subtitle1" gutterBottom fontWeight={500}>
+                <StyleIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
+                Style d'image
+              </Typography>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel>Style d'image</InputLabel>
+                <Select
+                  value={stylePreset}
+                  onChange={(e) => setStylePreset(e.target.value)}
+                  label="Style d'image"
+                  disabled={isGenerating}
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      backgroundColor: 'background.paper',
+                    },
+                  }}
+                >
+                  {stylePresetOptions.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+                Choisissez le style artistique pour les images générées
               </Typography>
             </Box>
 

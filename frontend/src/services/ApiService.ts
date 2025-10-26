@@ -22,17 +22,17 @@ async function request<T>(url: string, options?: any): Promise<T> {
   }
 }
 
-export function generateCards(theme: string, context: string, numCards?: number): Promise<GenerationResult> {
+export function generateCards(theme: string, context: string, numCards?: number, stylePreset?: string): Promise<GenerationResult> {
   return request<GenerationResult>('/cards/generate', {
     method: 'POST',
-    data: { theme, context, numCards },
+    data: { theme, context, numCards, stylePreset },
   });
 }
 
-export function regenerateCardImage(card: CardData, theme?: string, context?: string): Promise<{ image: string }> {
+export function regenerateCardImage(card: CardData, theme?: string, context?: string, stylePreset?: string): Promise<{ image: string }> {
   return request<{ image: string }>('/cards/regenerate-image', {
     method: 'POST',
-    data: { card, theme, context },
+    data: { card, theme, context, stylePreset },
   });
 }
 

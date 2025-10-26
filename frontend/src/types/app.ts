@@ -39,6 +39,8 @@ export interface GenerationResult {
 export interface InputFormData {
   theme: string;
   context: string;
+  numCards?: number;
+  stylePreset?: string;
 }
 
 export interface AppSettings {
@@ -98,7 +100,7 @@ export type AppAction =
 
 // Contexte pour les fonctions API
 export interface ApiContextType {
-  generateCards: (theme: string, context: string, numCards?: number) => Promise<GenerationResult>;
+  generateCards: (theme: string, context: string, numCards?: number, stylePreset?: string) => Promise<GenerationResult>;
   getCollections: () => Promise<CardCollection[]>;
   getCollectionById: (id: string) => Promise<CardCollection>;
   createCollection: (collection: Omit<CardCollection, 'id' | 'createdAt' | 'updatedAt'>) => Promise<CardCollection>;

@@ -155,7 +155,7 @@ const buildImagePrompt = async (card, theme, context) => {
   return `Professional illustration of "${translatedTitle}" for ${theme} educational card, Vector Art, concept art, Graphic design, vibrant colors, centered composition, no text or labels, clean minimalist design, digital art`;
 };
 
-const generateCards = async (theme, context, numCards = null) => {
+const generateCards = async (theme, context, numCards = null, stylePreset = 'isometric') => {
   if (!genAI) {
     throw new Error('Gemini client is not initialised. Please set GEMINI_API_KEY.');
   }
@@ -221,6 +221,7 @@ Generate exactly ${NUM_CARDS} cards with diverse categories.`;
       theme,
       context,
       metrics,
+      stylePreset,
     );
 
     const serializedCards = JSON.stringify(enrichedCards);
@@ -300,7 +301,7 @@ const normalizeCategory = (value) => {
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Generate image with Stability AI
-const generateImageWithStability = async (prompt) => {
+const generateImageWithStability = async (prompt, stylePreset = 'isometric') => {
   if (!STABILITY_API_KEY) {
     throw new Error('STABILITY_API_KEY not configured');
   }
@@ -326,7 +327,7 @@ const generateImageWithStability = async (prompt) => {
         width: 1024,
         steps: 30,
         samples: 1,
-        style_preset: 'digital-art'
+        style_preset: stylePreset
       }),
     }
   );
@@ -345,7 +346,7 @@ const generateImageWithStability = async (prompt) => {
   return `data:image/png;base64,${data.artifacts[0].base64}`;
 };
 
-const appendImagesToCards = async (cards, theme, context, metrics = null) => {
+const appendImagesToCards = async (cards, theme, context, metrics = null, stylePreset = 'isometric') => {
   if (IMAGE_PROVIDER !== 'stability' || !STABILITY_API_KEY) {
     console.warn('Stability AI not configured. Using fallback images for all cards.');
     return cards.map(card => ({ ...card, image: FALLBACK_IMAGE_DATA_URL }));
@@ -367,7 +368,7 @@ const appendImagesToCards = async (cards, theme, context, metrics = null) => {
       console.log(`Generating image ${i + 1}/${cards.length} for "${card.title}"...`);
 
       // Generate image with Stability AI
-      const imageDataUrl = await generateImageWithStability(prompt);
+      const imageDataUrl = await generateImageWithStability(prompt, stylePreset);
       cardWithImage.image = imageDataUrl;
       console.log(`✓ Image generated for "${card.title}"`);
     } catch (imageError) {
@@ -394,7 +395,7 @@ const appendImagesToCards = async (cards, theme, context, metrics = null) => {
 };
 
 // Regenerate image for a single card
-const regenerateCardImage = async (card, theme = '', context = '') => {
+const regenerateCardImage = async (card, theme = '', context = '', stylePreset = 'isometric') => {
   if (IMAGE_PROVIDER !== 'stability' || !STABILITY_API_KEY) {
     console.warn('Stability AI not configured. Using fallback image.');
     return FALLBACK_IMAGE_DATA_URL;
@@ -404,7 +405,7 @@ const regenerateCardImage = async (card, theme = '', context = '') => {
     const prompt = await buildImagePrompt(card, theme, context);
     console.log(`Regenerating image for "${card.title}"...`);
 
-    const imageDataUrl = await generateImageWithStability(prompt);
+    const imageDataUrl = await generateImageWithStability(prompt, stylePreset);
     console.log(`✓ Image regenerated for "${card.title}"`);
 
     return imageDataUrl;
