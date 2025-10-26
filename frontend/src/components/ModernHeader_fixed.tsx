@@ -168,7 +168,7 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
               color="primary"
               onClick={handleGeneratePdf}
               disabled={state.isGeneratingPdf}
-              title="Télécharger PDF 2"
+              title="Télécharger PDF"
             >
               <DownloadIcon />
             </IconButton>

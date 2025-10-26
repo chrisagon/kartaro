@@ -3,21 +3,106 @@ import html2canvas from 'html2canvas';
 import { CardData, CardCollection } from '../types/app';
 import { getCategoryColor, hexToRgb } from '../constants/categories';
 
+// Configuration de compression
+const COMPRESSION_CONFIG = {
+  // Qualité JPEG pour les images (0.1 = très compressé, 1.0 = haute qualité)
+  imageQuality: 0.7,
+  // Taille maximale des images en pixels (pour le redimensionnement)
+  maxImageSize: 512,
+  // Activer/désactiver la compression (pour les tests)
+  enableCompression: true,
+  // Niveau de compression PDF (0 = pas de compression, 9 = compression maximale)
+  pdfCompression: 6,
+};
+
 /**
- * Generate a PDF from an array of cards
- * @param cards - Array of cards to include in the PDF
- * @param filename - Name of the PDF file to download
+ * Compress and resize an image from base64 data URL
+ * @param dataUrl - Base64 data URL of the image
+ * @param config - Compression configuration
+ * @returns Compressed base64 data URL
  */
+async function compressImage(dataUrl: string, config: { imageQuality: number; maxImageSize: number }): Promise<string | null> {
+  if (!config) {
+    return dataUrl;
+  }
+
+  try {
+    // Convert base64 to blob
+    const response = await fetch(dataUrl);
+    const blob = await response.blob();
+
+    return new Promise((resolve) => {
+      const img = new Image();
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      if (!ctx) {
+        resolve(dataUrl);
+        return;
+      }
+
+      img.onload = () => {
+        const originalWidth = img.naturalWidth || img.width;
+        const originalHeight = img.naturalHeight || img.height;
+
+        console.log(`🔍 Image source: ${originalWidth}x${originalHeight}`);
+
+        // Calculate new dimensions (maintain aspect ratio)
+        let { width, height } = img;
+
+        if (width > height) {
+          if (width > config.maxImageSize) {
+            height = (height * config.maxImageSize) / width;
+            width = config.maxImageSize;
+          }
+        } else {
+          if (height > config.maxImageSize) {
+            width = (width * config.maxImageSize) / height;
+            height = config.maxImageSize;
+          }
+        }
+
+        // Set canvas dimensions
+        canvas.width = width;
+        canvas.height = height;
+
+        // SOLUTION: Just draw the image normally - no orientation correction needed
+        console.log(`📐 Dessin simple de l'image: ${width}x${height}`);
+        ctx.drawImage(img, 0, 0, width, height);
+        console.log(`✅ Image traitée: ${width}x${height}`);
+
+        // Convert to JPEG with compression
+        const compressedDataUrl = canvas.toDataURL('image/jpeg', config.imageQuality);
+        console.log(`📦 Image compressée: ${width}x${height} (${Math.round(config.imageQuality * 100)}%)`);
+        resolve(compressedDataUrl);
+      };
+
+      img.onerror = () => {
+        console.error('❌ Erreur de chargement de l\'image');
+        resolve(dataUrl);
+      };
+      img.src = URL.createObjectURL(blob);
+    });
+  } catch (error) {
+    console.error('❌ Erreur lors de la compression:', error);
+    return dataUrl;
+  }
+}
+
 /**
- * Load an image and convert to base64
+ * Load an image and convert to base64 with compression
  */
-async function loadImageAsBase64(url: string): Promise<string | null> {
+async function loadImageAsBase64(url: string, config: { imageQuality: number; maxImageSize: number }): Promise<string | null> {
   try {
     const response = await fetch(url);
     const blob = await response.blob();
     return new Promise((resolve) => {
       const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result as string);
+      reader.onloadend = async () => {
+        const dataUrl = reader.result as string;
+        const compressedDataUrl = await compressImage(dataUrl, config);
+        resolve(compressedDataUrl);
+      };
       reader.onerror = () => resolve(null);
       reader.readAsDataURL(blob);
     });
@@ -29,9 +114,18 @@ async function loadImageAsBase64(url: string): Promise<string | null> {
 
 export async function generatePdfFromCards(
   cards: CardData[],
-  filename: string = 'cards-collection.pdf'
+  filename: string = 'cards-collection.pdf',
+  compressionConfig?: { imageQuality: number; maxImageSize: number }
 ): Promise<void> {
-  const pdf = new jsPDF('p', 'mm', 'a4');
+  const pdf = new jsPDF({
+    orientation: 'p',
+    unit: 'mm',
+    format: 'a4',
+    compress: true,
+    putOnlyUsedFonts: true,
+    floatPrecision: 16,
+  });
+
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
   
@@ -46,20 +140,24 @@ export async function generatePdfFromCards(
   const cardWidth = (pageWidth - (2 * margin) - gapBetweenCards) / cardsPerRow;
   const cardHeight = (pageHeight - (2 * margin) - (3 * gapBetweenCards)) / cardsPerColumn;
   
+  // Utiliser la configuration de compression fournie ou les valeurs par défaut
+  const finalConfig = compressionConfig || COMPRESSION_CONFIG;
+  console.log(`🗜️ Configuration de compression: ${Math.round(finalConfig.imageQuality * 100)}% qualité, max ${finalConfig.maxImageSize}px`);
+  
   let cardIndex = 0;
 
   for (const card of cards) {
     const positionInPage = cardIndex % cardsPerPage;
-    
+
     // Nouvelle page si nécessaire (tous les 8 cartes)
     if (cardIndex > 0 && positionInPage === 0) {
       pdf.addPage();
     }
-    
+
     // Calcul de la position dans la grille
     const col = positionInPage % cardsPerRow;
     const row = Math.floor(positionInPage / cardsPerRow);
-    
+
     const xPos = margin + col * (cardWidth + gapBetweenCards);
     const yPos = margin + row * (cardHeight + gapBetweenCards);
 
@@ -97,16 +195,38 @@ export async function generatePdfFromCards(
     // Add card image if available
     if (card.image) {
       try {
-        const imageData = await loadImageAsBase64(card.image);
+        console.log(`🖼️ Traitement de l'image pour la carte: "${card.title.substring(0, 30)}..."`);
+
+        const imageData = await loadImageAsBase64(card.image, finalConfig);
         if (imageData) {
           const imgSize = Math.min(cardWidth * 0.6, 35);
           const imgX = xPos + (cardWidth - imgSize) / 2;
           const imgY = yPos + headerHeight + 3;
-          pdf.addImage(imageData, 'JPEG', imgX, imgY, imgSize, imgSize);
+
+          console.log(`📐 Ajout de l'image au PDF: ${imgSize}x${imgSize} à la position (${imgX}, ${imgY})`);
+
+          // Add image to PDF with explicit parameters
+          pdf.addImage(
+            imageData,
+            'JPEG',
+            imgX,
+            imgY,
+            imgSize,
+            imgSize,
+            `card-${cardIndex}-image`, // Unique name for each image
+            'FAST' // FAST for speed
+          );
+
+          console.log(`✅ Image ajoutée pour "${card.title.substring(0, 20)}..." (${imgSize}px, qualité ${Math.round(finalConfig.imageQuality * 100)}%)`);
+        } else {
+          console.warn(`⚠️ Aucune donnée d'image pour "${card.title.substring(0, 20)}..."`);
         }
       } catch (error) {
-        console.error('Failed to add image to PDF:', error);
+        console.error(`❌ Erreur lors de l'ajout de l'image pour "${card.title.substring(0, 20)}...":`, error);
+        // Continue without image rather than failing completely
       }
+    } else {
+      console.log(`ℹ️ Aucune image disponible pour "${card.title.substring(0, 20)}..."`);
     }
 
     // Add card title
@@ -138,7 +258,31 @@ export async function generatePdfFromCards(
     cardIndex++;
   }
 
+  // Calcul du nombre total de pages
+  const totalPages = Math.ceil(cards.length / cardsPerPage);
+  console.log(`📄 Génération du PDF terminée: ${totalPages} page(s) pour ${cards.length} cartes`);
+  console.log(`🗜️ Compression activée: Images ${Math.round(finalConfig.imageQuality * 100)}%, Taille max: ${finalConfig.maxImageSize}px`);
+
+  // Sauvegarder le PDF avec compression
   pdf.save(filename);
+
+  // Calcul approximatif de la taille du PDF (pour logging)
+  try {
+    const pdfOutput = pdf.output('blob');
+    const sizeKB = Math.round(pdfOutput.size / 1024);
+    const sizeMB = parseFloat((pdfOutput.size / (1024 * 1024)).toFixed(2));
+    console.log(`💾 Taille du PDF généré: ${sizeKB} Ko (${sizeMB} Mo)`);
+
+    if (sizeMB < 1) {
+      console.log(`✅ Excellente compression! PDF optimisé à moins de 1 Mo`);
+    } else if (sizeMB < 5) {
+      console.log(`✅ Bonne compression! PDF de taille raisonnable`);
+    } else {
+      console.log(`⚠️ PDF volumineux détecté. Envisagez de réduire la qualité d'image.`);
+    }
+  } catch (error) {
+    console.warn('Impossible de calculer la taille du PDF:', error);
+  }
 }
 
 /**

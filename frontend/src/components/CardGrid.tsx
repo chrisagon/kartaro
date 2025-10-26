@@ -71,7 +71,7 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, onUpdateCard
               Generating PDF...
             </>
           ) : (
-            'Download PDF 1'
+            'Download PDF'
           )}
         </button>
       </div>

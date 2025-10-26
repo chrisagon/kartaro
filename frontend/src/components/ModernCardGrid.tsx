@@ -7,11 +7,19 @@ import {
   Alert,
   useMediaQuery,
   useTheme,
+  Menu,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
+  SelectChangeEvent,
+  Chip,
 } from '@mui/material';
 import {
   Download as DownloadIcon,
   GridView as GridIcon,
   ViewList as ListIcon,
+  Settings as SettingsIcon,
 } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCards, useApp } from '../context/AppContext';
@@ -35,6 +43,8 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
   const { state } = useApp();
   const [editingCard, setEditingCard] = useState<{ card: CardData; index: number } | null>(null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [compressionQuality, setCompressionQuality] = useState<'high' | 'medium' | 'low'>('medium');
+  const [settingsAnchorEl, setSettingsAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleCardClick = (card: CardData) => {
     setSelectedCard(selectedCard?.id === card.id ? null : card);
@@ -56,12 +66,39 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
 
     setIsGeneratingPdf(true);
     try {
-      await generatePdfFromCards(cards, `cards-${Date.now()}.pdf`);
+      const config = getCompressionConfig();
+      await generatePdfFromCards(cards, `cards-${Date.now()}.pdf`, config);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
     } finally {
       setIsGeneratingPdf(false);
+    }
+  };
+
+  const handleSettingsClick = (event: React.MouseEvent<HTMLElement>) => {
+    setSettingsAnchorEl(event.currentTarget);
+  };
+
+  const handleSettingsClose = () => {
+    setSettingsAnchorEl(null);
+  };
+
+  const handleQualityChange = (event: SelectChangeEvent) => {
+    setCompressionQuality(event.target.value as 'high' | 'medium' | 'low');
+  };
+
+  // Configuration de compression basée sur le choix utilisateur
+  const getCompressionConfig = () => {
+    switch (compressionQuality) {
+      case 'high':
+        return { imageQuality: 0.9, maxImageSize: 1024 };
+      case 'medium':
+        return { imageQuality: 0.7, maxImageSize: 512 };
+      case 'low':
+        return { imageQuality: 0.5, maxImageSize: 256 };
+      default:
+        return { imageQuality: 0.7, maxImageSize: 512 };
     }
   };
 
@@ -106,6 +143,17 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
         </Typography>
 
         <Box sx={{ display: 'flex', gap: 1 }}>
+          {/* Bouton paramètres de compression */}
+          <Button
+            variant="outlined"
+            size="small"
+            startIcon={<SettingsIcon />}
+            onClick={handleSettingsClick}
+            sx={{ minWidth: 'auto' }}
+          >
+            {isMobile ? '' : 'Qualité'}
+          </Button>
+
           {/* Bouton téléchargement PDF */}
           <Button
             variant="outlined"
@@ -114,7 +162,7 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
             disabled={isGeneratingPdf || cards.length === 0}
             size={isMobile ? 'small' : 'medium'}
           >
-            {isGeneratingPdf ? 'Génération...' : 'Télécharger PDF 1'}
+            {isGeneratingPdf ? 'Génération...' : 'Télécharger PDF'}
           </Button>
 
           {/* Contrôles de vue (si callback fourni) */}
@@ -179,6 +227,65 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
         onClose={() => setEditingCard(null)}
         onSave={handleSaveCard}
       />
+
+      {/* Menu de paramètres de compression */}
+      <Menu
+        anchorEl={settingsAnchorEl}
+        open={Boolean(settingsAnchorEl)}
+        onClose={handleSettingsClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <Box sx={{ p: 2, minWidth: 200 }}>
+          <Typography variant="subtitle2" gutterBottom>
+            Qualité de compression
+          </Typography>
+          <FormControl fullWidth size="small" sx={{ mt: 1 }}>
+            <InputLabel>Qualité</InputLabel>
+            <Select
+              value={compressionQuality}
+              label="Qualité"
+              onChange={handleQualityChange}
+            >
+              <MenuItem value="high">
+                <Box>
+                  <Typography>Haute qualité</Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    90% qualité, max 1024px
+                  </Typography>
+                </Box>
+              </MenuItem>
+              <MenuItem value="medium">
+                <Box>
+                  <Typography>Équilibrée</Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    70% qualité, max 512px
+                  </Typography>
+                </Box>
+              </MenuItem>
+              <MenuItem value="low">
+                <Box>
+                  <Typography>Comprimée</Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    50% qualité, max 256px
+                  </Typography>
+                </Box>
+              </MenuItem>
+            </Select>
+          </FormControl>
+          <Chip
+            label={`Taille estimée: ${compressionQuality === 'high' ? 'Grande' : compressionQuality === 'medium' ? 'Moyenne' : 'Petite'}`}
+            size="small"
+            sx={{ mt: 1 }}
+          />
+        </Box>
+      </Menu>
 
       {/* Message de succès après génération */}
       {cards.length > 0 && (

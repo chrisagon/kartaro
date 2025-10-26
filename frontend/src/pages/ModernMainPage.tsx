@@ -205,7 +205,7 @@ export const ModernMainPage: React.FC = () => {
                   },
                 }}
               >
-                {isGeneratingPdf ? 'Génération...' : 'Télécharger PDF 3'}
+                {isGeneratingPdf ? 'Génération...' : 'Télécharger PDF'}
               </Button>
             </Box>
           </motion.div>

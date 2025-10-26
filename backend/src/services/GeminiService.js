@@ -103,13 +103,56 @@ const parseJsonArray = (raw) => {
   return parsed;
 };
 
-const buildImagePrompt = (card, theme, context) => {
+const translateTitleToEnglish = async (title) => {
+  if (!genAI) {
+    console.warn('Gemini client not available for translation, using original title');
+    return title;
+  }
+
+  try {
+    const textModel = genAI.getGenerativeModel({ model: TEXT_MODEL });
+
+    const prompt = `Translate the following French text to English. Provide only the translation, no explanations or additional text:
+
+"${title}"
+
+English translation:`;
+
+    const result = await textModel.generateContent({
+      contents: [
+        {
+          role: 'user',
+          parts: [{ text: prompt }],
+        },
+      ],
+    });
+
+    const response = await result.response;
+    const translatedText = await response.text();
+
+    // Clean up the response (remove quotes, extra whitespace, etc.)
+    const cleanTranslation = translatedText
+      .replace(/^["']|["']$/g, '') // Remove surrounding quotes
+      .replace(/\n/g, ' ') // Replace newlines with spaces
+      .trim();
+
+    return cleanTranslation || title;
+  } catch (error) {
+    console.error('Error translating title to English:', error.message || error);
+    return title; // Fallback to original title
+  }
+};
+
+const buildImagePrompt = async (card, theme, context) => {
   // Keep prompt under 2000 chars for Stability AI
   // Use only title and key style keywords in English
   const titleShort = card.title.substring(0, 80);
-  
+
+  // Translate title to English for better image generation
+  const translatedTitle = await translateTitleToEnglish(titleShort);
+
   // Simple, effective prompt in English
-  return `Professional illustration of "${titleShort}" for ${theme} educational card, Vector Art, concept art, Graphic design, vibrant colors, centered composition, no text or labels, clean minimalist design, digital art`;
+  return `Professional illustration of "${translatedTitle}" for ${theme} educational card, Vector Art, concept art, Graphic design, vibrant colors, centered composition, no text or labels, clean minimalist design, digital art`;
 };
 
 const generateCards = async (theme, context, numCards = null) => {
@@ -316,7 +359,7 @@ const appendImagesToCards = async (cards, theme, context, metrics = null) => {
     const cardWithImage = { ...card };
 
     try {
-      const prompt = buildImagePrompt(card, theme, context);
+      const prompt = await buildImagePrompt(card, theme, context);
       if (metrics) {
         metrics.imageRequests += 1;
       }
@@ -358,12 +401,12 @@ const regenerateCardImage = async (card, theme = '', context = '') => {
   }
 
   try {
-    const prompt = buildImagePrompt(card, theme, context);
+    const prompt = await buildImagePrompt(card, theme, context);
     console.log(`Regenerating image for "${card.title}"...`);
-    
+
     const imageDataUrl = await generateImageWithStability(prompt);
     console.log(`✓ Image regenerated for "${card.title}"`);
-    
+
     return imageDataUrl;
   } catch (error) {
     console.error(`Failed to regenerate image for card "${card.title}":`, error.message || error);
@@ -378,6 +421,8 @@ module.exports = {
   normalizeCategory,
   appendImagesToCards,
   regenerateCardImage,
+  translateTitleToEnglish,
+  buildImagePrompt,
   CATEGORY_METADATA,
 };
 
