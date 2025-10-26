@@ -5364,6 +5364,794 @@
       "createdAt": "2025-10-19T19:44:13.401Z",
       "updatedAt": "2025-10-19T19:44:13.401Z",
       "description": ""
+    },
+    {
+      "id": "1761164335481",
+      "name": "design thinking 1-53",
+      "cards": [
+        {
+          "title": "Ma Vie, Mes Défis",
+          "description": "Identifier les frustrations et les obstacles rencontrés dans la vie quotidienne des adolescents. Cela inclut les aspects familiaux, scolaires et communautaires.",
+          "icon": "🤔",
+          "category": "Étapes",
+          "id": "1761154950315-0-1smj68zf8",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761154950315-0-1smj68zf8-h5eqel.png"
+        },
+        {
+          "title": "Le Journal des Soucis",
+          "description": "Tenir un journal personnel pour noter toutes les difficultés rencontrées. Cela aide à structurer la pensée et à identifier des problèmes récurrents.",
+          "icon": "📝",
+          "category": "Actions",
+          "id": "1761154950315-1-2zu5jtq1f",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-1-2zu5jtq1f-k3kpm9.png"
+        },
+        {
+          "title": "Carte des Préoccupations",
+          "description": "Créer une carte visuelle qui représente les différents domaines de la vie et les problèmes associés. Permet une vue d'ensemble des défis.",
+          "icon": "🗺️",
+          "category": "Composants",
+          "id": "1761154950315-2-ehokuv41n",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761154950315-2-ehokuv41n-fcwut9.png"
+        },
+        {
+          "title": "Interroger le Quotidien",
+          "description": "Poser des questions 'Pourquoi ?' à répétition pour creuser la racine des problèmes. Aide à aller au-delà des symptômes superficiels.",
+          "icon": "❓",
+          "category": "Actions",
+          "id": "1761154950315-3-gfawj208o",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-3-gfawj208o-acg3zr.png"
+        },
+        {
+          "title": "Empathie Rapide",
+          "description": "Se mettre à la place de quelqu'un d'autre qui rencontre un problème. Cela ouvre de nouvelles perspectives sur les difficultés rencontrées.",
+          "icon": "👥",
+          "category": "Concepts",
+          "id": "1761154950315-4-eppb6f7um",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-4-eppb6f7um-b84da5.png"
+        },
+        {
+          "title": "Le Termomètre du Problème",
+          "description": "Évaluer l'importance et l'urgence de chaque problème identifié sur une échelle. Aide à prioriser les sujets à explorer.",
+          "icon": "🌡️",
+          "category": "Catégories et Critères",
+          "id": "1761154950315-5-kx6qntvmr",
+          "categoryOriginal": "Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1761154950315-5-kx6qntvmr-4t4ce.png"
+        },
+        {
+          "title": "Où Sont les Problèmes ?",
+          "description": "Identifier les lieux spécifiques où les problèmes se manifestent le plus souvent. Cela peut être une salle de classe, un parc, la maison, etc.",
+          "icon": "📍",
+          "category": "Locations/Sites",
+          "id": "1761154950315-6-pn7v5hups",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1761154950315-6-pn7v5hups-h87xp3.png"
+        },
+        {
+          "title": "Les Acteurs du Problème",
+          "description": "Identifier les différentes personnes impliquées ou affectées par le problème. Comprendre leurs rôles et perspectives.",
+          "icon": "👤",
+          "category": "Personas",
+          "id": "1761154950315-7-8moejurn9",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761154950315-7-8moejurn9-vxvzhk.png"
+        },
+        {
+          "title": "Le Radar des Solutions Existantes",
+          "description": "Rechercher comment d'autres personnes ou organisations ont déjà tenté de résoudre des problèmes similaires.",
+          "icon": "🔭",
+          "category": "Actions",
+          "id": "1761154950315-8-4sx9p7lgk",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-8-4sx9p7lgk-obwka.png"
+        },
+        {
+          "title": "La Bulle d'Information",
+          "description": "Collecter des données et des faits pertinents sur le problème. Utiliser des sources fiables comme Internet ou des livres.",
+          "icon": "💡",
+          "category": "Composants",
+          "id": "1761154950315-9-h7xx2dji0",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761154950315-9-h7xx2dji0-5bwrac.png"
+        },
+        {
+          "title": "Le Micro-Trottoir des Idées",
+          "description": "Interviewer des personnes concernées par le problème pour comprendre leurs expériences et leurs besoins.",
+          "icon": "🗣️",
+          "category": "Actions",
+          "id": "1761154950315-10-hs74mijsz",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-10-hs74mijsz-8zd4ki.png"
+        },
+        {
+          "title": "L'Observatoire Actif",
+          "description": "Observer attentivement le comportement des gens dans leur environnement lié au problème. Noter les interactions et les réactions.",
+          "icon": "👀",
+          "category": "Actions",
+          "id": "1761154950315-11-14m4z6qic",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-11-14m4z6qic-5ov2jc.png"
+        },
+        {
+          "title": "Le Brainstorming Express",
+          "description": "Générer un maximum d'idées de solutions sans jugement. La quantité prime sur la qualité à ce stade.",
+          "icon": "🧠",
+          "category": "Processus",
+          "id": "1761154950315-12-ot06ooqg2",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761154950315-12-ot06ooqg2-e7ciyb.png"
+        },
+        {
+          "title": "L'Arbre à Idées",
+          "description": "Organiser les idées générées en catégories ou en thèmes pour mieux les comprendre et les explorer.",
+          "icon": "🌳",
+          "category": "Composants",
+          "id": "1761154950315-13-41lpk6pyp",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761154950315-13-41lpk6pyp-1suvcr.png"
+        },
+        {
+          "title": "Le Filtre des Idées",
+          "description": "Sélectionner les idées les plus prometteuses et réalisables à partir du brainstorming.",
+          "icon": "✨",
+          "category": "Processus",
+          "id": "1761154950315-14-pfd4mt8ij",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761154950315-14-pfd4mt8ij-41lo36.png"
+        },
+        {
+          "title": "Croquis d'Idées",
+          "description": "Dessiner rapidement les concepts de solutions pour les visualiser. Pas besoin d'être un artiste !",
+          "icon": "✏️",
+          "category": "Actions",
+          "id": "1761154950315-15-omzoy2acm",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-15-omzoy2acm-i4l1y.png"
+        },
+        {
+          "title": "Maquette Simplifiée",
+          "description": "Créer une représentation physique simple de la solution avec des matériaux du quotidien.",
+          "icon": "🏗️",
+          "category": "Actions",
+          "id": "1761154950315-16-5rvr3ui9y",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-16-5rvr3ui9y-ywqan.png"
+        },
+        {
+          "title": "Scénario de Jeu de Rôle",
+          "description": "Simuler l'utilisation de la solution à travers un jeu de rôle. Permet de voir comment elle pourrait fonctionner en pratique.",
+          "icon": "🎭",
+          "category": "Actions",
+          "id": "1761154950315-17-qwbtvm82r",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-17-qwbtvm82r-259cc7.png"
+        },
+        {
+          "title": "Le Storyboard de la Solution",
+          "description": "Créer une séquence d'images qui raconte comment la solution serait utilisée et quels bénéfices elle apporterait.",
+          "icon": "🎬",
+          "category": "Composants",
+          "id": "1761154950315-18-n8ov1yfvq",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761154950315-18-n8ov1yfvq-nxqnwp.png"
+        },
+        {
+          "title": "Prototype de Papier",
+          "description": "Utiliser du papier pour représenter l'interface ou le fonctionnement d'une solution numérique ou d'un objet.",
+          "icon": "📄",
+          "category": "Lieux/Sites et Objets",
+          "id": "1761154950315-19-6s5kx61md",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1761154950315-19-6s5kx61md-lxl8s.png"
+        },
+        {
+          "title": "Le Modèle 3D Basique",
+          "description": "Construire un modèle en trois dimensions d'un objet à l'aide de carton, de pâte à modeler ou d'autres matériaux.",
+          "icon": "🧊",
+          "category": "Lieux/Sites et Objets",
+          "id": "1761154950315-20-f8z91ws7a",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1761154950315-20-f8z91ws7a-smv60r.png"
+        },
+        {
+          "title": "L'Ébauche Numérique",
+          "description": "Utiliser des outils simples comme Paint ou des applications de dessin pour esquisser une interface numérique.",
+          "icon": "💻",
+          "category": "Lieux/Sites et Objets",
+          "id": "1761154950315-21-0h8q2t291",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1761154950315-21-0h8q2t291-q68res.png"
+        },
+        {
+          "title": "Le Tableau Blanc des Idées",
+          "description": "Utiliser un tableau blanc ou un grand papier pour visualiser le concept de la solution.",
+          "icon": "⬜",
+          "category": "Lieux/Sites et Objets",
+          "id": "1761154950315-22-a66kouiz3",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1761154950315-22-a66kouiz3-mg0ig.png"
+        },
+        {
+          "title": "La Boîte à Outils du Prototypeur",
+          "description": "Rassembler divers matériaux et outils qui pourraient être utiles pour construire des prototypes.",
+          "icon": "🔧",
+          "category": "Lieux/Sites et Objets",
+          "id": "1761154950315-23-6x0fa6obt",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1761154950315-23-6x0fa6obt-lkjywr.png"
+        },
+        {
+          "title": "Le Testeur Anonyme",
+          "description": "Faire tester le prototype par des personnes qui ne sont pas directement impliquées dans sa création.",
+          "icon": "🤫",
+          "category": "Personas",
+          "id": "1761154950315-24-hfvzemw75",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761154950315-24-hfvzemw75-t3zy6e.png"
+        },
+        {
+          "title": "La Session de Retours",
+          "description": "Organiser une rencontre pour recueillir les impressions et les suggestions des testeurs sur le prototype.",
+          "icon": "💬",
+          "category": "Processus",
+          "id": "1761154950315-25-z76ofa05q",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761154950315-25-z76ofa05q-kze9wo.png"
+        },
+        {
+          "title": "Le Cahier de Commentaire",
+          "description": "Demander aux testeurs de noter leurs observations et leurs idées d'amélioration dans un carnet dédié.",
+          "icon": "📖",
+          "category": "Lieux/Sites et Objets",
+          "id": "1761154950315-26-fa3phg4ob",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1761154950315-26-fa3phg4ob-ysen9.png"
+        },
+        {
+          "title": "L'Analyse des Retours",
+          "description": "Examiner attentivement tous les commentaires reçus pour identifier les points forts et les points faibles du prototype.",
+          "icon": "📊",
+          "category": "Processus",
+          "id": "1761154950315-27-jq07nn69m",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761154950315-27-jq07nn69m-j0q2l.png"
+        },
+        {
+          "title": "L'Itération Créative",
+          "description": "Modifier et améliorer le prototype en tenant compte des retours des utilisateurs. Ce processus est itératif.",
+          "icon": "🔄",
+          "category": "Processus",
+          "id": "1761154950315-28-5rtfqarfq",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761154950315-28-5rtfqarfq-313w3c.png"
+        },
+        {
+          "title": "Le Prototype Amélioré",
+          "description": "Créer une nouvelle version du prototype qui intègre les changements basés sur les commentaires.",
+          "icon": "🚀",
+          "category": "Composants",
+          "id": "1761154950315-29-2r33kv7om",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761154950315-29-2r33kv7om-1lysyj.png"
+        },
+        {
+          "title": "Le Miroir des Usagers",
+          "description": "Voir comment les utilisateurs interagissent réellement avec le prototype pour repérer des comportements inattendus.",
+          "icon": "🪞",
+          "category": "Actions",
+          "id": "1761154950315-30-9jv24mypg",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-30-9jv24mypg-umipzs.png"
+        },
+        {
+          "title": "La Matrice des Critiques",
+          "description": "Classer les critiques reçues selon leur pertinence et leur impact potentiel sur l'amélioration de la solution.",
+          "icon": "⚖️",
+          "category": "Catégories et Critères",
+          "id": "1761154950315-31-oj77spru3",
+          "categoryOriginal": "Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1761154950315-31-oj77spru3-2mpnhj.png"
+        },
+        {
+          "title": "Le Feedback Positif",
+          "description": "Identifier et valoriser les aspects du prototype qui ont été bien reçus par les utilisateurs.",
+          "icon": "👍",
+          "category": "Bonus et Malus",
+          "id": "1761154950315-32-u5vkpclqw",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1761154950315-32-u5vkpclqw-z3kfgh.png"
+        },
+        {
+          "title": "Le Point Bloquant Inattendu",
+          "description": "Identifier les difficultés rencontrées par les utilisateurs avec le prototype qui n'avaient pas été prévues.",
+          "icon": "🛑",
+          "category": "Bonus et Malus",
+          "id": "1761154950315-33-bgmbyyuit",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1761154950315-33-bgmbyyuit-vkykz.png"
+        },
+        {
+          "title": "Le Parcours Utilisateur",
+          "description": "Décrire étape par étape comment un utilisateur interagit avec la solution proposée.",
+          "icon": "🚶",
+          "category": "Concepts",
+          "id": "1761154950315-34-6uesq94hn",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-34-6uesq94hn-jtv6kq.png"
+        },
+        {
+          "title": "Les Besoins Sous-jacents",
+          "description": "Découvrir les besoins profonds qui motivent les problèmes identifiés, souvent non exprimés directement.",
+          "icon": "💎",
+          "category": "Concepts",
+          "id": "1761154950315-35-4v5vw7313",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-35-4v5vw7313-7jeiz9.png"
+        },
+        {
+          "title": "La Carte d'Empathie",
+          "description": "Visualiser ce qu'une personne pense, ressent, voit et entend face à un problème pour mieux la comprendre.",
+          "icon": "❤️",
+          "category": "Composants",
+          "id": "1761154950315-36-psddctenb",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761154950315-36-psddctenb-gk68rpk.png"
+        },
+        {
+          "title": "Le Testeur Curieux",
+          "description": "Encourager les utilisateurs à tester le prototype avec enthousiasme et à explorer ses fonctionnalités.",
+          "icon": "🧐",
+          "category": "Personas",
+          "id": "1761154950315-37-efrwyky5a",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761154950315-37-efrwyky5a-agfk6o.png"
+        },
+        {
+          "title": "Le Design Cible",
+          "description": "Définir clairement à qui s'adresse la solution et quelles sont les caractéristiques de ces utilisateurs.",
+          "icon": "🎯",
+          "category": "Personas",
+          "id": "1761154950315-38-g8za7ilvj",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761154950315-38-g8za7ilvj-ex1sus.png"
+        },
+        {
+          "title": "La Démo Efficace",
+          "description": "Présenter le prototype de manière claire et concise pour que les utilisateurs comprennent son objectif.",
+          "icon": "📢",
+          "category": "Actions",
+          "id": "1761154950315-39-7hqqbd2xr",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-39-7hqqbd2xr-cy0og.png"
+        },
+        {
+          "title": "La Question Ouverte",
+          "description": "Poser des questions qui invitent à des réponses détaillées et réflexives plutôt que des oui/non.",
+          "icon": "🗣️",
+          "category": "Actions",
+          "id": "1761154950315-40-qz9lx8a74",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-40-qz9lx8a74-na8w3.png"
+        },
+        {
+          "title": "Le Modèle de Succès",
+          "description": "Identifier des exemples réussis de solutions à des problèmes similaires qui peuvent servir d'inspiration.",
+          "icon": "🏆",
+          "category": "Concepts",
+          "id": "1761154950315-41-a90ykh0ss",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-41-a90ykh0ss-3w0g5r.png"
+        },
+        {
+          "title": "L'Analyse des Concurrents",
+          "description": "Étudier ce que font les autres pour résoudre des problèmes similaires, afin de trouver des idées ou des points de différenciation.",
+          "icon": "⚔️",
+          "category": "Actions",
+          "id": "1761154950315-42-f81773s43",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761154950315-42-f81773s43-70qrkp.png"
+        },
+        {
+          "title": "Le Prototype Agile",
+          "description": "Construire des prototypes rapides et simples qui peuvent être facilement modifiés.",
+          "icon": "🏃",
+          "category": "Concepts",
+          "id": "1761154950315-43-nat27j61o",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-43-nat27j61o-imsqdc.png"
+        },
+        {
+          "title": "La Matérialisation de l'Idée",
+          "description": "L'objectif principal du prototypage est de rendre une idée tangible et concrète.",
+          "icon": "🌟",
+          "category": "Concepts",
+          "id": "1761154950315-44-0rwzkdb0b",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-44-0rwzkdb0b-09h4kv.png"
+        },
+        {
+          "title": "Le Testeur Actif",
+          "description": "Encourager les utilisateurs à interagir pleinement avec le prototype et à essayer de l'utiliser comme prévu.",
+          "icon": "💪",
+          "category": "Personas",
+          "id": "1761154950315-45-cuwyuq2ad",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761154950315-45-cuwyuq2ad-3lrijp.png"
+        },
+        {
+          "title": "L'Amélioration Continue",
+          "description": "Le processus de test et de perfectionnement est un cycle qui vise à améliorer la solution au fil du temps.",
+          "icon": "📈",
+          "category": "Concepts",
+          "id": "1761154950315-46-4mftsdbta",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-46-4mftsdbta-ba6wm.png"
+        },
+        {
+          "title": "Le Point de Vue de l'Adolescent",
+          "description": "S'assurer que la solution répond aux besoins et aux réalités spécifiques des adolescents.",
+          "icon": "🧑‍🤝‍🧑",
+          "category": "Personas",
+          "id": "1761154950315-47-138xv8co1",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761154950315-47-138xv8co1-vae32.png"
+        },
+        {
+          "title": "L'Expérimentation Constructive",
+          "description": "Aborder le prototypage comme une opportunité d'apprendre et d'expérimenter sans crainte de l'échec.",
+          "icon": "🧪",
+          "category": "Processus",
+          "id": "1761154950315-48-wso6s6bgx",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761154950315-48-wso6s6bgx-z70we.png"
+        },
+        {
+          "title": "La Solution Réelle",
+          "description": "L'aboutissement du processus est la création d'une solution qui résout efficacement le problème identifié.",
+          "icon": "✅",
+          "category": "Concepts",
+          "id": "1761154950315-49-6er01oc0t",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-49-6er01oc0t-mn238i.png"
+        },
+        {
+          "title": "Le Design pour l'Impact",
+          "description": "Concevoir des solutions qui ont un impact positif et concret sur la vie des utilisateurs.",
+          "icon": "🌍",
+          "category": "Concepts",
+          "id": "1761154950315-50-gr2fv0rxv",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-50-gr2fv0rxv-zabtas.png"
+        },
+        {
+          "title": "La Communauté de Testeurs",
+          "description": "Former un groupe d'adolescents volontaires pour tester et donner leur avis sur les prototypes.",
+          "icon": "🏘️",
+          "category": "Personas",
+          "id": "1761154950315-51-1ixe5gy43",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761154950315-51-1ixe5gy43-wzz16m.png"
+        },
+        {
+          "title": "Le Retour d'Expérience Crucial",
+          "description": "Les commentaires des utilisateurs sont essentiels pour comprendre les forces et les faiblesses du prototype.",
+          "icon": "👂",
+          "category": "Concepts",
+          "id": "1761154950315-52-2h5ce8jd2",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761154950315-52-2h5ce8jd2-j6ain.png"
+        }
+      ],
+      "createdAt": "2025-10-22T20:18:55.481Z",
+      "updatedAt": "2025-10-22T20:18:55.481Z",
+      "description": ""
+    },
+    {
+      "id": "1761164702946",
+      "name": "design thinking 2-24",
+      "cards": [
+        {
+          "title": "Empathie Profonde",
+          "description": "Comprendre les besoins, désirs et motivations de vos utilisateurs à travers l'écoute active, l'observation et l'immersion. Cette phase est cruciale pour construire des solutions réellement pertinentes.",
+          "icon": "👂",
+          "category": "Étapes",
+          "id": "1761164431346-0-iutojx2vt",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761164431346-0-iutojx2vt-sp19rb.png"
+        },
+        {
+          "title": "Définition du Problème",
+          "description": "Synthétiser les apprentissages de la phase d'empathie pour formuler un énoncé de problème clair, centré sur l'utilisateur. Un problème bien défini est à moitié résolu.",
+          "icon": "🎯",
+          "category": "Étapes",
+          "id": "1761164431346-1-rf5exmffo",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761164431346-1-rf5exmffo-rr8dlq.png"
+        },
+        {
+          "title": "Génération d'Idées",
+          "description": "Explorer un large éventail de solutions potentielles sans jugement, en encourageant la créativité et la pensée divergente. L'objectif est de produire une multitude d'idées, même les plus folles.",
+          "icon": "💡",
+          "category": "Étapes",
+          "id": "1761164431346-2-9i6nschsg",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761164431346-2-9i6nschsg-7g4lub.png"
+        },
+        {
+          "title": "Prototypage Rapide",
+          "description": "Construire des représentations tangibles et simplifiées de vos idées pour les rendre concrètes et testables. Un prototype n'a pas besoin d'être parfait, il doit être fonctionnel pour tester.",
+          "icon": "🛠️",
+          "category": "Étapes",
+          "id": "1761164431346-3-zqpvqdzt4",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761164431346-3-zqpvqdzt4-gahrc.png"
+        },
+        {
+          "title": "Test et Itération",
+          "description": "Recueillir des retours sur vos prototypes auprès des utilisateurs et utiliser ces informations pour améliorer vos solutions. Le design thinking est un processus itératif, chaque test mène à une amélioration.",
+          "icon": "🔄",
+          "category": "Étapes",
+          "id": "1761164431346-4-5gl5a1bzv",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761164431346-4-5gl5a1bzv-hhfvk.png"
+        },
+        {
+          "title": "Empathie Visuelle",
+          "description": "Utiliser des cartes d'empathie ou des 'empathy maps' pour structurer les observations et les apprentissages sur les utilisateurs. Cela aide à visualiser leur monde et leurs émotions.",
+          "icon": "🖼️",
+          "category": "Composants",
+          "id": "1761164431346-5-qp0r13jl2",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761164431346-5-qp0r13jl2-8mac4l.png"
+        },
+        {
+          "title": "Analyse des 'Pain Points'",
+          "description": "Identifier les frustrations, les difficultés et les problèmes rencontrés par les utilisateurs dans leur parcours. Ces 'pain points' sont d'excellents points de départ pour définir un problème.",
+          "icon": "💥",
+          "category": "Actions",
+          "id": "1761164431346-6-2hd2bz32y",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761164431346-6-2hd2bz32y-g0wx8q.png"
+        },
+        {
+          "title": "Brainstorming Structuré",
+          "description": "Mener des sessions de brainstorming avec des règles claires pour encourager la participation de tous et la génération d'idées variées. Techniques comme le 'brainwriting' peuvent être utiles.",
+          "icon": "🧠",
+          "category": "Actions",
+          "id": "1761164431346-7-d2b8gfldu",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761164431346-7-d2b8gfldu-k40t3h.png"
+        },
+        {
+          "title": "Technique 'How Might We?'",
+          "description": "Reformuler les problèmes et les insights en questions stimulantes qui ouvrent la voie à de nouvelles solutions. C'est un outil puissant pour passer de la définition à l'idéation.",
+          "icon": "❓",
+          "category": "Concepts",
+          "id": "1761164431346-8-qiqrd48nv",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761164431346-8-qiqrd48nv-l6iths.png"
+        },
+        {
+          "title": "Prototypage en Papier",
+          "description": "Créer des maquettes simples à l'aide de papier, de crayons et de ciseaux pour tester rapidement des interfaces ou des processus. C'est une méthode économique et rapide pour visualiser une idée.",
+          "icon": "📄",
+          "category": "Lieux/Sites et Objets",
+          "id": "1761164431346-9-a7uw8ny6a",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1761164431346-9-a7uw8ny6a-8yqpyo.png"
+        },
+        {
+          "title": "User Journey Mapping",
+          "description": "Visualiser le parcours d'un utilisateur à travers différentes étapes, en identifiant ses émotions, ses actions et ses points de contact. Cela aide à comprendre l'expérience utilisateur dans sa globalité.",
+          "icon": "🗺️",
+          "category": "Composants",
+          "id": "1761164431346-10-59mq5i899",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761164431346-10-59mq5i899-wlnbdb.png"
+        },
+        {
+          "title": "Personas Détaillées",
+          "description": "Créer des archétypes d'utilisateurs représentatifs, avec des caractéristiques démographiques, des motivations et des objectifs. Les personas donnent un visage humain aux utilisateurs.",
+          "icon": "👤",
+          "category": "Personas",
+          "id": "1761164431346-11-tuyw9akfy",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761164431346-11-tuyw9akfy-8540oe.png"
+        },
+        {
+          "title": "Affinitaires (Affinity Mapping)",
+          "description": "Regrouper et organiser des notes, des idées ou des observations similaires pour identifier des tendances et des thèmes émergents. Cela aide à structurer un grand volume d'informations.",
+          "icon": "🗂️",
+          "category": "Actions",
+          "id": "1761164431346-12-b6tgcy8l3",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761164431346-12-b6tgcy8l3-f24qfu.png"
+        },
+        {
+          "title": "Évaluation Critique",
+          "description": "Analyser objectivement les prototypes et les idées pour identifier leurs forces, leurs faiblesses et les axes d'amélioration potentiels. Le feedback doit être constructif et orienté vers la solution.",
+          "icon": "⚖️",
+          "category": "Actions",
+          "id": "1761164431346-13-5jqzbroep",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761164431346-13-5jqzbroep-h0sgr7.png"
+        },
+        {
+          "title": "Échec Rapide et Pas Cher",
+          "description": "Encourager l'expérimentation et accepter l'échec comme une opportunité d'apprentissage. Mieux vaut échouer tôt dans le processus pour ne pas investir trop de ressources dans une mauvaise direction.",
+          "icon": "❌",
+          "category": "Bonus et Malus",
+          "id": "1761164431346-14-x5tnjqws7",
+          "categoryOriginal": "Malus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1761164431346-14-x5tnjqws7-cph2we.png"
+        },
+        {
+          "title": "Conception Centrée sur l'Humain",
+          "description": "Placer l'utilisateur et ses besoins au cœur de toutes les décisions de conception. C'est le principe fondamental qui sous-tend l'ensemble du processus.",
+          "icon": "❤️",
+          "category": "Concepts",
+          "id": "1761164431346-15-avzb9r98f",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761164431346-15-avzb9r98f-ellpt.png"
+        },
+        {
+          "title": "Facilitation Agile",
+          "description": "Adapter le rythme et les outils du processus de design thinking à la dynamique de groupe et aux contraintes de temps. La flexibilité du facilitateur est essentielle.",
+          "icon": "🚀",
+          "category": "Actions",
+          "id": "1761164431346-16-d5t7kvflt",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761164431346-16-d5t7kvflt-egs6o9.png"
+        },
+        {
+          "title": "Règles de Créativité",
+          "description": "Établir des directives claires pour les séances de brainstorming, telles que 'différer le jugement' et 'encourager les idées folles'. Ces règles créent un environnement propice à l'innovation.",
+          "icon": "📜",
+          "category": "Catégories et Critères",
+          "id": "1761164431346-17-4q1u7gf5q",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1761164431346-17-4q1u7gf5q-q0fgtc.png"
+        },
+        {
+          "title": "Prototypage Numérique",
+          "description": "Utiliser des outils logiciels pour créer des prototypes interactifs d'applications ou de sites web. Cela permet de simuler l'expérience utilisateur de manière plus réaliste.",
+          "icon": "💻",
+          "category": "Lieux/Sites et Objets",
+          "id": "1761164431346-18-0fisl6fuq",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1761164431346-18-0fisl6fuq-jd443q.png"
+        },
+        {
+          "title": "Décodage des Besoins Implicites",
+          "description": "Aller au-delà de ce que les utilisateurs disent pour découvrir leurs besoins latents et non exprimés. C'est une compétence clé pour une véritable empathie.",
+          "icon": "🔍",
+          "category": "Actions",
+          "id": "1761164431346-19-c8zppafcv",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761164431346-19-c8zppafcv-n6p0qn.png"
+        },
+        {
+          "title": "Validation des Hypothèses",
+          "description": "Tester les hypothèses clés sur les utilisateurs et les solutions lors de la phase de prototypage. Le but est de confirmer ou d'infirmer ces suppositions.",
+          "icon": "✅",
+          "category": "Actions",
+          "id": "1761164431346-20-0mq731kyr",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761164431346-20-0mq731kyr-vpbe2m.png"
+        },
+        {
+          "title": "Impact Positif",
+          "description": "Le succès du design thinking réside dans la création de solutions qui améliorent réellement la vie ou le travail des utilisateurs. Un impact positif est le but ultime.",
+          "icon": "🌟",
+          "category": "Bonus et Malus",
+          "id": "1761164431346-21-hmatd1ydl",
+          "categoryOriginal": "Bonus",
+          "categoryColor": "#f97316",
+          "image": "/images/collections/1761164431346-21-hmatd1ydl-goqwn.png"
+        },
+        {
+          "title": "La 'Eureka!' Mentale",
+          "description": "Le moment d'illumination où une idée novatrice émerge, souvent après avoir traversé les phases précédentes. C'est la récompense de la persévérance créative.",
+          "icon": "🤩",
+          "category": "Concepts",
+          "id": "1761164431346-22-fb0rz4xc7",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761164431346-22-fb0rz4xc7-ba7ut.png"
+        },
+        {
+          "title": "Atelier Interactif",
+          "description": "Organiser l'espace de travail pour encourager la collaboration et la mobilité. Des tableaux blancs, des murs à post-its et des zones dédiées au prototypage sont essentiels.",
+          "icon": "🏛️",
+          "category": "Locations/Sites",
+          "id": "1761164431346-23-390q21ix2",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1761164431346-23-390q21ix2-qgi0v.png"
+        }
+      ],
+      "createdAt": "2025-10-22T20:25:02.946Z",
+      "updatedAt": "2025-10-22T20:25:02.946Z",
+      "description": ""
     }
   ]
 }
