@@ -111,7 +111,6 @@ const translateTitleToEnglish = async (title) => {
 
   try {
     const textModel = genAI.getGenerativeModel({ model: TEXT_MODEL });
-
     const prompt = `Translate the following French text to English. Provide only the translation, no explanations or additional text:
 
 "${title}"
@@ -300,6 +299,9 @@ const normalizeCategory = (value) => {
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+// Negative prompt for image generation
+const Negative_prompt = `sketch, low quality, worst quality, text, signature, jpeg artifacts, bad anatomy, heterochromia, simple, 3d, painting, blurry, undefined, white eyes, glowing`;
+
 // Generate image with Stability AI
 const generateImageWithStability = async (prompt, stylePreset = 'isometric') => {
   if (!STABILITY_API_KEY) {
@@ -321,11 +323,15 @@ const generateImageWithStability = async (prompt, stylePreset = 'isometric') => 
             text: prompt,
             weight: 1,
           },
+          {
+            text: Negative_prompt,
+            weight: -1,
+          },
         ],
         cfg_scale: 7,
         height: 1024,
         width: 1024,
-        steps: 30,
+        steps: 42,
         samples: 1,
         style_preset: stylePreset
       }),
