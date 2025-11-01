@@ -15,6 +15,7 @@ const initialState: AppState = {
   isLoadingCollections: false,
   lastGenerationResult: null,
   metrics: null,
+  imageGenerationProgress: null,
   settings: {
     darkMode: false,
     animations: true,
@@ -109,6 +110,9 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
     case 'SET_CURRENT_VIEW':
       return { ...state, currentView: action.payload };
 
+    case 'SET_IMAGE_GENERATION_PROGRESS':
+      return { ...state, imageGenerationProgress: action.payload };
+
     case 'TOGGLE_SIDEBAR':
       return { ...state, sidebarOpen: !state.sidebarOpen };
 
@@ -133,19 +137,72 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Fonctions API avec gestion d'état intégrée
   const api: ApiContextType = {
+    generateContext: useCallback(async (theme: string, publicTarget: string) => {
+      try {
+        const result = await ApiService.generateContext(theme, publicTarget);
+        return result;
+      } catch (error) {
+        console.error('Erreur lors de la génération du contexte:', error);
+        throw error;
+      }
+    }, []),
     generateCards: useCallback(async (theme: string, context: string, numCards?: number, stylePreset?: string) => {
       dispatch({ type: 'SET_GENERATING', payload: true });
+      dispatch({ type: 'SET_CARDS', payload: [] }); // Clear previous cards
+      dispatch({ type: 'SET_METRICS', payload: null });
+      dispatch({ type: 'SET_GENERATION_RESULT', payload: null });
+      dispatch({ type: 'SET_IMAGE_GENERATION_PROGRESS', payload: { current: 0, total: numCards || 0 } });
+
       try {
-        const result = await ApiService.generateCards(theme, context, numCards, stylePreset);
-        dispatch({ type: 'SET_CARDS', payload: result.cards });
-        dispatch({ type: 'SET_METRICS', payload: result.metrics });
-        dispatch({ type: 'SET_GENERATION_RESULT', payload: result });
-        return result;
+        // 1. Generate text content first
+        const { cards: textOnlyCards } = await ApiService.generateCardsText(theme, context, numCards);
+        dispatch({ type: 'SET_CARDS', payload: textOnlyCards });
+        dispatch({ type: 'SET_IMAGE_GENERATION_PROGRESS', payload: { current: 0, total: textOnlyCards.length } });
+
+        // 2. Generate images one by one
+        const cardsWithImages: CardData[] = [];
+        for (let i = 0; i < textOnlyCards.length; i++) {
+          const card = textOnlyCards[i];
+          try {
+            const { imageUrl } = await ApiService.generateCardImage(card, theme, context, stylePreset);
+            const cardWithImage = { ...card, image: imageUrl };
+            cardsWithImages.push(cardWithImage);
+
+            // Update the specific card in the state with its new image
+            dispatch({ type: 'UPDATE_CARD', payload: cardWithImage });
+
+          } catch (imageError) {
+            console.error(`Error generating image for card "${card.title}":`, imageError);
+            // Keep the card without an image or with a fallback
+            cardsWithImages.push(card);
+          }
+          dispatch({ type: 'SET_IMAGE_GENERATION_PROGRESS', payload: { current: i + 1, total: textOnlyCards.length } });
+        }
+
+        // Final update with all data
+        const finalResult = {
+          cards: cardsWithImages,
+          metrics: { // Simulate metrics for now
+            textRequests: 1,
+            imageRequests: textOnlyCards.length,
+            imageFailures: cardsWithImages.filter(c => !c.image).length,
+            totalRequests: 1 + textOnlyCards.length,
+            responseBytes: 0, // Not calculated in this flow
+            responseKilobytes: 0,
+          }
+        };
+
+        dispatch({ type: 'SET_GENERATION_RESULT', payload: finalResult });
+        dispatch({ type: 'SET_METRICS', payload: finalResult.metrics });
+
+        return finalResult;
+
       } catch (error) {
         console.error('Erreur lors de la génération des cartes:', error);
         throw error;
       } finally {
         dispatch({ type: 'SET_GENERATING', payload: false });
+        dispatch({ type: 'SET_IMAGE_GENERATION_PROGRESS', payload: null });
       }
     }, []),
 
@@ -249,13 +306,15 @@ export const useCollections = () => {
 };
 
 export const useGeneration = () => {
-  const { state, dispatch, api } = useApp();
+  const { state, api } = useApp();
   return {
     isGenerating: state.isGenerating,
     isGeneratingPdf: state.isGeneratingPdf,
     metrics: state.metrics,
     lastGenerationResult: state.lastGenerationResult,
+    imageGenerationProgress: state.imageGenerationProgress,
     generateCards: api.generateCards,
+    generateContext: api.generateContext,
     generatePdfForCards: api.generatePdfForCards,
   };
 };

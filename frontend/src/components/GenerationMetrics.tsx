@@ -5,7 +5,6 @@ import {
   Typography,
   Box,
   LinearProgress,
-  Chip,
   Alert,
   Stack,
 } from '@mui/material';
@@ -19,11 +18,13 @@ import {
 import { useGeneration } from '../context/AppContext';
 
 export const GenerationMetrics: React.FC = () => {
-  const { metrics } = useGeneration();
+  const { lastGenerationResult } = useGeneration();
 
-  if (!metrics) {
+  if (!lastGenerationResult || !lastGenerationResult.metrics) {
     return null;
   }
+
+  const { metrics } = lastGenerationResult;
 
   const successRate = metrics.totalRequests > 0
     ? ((metrics.totalRequests - metrics.imageFailures) / metrics.totalRequests) * 100

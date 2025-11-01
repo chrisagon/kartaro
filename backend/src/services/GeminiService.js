@@ -154,6 +154,66 @@ const buildImagePrompt = async (card, theme, context) => {
   return `Professional illustration of "${translatedTitle}" for ${theme} educational card, flat colors,  Vector Art, vibrant colors, centered composition, masterwork, masterpiece, best quality, dynamic pose, dynamic angle, hyperdetailed, strong saturation, depth, digital art`;
 };
 
+const generateCardsTextOnly = async (theme, context, numCards = null) => {
+  if (!genAI) {
+    throw new Error('Gemini client is not initialised. Please set GEMINI_API_KEY.');
+  }
+
+  try {
+    const textModel = genAI.getGenerativeModel({ model: TEXT_MODEL });
+
+    const NUM_CARDS = numCards !== null 
+      ? numCards 
+      : parseInt(process.env.NUM_CARDS_TO_GENERATE || '10', 10);
+    
+    const prompt = `Generate a JSON array of exactly ${NUM_CARDS} workshop cards for the theme "${theme}" and context "${context}".
+
+Categories available: Process, Steps, Components, Actions, Bonus and Malus, Categories and Criteria, Locations/Sites and Things/Objects, Personas, Concepts.
+
+Each card must have:
+- title: A clear, concise title
+- description: A detailed description (2-3 sentences)
+- icon: A relevant emoji
+- category: One of the categories above
+
+Respond with ONLY a valid JSON array, no markdown, no explanations:
+[
+  {
+    "title": "Card title",
+    "description": "Card description",
+    "icon": "🎯",
+    "category": "Concept"
+  }
+]
+
+Generate exactly ${NUM_CARDS} cards with diverse categories.`;
+
+    const result = await textModel.generateContent({
+      contents: [
+        {
+          role: 'user',
+          parts: [{ text: prompt }],
+        },
+      ],
+    });
+    const response = await result.response;
+    const text = await response.text();
+
+    const cards = parseCardsFromText(text);
+    const cardsWithIds = cards.map((card, index) => ({
+      ...card,
+      id: `${Date.now()}-${index}-${Math.random().toString(36).substr(2, 9)}`,
+    }));
+    const cardsWithMetadata = cardsWithIds.map(card => applyCategoryMetadata(card));
+
+    return cardsWithMetadata;
+
+  } catch (error) {
+    console.error('Error generating card text from Gemini:', error.message || error);
+    throw new Error('Failed to generate card text via external service.');
+  }
+};
+
 const generateCards = async (theme, context, numCards = null, stylePreset = 'isometric') => {
   if (!genAI) {
     throw new Error('Gemini client is not initialised. Please set GEMINI_API_KEY.');
@@ -208,15 +268,11 @@ Generate exactly ${NUM_CARDS} cards with diverse categories.`;
     const response = await result.response;
     const text = await response.text();
 
-    const cards = parseCardsFromText(text);
-    // Add unique IDs to each card
-    const cardsWithIds = cards.map((card, index) => ({
-      ...card,
-      id: `${Date.now()}-${index}-${Math.random().toString(36).substr(2, 9)}`,
-    }));
-    const cardsWithMetadata = cardsWithIds.map(card => applyCategoryMetadata(card));
+    const cards = await generateCardsTextOnly(theme, context, numCards);
+    metrics.textRequests = 1; // Already counted in generateCardsTextOnly, but let's keep it here for the main function
+
     const enrichedCards = await appendImagesToCards(
-      cardsWithMetadata,
+      cards,
       theme,
       context,
       metrics,
@@ -401,6 +457,44 @@ const appendImagesToCards = async (cards, theme, context, metrics = null, styleP
 };
 
 // Regenerate image for a single card
+const generateContextFromThemeAndPublic = async (theme, publicTarget) => {
+  if (!genAI) {
+    throw new Error('Gemini client is not initialised. Please set GEMINI_API_KEY.');
+  }
+
+  try {
+    const textModel = genAI.getGenerativeModel({ model: TEXT_MODEL });
+    const prompt = `
+# Rôle et Contexte
+Tu es un expert-pédagogue spécialisé dans la décomposition et l'explication de processus complexes. Ton approche combine rigueur analytique et clarté pédagogique.
+
+# Tâche
+Identifie et décris toutes les étapes du processus relatif à : ${theme}
+
+# Public cible
+Adapte ta réponse au niveau et aux besoins de : ${publicTarget}
+(Exemple : "Jeunes professionnels", "Adolescents de 12 à 16 ans", "professionnels IT")
+
+# Format attendu
+- Une étape par point numéroté
+- Pour chaque étape : titre, description courte, enjeux clés
+- Durée estimée ou dépendances entre étapes (si applicable)
+
+# Ton et approche
+Sois clair et progressif. Évite le jargon sauf si ton public le maîtrise.
+`;
+
+    const result = await textModel.generateContent({ contents: [{ role: 'user', parts: [{ text: prompt }] }] });
+    const response = await result.response;
+    const text = await response.text();
+
+    return text.trim();
+  } catch (error) {
+    console.error('Error generating context from Gemini:', error.message || error);
+    throw new Error('Failed to generate context via external service.');
+  }
+};
+
 const regenerateCardImage = async (card, theme = '', context = '', stylePreset = 'isometric') => {
   if (IMAGE_PROVIDER !== 'stability' || !STABILITY_API_KEY) {
     console.warn('Stability AI not configured. Using fallback image.');
@@ -422,7 +516,9 @@ const regenerateCardImage = async (card, theme = '', context = '', stylePreset =
 };
 
 module.exports = {
+  generateContextFromThemeAndPublic,
   generateCards,
+  generateCardsTextOnly,
   parseCardsFromText,
   applyCategoryMetadata,
   normalizeCategory,
