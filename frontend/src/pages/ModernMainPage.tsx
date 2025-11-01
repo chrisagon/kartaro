@@ -20,12 +20,12 @@ import {
   Save as SaveIcon,
   Print as PrintIcon,
 } from '@mui/icons-material';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import ModernInputForm from '../components/ModernInputForm';
 import ModernCardGrid from '../components/ModernCardGrid';
 import GenerationMetrics from '../components/GenerationMetrics';
-import { useCards, useCollections, useApp } from '../context/AppContext';
+import { useCards, useCollections, useApp, useGeneration } from '../context/AppContext';
 import { generatePdfFromCards } from '../services/PdfService';
 import * as ApiService from '../services/ApiService';
 
@@ -33,6 +33,7 @@ export const ModernMainPage: React.FC = () => {
   const { cards = [] } = useCards();
   const { getCollections } = useCollections();
   const { state } = useApp();
+  const { imageGenerationProgress } = useGeneration();
   
   const [isSavingQuick, setIsSavingQuick] = useState(false);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
@@ -149,11 +150,19 @@ export const ModernMainPage: React.FC = () => {
         </motion.div>
 
         {/* Métriques de génération */}
-        {state.metrics && (
-          <motion.div variants={itemVariants}>
-            <GenerationMetrics />
-          </motion.div>
-        )}
+        <AnimatePresence>
+          {state.lastGenerationResult && state.lastGenerationResult.metrics && (
+            <motion.div
+              key="metrics-block"
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
+              <GenerationMetrics />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Grille de cartes */}
         <motion.div variants={itemVariants}>
@@ -161,55 +170,63 @@ export const ModernMainPage: React.FC = () => {
         </motion.div>
 
         {/* Boutons d'action */}
-        {cards.length > 0 && (
-          <motion.div variants={itemVariants}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, my: 4 }}>
-              <Button
-                variant="contained"
-                size="large"
-                startIcon={isSavingQuick ? <CircularProgress size={20} color="inherit" /> : <SaveIcon />}
-                onClick={handleQuickSave}
-                disabled={isSavingQuick}
-                sx={{
-                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                  color: '#ffffff',
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: 3,
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  '&:hover': {
-                    background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-                    boxShadow: '0 6px 8px rgba(0, 0, 0, 0.15)',
-                  },
-                }}
-              >
-                {isSavingQuick ? 'Sauvegarde...' : 'Sauvegarder la Collection'}
-              </Button>
+        <AnimatePresence>
+          {cards.length > 0 && (
+            <motion.div
+              key="actions-block"
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
+              <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, my: 4 }}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  startIcon={isSavingQuick ? <CircularProgress size={20} color="inherit" /> : <SaveIcon />}
+                  onClick={handleQuickSave}
+                  disabled={isSavingQuick}
+                  sx={{
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    color: '#ffffff',
+                    px: 4,
+                    py: 1.5,
+                    borderRadius: 3,
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    '&:hover': {
+                      background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+                      boxShadow: '0 6px 8px rgba(0, 0, 0, 0.15)',
+                    },
+                  }}
+                >
+                  {isSavingQuick ? 'Sauvegarde...' : 'Sauvegarder la Collection'}
+                </Button>
 
-              <Button
-                variant="contained"
-                size="large"
-                startIcon={isGeneratingPdf ? <CircularProgress size={20} color="inherit" /> : <PrintIcon />}
-                onClick={handleGeneratePdf}
-                disabled={isGeneratingPdf}
-                sx={{
-                  background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
-                  color: '#ffffff',
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: 3,
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  '&:hover': {
-                    background: 'linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)',
-                    boxShadow: '0 6px 8px rgba(0, 0, 0, 0.15)',
-                  },
-                }}
-              >
-                {isGeneratingPdf ? 'Génération...' : 'Télécharger PDF'}
-              </Button>
-            </Box>
-          </motion.div>
-        )}
+                <Button
+                  variant="contained"
+                  size="large"
+                  startIcon={isGeneratingPdf ? <CircularProgress size={20} color="inherit" /> : <PrintIcon />}
+                  onClick={handleGeneratePdf}
+                  disabled={isGeneratingPdf}
+                  sx={{
+                    background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+                    color: '#ffffff',
+                    px: 4,
+                    py: 1.5,
+                    borderRadius: 3,
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    '&:hover': {
+                      background: 'linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)',
+                      boxShadow: '0 6px 8px rgba(0, 0, 0, 0.15)',
+                    },
+                  }}
+                >
+                  {isGeneratingPdf ? 'Génération...' : 'Télécharger PDF'}
+                </Button>
+              </Box>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* État de génération */}
         {state.isGenerating && (
@@ -231,9 +248,15 @@ export const ModernMainPage: React.FC = () => {
               <Typography variant="h6" gutterBottom>
                 Génération en cours...
               </Typography>
-              <Typography variant="body2">
-                L'IA crée vos cartes personnalisées
-              </Typography>
+              {imageGenerationProgress && imageGenerationProgress.total > 0 ? (
+                <Typography variant="body2">
+                  Génération de l'image {imageGenerationProgress.current} / {imageGenerationProgress.total}
+                </Typography>
+              ) : (
+                <Typography variant="body2">
+                  Génération du texte des cartes...
+                </Typography>
+              )}
             </Box>
           </motion.div>
         )}

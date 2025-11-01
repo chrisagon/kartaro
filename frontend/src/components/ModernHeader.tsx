@@ -25,7 +25,6 @@ import {
   Add as AddIcon,
   Settings as SettingsIcon,
   Brightness6 as ThemeIcon,
-  Download as DownloadIcon,
 } from '@mui/icons-material';
 import { useApp } from '../context/AppContext';
 
@@ -49,7 +48,6 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
   const { state, dispatch } = useApp();
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {

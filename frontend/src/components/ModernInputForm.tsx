@@ -24,6 +24,8 @@ import {
   Description as ContextIcon,
   PlayArrow as StartIcon,
   Palette as StyleIcon,
+  Group as PublicIcon, // Ajout de l'icône pour le public
+  Cached as RegenerateIcon, // Ajout de l'icône pour la génération
 } from '@mui/icons-material';
 
 interface ModernInputFormProps {
@@ -31,9 +33,11 @@ interface ModernInputFormProps {
 }
 
 export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) => {
-  const { isGenerating, generateCards } = useGeneration();
+  const { isGenerating, generateCards, generateContext } = useGeneration();
   const [theme, setTheme] = useState('');
+  const [publicTarget, setPublicTarget] = useState(''); // Nouvel état pour le public
   const [context, setContext] = useState('');
+  const [isGeneratingContext, setIsGeneratingContext] = useState(false); // État de chargement pour le contexte
   const [numCards, setNumCards] = useState<number>(10);
   const [stylePreset, setStylePreset] = useState<string>('isometric');
   const [error, setError] = useState<string | null>(null);
@@ -59,6 +63,24 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
     'Entrepreneuriat',
     'Santé et Bien-être',
   ];
+
+  const handleGenerateContext = async () => {
+    if (!theme.trim() || !publicTarget.trim()) {
+      setError('Veuillez renseigner le thème et le public pour générer le contexte.');
+      return;
+    }
+    setError(null);
+    setIsGeneratingContext(true);
+    try {
+      const result = await generateContext(theme, publicTarget);
+      setContext(result.context);
+    } catch (err) {
+      setError('Erreur lors de la génération du contexte.');
+      console.error('Erreur de génération de contexte:', err);
+    } finally {
+      setIsGeneratingContext(false);
+    }
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -141,6 +163,40 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
               </Stack>
             </Box>
 
+            {/* Champ Public Cible */}
+            <Box>
+              <Typography variant="subtitle1" gutterBottom fontWeight={500}>
+                <PublicIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
+                Public Cible
+              </Typography>
+              <TextField
+                fullWidth
+                placeholder="Ex: Jeunes professionnels, Adolescents, Experts IT..."
+                value={publicTarget}
+                onChange={(e) => setPublicTarget(e.target.value)}
+                disabled={isGenerating || isGeneratingContext}
+                variant="outlined"
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    backgroundColor: 'background.paper',
+                  },
+                }}
+              />
+            </Box>
+
+            {/* Bouton de génération de contexte */}
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleGenerateContext}
+                disabled={isGenerating || isGeneratingContext || !theme.trim() || !publicTarget.trim()}
+                startIcon={isGeneratingContext ? undefined : <RegenerateIcon />}
+              >
+                {isGeneratingContext ? 'Génération...' : 'Générer le contexte avec IA'}
+              </Button>
+            </Box>
+
             {/* Champ contexte */}
             <Box>
               <Typography variant="subtitle1" gutterBottom fontWeight={500}>
@@ -150,7 +206,8 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
               <TextField
                 fullWidth
                 multiline
-                rows={4}
+                minRows={4}
+                maxRows={12}
                 placeholder="Décrivez le contexte, les objectifs d'apprentissage, ou les spécificités que vous souhaitez aborder..."
                 value={context}
                 onChange={(e) => setContext(e.target.value)}

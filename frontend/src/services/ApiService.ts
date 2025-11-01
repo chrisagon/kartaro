@@ -22,6 +22,27 @@ async function request<T>(url: string, options?: any): Promise<T> {
   }
 }
 
+export function generateContext(theme: string, publicTarget: string): Promise<{ context: string }> {
+  return request<{ context: string }>('/cards/generate-context', {
+    method: 'POST',
+    data: { theme, publicTarget },
+  });
+}
+
+export function generateCardsText(theme: string, context: string, numCards?: number): Promise<{ cards: CardData[] }> {
+  return request<{ cards: CardData[] }>('/cards/generate-text', {
+    method: 'POST',
+    data: { theme, context, numCards },
+  });
+}
+
+export function generateCardImage(card: CardData, theme: string, context: string, stylePreset?: string): Promise<{ imageUrl: string }> {
+  return request<{ imageUrl: string }>('/cards/generate-image', {
+    method: 'POST',
+    data: { card, theme, context, stylePreset },
+  });
+}
+
 export function generateCards(theme: string, context: string, numCards?: number, stylePreset?: string): Promise<GenerationResult> {
   return request<GenerationResult>('/cards/generate', {
     method: 'POST',

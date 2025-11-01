@@ -38,6 +38,7 @@ export interface GenerationResult {
 // Types pour les composants UI
 export interface InputFormData {
   theme: string;
+  publicTarget: string;
   context: string;
   numCards?: number;
   stylePreset?: string;
@@ -67,6 +68,7 @@ export interface AppState {
   // Métriques et résultats
   metrics: GenerateCardsMetrics | null;
   lastGenerationResult: GenerationResult | null;
+  imageGenerationProgress: { current: number; total: number } | null;
 
   // Paramètres UI
   settings: AppSettings;
@@ -96,10 +98,12 @@ export type AppAction =
   | { type: 'SET_SETTINGS'; payload: Partial<AppSettings> }
   | { type: 'SET_CURRENT_VIEW'; payload: AppState['currentView'] }
   | { type: 'TOGGLE_SIDEBAR' }
-  | { type: 'RESET_STATE' };
+  | { type: 'RESET_STATE' }
+  | { type: 'SET_IMAGE_GENERATION_PROGRESS'; payload: { current: number; total: number } | null };
 
 // Contexte pour les fonctions API
 export interface ApiContextType {
+  generateContext: (theme: string, publicTarget: string) => Promise<{ context: string }>;
   generateCards: (theme: string, context: string, numCards?: number, stylePreset?: string) => Promise<GenerationResult>;
   getCollections: () => Promise<CardCollection[]>;
   getCollectionById: (id: string) => Promise<CardCollection>;

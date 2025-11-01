@@ -1,8 +1,43 @@
 const express = require('express');
-const { generateCards, regenerateCardImage } = require('../services/GeminiService');
+const { generateCards, generateCardsTextOnly, regenerateCardImage, generateContextFromThemeAndPublic } = require('../services/GeminiService');
 
 const router = express.Router();
 
+// Nouvelle route pour générer uniquement le texte des cartes
+router.post('/generate-text', async (req, res) => {
+  const { theme, context, numCards } = req.body;
+
+  if (!theme) {
+    return res.status(400).json({ error: 'Le thème est requis.' });
+  }
+
+  try {
+    const cards = await generateCardsTextOnly(theme, context, numCards);
+    res.json({ cards });
+  } catch (error) {
+    console.error('Erreur lors de la génération du texte des cartes:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Nouvelle route pour générer l'image d'une seule carte
+router.post('/generate-image', async (req, res) => {
+  const { card, theme, context, stylePreset } = req.body;
+
+  if (!card || !theme) {
+    return res.status(400).json({ error: 'Les données de la carte et le thème sont requis.' });
+  }
+
+  try {
+    const imageUrl = await regenerateCardImage(card, theme, context, stylePreset);
+    res.json({ imageUrl });
+  } catch (error) {
+    console.error('Erreur lors de la génération de limage de la carte:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Route pour générer les cartes
 router.post('/generate', async (req, res) => {
   const { theme, context, numCards, stylePreset } = req.body;
 
@@ -47,6 +82,23 @@ router.post('/regenerate-image', async (req, res) => {
     const newImageUrl = await regenerateCardImage(card, theme || '', context || '', validStylePreset);
     res.json({ image: newImageUrl });
   } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Route pour générer le contexte
+router.post('/generate-context', async (req, res) => {
+  const { theme, publicTarget } = req.body;
+
+  if (!theme || !publicTarget) {
+    return res.status(400).json({ error: 'Le thème et le public sont requis.' });
+  }
+
+  try {
+    const context = await generateContextFromThemeAndPublic(theme, publicTarget);
+    res.json({ context });
+  } catch (error) {
+    console.error('Erreur lors de la génération du contexte:', error);
     res.status(500).json({ error: error.message });
   }
 });

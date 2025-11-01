@@ -10,6 +10,7 @@ import {
   Chip,
   Fade,
   IconButton,
+  CircularProgress,
 } from '@mui/material';
 import { Edit as EditIcon } from '@mui/icons-material';
 import { CardData } from '../types/app';
@@ -77,21 +78,26 @@ export const ModernCard: React.FC<ModernCardProps> = ({
           </IconButton>
         )}
 
-        {card.image && (
-          <CardMedia
-            component="img"
-            height={160}
-            image={card.image}
-            alt={`Illustration pour ${card.title}`}
-            sx={{
-              objectFit: 'cover',
-              transition: 'transform 0.3s ease-in-out',
-              '&:hover': {
-                transform: 'scale(1.05)',
-              },
-            }}
-          />
-        )}
+        <Box sx={{ height: 160, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0f4ff' }}>
+          {card.image ? (
+            <CardMedia
+              component="img"
+              height={160}
+              image={card.image}
+              alt={`Illustration pour ${card.title}`}
+              sx={{
+                objectFit: 'cover',
+                width: '100%',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
+              }}
+            />
+          ) : (
+            <CircularProgress />
+          )}
+        </Box>
 
         <CardContent sx={{ flexGrow: 1, p: 3 }}>
           <Box display="flex" alignItems="center" mb={2}>
