@@ -188,7 +188,7 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 onClick={handleGenerateContext}
                 disabled={isGenerating || isGeneratingContext || !theme.trim() || !publicTarget.trim()}
                 startIcon={isGeneratingContext ? undefined : <RegenerateIcon />}
@@ -302,11 +302,11 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
                 fontSize: '1.1rem',
                 fontWeight: 600,
                 borderRadius: 2,
-                background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
-                boxShadow: '0px 4px 12px rgba(37, 99, 235, 0.3)',
+                background: 'linear-gradient(135deg, #ff983f 0%, #e77409 100%)',
+                boxShadow: '0px 4px 12px rgba(231, 116, 9, 0.3)',
                 '&:hover': {
-                  background: 'linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%)',
-                  boxShadow: '0px 6px 16px rgba(37, 99, 235, 0.4)',
+                  background: 'linear-gradient(135deg, #e77409 0%, #c05d00 100%)',
+                  boxShadow: '0px 6px 16px rgba(231, 116, 9, 0.4)',
                 },
                 '&:disabled': {
                   background: 'grey.400',

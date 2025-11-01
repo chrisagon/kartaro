@@ -127,13 +127,13 @@ export const ModernMainPage: React.FC = () => {
               gutterBottom
               fontWeight={700}
               sx={{
-                background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
+                background: 'linear-gradient(135deg, #ff983f 0%, #e77409 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}
             >
-              Générateur de Cartes IA
+              DeckLab : votre laboratoire de Deck IA
             </Typography>
             <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
               Créez des cartes d'apprentissage personnalisées avec l'intelligence artificielle.
@@ -187,14 +187,14 @@ export const ModernMainPage: React.FC = () => {
                   onClick={handleQuickSave}
                   disabled={isSavingQuick}
                   sx={{
-                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    background: 'linear-gradient(135deg, #ff983f 0%, #e77409 100%)',
                     color: '#ffffff',
                     px: 4,
                     py: 1.5,
                     borderRadius: 3,
                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                     '&:hover': {
-                      background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+                      background: 'linear-gradient(135deg, #e77409 0%, #c05d00 100%)',
                       boxShadow: '0 6px 8px rgba(0, 0, 0, 0.15)',
                     },
                   }}
@@ -209,14 +209,14 @@ export const ModernMainPage: React.FC = () => {
                   onClick={handleGeneratePdf}
                   disabled={isGeneratingPdf}
                   sx={{
-                    background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+                    background: 'linear-gradient(135deg, #ff983f 0%, #e77409 100%)',
                     color: '#ffffff',
                     px: 4,
                     py: 1.5,
                     borderRadius: 3,
                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                     '&:hover': {
-                      background: 'linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)',
+                      background: 'linear-gradient(135deg, #e77409 0%, #c05d00 100%)',
                       boxShadow: '0 6px 8px rgba(0, 0, 0, 0.15)',
                     },
                   }}
@@ -271,7 +271,7 @@ export const ModernMainPage: React.FC = () => {
                 position: 'fixed',
                 bottom: 24,
                 right: 24,
-                background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
+                background: 'linear-gradient(135deg, #ff983f 0%, #e77409 100%)',
               }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >

@@ -86,18 +86,14 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
         )}
 
         {/* Logo/Titre */}
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{
-            flexGrow: isMobile ? 1 : 0,
-            mr: 3,
-            fontWeight: 700,
-            color: theme.palette.primary.main,
-          }}
-        >
-          Card Generator
-        </Typography>
+        <Box sx={{ mr: 3, cursor: 'pointer' }} onClick={() => navigate('/')}>
+          <Box
+            component="img"
+            src={`${process.env.PUBLIC_URL}/decklab-logo.png`}
+            alt="DECKLAB Logo"
+            sx={{ height: 40, verticalAlign: 'middle' }}
+          />
+        </Box>
 
         {/* Recherche */}
         {onSearch && (

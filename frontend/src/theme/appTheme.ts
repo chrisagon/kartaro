@@ -6,9 +6,9 @@ export const appTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#2563eb', // Bleu moderne
-      light: '#60a5fa',
-      dark: '#1d4ed8',
+      main: '#e77409', // Orange DECKLAB
+      light: '#ff983f',
+      dark: '#c05d00',
       contrastText: '#ffffff',
     },
     secondary: {
