@@ -151,7 +151,7 @@ const buildImagePrompt = async (card, theme, context) => {
   const translatedTitle = await translateTitleToEnglish(titleShort);
 
   // Simple, effective prompt in English
-  return `Professional illustration of "${translatedTitle}" for ${theme} educational card, Vector Art, concept art, Graphic design, vibrant colors, centered composition, no text or labels, clean minimalist design, digital art`;
+  return `Professional illustration of "${translatedTitle}" for ${theme} educational card, flat colors,  Vector Art, vibrant colors, centered composition, masterwork, masterpiece, best quality, dynamic pose, dynamic angle, hyperdetailed, strong saturation, depth, digital art`;
 };
 
 const generateCards = async (theme, context, numCards = null, stylePreset = 'isometric') => {

@@ -6152,6 +6152,625 @@
       "createdAt": "2025-10-22T20:25:02.946Z",
       "updatedAt": "2025-10-22T20:25:02.946Z",
       "description": ""
+    },
+    {
+      "id": "1761944826999",
+      "name": "Archéologie Anime 61",
+      "cards": [
+        {
+          "title": "Prospection sur le terrain",
+          "description": "Les archéologues recherchent des indices à la surface du sol pour trouver des sites potentiels. Ils utilisent des cartes, des photos aériennes et leurs connaissances.",
+          "icon": "🗺️",
+          "category": "Étapes",
+          "id": "1761944158478-0-2rjn30puj",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761944158478-0-2rjn30puj-y903ra.png"
+        },
+        {
+          "title": "Repérage aérien",
+          "description": "L'analyse de photos aériennes permet de détecter des anomalies au sol qui pourraient signaler des structures enfouies. C'est une méthode non invasive pour la prospection.",
+          "icon": "✈️",
+          "category": "Processus",
+          "id": "1761944158478-1-wo1135a82",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-1-wo1135a82-ydch7h.png"
+        },
+        {
+          "title": "Analyse de cartes anciennes",
+          "description": "Les cartes historiques peuvent révéler la présence d'anciens villages, routes ou monuments. Elles fournissent des indices précieux sur l'occupation humaine passée.",
+          "icon": "📜",
+          "category": "Processus",
+          "id": "1761944158478-2-pe5tpv0g3",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-2-pe5tpv0g3-q77lq.png"
+        },
+        {
+          "title": "Enquête d'archives",
+          "description": "La consultation de documents anciens (textes, plans) permet de reconstituer l'histoire d'un lieu et d'identifier des zones d'intérêt archéologique.",
+          "icon": "📚",
+          "category": "Processus",
+          "id": "1761944158478-3-da1ss4mm4",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-3-da1ss4mm4-rsuis.png"
+        },
+        {
+          "title": "Témoignages locaux",
+          "description": "Parfois, les habitants d'une région ont des informations sur des découvertes fortuites ou des légendes locales liées à des vestiges anciens.",
+          "icon": "🗣️",
+          "category": "Processus",
+          "id": "1761944158478-4-m76zwc170",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-4-m76zwc170-50h9us.png"
+        },
+        {
+          "title": "Obtention des autorisations",
+          "description": "Avant de fouiller, il est indispensable d'obtenir les permis nécessaires auprès des autorités compétentes. Cela garantit le respect du patrimoine.",
+          "icon": "✅",
+          "category": "Étapes",
+          "id": "1761944158478-5-6ac10xdgv",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761944158478-5-6ac10xdgv-x6l3no.png"
+        },
+        {
+          "title": "Éviter les découvertes manquées",
+          "description": "Une prospection approfondie vise à maximiser les chances de trouver un site riche en découvertes et à éviter de passer à côté d'éléments cruciaux.",
+          "icon": "🔍",
+          "category": "Enjeux clés",
+          "id": "1761944158478-6-n096wd9v4",
+          "categoryOriginal": "Enjeux clés",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1761944158478-6-n096wd9v4-magc3e.png"
+        },
+        {
+          "title": "Organisation du chantier",
+          "description": "Avant la fouille, le site est préparé. Cela inclut la délimitation des zones de travail et la mise en place des mesures de sécurité.",
+          "icon": "🏗️",
+          "category": "Étapes",
+          "id": "1761944158478-7-qevvs06fh",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761944158478-7-qevvs06fh-jkdht3.png"
+        },
+        {
+          "title": "Le carroyage",
+          "description": "Le terrain est divisé en carrés réguliers (quadrats) pour organiser la fouille de manière systématique. Chaque fouilleur a une zone bien définie.",
+          "icon": "🟩",
+          "category": "Composants",
+          "id": "1761944158478-8-yiqmqedsm",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761944158478-8-yiqmqedsm-nw19p.png"
+        },
+        {
+          "title": "Préparation du matériel",
+          "description": "Tous les outils nécessaires à la fouille et à l'enregistrement sont rassemblés et vérifiés. Un bon matériel est essentiel pour un travail efficace.",
+          "icon": "🧰",
+          "category": "Étapes",
+          "id": "1761944158478-9-2qq7sbi8u",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761944158478-9-2qq7sbi8u-ssoz3.png"
+        },
+        {
+          "title": "Méthodologie de fouille",
+          "description": "Une approche structurée et organisée permet de garantir la précision et la fiabilité des données collectées sur le site.",
+          "icon": "📐",
+          "category": "Concepts",
+          "id": "1761944158478-10-k0tb46li6",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-10-k0tb46li6-7fnnzl.png"
+        },
+        {
+          "title": "Sécurité sur le chantier",
+          "description": "Les archéologues prennent des précautions pour assurer leur sécurité et celle de leurs collègues. Cela inclut la signalisation des dangers.",
+          "icon": "⛑️",
+          "category": "Précautions",
+          "id": "1761944158478-11-9ne15qm24",
+          "categoryOriginal": "Précautions",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1761944158478-11-9ne15qm24-ccpfjo.png"
+        },
+        {
+          "title": "Fouille minutieuse",
+          "description": "Les archéologues creusent le sol avec une grande délicatesse pour dégager les vestiges sans les endommager. Chaque geste compte.",
+          "icon": "🤏",
+          "category": "Étapes",
+          "id": "1761944158478-12-voxhd3p2i",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761944158478-12-voxhd3p2i-pzxd8h.png"
+        },
+        {
+          "title": "L'usage de la truelle",
+          "description": "Cet outil plat et fin est idéal pour racler délicatement la terre et dégager les objets fragiles. Il permet un travail précis.",
+          "icon": "🥄",
+          "category": "Outils",
+          "id": "1761944158478-13-57fpvr5ga",
+          "categoryOriginal": "Outils",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1761944158478-13-57fpvr5ga-p80cnj.png"
+        },
+        {
+          "title": "L'utilisation du pinceau",
+          "description": "Pour dépoussiérer et nettoyer en douceur les objets découverts, le pinceau est un outil indispensable. Il permet d'éviter toute abrasion.",
+          "icon": "🖌️",
+          "category": "Outils",
+          "id": "1761944158478-14-af93mmyp2",
+          "categoryOriginal": "Outils",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1761944158478-14-af93mmyp2-9txyc.png"
+        },
+        {
+          "title": "Le tamisage de la terre",
+          "description": "La terre excavée est passée à travers un tamis pour récupérer les plus petits fragments, comme des perles ou des tessons.",
+          "icon": "筛",
+          "category": "Actions",
+          "id": "1761944158478-15-3r0n91ye4",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-15-3r0n91ye4-97pcyn.png"
+        },
+        {
+          "title": "Manipulation précautionneuse",
+          "description": "Tous les vestiges découverts doivent être manipulés avec le plus grand soin pour préserver leur intégrité. La fragilité des matériaux est une constante.",
+          "icon": "👐",
+          "category": "Précautions",
+          "id": "1761944158478-16-91ubpfat6",
+          "categoryOriginal": "Précautions",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1761944158478-16-91ubpfat6-80izgg.png"
+        },
+        {
+          "title": "Respect des strates",
+          "description": "Les différentes couches de terre (strates) correspondent à différentes périodes. Il est crucial de les préserver pour comprendre la chronologie du site.",
+          "icon": "🧱",
+          "category": "Concepts",
+          "id": "1761944158478-17-e3el4ye75",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-17-e3el4ye75-9ng41m.png"
+        },
+        {
+          "title": "Enregistrement des découvertes",
+          "description": "Chaque objet trouvé est méticuleusement noté : sa position, sa profondeur, et ses caractéristiques. Cela permet de le replacer dans son contexte.",
+          "icon": "📝",
+          "category": "Étapes",
+          "id": "1761944158478-18-b004qdtdh",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761944158478-18-b004qdtdh-kjw82k.png"
+        },
+        {
+          "title": "Photographie des vestiges",
+          "description": "La prise de photos à chaque étape de la découverte est essentielle pour documenter la fouille et la position des objets in situ.",
+          "icon": "📸",
+          "category": "Actions",
+          "id": "1761944158478-19-0wi458mho",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-19-0wi458mho-xfjacb.png"
+        },
+        {
+          "title": "Dessins archéologiques",
+          "description": "Les archéologues réalisent des schémas précis des vestiges et de leur environnement pour compléter les photographies et les descriptions.",
+          "icon": "✏️",
+          "category": "Actions",
+          "id": "1761944158478-20-sku7zilcw",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-20-sku7zilcw-gn22i.png"
+        },
+        {
+          "title": "Numérotation des artefacts",
+          "description": "Chaque objet est identifié par un numéro unique qui le relie à sa découverte spécifique. C'est la base de la traçabilité.",
+          "icon": "🔢",
+          "category": "Composants",
+          "id": "1761944158478-21-m60tyfcow",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761944158478-21-m60tyfcow-wyac2.png"
+        },
+        {
+          "title": "Cartographie du site",
+          "description": "Une carte détaillée du site est dressée, indiquant l'emplacement des structures et des découvertes. Elle sert de plan général.",
+          "icon": "📍",
+          "category": "Actions",
+          "id": "1761944158478-22-fzqum4jv4",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-22-fzqum4jv4-ois4t9.png"
+        },
+        {
+          "title": "Classement des objets",
+          "description": "Les objets sont regroupés par catégorie (céramique, métal, ossements) pour faciliter leur analyse ultérieure.",
+          "icon": "📦",
+          "category": "Actions",
+          "id": "1761944158478-23-qdwtdq34z",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-23-qdwtdq34z-u76yu.png"
+        },
+        {
+          "title": "Contexte des trouvailles",
+          "description": "Comprendre où et comment un objet a été trouvé est aussi important que l'objet lui-même. C'est la clé de son interprétation.",
+          "icon": "❓",
+          "category": "Concepts",
+          "id": "1761944158478-24-mqilj6xsu",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-24-mqilj6xsu-5jzuwp.png"
+        },
+        {
+          "title": "Nettoyage en laboratoire",
+          "description": "Les objets extraits du sol sont nettoyés délicatement pour révéler leur état initial et permettre une meilleure étude.",
+          "icon": "🧼",
+          "category": "Étapes",
+          "id": "1761944158478-25-f0jo7xfjx",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761944158478-25-f0jo7xfjx-vw4el.png"
+        },
+        {
+          "title": "Tri des artefacts",
+          "description": "Les objets nettoyés sont triés par matériau, par type ou par période. Ce processus aide à organiser les collections.",
+          "icon": "⚖️",
+          "category": "Actions",
+          "id": "1761944158478-26-lnaylgcoe",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-26-lnaylgcoe-ilu8g.png"
+        },
+        {
+          "title": "Étude des matériaux",
+          "description": "Les archéologues analysent la composition des objets pour comprendre les techniques de fabrication et l'origine des matériaux.",
+          "icon": "🔬",
+          "category": "Actions",
+          "id": "1761944158478-27-5660al76u",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-27-5660al76u-fru9kf.png"
+        },
+        {
+          "title": "Reconstitution d'objets",
+          "description": "Les fragments d'objets brisés peuvent être assemblés pour reconstituer leur forme originale. Cela aide à visualiser leur usage.",
+          "icon": "🧩",
+          "category": "Actions",
+          "id": "1761944158478-28-87nua7kpv",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-28-87nua7kpv-jacrho.png"
+        },
+        {
+          "title": "Datation au Carbone 14",
+          "description": "Cette méthode scientifique permet de déterminer l'âge approximatif des matières organiques (bois, os). C'est un outil clé pour la chronologie.",
+          "icon": "☢️",
+          "category": "Composants",
+          "id": "1761944158478-29-8apkv2jpx",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761944158478-29-8apkv2jpx-z25e28.png"
+        },
+        {
+          "title": "Comprendre l'usage des objets",
+          "description": "L'analyse des formes, des traces d'usure et du contexte permet de deviner à quoi servaient les objets découverts.",
+          "icon": "💡",
+          "category": "Concepts",
+          "id": "1761944158478-30-t0mvj9me9",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-30-t0mvj9me9-n6l5d.png"
+        },
+        {
+          "title": "Histoire des objets",
+          "description": "Chaque objet porte en lui une histoire, celle de sa fabrication, de son usage et de sa vie après avoir été abandonné.",
+          "icon": "⏳",
+          "category": "Concepts",
+          "id": "1761944158478-31-otylkzdpf",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-31-otylkzdpf-f81gbn.png"
+        },
+        {
+          "title": "Époque de fabrication",
+          "description": "Grâce aux analyses et aux comparaisons, les archéologues peuvent situer la fabrication des objets dans une période historique précise.",
+          "icon": "🕰️",
+          "category": "Concepts",
+          "id": "1761944158478-32-q81zpf6pg",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-32-q81zpf6pg-962okl.png"
+        },
+        {
+          "title": "Interprétation des découvertes",
+          "description": "Les archéologues réfléchissent à ce que l'ensemble des découvertes révèle sur la vie des populations passées. C'est l'étape de la synthèse.",
+          "icon": "🧠",
+          "category": "Étapes",
+          "id": "1761944158478-33-1rmhenb11",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761944158478-33-1rmhenb11-7bk9no.png"
+        },
+        {
+          "title": "Formulation d'hypothèses",
+          "description": "À partir des données collectées, les archéologues proposent des explications sur les modes de vie, les activités et les événements du passé.",
+          "icon": "🤔",
+          "category": "Actions",
+          "id": "1761944158478-34-nlkygzh5n",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-34-nlkygzh5n-bnisgl.png"
+        },
+        {
+          "title": "Relier objets et faits",
+          "description": "Il s'agit de connecter les découvertes matérielles à des événements historiques ou des modes de vie connus. C'est une mise en contexte complexe.",
+          "icon": "🔗",
+          "category": "Concepts",
+          "id": "1761944158478-35-qxsxlt7w6",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-35-qxsxlt7w6-u0chxg.png"
+        },
+        {
+          "title": "Éviter les erreurs d'interprétation",
+          "description": "La prudence est de mise pour ne pas projeter nos idées modernes sur le passé. Une analyse rigoureuse est fondamentale.",
+          "icon": "⚠️",
+          "category": "Précautions",
+          "id": "1761944158478-36-5m2405yb6",
+          "categoryOriginal": "Précautions",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1761944158478-36-5m2405yb6-8nseop.png"
+        },
+        {
+          "title": "Enrichissement de la connaissance",
+          "description": "Chaque découverte archéologique nous aide à mieux comprendre l'histoire de l'humanité et à enrichir notre vision du passé.",
+          "icon": "✨",
+          "category": "Concepts",
+          "id": "1761944158478-37-rnpn4syt3",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-37-rnpn4syt3-5k8oy.png"
+        },
+        {
+          "title": "Valorisation du patrimoine",
+          "description": "Les découvertes archéologiques sont précieuses et doivent être protégées. Cela inclut leur conservation et leur présentation.",
+          "icon": "💎",
+          "category": "Étapes",
+          "id": "1761944158478-38-rkd9lqohy",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1761944158478-38-rkd9lqohy-ju3dl2.png"
+        },
+        {
+          "title": "Conservation des objets",
+          "description": "Les objets les plus significatifs sont conservés dans des conditions optimales pour leur préservation à long terme.",
+          "icon": "🔒",
+          "category": "Actions",
+          "id": "1761944158478-39-5d7l1uwsv",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-39-5d7l1uwsv-egsmd.png"
+        },
+        {
+          "title": "Exposition dans les musées",
+          "description": "Certains objets archéologiques sont présentés au public dans les musées, permettant à chacun de découvrir le passé.",
+          "icon": "🏛️",
+          "category": "Actions",
+          "id": "1761944158478-40-3a8z8neu1",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-40-3a8z8neu1-mznqgv.png"
+        },
+        {
+          "title": "Publication des résultats",
+          "description": "Les archéologues rédigent des rapports et des articles pour partager leurs découvertes avec la communauté scientifique et le public.",
+          "icon": "📖",
+          "category": "Actions",
+          "id": "1761944158478-41-1x7q7xwro",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-41-1x7q7xwro-99j9of.png"
+        },
+        {
+          "title": "Partage avec le public",
+          "description": "Les découvertes sont présentées lors de conférences, d'expositions ou via des supports pédagogiques pour toucher un large public.",
+          "icon": "📢",
+          "category": "Actions",
+          "id": "1761944158478-42-hgndzu3xt",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1761944158478-42-hgndzu3xt-499tgs.png"
+        },
+        {
+          "title": "Transmission du savoir",
+          "description": "L'archéologie a pour but de faire connaître l'histoire et les civilisations passées aux générations futures.",
+          "icon": "🎓",
+          "category": "Concepts",
+          "id": "1761944158478-43-hse4w4usi",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-43-hse4w4usi-nn5prp.png"
+        },
+        {
+          "title": "Intérêt pour l'histoire",
+          "description": "En rendant le passé accessible, l'archéologie éveille la curiosité et l'intérêt pour l'histoire chez les jeunes et les moins jeunes.",
+          "icon": "🤩",
+          "category": "Concepts",
+          "id": "1761944158478-44-94wkmdjvp",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-44-94wkmdjvp-nuxji4.png"
+        },
+        {
+          "title": "Nouveaux chantiers de recherche",
+          "description": "Les découvertes peuvent inspirer de nouvelles questions et mener à d'autres projets de recherche archéologique.",
+          "icon": "🚀",
+          "category": "Concepts",
+          "id": "1761944158478-45-4cxm0plhm",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-45-4cxm0plhm-c0frni.png"
+        },
+        {
+          "title": "Un site archéologique",
+          "description": "Endroit où se trouvent des vestiges matériels d'activités humaines passées. Il peut s'agir d'une ville, d'une tombe, d'une ferme, etc.",
+          "icon": "🏛️",
+          "category": "Locations/Sites",
+          "id": "1761944158478-46-2t7xm8fzt",
+          "categoryOriginal": "Locations/Sites",
+          "categoryColor": "#6b7280",
+          "image": "/images/collections/1761944158478-46-2t7xm8fzt-pscvv.png"
+        },
+        {
+          "title": "Les vestiges",
+          "description": "Ce sont les restes matériels laissés par les hommes du passé : poteries, outils, ossements, constructions, etc.",
+          "icon": "🏺",
+          "category": "Lieux/Sites et Objets",
+          "id": "1761944158478-47-nwgkvzijy",
+          "categoryOriginal": "Things/Objects",
+          "categoryColor": "#14b8a6",
+          "image": "/images/collections/1761944158478-47-nwgkvzijy-r9mizc.png"
+        },
+        {
+          "title": "L'archéologue",
+          "description": "Le professionnel qui étudie le passé de l'humanité à travers les vestiges matériels. Il fouille, analyse et interprète.",
+          "icon": "👩‍🔬",
+          "category": "Personas",
+          "id": "1761944158478-48-jy8p48mne",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761944158478-48-jy8p48mne-1h224.png"
+        },
+        {
+          "title": "L'assistant archéologue",
+          "description": "Personne qui aide l'archéologue sur le terrain ou en laboratoire, participant aux fouilles et à la documentation.",
+          "icon": "🧑‍🤝‍🧑",
+          "category": "Personas",
+          "id": "1761944158478-49-sev9xxc89",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761944158478-49-sev9xxc89-qibtwg.png"
+        },
+        {
+          "title": "Le technicien de laboratoire",
+          "description": "Spécialiste qui s'occupe du nettoyage, de la conservation et de l'analyse scientifique des objets découverts.",
+          "icon": "👨‍🔬",
+          "category": "Personas",
+          "id": "1761944158478-50-ggn0beyyh",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761944158478-50-ggn0beyyh-q0djlic.png"
+        },
+        {
+          "title": "Le restaurateur",
+          "description": "Expert chargé de réparer et de consolider les objets fragiles ou brisés pour qu'ils puissent être étudiés et exposés.",
+          "icon": "🔧",
+          "category": "Personas",
+          "id": "1761944158478-51-u2q14p4mj",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1761944158478-51-u2q14p4mj-3479il.png"
+        },
+        {
+          "title": "Les couches du sol (strates)",
+          "description": "Succession des différentes couches de sédiments qui se sont déposées au fil du temps. Leur étude permet de dater les vestiges.",
+          "icon": " layers ",
+          "category": "Composants",
+          "id": "1761944158478-52-gqa2xqm0f",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1761944158478-52-gqa2xqm0f-kkfuln.png"
+        },
+        {
+          "title": "La prospection",
+          "description": "Phase initiale de recherche et de repérage de sites archéologiques potentiels avant toute fouille.",
+          "icon": "🧐",
+          "category": "Processus",
+          "id": "1761944158478-53-e7uzk0yf9",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-53-e7uzk0yf9-ete759.png"
+        },
+        {
+          "title": "La fouille",
+          "description": "Opération consistant à dégager méthodiquement le sol pour découvrir et extraire des vestiges archéologiques.",
+          "icon": "⛏️",
+          "category": "Processus",
+          "id": "1761944158478-54-e3wzbud8f",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-54-e3wzbud8f-xyhihf.png"
+        },
+        {
+          "title": "La documentation",
+          "description": "Enregistrement systématique de toutes les informations relatives à une découverte (position, description, photo, etc.).",
+          "icon": "✍️",
+          "category": "Processus",
+          "id": "1761944158478-55-ftu1mrfdm",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-55-ftu1mrfdm-wfs1ok.png"
+        },
+        {
+          "title": "L'analyse",
+          "description": "Étude approfondie des vestiges en laboratoire pour comprendre leur nature, leur origine, leur usage et leur âge.",
+          "icon": "🧫",
+          "category": "Processus",
+          "id": "1761944158478-56-vmj10dego",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-56-vmj10dego-rgkl1g.png"
+        },
+        {
+          "title": "L'interprétation",
+          "description": "Phase de réflexion qui vise à reconstituer le passé à partir des données archéologiques.",
+          "icon": "💡",
+          "category": "Processus",
+          "id": "1761944158478-57-hted4yjup",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-57-hted4yjup-cpxcxd.png"
+        },
+        {
+          "title": "La datation",
+          "description": "Détermination de l'âge des vestiges par des méthodes scientifiques ou contextuelles.",
+          "icon": "📅",
+          "category": "Processus",
+          "id": "1761944158478-58-mk5kebxm8",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1761944158478-58-mk5kebxm8-orf1jk.png"
+        },
+        {
+          "title": "Le contexte archéologique",
+          "description": "Ensemble des informations qui entourent un vestige et qui sont indispensables à son interprétation (position, strates, objets associés).",
+          "icon": "🌐",
+          "category": "Concepts",
+          "id": "1761944158478-59-wnkdsumgh",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-59-wnkdsumgh-5h0ql.png"
+        },
+        {
+          "title": "Le patrimoine",
+          "description": "Ensemble des biens culturels et naturels qui nous sont transmis par le passé et que nous devons préserver pour l'avenir.",
+          "icon": "💖",
+          "category": "Concepts",
+          "id": "1761944158478-60-xsskkczwr",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1761944158478-60-xsskkczwr-yme3p.png"
+        }
+      ],
+      "createdAt": "2025-10-31T21:07:06.999Z",
+      "updatedAt": "2025-10-31T21:07:06.999Z",
+      "description": ""
     }
   ]
 }
