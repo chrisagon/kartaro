@@ -25,8 +25,11 @@ import {
   Add as AddIcon,
   Settings as SettingsIcon,
   Brightness6 as ThemeIcon,
+  Logout as LogoutIcon,
 } from '@mui/icons-material';
 import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
+import { getAuth, signOut } from 'firebase/auth';
 
 interface ModernHeaderProps {
   onToggleSidebar?: () => void;
@@ -46,9 +49,21 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
   const { state, dispatch } = useApp();
+  const { currentUser } = useAuth();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleLogout = async () => {
+    const auth = getAuth();
+    try {
+      await signOut(auth);
+      setSettingsAnchorEl(null);
+      navigate('/login');
+    } catch (error) {
+      console.error('Error signing out: ', error);
+    }
+  };
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
@@ -59,7 +74,7 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
   const handleThemeToggle = () => {
     dispatch({
       type: 'SET_SETTINGS',
-      payload: { darkMode: !state.settings.darkMode }
+      payload: { darkMode: !state.settings.darkMode },
     });
   };
 
@@ -73,7 +88,6 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
       }}
     >
       <Toolbar>
-        {/* Menu mobile */}
         {isMobile && onToggleSidebar && (
           <IconButton
             edge="start"
@@ -85,7 +99,6 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
           </IconButton>
         )}
 
-        {/* Logo/Titre */}
         <Box sx={{ mr: 3, cursor: 'pointer' }} onClick={() => navigate('/')}>
           <Box
             component="img"
@@ -95,7 +108,6 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
           />
         </Box>
 
-        {/* Recherche */}
         {onSearch && (
           <TextField
             size="small"
@@ -105,9 +117,7 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
             sx={{
               mx: 2,
               minWidth: 250,
-              '& .MuiOutlinedInput-root': {
-                borderRadius: 3,
-              },
+              '& .MuiOutlinedInput-root': { borderRadius: 3 },
             }}
             InputProps={{
               startAdornment: (
@@ -119,47 +129,54 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
           />
         )}
 
-        {/* Compteurs */}
-        <Box sx={{ display: 'flex', gap: 2, mr: 2 }}>
-          <Badge badgeContent={cardCount} color="primary" max={99}>
-            <Typography variant="body2" color="text.secondary">
-              Cartes
-            </Typography>
-          </Badge>
+                <Box sx={{ flexGrow: 1 }} />
 
-          <Badge badgeContent={collectionCount} color="secondary" max={99}>
-            <Typography variant="body2" color="text.secondary">
-              Collections
-            </Typography>
-          </Badge>
-        </Box>
+        {currentUser && (
+          <Typography variant="h6" component="div" sx={{ mr: 2 }}>
+            Bonjour, {currentUser.displayName || currentUser.email}
+          </Typography>
+        )}
 
-        {/* Actions principales */}
+        {currentUser && (
+            <Box sx={{ display: 'flex', gap: 2, mr: 2 }}>
+                <Badge badgeContent={cardCount} color="primary" max={99}>
+                    <Typography variant="body2" color="text.secondary">
+                    Cartes
+                    </Typography>
+                </Badge>
+
+                <Badge badgeContent={collectionCount} color="secondary" max={99}>
+                    <Typography variant="body2" color="text.secondary">
+                    Collections
+                    </Typography>
+                </Badge>
+            </Box>
+        )}
+
         <Box sx={{ display: 'flex', gap: 1 }}>
-          {/* Collections */}
-          <Button
-            variant={location.pathname === '/collections' ? 'contained' : 'outlined'}
-            startIcon={<CollectionsIcon />}
-            onClick={() => navigate('/collections')}
-            sx={{ borderRadius: 3 }}
-          >
-            Collections
-          </Button>
+          {currentUser && (
+            <>
+              <Button
+                variant={location.pathname === '/collections' ? 'contained' : 'outlined'}
+                startIcon={<CollectionsIcon />}
+                onClick={() => navigate('/collections')}
+                sx={{ borderRadius: 3 }}
+              >
+                Collections
+              </Button>
+              <Button
+                variant={location.pathname === '/' ? 'contained' : 'outlined'}
+                startIcon={<AddIcon />}
+                onClick={() => navigate('/')}
+                sx={{
+                  borderRadius: 3,
+                }}
+              >
+                Générer
+              </Button>
+            </>
+          )}
 
-          {/* Nouvelle génération */}
-          <Button
-            variant={location.pathname === '/' ? 'contained' : 'outlined'}
-            startIcon={<AddIcon />}
-            onClick={() => navigate('/')}
-            sx={{
-              borderRadius: 3,
-              backgroundColor: location.pathname === '/' ? theme.palette.primary.main : undefined,
-            }}
-          >
-            Générer
-          </Button>
-
-          {/* Menu paramètres */}
           <IconButton
             color="inherit"
             onClick={(e) => setSettingsAnchorEl(e.currentTarget)}
@@ -168,14 +185,13 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
           </IconButton>
         </Box>
 
-        {/* Menu paramètres */}
         <Menu
           anchorEl={settingsAnchorEl}
           open={Boolean(settingsAnchorEl)}
           onClose={() => setSettingsAnchorEl(null)}
           PaperProps={{
             elevation: 2,
-            sx: { minWidth: 200, mt: 1 },
+            sx: { minWidth: 220, mt: 1 },
           }}
         >
           <MenuItem>
@@ -201,16 +217,27 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
               control={
                 <Switch
                   checked={state.settings.animations}
-                  onChange={(e) => dispatch({
-                    type: 'SET_SETTINGS',
-                    payload: { animations: e.target.checked }
-                  })}
+                  onChange={(e) =>
+                    dispatch({
+                      type: 'SET_SETTINGS',
+                      payload: { animations: e.target.checked },
+                    })
+                  }
                   size="small"
                 />
               }
               label="Animations"
             />
           </MenuItem>
+
+          {currentUser && (
+            <MenuItem onClick={handleLogout}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <LogoutIcon fontSize="small" />
+                Déconnexion
+              </Box>
+            </MenuItem>
+          )}
         </Menu>
       </Toolbar>
     </AppBar>

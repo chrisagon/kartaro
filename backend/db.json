@@ -6771,6 +6771,333 @@
       "createdAt": "2025-10-31T21:07:06.999Z",
       "updatedAt": "2025-10-31T21:07:06.999Z",
       "description": ""
+    },
+    {
+      "id": "1762031220187",
+      "name": "Cartes IA 10 V1",
+      "cards": [
+        {
+          "title": "Définir l'Objectif de l'IA",
+          "description": "Identifier clairement ce que l'on souhaite que l'intelligence artificielle accomplisse. Cela peut aller de la reconnaissance d'images à la recommandation de contenu personnalisé.",
+          "icon": "🎯",
+          "category": "Étapes",
+          "id": "1762031128658-0-0ar6kk2zk",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031128658-0-0ar6kk2zk-akqcn.png"
+        },
+        {
+          "title": "Collecte de Données Massives",
+          "description": "Rassembler une grande quantité d'informations pertinentes pour l'apprentissage de l'IA. La qualité et la diversité des données sont cruciales pour sa performance.",
+          "icon": "📊",
+          "category": "Processus",
+          "id": "1762031128658-1-1hzdsav5a",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1762031128658-1-1hzdsav5a-6on0k.png"
+        },
+        {
+          "title": "Nettoyage et Préparation des Données",
+          "description": "Assurer que les données collectées sont exemptes d'erreurs, complètes et organisées. Cette étape garantit que l'IA apprendra des informations fiables.",
+          "icon": "🧹",
+          "category": "Étapes",
+          "id": "1762031128658-2-wekrekqjf",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031128658-2-wekrekqjf-4b46sd.png"
+        },
+        {
+          "title": "Choix de l'Algorithme d'IA",
+          "description": "Sélectionner le modèle ou l'algorithme le plus approprié pour la tâche à accomplir. Différents modèles sont optimisés pour des types de problèmes variés.",
+          "icon": "🤖",
+          "category": "Concepts",
+          "id": "1762031128658-3-2ioqcverl",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1762031128658-3-2ioqcverl-erox.png"
+        },
+        {
+          "title": "Entraînement du Modèle IA",
+          "description": "Utiliser les données préparées pour enseigner au modèle IA à reconnaître des motifs et à prendre des décisions. C'est le cœur du processus d'apprentissage.",
+          "icon": "🧠",
+          "category": "Processus",
+          "id": "1762031128658-4-82i0ztc1t",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1762031128658-4-82i0ztc1t-ei3288.png"
+        },
+        {
+          "title": "Évaluation des Performances",
+          "description": "Tester le modèle IA avec de nouvelles données pour s'assurer de sa précision et de sa fiabilité. L'objectif est de valider que l'IA fonctionne comme prévu.",
+          "icon": "✅",
+          "category": "Étapes",
+          "id": "1762031128658-5-vrk8c1co7",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031128658-5-vrk8c1co7-tums9j.png"
+        },
+        {
+          "title": "Déploiement de l'IA",
+          "description": "Intégrer le modèle IA entraîné et validé dans une application ou un système pour une utilisation concrète. C'est à ce stade que l'IA devient opérationnelle.",
+          "icon": "🚀",
+          "category": "Actions",
+          "id": "1762031128658-6-jar4ekegh",
+          "categoryOriginal": "Actions",
+          "categoryColor": "#10b981",
+          "image": "/images/collections/1762031128658-6-jar4ekegh-qtkk.png"
+        },
+        {
+          "title": "Surveillance et Maintenance Continue",
+          "description": "Suivre les performances de l'IA après son déploiement et effectuer des mises à jour si nécessaire. L'environnement et les données évoluent, l'IA doit s'adapter.",
+          "icon": "🛠️",
+          "category": "Processus",
+          "id": "1762031128658-7-ffomv34lo",
+          "categoryOriginal": "Process",
+          "categoryColor": "#2563eb",
+          "image": "/images/collections/1762031128658-7-ffomv34lo-k8e2ll.png"
+        },
+        {
+          "title": "Données d'Entraînement (Composant)",
+          "description": "L'ensemble des informations, qu'il s'agisse d'images, de textes ou de chiffres, utilisées pour enseigner à l'IA. La qualité et la quantité sont primordiales.",
+          "icon": "📚",
+          "category": "Composants",
+          "id": "1762031128658-8-ax5a7f34a",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1762031128658-8-ax5a7f34a-sgieq.png"
+        },
+        {
+          "title": "Critères de Performance (Critère)",
+          "description": "Les métriques utilisées pour mesurer l'efficacité et la précision d'un modèle d'IA. Elles permettent de savoir si l'IA atteint les objectifs fixés.",
+          "icon": "⭐",
+          "category": "Catégories et Critères",
+          "id": "1762031128658-9-kzqr16ak9",
+          "categoryOriginal": "Categories and Criteria",
+          "categoryColor": "#facc15",
+          "image": "/images/collections/1762031128658-9-kzqr16ak9-mw05mc.png"
+        }
+      ],
+      "createdAt": "2025-11-01T21:07:00.187Z",
+      "updatedAt": "2025-11-01T21:07:00.187Z",
+      "description": ""
+    },
+    {
+      "id": "1762031597816",
+      "name": "CyberSec 10 V1",
+      "cards": [
+        {
+          "title": "Identification des Trésors à Protéger",
+          "description": "Cette étape consiste à identifier toutes les informations et les systèmes numériques qui ont une valeur et qui doivent être protégés. Il s'agit de déterminer ce qui est important dans le monde numérique pour éviter de laisser des vulnérabilités.",
+          "icon": "💎",
+          "category": "Étapes",
+          "id": "1762031513919-0-cf35k1bv9",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031513919-0-cf35k1bv9-8axyuq.png"
+        },
+        {
+          "title": "Analyse des Menaces Cybernétiques",
+          "description": "Ici, nous nous mettons à la place des pirates informatiques pour comprendre leurs motivations et leurs méthodes. L'objectif est d'anticiper les types d'attaques possibles, comme les virus ou les logiciels espions, pour mieux s'y préparer.",
+          "icon": "🕵️",
+          "category": "Étapes",
+          "id": "1762031513919-1-jn19wb28r",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031513919-1-jn19wb28r-etvz3o.png"
+        },
+        {
+          "title": "Mise en Place des Boucliers Numériques",
+          "description": "Cette phase consiste à construire la 'forteresse' numérique en installant des mesures de sécurité concrètes. Cela inclut des antivirus, des mots de passe forts et des systèmes de détection d'intrusion pour bloquer les accès non autorisés.",
+          "icon": "🛡️",
+          "category": "Étapes",
+          "id": "1762031513919-2-1dlho1ffa",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031513919-2-1dlho1ffa-2i1cz.png"
+        },
+        {
+          "title": "Tests de Résistance des Fortifications",
+          "description": "Après avoir construit nos défenses, nous les testons rigoureusement. Des 'hackers éthiques' essaient de trouver des failles pour s'assurer que toutes les protections sont efficaces et que notre système est robuste.",
+          "icon": "🧪",
+          "category": "Étapes",
+          "id": "1762031513919-3-w3xic4eqa",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031513919-3-w3xic4eqa-ix3pip.png"
+        },
+        {
+          "title": "Surveillance Active et Intervention Rapide",
+          "description": "Même les meilleures défenses peuvent être mises à l'épreuve. Cette étape implique la mise en place de systèmes de surveillance pour détecter toute activité suspecte et une équipe prête à réagir rapidement pour résoudre les incidents.",
+          "icon": "🚨",
+          "category": "Étapes",
+          "id": "1762031513919-4-baqrhvp0i",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031513919-4-baqrhvp0i-wxj4ji.png"
+        },
+        {
+          "title": "Éducation à la Vigilance Digitale",
+          "description": "Le facteur humain est crucial en cybersécurité. Nous formons tous les utilisateurs aux bonnes pratiques pour reconnaître les dangers en ligne et éviter les pièges, comme les e-mails frauduleux ou les liens malveillants.",
+          "icon": "📚",
+          "category": "Étapes",
+          "id": "1762031513919-5-40eptgasq",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031513919-5-40eptgasq-l3vq1y.png"
+        },
+        {
+          "title": "Le Gardien de la Forteresse",
+          "description": "Un cyber-héros qui veille sur la sécurité numérique. Il identifie les actifs, analyse les menaces, met en place des protections, teste leur solidité et forme les autres à la vigilance.",
+          "icon": "🦸",
+          "category": "Personas",
+          "id": "1762031513919-6-18q61539y",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1762031513919-6-18q61539y-istnmo.png"
+        },
+        {
+          "title": "La Forteresse Numérique",
+          "description": "C'est l'ensemble des systèmes, données et réseaux qui sont protégés contre les cyberattaques. Elle est construite brique par brique avec des mesures de sécurité adaptées aux menaces identifiées.",
+          "icon": "🏰",
+          "category": "Concepts",
+          "id": "1762031513919-7-914cwkfdf",
+          "categoryOriginal": "Concepts",
+          "categoryColor": "#ef4444",
+          "image": "/images/collections/1762031513919-7-914cwkfdf-rz25wu.png"
+        },
+        {
+          "title": "Les Mauvais Types (Cybermenaces)",
+          "description": "Il s'agit des acteurs malveillants qui cherchent à compromettre la sécurité numérique. Cela inclut les pirates informatiques, les créateurs de virus, les logiciels espions, et toute entité cherchant à voler ou détruire des données.",
+          "icon": "😈",
+          "category": "Personas",
+          "id": "1762031513919-8-dtogazjf8",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1762031513919-8-dtogazjf8-cl2eto.png"
+        },
+        {
+          "title": "Les Clés de Sécurité",
+          "description": "Ce sont les outils et les méthodes utilisés pour sécuriser les systèmes numériques. Ils peuvent être des mots de passe robustes, des systèmes antivirus, des pare-feux ou des protocoles de chiffrement pour protéger les informations sensibles.",
+          "icon": "🔑",
+          "category": "Composants",
+          "id": "1762031513919-9-6od7d028t",
+          "categoryOriginal": "Components",
+          "categoryColor": "#0ea5e9",
+          "image": "/images/collections/1762031513919-9-6od7d028t-6ok1h.png"
+        }
+      ],
+      "createdAt": "2025-11-01T21:13:17.816Z",
+      "updatedAt": "2025-11-01T21:13:17.816Z",
+      "description": ""
+    },
+    {
+      "id": "1762032035762",
+      "name": "Jeux Video 10 V1",
+      "cards": [
+        {
+          "title": "L'Étincelle Créative",
+          "description": "Tout commence par une idée ! Ce moment magique où l'on imagine un concept de jeu, son univers, son histoire et son objectif. C'est le premier souffle de vie d'une future expérience ludique.",
+          "icon": "💡",
+          "category": "Étapes",
+          "id": "1762031960045-0-h2gjw90k5",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031960045-0-h2gjw90k5-fgz2k.png"
+        },
+        {
+          "title": "Le Plan du Jeu",
+          "description": "Après l'idée, place à la conception détaillée. Le Game Design Document (GDD) est le blueprint de votre jeu, décrivant les règles, les personnages, les niveaux et l'interface.",
+          "icon": "📝",
+          "category": "Étapes",
+          "id": "1762031960045-1-1iemtwzmm",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031960045-1-1iemtwzmm-4uej5.png"
+        },
+        {
+          "title": "Tester la Mécanique",
+          "description": "Avant de construire tout le jeu, on crée des prototypes pour valider les mécaniques de jeu et s'assurer qu'elles sont amusantes. C'est l'étape des premiers tests pour déceler les problèmes.",
+          "icon": "🎮",
+          "category": "Étapes",
+          "id": "1762031960045-2-fw75efzhe",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031960045-2-fw75efzhe-a8d64.png"
+        },
+        {
+          "title": "La Grande Fabrication",
+          "description": "C'est la phase où programmeurs, artistes, game designers et scénaristes collaborent pour construire le jeu. Chaque équipe travaille sur sa partie pour donner vie au projet.",
+          "icon": "🏗️",
+          "category": "Étapes",
+          "id": "1762031960045-3-iki3qigvc",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031960045-3-iki3qigvc-eilz5t.png"
+        },
+        {
+          "title": "La Chasse aux Bugs",
+          "description": "Les testeurs (QA) traquent méticuleusement tous les défauts techniques (bugs) pour garantir une expérience de jeu fluide et stable. Les programmeurs s'attellent ensuite à les corriger.",
+          "icon": "🐞",
+          "category": "Étapes",
+          "id": "1762031960045-4-p3vkvkpfe",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031960045-4-p3vkvkpfe-l51vh.png"
+        },
+        {
+          "title": "Le Jour J du Lancement",
+          "description": "Le jeu est enfin prêt à être partagé avec le monde ! Le marketing, les bandes-annonces et la mise en ligne sur les plateformes sont essentiels pour faire connaître le jeu.",
+          "icon": "🚀",
+          "category": "Étapes",
+          "id": "1762031960045-5-1ff3t4cgs",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031960045-5-1ff3t4cgs-6etym2.png"
+        },
+        {
+          "title": "Le Jeu Continue d'Évoluer",
+          "description": "Après le lancement, les développeurs écoutent la communauté, corrigent les derniers bugs et ajoutent du contenu pour maintenir l'intérêt des joueurs. C'est un cycle d'amélioration continue.",
+          "icon": "🔄",
+          "category": "Étapes",
+          "id": "1762031960045-6-fivbomms8",
+          "categoryOriginal": "Steps",
+          "categoryColor": "#7c3aed",
+          "image": "/images/collections/1762031960045-6-fivbomms8-cskkd.png"
+        },
+        {
+          "title": "Le Programmeur : Le Cœur du Système",
+          "description": "Les programmeurs écrivent le code qui fait fonctionner le jeu. Ils sont responsables de l'intelligence artificielle, des règles, et de la logique globale du jeu.",
+          "icon": "💻",
+          "category": "Personas",
+          "id": "1762031960045-7-2huq8eu5x",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1762031960045-7-2huq8eu5x-hdec6w.png"
+        },
+        {
+          "title": "L'Artiste : Créateur d'Univers",
+          "description": "Les artistes donnent vie au jeu avec des graphismes époustouflants. Ils conçoivent les personnages, les environnements, les animations et l'interface utilisateur.",
+          "icon": "🎨",
+          "category": "Personas",
+          "id": "1762031960045-8-la6eq4of1",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1762031960045-8-la6eq4of1-zmrmr.png"
+        },
+        {
+          "title": "Le Game Designer : L'Architecte du Fun",
+          "description": "Le game designer façonne l'expérience de jeu. Il équilibre la difficulté, conçoit les niveaux et s'assure que le jeu est captivant et amusant à jouer.",
+          "icon": "🎲",
+          "category": "Personas",
+          "id": "1762031960045-9-5xir8t6cd",
+          "categoryOriginal": "Personas",
+          "categoryColor": "#db2777",
+          "image": "/images/collections/1762031960045-9-5xir8t6cd-qvx33h.png"
+        }
+      ],
+      "createdAt": "2025-11-01T21:20:35.762Z",
+      "updatedAt": "2025-11-01T21:20:35.762Z",
+      "description": ""
     }
   ]
 }

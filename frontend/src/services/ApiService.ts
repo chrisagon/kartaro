@@ -1,17 +1,35 @@
 import axios from 'axios';
+import { getAuth } from 'firebase/auth';
 import { CardData, CardCollection, GenerationResult } from '../types/app';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
 
-async function request<T>(url: string, options?: any): Promise<T> {
+const getAuthToken = async () => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  if (user) {
+    return await user.getIdToken();
+  }
+  return null;
+};
+
+async function request<T>(url: string, options?: any, isPublic = false): Promise<T> {
   try {
+        const token = isPublic ? null : await getAuthToken();
+
+    const headers: any = {
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    };
+
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
     const response = await axios({
       url: `${API_BASE_URL}${url}`,
       ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
+      headers,
     });
     return response.data;
   } catch (error: any) {

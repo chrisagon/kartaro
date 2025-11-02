@@ -2,9 +2,10 @@ const express = require('express');
 const { generateCards, generateCardsTextOnly, regenerateCardImage, generateContextFromThemeAndPublic } = require('../services/GeminiService');
 
 const router = express.Router();
+const authMiddleware = require('../middleware/auth');
 
 // Nouvelle route pour générer uniquement le texte des cartes
-router.post('/generate-text', async (req, res) => {
+router.post('/generate-text', authMiddleware, async (req, res) => {
   const { theme, context, numCards } = req.body;
 
   if (!theme) {
@@ -21,7 +22,7 @@ router.post('/generate-text', async (req, res) => {
 });
 
 // Nouvelle route pour générer l'image d'une seule carte
-router.post('/generate-image', async (req, res) => {
+router.post('/generate-image', authMiddleware, async (req, res) => {
   const { card, theme, context, stylePreset } = req.body;
 
   if (!card || !theme) {
@@ -38,7 +39,7 @@ router.post('/generate-image', async (req, res) => {
 });
 
 // Route pour générer les cartes
-router.post('/generate', async (req, res) => {
+router.post('/generate', authMiddleware, async (req, res) => {
   const { theme, context, numCards, stylePreset } = req.body;
 
   if (!theme || !context) {
@@ -65,7 +66,7 @@ router.post('/generate', async (req, res) => {
 });
 
 // Regenerate image for a single card
-router.post('/regenerate-image', async (req, res) => {
+router.post('/regenerate-image', authMiddleware, async (req, res) => {
   const { card, theme, context, stylePreset } = req.body;
 
   if (!card || !card.title) {
@@ -87,7 +88,7 @@ router.post('/regenerate-image', async (req, res) => {
 });
 
 // Route pour générer le contexte
-router.post('/generate-context', async (req, res) => {
+router.post('/generate-context', authMiddleware, async (req, res) => {
   const { theme, publicTarget } = req.body;
 
   if (!theme || !publicTarget) {

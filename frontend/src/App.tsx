@@ -15,6 +15,7 @@ import { KeyboardArrowUp as ScrollUpIcon } from '@mui/icons-material';
 // Thème et contexte
 import { appTheme, darkTheme } from './theme/appTheme';
 import { AppProvider, useApp } from './context/AppContext';
+import { useAuth } from './context/AuthContext';
 
 // Composants modernisés
 import ModernHeader from './components/ModernHeader';
@@ -23,6 +24,9 @@ import ModernHeader from './components/ModernHeader';
 import ModernMainPage from './pages/ModernMainPage';
 import CollectionsPage from './pages/CollectionsPage';
 import CollectionDetailPage from './pages/CollectionDetailPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import { Navigate, Outlet } from 'react-router-dom';
 
 // Composant Scroll to Top
 const ScrollToTop = () => {
@@ -52,6 +56,18 @@ const ScrollToTop = () => {
   );
 };
 
+// Route de protection
+const ProtectedRoute: React.FC = () => {
+  const { currentUser } = useAuth();
+  return currentUser ? <Outlet /> : <Navigate to="/login" replace />;
+};
+
+// Route pour les invités (non connectés)
+const GuestRoute: React.FC = () => {
+  const { currentUser } = useAuth();
+  return !currentUser ? <Outlet /> : <Navigate to="/" replace />;
+};
+
 // Layout principal avec le nouveau thème
 const AppLayout: React.FC = () => {
   return (
@@ -59,9 +75,15 @@ const AppLayout: React.FC = () => {
       <ModernHeader />
       <Container maxWidth="xl" sx={{ py: 4 }}>
         <Routes>
-          <Route path="/" element={<ModernMainPage />} />
-          <Route path="/collections" element={<CollectionsPage />} />
-          <Route path="/collections/:id" element={<CollectionDetailPage />} />
+          <Route element={<GuestRoute />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<ModernMainPage />} />
+            <Route path="/collections" element={<CollectionsPage />} />
+            <Route path="/collections/:id" element={<CollectionDetailPage />} />
+          </Route>
         </Routes>
       </Container>
       <ScrollToTop />

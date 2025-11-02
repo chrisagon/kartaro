@@ -1,5 +1,6 @@
 const express = require('express');
-const dbPromise = require('../services/DatabaseService'); // Renommé pour plus de clarté
+const { saveCollectionToFirestore, getCollectionsFromFirestore, getCollectionByIdFromFirestore, updateCollectionInFirestore, deleteCollectionFromFirestore } = require('../services/GeminiService');
+const authMiddleware = require('../middleware/auth');
 const fs = require('fs');
 const path = require('path');
 const PdfService = require('../services/PdfService');
@@ -12,128 +13,80 @@ if (!fs.existsSync(imagesDir)) {
   fs.mkdirSync(imagesDir, { recursive: true });
 }
 
-// Get all collections
-router.get('/', async (req, res) => {
-  const db = await dbPromise;
-  // Return collection metadata with card count but without full card data
-  const collectionsMetadata = db.data.collections.map(({ id, name, createdAt, updatedAt, description, cards }) => ({ 
-    id, 
-    name, 
-    createdAt: createdAt || new Date().toISOString(),
-    updatedAt: updatedAt || new Date().toISOString(),
-    description: description || '',
-    cards: cards || []
-  }));
-  res.json(collectionsMetadata);
+// Get all collections for the authenticated user
+router.get('/', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.uid;
+    const collections = await getCollectionsFromFirestore(userId);
+    res.json(collections);
+  } catch (error) {
+    console.error('Error fetching collections from Firestore:', error);
+    res.status(500).json({ error: 'Failed to fetch collections.' });
+  }
 });
 
 // Get a single collection by ID
-router.get('/:id', async (req, res) => {
-  const db = await dbPromise;
-  const collection = db.data.collections.find(c => c.id === req.params.id);
-  if (collection) {
+router.get('/:id', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.uid;
+    const collection = await getCollectionByIdFromFirestore(userId, req.params.id);
     res.json(collection);
-  } else {
-    res.status(404).json({ error: 'Collection not found' });
+  } catch (error) {
+    res.status(error.message === 'Collection not found' ? 404 : 500).json({ error: error.message });
   }
 });
 
 // Update a collection by ID
-router.put('/:id', async (req, res) => {
-  const db = await dbPromise;
-  const { name, cards } = req.body;
+router.put('/:id', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.uid;
+    const collectionData = req.body;
 
-  if (!name || !cards) {
-    return res.status(400).json({ error: 'Name and cards are required' });
-  }
-
-  const collectionIndex = db.data.collections.findIndex(c => c.id === req.params.id);
-  if (collectionIndex === -1) {
-    return res.status(404).json({ error: 'Collection not found' });
-  }
-
-  const processedCards = cards.map(card => {
-    if (card.image && card.image.startsWith('data:image/')) {
-      const matches = card.image.match(/^data:image\/([a-zA-Z+]+);base64,(.*)$/);
-      if (matches && matches.length === 3) {
-        const imageType = matches[1];
-        const extension = imageType === 'svg+xml' ? 'svg' : imageType;
-        const base64Data = matches[2];
-        const imageBuffer = Buffer.from(base64Data, 'base64');
-        const imageName = `${card.id || Date.now()}-${Math.random().toString(36).substring(7)}.${extension}`;
-        const imagePath = path.join(imagesDir, imageName);
-
-        fs.writeFileSync(imagePath, imageBuffer);
-
-        // Replace the base64 string with the URL path
-        return { ...card, image: `/images/collections/${imageName}` };
-      }
+    if (req.params.id !== collectionData.id) {
+      return res.status(400).json({ error: 'Collection ID mismatch.' });
     }
-    return card;
-  });
 
-  const existingCollection = db.data.collections[collectionIndex];
-  const updatedCollection = { 
-    ...existingCollection,
-    id: req.params.id, 
-    name, 
-    cards: processedCards,
-    updatedAt: new Date().toISOString(),
-    createdAt: existingCollection.createdAt || new Date().toISOString()
-  };
-  db.data.collections[collectionIndex] = updatedCollection;
-  await db.write();
+    const updatedCollection = {
+      ...collectionData,
+      updatedAt: new Date().toISOString(),
+    };
 
-  res.json(updatedCollection);
+    const savedCollection = await updateCollectionInFirestore(userId, updatedCollection);
+    res.json(savedCollection);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to update collection.' });
+  }
 });
 
-router.post('/', async (req, res) => {
-  const db = await dbPromise; // Attend que la base de données soit prête
-  const { name, cards } = req.body;
+// Save a new collection for the authenticated user
+router.post('/', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.uid;
+    const collectionData = req.body;
 
-  if (!name || !cards) {
-    return res.status(400).json({ error: 'Name and cards are required' });
-  }
-
-  const collectionId = Date.now().toString();
-  const now = new Date().toISOString();
-  const processedCards = cards.map(card => {
-    if (card.image && card.image.startsWith('data:image/')) {
-      const matches = card.image.match(/^data:image\/([a-zA-Z+]+);base64,(.*)$/);
-      if (matches && matches.length === 3) {
-                const imageType = matches[1];
-        const extension = imageType === 'svg+xml' ? 'svg' : imageType;
-        const base64Data = matches[2];
-        const imageBuffer = Buffer.from(base64Data, 'base64');
-        const imageName = `${card.id || Date.now()}-${Math.random().toString(36).substring(7)}.${extension}`;
-        const imagePath = path.join(imagesDir, imageName);
-        
-        fs.writeFileSync(imagePath, imageBuffer);
-
-        // Replace the base64 string with the URL path
-        return { ...card, image: `/images/collections/${imageName}` };
-      }
+    if (!collectionData || !collectionData.name || !collectionData.cards) {
+      return res.status(400).json({ error: 'Collection name and cards are required.' });
     }
-    return card;
-  });
 
-  const newCollection = { 
-    id: collectionId, 
-    name, 
-    cards: processedCards,
-    createdAt: now,
-    updatedAt: now,
-    description: req.body.description || ''
-  };
+    // Add user-specific data and timestamps
+    const newCollection = {
+      ...collectionData,
+      id: collectionData.id || Date.now().toString(),
+      userId: userId,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
 
-  db.data.collections.push(newCollection);
-  await db.write();
-
-  res.status(201).json(newCollection);
+    const savedCollection = await saveCollectionToFirestore(userId, newCollection);
+    res.status(201).json(savedCollection);
+  } catch (error) {
+    console.error('Error saving collection to Firestore:', error);
+    res.status(500).json({ error: 'Failed to save collection.' });
+  }
 });
 
 // Generate PDF for a temporary collection (POST)
-router.post('/temp/pdf', async (req, res) => {
+router.post('/temp/pdf', authMiddleware, async (req, res) => {
   try {
     console.log('PDF generation request received');
     console.log('Request body:', JSON.stringify(req.body, null, 2));
@@ -165,37 +118,31 @@ router.post('/temp/pdf', async (req, res) => {
 });
 
 // Delete a collection by ID
-router.delete('/:id', async (req, res) => {
-  const db = await dbPromise;
-  const collectionIndex = db.data.collections.findIndex(c => c.id === req.params.id);
-  
-  if (collectionIndex === -1) {
-    return res.status(404).json({ error: 'Collection not found' });
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.uid;
+    await deleteCollectionFromFirestore(userId, req.params.id);
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete collection.' });
   }
-
-  // Remove the collection
-  db.data.collections.splice(collectionIndex, 1);
-  await db.write();
-
-  res.status(204).send();
 });
 
 // Get PDF for a single collection by ID
-router.get('/:id/pdf', async (req, res) => {
-  const db = await dbPromise;
-  const collection = db.data.collections.find(c => c.id === req.params.id);
-  if (collection) {
-    try {
-      const pdfBuffer = await PdfService.generatePdf(collection);
-      res.setHeader('Content-Type', 'application/pdf');
-      res.setHeader('Content-Disposition', `attachment; filename=${collection.name}.pdf`);
-      res.send(pdfBuffer);
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      res.status(500).json({ error: 'Failed to generate PDF' });
+router.get('/:id/pdf', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.uid;
+    const collection = await getCollectionByIdFromFirestore(userId, req.params.id);
+    const pdfBuffer = await PdfService.generatePdf(collection);
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=${collection.name}.pdf`);
+    res.send(pdfBuffer);
+  } catch (error) {
+    console.error('Error generating PDF:', error);
+    if (error.message === 'Collection not found') {
+      return res.status(404).json({ error: 'Collection not found' });
     }
-  } else {
-    res.status(404).json({ error: 'Collection not found' });
+    res.status(500).json({ error: 'Failed to generate PDF' });
   }
 });
 

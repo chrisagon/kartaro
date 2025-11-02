@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fetch = require('node-fetch');
+const admin = require('./firebaseAdmin');
 
 // IMPORTANT: Make sure to create a .env file in the backend directory with your API key
 const API_KEY = process.env.GEMINI_API_KEY;
@@ -515,6 +516,96 @@ const regenerateCardImage = async (card, theme = '', context = '', stylePreset =
   }
 };
 
+const { getStorage } = require('firebase-admin/storage');
+
+const uploadImageToStorage = async (base64Image, userId, collectionId) => {
+  if (!base64Image || !base64Image.startsWith('data:image')) {
+    return base64Image; // Not a base64 image, return as is (e.g., a URL or fallback)
+  }
+
+  const bucket = getStorage().bucket();
+  const fileName = `users/${userId}/collections/${collectionId}/${Date.now()}-${Math.random().toString(36).substr(2, 9)}.png`;
+  const file = bucket.file(fileName);
+
+  const buffer = Buffer.from(base64Image.split(',')[1], 'base64');
+
+  await file.save(buffer, {
+    metadata: {
+      contentType: 'image/png',
+    },
+  });
+
+  // Get a signed URL that expires in a very long time (e.g., 100 years)
+  const [url] = await file.getSignedUrl({
+    action: 'read',
+    expires: '01-01-2124',
+  });
+
+  return url;
+};
+
+const saveCollectionToFirestore = async (userId, collectionData) => {
+  console.log(`Starting to save collection "${collectionData.name}" for user ${userId}...`);
+
+  const cardsWithImageUrls = await Promise.all(
+    collectionData.cards.map(async (card) => {
+      try {
+        const imageUrl = await uploadImageToStorage(card.image, userId, collectionData.id);
+        return { ...card, image: imageUrl };
+      } catch (error) {
+        console.error(`Failed to upload image for card "${card.title}":`, error);
+        // Keep original (potentially base64) or fallback if upload fails
+        return card; 
+      }
+    })
+  );
+
+  const collectionToSave = {
+    ...collectionData,
+    cards: cardsWithImageUrls,
+  };
+
+  const db = admin.firestore();
+  const collectionRef = db.collection('users').doc(userId).collection('collections').doc(collectionData.id);
+  
+  console.log(`Saving collection document to Firestore at path: ${collectionRef.path}`);
+  await collectionRef.set(collectionToSave);
+  console.log(`Collection "${collectionData.name}" saved successfully.`);
+
+  return collectionToSave;
+};
+
+const getCollectionByIdFromFirestore = async (userId, collectionId) => {
+  const db = admin.firestore();
+  const doc = await db.collection('users').doc(userId).collection('collections').doc(collectionId).get();
+  if (!doc.exists) {
+    throw new Error('Collection not found');
+  }
+  return doc.data();
+};
+
+const updateCollectionInFirestore = async (userId, collectionData) => {
+  const db = admin.firestore();
+  const collectionRef = db.collection('users').doc(userId).collection('collections').doc(collectionData.id);
+  await collectionRef.update(collectionData);
+  return collectionData;
+};
+
+const deleteCollectionFromFirestore = async (userId, collectionId) => {
+  const db = admin.firestore();
+  await db.collection('users').doc(userId).collection('collections').doc(collectionId).delete();
+};
+
+const getCollectionsFromFirestore = async (userId) => {
+  const db = admin.firestore();
+  const collectionsSnapshot = await db.collection('users').doc(userId).collection('collections').get();
+  const collections = [];
+  collectionsSnapshot.forEach(doc => {
+    collections.push(doc.data());
+  });
+  return collections;
+};
+
 module.exports = {
   generateContextFromThemeAndPublic,
   generateCards,
@@ -527,6 +618,11 @@ module.exports = {
   translateTitleToEnglish,
   buildImagePrompt,
   CATEGORY_METADATA,
+  saveCollectionToFirestore,
+  getCollectionsFromFirestore,
+  getCollectionByIdFromFirestore,
+  updateCollectionInFirestore,
+  deleteCollectionFromFirestore,
 };
 
 

@@ -1,3 +1,4 @@
+require('./services/firebaseAdmin'); // Initialize Firebase Admin SDK
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');

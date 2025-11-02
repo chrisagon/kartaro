@@ -1,5 +1,6 @@
 // src/context/AppContext.tsx
-import React, { createContext, useContext, useReducer, useCallback } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useMemo } from 'react';
+import { useAuth } from './AuthContext';
 import { AppState, AppAction, AppSettings, ApiContextType } from '../types/app';
 import { CardData, CardCollection } from '../types/app';
 import * as ApiService from '../services/ApiService';
@@ -133,20 +134,15 @@ const AppContext = createContext<{
 
 // Provider du contexte
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { currentUser } = useAuth();
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  // Fonctions API avec gestion d'état intégrée
-  const api: ApiContextType = {
-    generateContext: useCallback(async (theme: string, publicTarget: string) => {
-      try {
-        const result = await ApiService.generateContext(theme, publicTarget);
-        return result;
-      } catch (error) {
-        console.error('Erreur lors de la génération du contexte:', error);
-        throw error;
-      }
-    }, []),
-    generateCards: useCallback(async (theme: string, context: string, numCards?: number, stylePreset?: string) => {
+  const api: ApiContextType = useMemo(() => ({
+    generateContext: async (theme, publicTarget) => {
+      const result = await ApiService.generateContext(theme, publicTarget);
+      return result;
+    },
+        generateCards: async (theme, context, numCards, stylePreset) => {
       dispatch({ type: 'SET_GENERATING', payload: true });
       dispatch({ type: 'SET_CARDS', payload: [] }); // Clear previous cards
       dispatch({ type: 'SET_METRICS', payload: null });
@@ -204,59 +200,54 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         dispatch({ type: 'SET_GENERATING', payload: false });
         dispatch({ type: 'SET_IMAGE_GENERATION_PROGRESS', payload: null });
       }
-    }, []),
-
-    getCollections: useCallback(async () => {
+    },
+    getCollections: async () => {
       dispatch({ type: 'SET_LOADING_COLLECTIONS', payload: true });
       try {
         const collections = await ApiService.getCollections();
         dispatch({ type: 'SET_COLLECTIONS', payload: collections });
         return collections;
-      } catch (error) {
-        console.error('Erreur lors du chargement des collections:', error);
-        throw error;
       } finally {
         dispatch({ type: 'SET_LOADING_COLLECTIONS', payload: false });
       }
-    }, []),
-
-    getCollectionById: useCallback(async (id: string) => {
+    },
+    getCollectionById: async (id) => {
       const collection = await ApiService.getCollectionById(id);
       dispatch({ type: 'SET_CURRENT_COLLECTION', payload: collection });
       dispatch({ type: 'SET_CARDS', payload: collection.cards || [] });
       return collection;
-    }, []),
-
-    createCollection: useCallback(async (collectionData) => {
+    },
+    createCollection: async (collectionData) => {
       const newCollection = await ApiService.createCollection(collectionData);
       dispatch({ type: 'ADD_COLLECTION', payload: newCollection });
       return newCollection;
-    }, []),
-
-    updateCollection: useCallback(async (collection) => {
+    },
+    updateCollection: async (collection) => {
       const updatedCollection = await ApiService.updateCollection(collection);
       dispatch({ type: 'UPDATE_COLLECTION', payload: updatedCollection });
       return updatedCollection;
-    }, []),
-
-    deleteCollection: useCallback(async (id) => {
+    },
+    deleteCollection: async (id) => {
       await ApiService.deleteCollection(id);
       dispatch({ type: 'DELETE_COLLECTION', payload: id });
-    }, []),
-
-    generatePdfForCards: useCallback(async (cards) => {
+    },
+    generatePdfForCards: async (cards) => {
       dispatch({ type: 'SET_GENERATING_PDF', payload: true });
       try {
-        const pdfBlob = await ApiService.generatePdfForCards(cards);
-        return pdfBlob;
-      } catch (error) {
-        console.error('Erreur lors de la génération du PDF:', error);
-        throw error;
+        return await ApiService.generatePdfForCards(cards);
       } finally {
         dispatch({ type: 'SET_GENERATING_PDF', payload: false });
       }
-    }, []),
-  };
+    },
+  }), [dispatch]);
+
+  useEffect(() => {
+    if (currentUser) {
+      api.getCollections();
+    } else {
+      dispatch({ type: 'SET_COLLECTIONS', payload: [] });
+    }
+  }, [currentUser, api]);
 
   return (
     <AppContext.Provider value={{ state, dispatch, api }}>
