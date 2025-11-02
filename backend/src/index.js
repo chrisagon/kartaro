@@ -1,4 +1,5 @@
 require('./services/firebaseAdmin'); // Initialize Firebase Admin SDK
+const functions = require('firebase-functions');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -24,6 +25,8 @@ const collectionsRouter = require('./api/collections');
 app.use('/api/cards', cardsRouter);
 app.use('/api/collections', collectionsRouter);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
+
+exports.api = functions.region('europe-west1').https.onRequest(app);

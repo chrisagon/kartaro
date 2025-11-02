@@ -9,8 +9,8 @@ try {
   if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
     throw new Error('GOOGLE_APPLICATION_CREDENTIALS environment variable not set.');
   }
-  if (!process.env.FIREBASE_STORAGE_BUCKET) {
-    throw new Error('FIREBASE_STORAGE_BUCKET environment variable not set.');
+  if (!process.env.APP_STORAGE_BUCKET) {
+    throw new Error('APP_STORAGE_BUCKET environment variable not set.');
   }
 
   const serviceAccountPath = path.resolve(__dirname, '..', '..', process.env.GOOGLE_APPLICATION_CREDENTIALS);
@@ -24,7 +24,7 @@ try {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET
+    storageBucket: process.env.APP_STORAGE_BUCKET
   });
 
   console.log('Firebase Admin SDK initialized successfully from service account file.');

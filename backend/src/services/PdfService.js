@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const { createHash } = require('crypto');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
+const chromium = require('@sparticuz/chromium-min');
 const os = require('os');
 
 const CACHE_DIR = path.join(__dirname, '..', '..', 'cache', 'images');
@@ -236,14 +237,9 @@ class PdfService {
   static async renderPdf(collection, isFallback) {
     const userDataDir = createTempUserDataDir();
     const browser = await puppeteer.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu',
-        '--font-render-hinting=medium',
-      ],
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+      args: chromium.args,
       ignoreHTTPSErrors: true,
       userDataDir,
     });
