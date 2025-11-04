@@ -1,0 +1,32 @@
+name = "fresquia-api"
+main = "src/worker.js"
+compatibility_date = "2024-07-25"
+compatibility_flags = ["nodejs_compat"]
+browser = { binding = "BROWSER" }
+
+[[d1_databases]]
+binding = "DB" # Referenced by D1Service (falls back to env.D1)
+database_name = "fresquia-db"
+# Replace with the database_id returned by `wrangler d1 create`
+database_id = "5470bc19-49e5-47ca-bd1a-44de1d6eb8e2"
+
+[vars]
+# Secrets must be added via `wrangler secret put`
+# Example: wrangler secret put GEMINI_API_KEY
+# Gemini API Key for text generation
+GEMINI_TEXT_MODEL="gemini-2.5-flash-lite"
+
+# ===== IMAGE GENERATION =====
+# Provider: 'stability' (Stable Diffusion) ou 'vertex' (Google Imagen)
+IMAGE_PROVIDER="stability"
+
+# Stability AI (Stable Diffusion) - Recommandé
+# Obtenez votre clé sur: https://platform.stability.ai/account/keys
+# Quota: 150 req/min | Coût: $0.002/image
+STABILITY_MODEL="stable-diffusion-xl-1024-v1-0"
+
+# Nombre de cartes à générer par requête
+NUM_CARDS_TO_GENERATE="20"
+
+# Délai entre les requêtes d'images (en millisecondes)
+IMAGE_DELAY_MS="1000"

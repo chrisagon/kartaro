@@ -6,44 +6,44 @@ const authMiddleware = require('../middleware/auth');
 
 // Nouvelle route pour générer uniquement le texte des cartes
 router.post('/generate-text', authMiddleware, async (req, res) => {
-  const { theme, context, numCards } = req.body;
+    const { theme, context, numCards } = req.body;
 
   if (!theme) {
-    return res.status(400).json({ error: 'Le thème est requis.' });
+        return res.status(400).json({ error: 'Le thème est requis.' });
   }
 
   try {
     const cards = await generateCardsTextOnly(theme, context, numCards);
-    res.json({ cards });
+        res.json({ cards });
   } catch (error) {
-    console.error('Erreur lors de la génération du texte des cartes:', error);
+        console.error('Erreur lors de la génération du texte des cartes:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
 // Nouvelle route pour générer l'image d'une seule carte
 router.post('/generate-image', authMiddleware, async (req, res) => {
-  const { card, theme, context, stylePreset } = req.body;
+    const { card, theme, context, stylePreset } = req.body;
 
   if (!card || !theme) {
-    return res.status(400).json({ error: 'Les données de la carte et le thème sont requis.' });
+        return res.status(400).json({ error: 'Les données de la carte et le thème sont requis.' });
   }
 
   try {
     const imageUrl = await regenerateCardImage(card, theme, context, stylePreset);
-    res.json({ imageUrl });
+        res.json({ imageUrl });
   } catch (error) {
-    console.error('Erreur lors de la génération de limage de la carte:', error);
+        console.error('Erreur lors de la génération de limage de la carte:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
 // Route pour générer les cartes
 router.post('/generate', authMiddleware, async (req, res) => {
-  const { theme, context, numCards, stylePreset } = req.body;
+    const { theme, context, numCards, stylePreset } = req.body;
 
   if (!theme || !context) {
-    return res.status(400).json({ error: 'Theme and context are required' });
+        return res.status(400).json({ error: 'Theme and context are required' });
   }
 
   // Validate numCards (optional, default from env, min 1, max 200)
@@ -59,18 +59,18 @@ router.post('/generate', authMiddleware, async (req, res) => {
 
   try {
     const result = await generateCards(theme, context, cardsToGenerate, validStylePreset);
-    res.json(result);
+        res.json(result);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error.message });
   }
 });
 
 // Regenerate image for a single card
 router.post('/regenerate-image', authMiddleware, async (req, res) => {
-  const { card, theme, context, stylePreset } = req.body;
+    const { card, theme, context, stylePreset } = req.body;
 
   if (!card || !card.title) {
-    return res.status(400).json({ error: 'Card data is required' });
+        return res.status(400).json({ error: 'Card data is required' });
   }
 
   // Validate stylePreset (optional, default to 'isometric', must be one of the allowed values)
@@ -81,25 +81,25 @@ router.post('/regenerate-image', authMiddleware, async (req, res) => {
 
   try {
     const newImageUrl = await regenerateCardImage(card, theme || '', context || '', validStylePreset);
-    res.json({ image: newImageUrl });
+        res.json({ image: newImageUrl });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error.message });
   }
 });
 
 // Route pour générer le contexte
 router.post('/generate-context', authMiddleware, async (req, res) => {
-  const { theme, publicTarget } = req.body;
+    const { theme, publicTarget } = req.body;
 
   if (!theme || !publicTarget) {
-    return res.status(400).json({ error: 'Le thème et le public sont requis.' });
+        return res.status(400).json({ error: 'Le thème et le public sont requis.' });
   }
 
   try {
     const context = await generateContextFromThemeAndPublic(theme, publicTarget);
-    res.json({ context });
+        res.json({ context });
   } catch (error) {
-    console.error('Erreur lors de la génération du contexte:', error);
+        console.error('Erreur lors de la génération du contexte:', error);
     res.status(500).json({ error: error.message });
   }
 });

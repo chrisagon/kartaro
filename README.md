@@ -2,6 +2,30 @@
 
 This is a full-stack web application that allows users to generate, save, and export AI-powered learning cards.
 
+## 🚀 Quick Start with Docker (Recommended)
+
+The easiest way to run this application is using Docker:
+
+```bash
+# 1. Clone the repository
+git clone <your-repo-url>
+cd fresquia-local
+
+# 2. Configure environment variables
+cp backend/.env.example backend/.env
+# Edit backend/.env with your API keys
+
+# 3. Start with Docker
+docker-deploy.bat start
+
+# Or manually:
+docker-compose up --build
+```
+
+The API will be available at `http://localhost:3001`.
+
+**For detailed Docker instructions, see [DOCKER_DEPLOYMENT.md](DOCKER_DEPLOYMENT.md)**
+
 ## Features
 
 -   **AI Card Generation:** Generate learning cards based on a given theme and context.
@@ -23,11 +47,11 @@ This is a full-stack web application that allows users to generate, save, and ex
 
 -   **Node.js:** A JavaScript runtime built on Chrome's V8 JavaScript engine.
 -   **Express:** A fast, unopinionated, minimalist web framework for Node.js.
+-   **SQLite:** Local database for data persistence.
 -   **Vertex AI:** Google Cloud's AI platform for building, deploying, and scaling machine learning models.
--   **lowdb:** A small local JSON database powered by Lodash.
 -   **Puppeteer:** A Node.js library which provides a high-level API to control Chrome or Chromium over the DevTools Protocol.
 
-## Getting Started
+## Traditional Setup (Development)
 
 ### Prerequisites
 
@@ -68,3 +92,17 @@ This is a full-stack web application that allows users to generate, save, and ex
     npm start
     ```
     The frontend development server will open in your browser at `http://localhost:3000`.
+
+## Deployment
+
+### Production Deployment
+
+This application is now containerized and can be easily deployed to:
+
+- **Railway** (Recommended)
+- **Render**
+- **DigitalOcean App Platform**
+- **Google Cloud Run**
+- **AWS ECS**
+
+See [DOCKER_DEPLOYMENT.md](DOCKER_DEPLOYMENT.md) for detailed deployment instructions.

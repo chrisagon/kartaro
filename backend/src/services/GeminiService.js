@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fetch = require('node-fetch');
-const admin = require('./firebaseAdmin');
+
 
 // IMPORTANT: Make sure to create a .env file in the backend directory with your API key
 const API_KEY = process.env.GEMINI_API_KEY;
@@ -516,9 +516,7 @@ const regenerateCardImage = async (card, theme = '', context = '', stylePreset =
   }
 };
 
-const { getStorage } = require('firebase-admin/storage');
-
-const uploadImageToStorage = async (base64Image, userId, collectionId) => {
+/*
   if (!base64Image || !base64Image.startsWith('data:image')) {
     return base64Image; // Not a base64 image, return as is (e.g., a URL or fallback)
   }
@@ -606,6 +604,8 @@ const getCollectionsFromFirestore = async (userId) => {
   return collections;
 };
 
+*/
+
 module.exports = {
   generateContextFromThemeAndPublic,
   generateCards,
@@ -618,11 +618,7 @@ module.exports = {
   translateTitleToEnglish,
   buildImagePrompt,
   CATEGORY_METADATA,
-  saveCollectionToFirestore,
-  getCollectionsFromFirestore,
-  getCollectionByIdFromFirestore,
-  updateCollectionInFirestore,
-  deleteCollectionFromFirestore,
+
 };
 
 
