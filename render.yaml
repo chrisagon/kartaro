@@ -1,4 +1,5 @@
 services:
+  # Backend API Service
   - type: web
     name: fresquia-backend
     runtime: docker
@@ -30,9 +31,22 @@ services:
         value: 20
       - key: IMAGE_DELAY_MS
         value: 1000
-
     healthCheckPath: /api/cards/generate-context
     disk:
       name: backend-data
       mountPath: /app/data
       sizeGB: 1
+
+  # Frontend Static Site
+  - type: web
+    name: fresquia-frontend
+    runtime: static
+    plan: free
+    buildCommand: build-frontend.bat
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: fresquia-backend
+          property: host

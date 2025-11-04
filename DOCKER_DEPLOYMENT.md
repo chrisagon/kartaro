@@ -27,8 +27,17 @@ Cette application peut maintenant être déployée facilement avec Docker et doc
 
 4. **Déployez**
    - Render lira automatiquement la configuration `render.yaml`
+   - **Deux services** seront créés automatiquement :
+     - `fresquia-backend` : API Docker (plan payant)
+     - `fresquia-frontend` : Site statique React (gratuit)
    - Le déploiement prendra quelques minutes
-   - Votre API sera disponible sur `https://your-service.onrender.com`
+   - Votre application sera disponible sur deux URLs :
+     - Frontend : `https://fresquia-frontend.onrender.com`
+     - Backend : `https://fresquia-backend.onrender.com`
+
+5. **Configuration finale**
+   - Le frontend se connecte automatiquement au backend via `REACT_APP_API_URL`
+   - Ajoutez vos clés API seulement dans le service backend
 
 ### Configuration manuelle (si pas de render.yaml)
 
@@ -39,6 +48,30 @@ Si vous préférez configurer manuellement :
 3. Pointez vers votre dépôt GitHub
 4. Dans "Dockerfile Path" : `./Dockerfile`
 5. Ajoutez les variables d'environnement comme ci-dessus
+
+## 🏗️ Architecture de déploiement
+
+Votre application est déployée selon une architecture moderne **frontend/backend séparés** :
+
+### Services créés automatiquement
+
+1. **fresquia-frontend** (Static Site - Gratuit)
+   - Sert l'interface React compilée
+   - Construit automatiquement avec `build-frontend.bat`
+   - Reçoit automatiquement l'URL de l'API backend
+   - URL : `https://fresquia-frontend.onrender.com`
+
+2. **fresquia-backend** (Docker - Payant)
+   - API Express.js + SQLite
+   - Gemini AI, Stability AI, Firebase
+   - Base de données persistée
+   - URL : `https://fresquia-backend.onrender.com`
+
+### Communication
+
+- Le frontend appelle automatiquement le backend via `REACT_APP_API_URL`
+- CORS configuré pour permettre la communication
+- Toutes les clés API sont stockées uniquement côté backend
 
 ## Développement local avec Docker Compose
 

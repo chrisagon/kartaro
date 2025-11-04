@@ -23,7 +23,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo [3/4] Committing changes...
-git commit -m "feat: add Docker deployment for Render"
+git commit -m "feat: add frontend deployment configuration for Render"
 if %errorlevel% neq 0 (
     echo No changes to commit or commit failed
 )
@@ -49,10 +49,15 @@ echo 1. Go to https://dashboard.render.com
 echo 2. Click "New" -^> "Blueprint"
 echo 3. Connect your GitHub repository
 echo 4. Render will auto-detect render.yaml
-echo 5. Add your environment variables:
+echo 5. Two services will be created:
+echo    - fresquia-backend (Docker, paid)
+echo    - fresquia-frontend (Static, free)
+echo 6. Add environment variables to backend service:
 echo    - GEMINI_API_KEY
 echo    - STABILITY_API_KEY
 echo    - FIREBASE_PROJECT_ID
+echo.
+echo The frontend will automatically connect to the backend API!
 echo.
 echo Press any key to open Render dashboard...
 pause >nul
