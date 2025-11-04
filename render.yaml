@@ -19,7 +19,7 @@ services:
       - key: FIREBASE_PROJECT_ID
         sync: false  # Set this in Render dashboard
       - key: PDF_ASSET_BASE_URL
-        value: https://your-domain.onrender.com
+        value: https://decklab.onrender.com
       - key: IMAGE_PROVIDER
         value: stability
       - key: GEMINI_TEXT_MODEL
