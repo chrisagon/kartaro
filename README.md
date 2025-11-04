@@ -99,10 +99,10 @@ The API will be available at `http://localhost:3001`.
 
 This application is now containerized and can be easily deployed to:
 
-- **Railway** (Recommended)
-- **Render**
-- **DigitalOcean App Platform**
-- **Google Cloud Run**
-- **AWS ECS**
+- **Render** (Recommended) - Connect GitHub repo, auto-detects render.yaml
+- **Railway** - Push to GitHub, one-click deployment
+- **DigitalOcean App Platform** - Docker-based deployment
+- **Google Cloud Run** - Serverless containers
+- **AWS ECS** - Enterprise-grade container orchestration
 
 See [DOCKER_DEPLOYMENT.md](DOCKER_DEPLOYMENT.md) for detailed deployment instructions.

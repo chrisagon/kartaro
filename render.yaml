@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: fresquia-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_PATH
+        value: /app/data/database.db
+      - key: PORT
+        value: 10000
+      - key: GEMINI_API_KEY
+        sync: false  # Set this in Render dashboard
+      - key: STABILITY_API_KEY
+        sync: false  # Set this in Render dashboard
+      - key: FIREBASE_PROJECT_ID
+        sync: false  # Set this in Render dashboard
+      - key: PDF_ASSET_BASE_URL
+        value: https://your-domain.onrender.com
+      - key: IMAGE_PROVIDER
+        value: stability
+      - key: GEMINI_TEXT_MODEL
+        value: gemini-2.5-flash-lite
+      - key: STABILITY_MODEL
+        value: stable-diffusion-xl-1024-v1-0
+      - key: NUM_CARDS_TO_GENERATE
+        value: 20
+      - key: IMAGE_DELAY_MS
+        value: 1000
+
+    healthCheckPath: /api/cards/generate-context
+    disk:
+      name: backend-data
+      mountPath: /app/data
+      sizeGB: 1

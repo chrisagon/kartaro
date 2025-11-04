@@ -2,7 +2,47 @@
 
 Cette application peut maintenant être déployée facilement avec Docker et docker-compose.
 
-## Prérequis
+## 🚀 Déploiement sur Render (Recommandé)
+
+### Configuration automatique avec render.yaml
+
+1. **Poussez votre code sur GitHub**
+   ```bash
+   git add .
+   git commit -m "feat: add Docker deployment configuration"
+   git push origin main
+   ```
+
+2. **Connectez Render à votre dépôt GitHub**
+   - Allez sur [Render Dashboard](https://dashboard.render.com)
+   - Cliquez sur "New" → "Blueprint"
+   - Connectez votre dépôt GitHub
+   - Render détectera automatiquement le fichier `render.yaml`
+
+3. **Configurez les variables d'environnement secrètes**
+   Dans le dashboard Render, ajoutez ces variables :
+   - `GEMINI_API_KEY` : Votre clé Google Gemini
+   - `STABILITY_API_KEY` : Votre clé Stability AI
+   - `FIREBASE_PROJECT_ID` : Votre ID projet Firebase
+
+4. **Déployez**
+   - Render lira automatiquement la configuration `render.yaml`
+   - Le déploiement prendra quelques minutes
+   - Votre API sera disponible sur `https://your-service.onrender.com`
+
+### Configuration manuelle (si pas de render.yaml)
+
+Si vous préférez configurer manuellement :
+
+1. Créez un nouveau **Web Service** sur Render
+2. Sélectionnez **Docker** comme runtime
+3. Pointez vers votre dépôt GitHub
+4. Dans "Dockerfile Path" : `./Dockerfile`
+5. Ajoutez les variables d'environnement comme ci-dessus
+
+## Développement local avec Docker Compose
+
+### Prérequis
 
 - Docker
 - Docker Compose
