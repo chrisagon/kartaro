@@ -1,9 +1,9 @@
 services:
-  # Backend API Service
+  # Full-stack application (frontend + backend)
   - type: web
-    name: fresquia-backend
+    name: fresquia
     runtime: docker
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./backend/Dockerfile
     dockerContext: .
     plan: starter
     envVars:
@@ -12,7 +12,7 @@ services:
       - key: DATABASE_PATH
         value: /app/data/database.db
       - key: PORT
-        value: 10000
+        value: 3001
       - key: GEMINI_API_KEY
         sync: false  # Set this in Render dashboard
       - key: STABILITY_API_KEY
@@ -36,17 +36,3 @@ services:
       name: backend-data
       mountPath: /app/data
       sizeGB: 1
-
-  # Frontend Static Site
-  - type: web
-    name: fresquia-frontend
-    runtime: static
-    plan: free
-    buildCommand: ./build-frontend.sh
-    staticPublishPath: ./build
-    envVars:
-      - key: REACT_APP_API_URL
-        fromService:
-          type: web
-          name: fresquia-backend
-          property: host

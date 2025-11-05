@@ -1,8 +1,5 @@
-# Use Node.js 20 LTS
-FROM node:20-alpine
-
-# Set working directory
-WORKDIR /app
+# Multi-stage build for full-stack application
+FROM node:20-alpine AS base
 
 # Install system dependencies needed for sqlite3 and puppeteer
 RUN apk add --no-cache \
@@ -17,37 +14,78 @@ RUN apk add --no-cache \
     freetype-dev \
     harfbuzz \
     ca-certificates \
-    ttf-freefont
+    ttf-freefont \
+    nginx
 
 # Set Puppeteer to skip downloading Chromium (we installed it manually)
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
-# Copy package files
+# Set working directory
+WORKDIR /app
+
+# Copy backend package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install backend dependencies
+RUN npm ci --only=production && npm cache clean --force
 
-# Copy source code
+# Copy backend source code
 COPY . .
 
-# Create data directory for SQLite database
-RUN mkdir -p /app/data
+# Create data and cache directories
+RUN mkdir -p /app/data /app/src/cache/images
 
-# Create cache directory for images
-RUN mkdir -p /app/src/cache/images
+# Frontend build stage
+FROM node:20-alpine AS frontend-build
 
-# Set environment variables
-ENV NODE_ENV=production
-ENV DATABASE_PATH=/app/data/database.db
+WORKDIR /frontend
 
-# Expose port
-EXPOSE 3001
+# Copy frontend package files from the root context
+COPY ../frontend/package*.json ./
+
+# Install frontend dependencies
+RUN npm ci
+
+# Copy frontend source code from the root context
+COPY ../frontend/ ./
+
+# Build frontend for production
+RUN npm run build
+
+# Final production stage
+FROM base AS production
+
+# Copy built frontend from frontend-build stage
+COPY --from=frontend-build /frontend/build /app/public
+
+# Create _redirects file for SPA routing
+RUN echo "/* /index.html 200" > /app/public/_redirects
+
+# Copy nginx configuration
+RUN echo 'server {\
+    listen 10000;\
+    server_name localhost;\
+    root /app/public;\
+    index index.html;\
+    location /api {\
+        proxy_pass http://localhost:3001;\
+        proxy_set_header Host $host;\
+        proxy_set_header X-Real-IP $remote_addr;\
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\
+        proxy_set_header X-Forwarded-Proto $scheme;\
+    }\
+    location / {\
+        try_files $uri $uri/ /index.html;\
+    }\
+}' > /etc/nginx/conf.d/default.conf
+
+# Expose port (Render uses 10000 by default)
+EXPOSE 10000
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3001/api/cards/generate-context', (res) => process.exit(res.statusCode === 404 ? 0 : 1))"
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD node -e "const http=require('http');const req=http.request({hostname:'localhost',port:3001,path:'/api/cards/generate-context',method:'POST',headers:{'Content-Type':'application/json'}},res=>{process.exit(res.statusCode===404?0:1)});req.write(JSON.stringify({theme:'health',publicTarget:'check'}));req.end();" || exit 1
 
-# Start the application
-CMD ["node", "src/index.js"]
+# Start both backend and nginx
+CMD nginx && node src/index.js
