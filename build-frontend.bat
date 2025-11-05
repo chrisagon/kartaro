@@ -24,5 +24,8 @@ echo Moving build to root...
 if exist build rmdir /s /q build
 move frontend\build build
 
+echo Creating _redirects file for SPA routing...
+echo /* /index.html 200 > build\_redirects
+
 echo Frontend built successfully!
 echo Build available in ./build directory
