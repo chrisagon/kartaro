@@ -5,6 +5,7 @@ services:
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
     dockerContext: .
+    buildCommand: ./prepare-docker-build.sh
     plan: starter
     envVars:
       - key: NODE_ENV

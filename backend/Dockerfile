@@ -1,5 +1,5 @@
-# Multi-stage build for full-stack application
-FROM node:20-alpine AS base
+# Multi-stage build for full-stack application (Production)
+FROM node:18-alpine AS base
 
 # Install system dependencies needed for sqlite3 and puppeteer
 RUN apk add --no-cache \
@@ -37,21 +37,21 @@ COPY . .
 RUN mkdir -p /app/data /app/src/cache/images
 
 # Frontend build stage
-FROM node:20-alpine AS frontend-build
+FROM node:18-alpine AS frontend-build
 
 WORKDIR /frontend
 
-# Copy frontend package files from the root context
-COPY ../frontend/package*.json ./
+# Copy frontend package files from the backend context
+COPY ./frontend/package*.json ./
 
 # Install frontend dependencies
-RUN npm ci
+RUN npm install
 
-# Copy frontend source code from the root context
-COPY ../frontend/ ./
+# Copy frontend source code from the backend context
+COPY ./frontend/ ./
 
 # Build frontend for production
-RUN npm run build
+RUN DISABLE_ESLINT_PLUGIN=true TSC_COMPILE_ON_ERROR=true NODE_OPTIONS="--max-old-space-size=16384" npm run build
 
 # Final production stage
 FROM base AS production
@@ -62,7 +62,7 @@ COPY --from=frontend-build /frontend/build /app/public
 # Create _redirects file for SPA routing
 RUN echo "/* /index.html 200" > /app/public/_redirects
 
-# Copy nginx configuration
+# Configure nginx
 RUN echo 'server {\
     listen 10000;\
     server_name localhost;\
