@@ -42,7 +42,7 @@ services:
     name: fresquia-frontend
     runtime: static
     plan: free
-    buildCommand: build-frontend.bat
+    buildCommand: ./build-frontend.sh
     staticPublishPath: ./build
     envVars:
       - key: REACT_APP_API_URL
