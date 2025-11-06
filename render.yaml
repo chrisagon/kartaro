@@ -56,3 +56,5 @@ services:
         sync: false  # Set to backend public URL (e.g. https://decklab.onrender.com/api)
       - key: FORK_TS_CHECKER_MEMORY_LIMIT
         value: "2048"
+      - key: FORK_TS_CHECKER_ENABLED
+        value: "false"
