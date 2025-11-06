@@ -9,6 +9,22 @@ const { generateCollectionHTML } = require('./PdfTemplates');
 
 const CACHE_DIR = path.join(os.tmpdir(), 'images');
 
+const ensureBaseUrl = (value, fallback, name) => {
+  if (!value) {
+    return new URL(fallback).toString();
+  }
+
+  try {
+    return new URL(value).toString();
+  } catch (error) {
+    console.warn(`Invalid ${name} "${value}". Falling back to ${fallback}.`, error?.message || error);
+    return new URL(fallback).toString();
+  }
+};
+
+const BACKEND_BASE_URL = ensureBaseUrl(process.env.BACKEND_BASE_URL, 'http://localhost:3001/', 'BACKEND_BASE_URL');
+const FRONTEND_BASE_URL = ensureBaseUrl(process.env.FRONTEND_BASE_URL, 'http://localhost:3000/', 'FRONTEND_BASE_URL');
+
 const ensureDirectory = (dirPath) => {
   if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath, { recursive: true });
@@ -51,11 +67,28 @@ const cacheDataUrlImage = (dataUrl) => {
 };
 
 const buildBackendImageUrl = (relativePath) => {
-  const normalized = relativePath.replace(/^\/+/, '');
-  return `http://localhost:3001/${normalized}`;
+  const normalized = relativePath.replace(/^\/+/, '').replace(/\\/g, '/');
+
+  try {
+    return new URL(normalized, BACKEND_BASE_URL).toString();
+  } catch (error) {
+    console.warn('Failed to resolve backend image URL:', error?.message || error);
+    const trimmedBase = BACKEND_BASE_URL.replace(/\/+$/, '');
+    return `${trimmedBase}/${normalized}`;
+  }
 };
 
-const buildFrontendUrl = (relativePath) => `http://localhost:3000/${relativePath.replace(/^\/+/, '')}`;
+const buildFrontendUrl = (relativePath) => {
+  const normalized = relativePath.replace(/^\/+/, '').replace(/\\/g, '/');
+
+  try {
+    return new URL(normalized, FRONTEND_BASE_URL).toString();
+  } catch (error) {
+    console.warn('Failed to resolve frontend asset URL:', error?.message || error);
+    const trimmedBase = FRONTEND_BASE_URL.replace(/\/+$/, '');
+    return `${trimmedBase}/${normalized}`;
+  }
+};
 
 const resolveImageSrc = (imagePath, options = {}) => {
   const { assetBaseUrl } = options;
@@ -99,7 +132,7 @@ const resolveImageSrc = (imagePath, options = {}) => {
   if (imagePath.startsWith('/')) {
     const servedUrl = tryServeViaBackend(imagePath);
     if (servedUrl) {
-      return servedUrl.startsWith('http://localhost:3001/') ? servedUrl : buildBackendImageUrl(imagePath);
+      return servedUrl;
     }
     return buildFrontendUrl(imagePath);
   }

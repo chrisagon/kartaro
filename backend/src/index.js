@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 //require('./services/firebaseAdmin'); // Initialize Firebase Admin SDK
 //const functions = require('firebase-functions');
 const express = require('express');
@@ -12,16 +14,33 @@ const app = express();
 const port = process.env.PORT || 3001;
 const requestLimit = process.env.REQUEST_LIMIT || '500mb';
 
-const allowedOrigins = [
+const DEFAULT_ALLOWED_ORIGINS = [
   'http://localhost:3000',
-  'https://decklab-b70b8.web.app'
+  'https://decklab.onrender.com',
 ];
+
+const parseAllowedOrigins = () => {
+  const rawOrigins = process.env.ALLOWED_ORIGINS;
+  if (!rawOrigins) {
+    return DEFAULT_ALLOWED_ORIGINS;
+  }
+
+  const origins = rawOrigins
+    .split(',')
+    .map(origin => origin.trim())
+    .filter(Boolean);
+
+  return origins.length > 0 ? origins : DEFAULT_ALLOWED_ORIGINS;
+};
+
+const allowedOrigins = parseAllowedOrigins();
+const allowAllOrigins = allowedOrigins.includes('*');
 
 const corsOptions = {
   origin: function (origin, callback) {
     // allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
+    if (!origin || allowAllOrigins) return callback(null, true);
+    if (!allowedOrigins.includes(origin)) {
       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
       return callback(new Error(msg), false);
     }
@@ -43,6 +62,10 @@ const authRouter = require('./api/auth');
 app.use('/api/cards', cardsRouter);
 app.use('/api/collections', collectionsRouter);
 app.use('/api/auth', authRouter);
+
+app.get('/healthz', (req, res) => {
+  res.json({ status: 'ok' });
+});
 
 // lignes à commenter si on utilise firebase functions
 // et à décommenter pour l'utiliser en localhost.

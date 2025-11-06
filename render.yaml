@@ -1,27 +1,31 @@
 services:
-  # Full-stack application (frontend + backend)
   - type: web
-    name: fresquia
-    runtime: docker
-    dockerfilePath: ./backend/Dockerfile
-    dockerContext: .
-    buildCommand: ./prepare-docker-build.sh
+    name: decklab-backend
+    runtime: node
+    rootDir: backend
     plan: starter
+    buildCommand: npm install
+    startCommand: npm run start
+    healthCheckPath: /healthz
     envVars:
       - key: NODE_ENV
         value: production
       - key: DATABASE_PATH
-        value: /app/data/database.db
-      - key: PORT
-        value: 3001
+        value: /opt/render/project/data/database.sqlite
       - key: GEMINI_API_KEY
         sync: false  # Set this in Render dashboard
       - key: STABILITY_API_KEY
         sync: false  # Set this in Render dashboard
       - key: FIREBASE_PROJECT_ID
         sync: false  # Set this in Render dashboard
+      - key: ALLOWED_ORIGINS
+        sync: false  # Comma-separated list of allowed domains
+      - key: BACKEND_BASE_URL
+        sync: false  # e.g. https://decklab.onrender.com/
+      - key: FRONTEND_BASE_URL
+        sync: false  # e.g. https://decklab.app/
       - key: PDF_ASSET_BASE_URL
-        value: https://decklab.onrender.com
+        sync: false  # Optional override for PDF assets
       - key: IMAGE_PROVIDER
         value: stability
       - key: GEMINI_TEXT_MODEL
@@ -29,11 +33,16 @@ services:
       - key: STABILITY_MODEL
         value: stable-diffusion-xl-1024-v1-0
       - key: NUM_CARDS_TO_GENERATE
-        value: 20
+        value: "20"
       - key: IMAGE_DELAY_MS
-        value: 1000
-    healthCheckPath: /api/cards/generate-context
+        value: "1000"
+      - key: REQUEST_LIMIT
+        value: 500mb
+      - key: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+        value: "true"
+      - key: PUPPETEER_EXECUTABLE_PATH
+        value: /usr/bin/chromium
     disk:
       name: backend-data
-      mountPath: /app/data
+      mountPath: /opt/render/project/data
       sizeGB: 1

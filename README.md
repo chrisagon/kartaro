@@ -97,12 +97,21 @@ The API will be available at `http://localhost:3001`.
 
 ### Production Deployment
 
-This application is now containerized and can be easily deployed to:
+#### Render (Web Service Node.js)
 
-- **Render** (Recommended) - Connect GitHub repo, auto-detects render.yaml
-- **Railway** - Push to GitHub, one-click deployment
-- **DigitalOcean App Platform** - Docker-based deployment
-- **Google Cloud Run** - Serverless containers
-- **AWS ECS** - Enterprise-grade container orchestration
+1. **Push les modifications** vers votre dépôt Git (branch de feature recommandée, voir règles globales).
+2. **Créer un service Blueprint** sur [Render](https://dashboard.render.com) en pointant sur le dépôt.
+3. Render détecte automatiquement `render.yaml` et configure un Web Service Node.
+4. **Vérifier/compléter les variables d’environnement** dans le Dashboard :
+   - `GEMINI_API_KEY`, `STABILITY_API_KEY`, `FIREBASE_PROJECT_ID`
+   - `ALLOWED_ORIGINS` (par ex. `https://decklab.onrender.com,https://decklab.app`)
+   - `BACKEND_BASE_URL` (URL publique Render, terminer par `/`)
+   - `FRONTEND_BASE_URL` (URL publique du frontend, terminer par `/`)
+   - Facultatif : `PDF_ASSET_BASE_URL`, `NUM_CARDS_TO_GENERATE`, `IMAGE_DELAY_MS`, `REQUEST_LIMIT`
+   - Puppeteer : `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true`, `PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`
+5. **Disque persistant** : Render crée automatiquement le disque `backend-data` défini dans `render.yaml`. Les données SQLite seront stockées dans `/opt/render/project/data/database.sqlite`.
+6. **Déployer** et vérifier le health-check sur `/healthz`.
 
-See [DOCKER_DEPLOYMENT.md](DOCKER_DEPLOYMENT.md) for detailed deployment instructions.
+#### Autres plateformes
+
+L’application reste compatible avec Railway, DigitalOcean App Platform, Google Cloud Run ou AWS ECS grâce aux scripts Docker existants. Reportez-vous à [DOCKER_DEPLOYMENT.md](DOCKER_DEPLOYMENT.md) pour les instructions spécifiques.
