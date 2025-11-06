@@ -46,3 +46,13 @@ services:
       name: backend-data
       mountPath: /opt/render/project/data
       sizeGB: 1
+  - type: static
+    name: decklab-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishPath: build
+    envVars:
+      - key: REACT_APP_API_BASE_URL
+        sync: false  # Set to backend public URL (e.g. https://decklab.onrender.com/api)
+      - key: FORK_TS_CHECKER_MEMORY_LIMIT
+        value: "1024"
