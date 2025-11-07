@@ -49,7 +49,7 @@ services:
   - type: static
     name: decklab-frontend
     rootDir: frontend
-    buildCommand: npm ci --prefer-offline && npm run build
+    buildCommand: rm -rf node_modules package-lock.json && npm install && npm run build
     publishPath: dist
     nodeVersion: "20"
     envVars:
