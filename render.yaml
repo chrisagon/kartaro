@@ -51,7 +51,6 @@ services:
     rootDir: frontend
     buildCommand: rm -rf node_modules package-lock.json && npm install && npm run build
     publishPath: dist
-    nodeVersion: "22.16.0"
     envVars:
       - key: REACT_APP_API_URL
         value: https://decklab-backend.onrender.com/api
