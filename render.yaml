@@ -55,9 +55,9 @@ services:
       - key: REACT_APP_API_BASE_URL
         sync: false  # Set to backend public URL (e.g. https://decklab.onrender.com/api)
       - key: NODE_OPTIONS
-        value: "--max-old-space-size=2048"
+        value: "--max-old-space-size=8192"
       - key: FORK_TS_CHECKER_MEMORY_LIMIT
-        value: "2048"
+        value: "8192"
       - key: FORK_TS_CHECKER_ENABLED
         value: "false"
       - key: GENERATE_SOURCEMAP
