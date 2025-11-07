@@ -38,6 +38,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
+    exclude: ['firebase', '@google-cloud/vertexai'],
     esbuildOptions: {
       define: {
         global: 'globalThis',
