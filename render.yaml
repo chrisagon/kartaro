@@ -52,7 +52,7 @@ services:
     buildCommand: npm ci --prefer-offline && npm run build
     publishPath: dist
     envVars:
-      - key: REACT_APP_API_BASE_URL
+      - key: REACT_APP_API_URL
         value: https://decklab-backend.onrender.com/api
       - key: NODE_OPTIONS
         value: "--max-old-space-size=4096"
