@@ -32,7 +32,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "node build-optimized.js",
+    "prebuild": "node prebuild.js",
+    "build": "npm run prebuild && node build-optimized.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
