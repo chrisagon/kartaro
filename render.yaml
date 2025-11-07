@@ -19,13 +19,13 @@ services:
       - key: FIREBASE_PROJECT_ID
         sync: false  # Set this in Render dashboard
       - key: ALLOWED_ORIGINS
-        sync: false  # Comma-separated list of allowed domains
+        value: https://decklab.onrender.com
       - key: BACKEND_BASE_URL
-        sync: false  # e.g. https://decklab.onrender.com/
+        value: https://decklab-backend.onrender.com
       - key: FRONTEND_BASE_URL
-        sync: false  # e.g. https://decklab.app/
+        value: https://decklab.onrender.com
       - key: PDF_ASSET_BASE_URL
-        sync: false  # Optional override for PDF assets
+        value: https://decklab-backend.onrender.com
       - key: IMAGE_PROVIDER
         value: stability
       - key: GEMINI_TEXT_MODEL
@@ -53,6 +53,6 @@ services:
     publishPath: dist
     envVars:
       - key: REACT_APP_API_BASE_URL
-        sync: false  # Set to backend public URL (e.g. https://decklab.onrender.com/api)
+        value: https://decklab-backend.onrender.com/api
       - key: NODE_OPTIONS
         value: "--max-old-space-size=4096"
