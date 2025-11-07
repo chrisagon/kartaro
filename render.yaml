@@ -50,9 +50,9 @@ services:
     name: decklab-frontend
     rootDir: frontend
     buildCommand: npm ci --prefer-offline && npm run build
-    publishPath: build
+    publishPath: dist
     envVars:
       - key: REACT_APP_API_BASE_URL
         sync: false  # Set to backend public URL (e.g. https://decklab.onrender.com/api)
       - key: NODE_OPTIONS
-        value: "--max-old-space-size=16384"
+        value: "--max-old-space-size=4096"

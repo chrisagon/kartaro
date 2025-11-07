@@ -12,6 +12,7 @@ backend/node_modules
 
 # production
 /build
+/dist
 /cache
 frontend/public/images
 backend/cache
