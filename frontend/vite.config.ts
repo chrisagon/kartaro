@@ -2,17 +2,18 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-const firebasePlugin = {
-  name: 'firebase-resolver',
+const externalPlugin = {
+  name: 'external-resolver',
   resolveId(id: string) {
-    if (id === 'firebase' || id.startsWith('firebase/')) {
+    if (id === 'firebase' || id.startsWith('firebase/') || 
+        id === '@google-cloud/vertexai' || id.startsWith('@google-cloud/vertexai/')) {
       return { id, external: true }
     }
   },
 }
 
 export default defineConfig({
-  plugins: [firebasePlugin, react()],
+  plugins: [externalPlugin, react()],
   server: {
     port: 3000,
     strictPort: false,
@@ -32,7 +33,7 @@ export default defineConfig({
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
           'vendor-mui': ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'],
-          'vendor-other': ['axios', 'firebase', 'framer-motion'],
+          'vendor-other': ['axios', 'framer-motion'],
         },
       },
     },
