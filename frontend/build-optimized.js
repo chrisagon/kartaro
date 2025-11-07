@@ -16,7 +16,7 @@ process.env.FORK_TS_CHECKER_ENABLED = 'false';
 
 // Increase Node heap size
 if (!process.env.NODE_OPTIONS) {
-  process.env.NODE_OPTIONS = '--max-old-space-size=8192';
+  process.env.NODE_OPTIONS = '--max-old-space-size=16384';
 }
 
 // Import and run react-scripts build
