@@ -21,9 +21,9 @@ services:
       - key: ALLOWED_ORIGINS
         sync: false  # Comma-separated list of allowed domains
       - key: BACKEND_BASE_URL
-        sync: false  # e.g. https://decklab.onrender.com/
+        sync: false  # e.g. https://decklab-backend.onrender.com/
       - key: FRONTEND_BASE_URL
-        sync: false  # e.g. https://decklab.app/
+        sync: false  # e.g. https://decklab.onrender.com/
       - key: PDF_ASSET_BASE_URL
         sync: false  # Optional override for PDF assets
       - key: IMAGE_PROVIDER
@@ -49,10 +49,10 @@ services:
   - type: static
     name: decklab-frontend
     rootDir: frontend
-    buildCommand: npm ci --prefer-offline && npm run build
+    buildCommand: npm install && npm run build
     publishPath: dist
     envVars:
       - key: REACT_APP_API_BASE_URL
-        sync: false  # Set to backend public URL (e.g. https://decklab.onrender.com/api)
+        sync: false  # Set to backend public URL (e.g. https://decklab-backend.onrender.com/api)
       - key: NODE_OPTIONS
         value: "--max-old-space-size=4096"
