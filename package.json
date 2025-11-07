@@ -1,4 +1,7 @@
 {
+  "name": "decklab-monorepo",
+  "version": "1.0.0",
+  "private": true,
   "dependencies": {
     "firebase": "^12.5.0"
   }
