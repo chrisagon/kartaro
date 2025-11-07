@@ -2,8 +2,17 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
+const firebasePlugin = {
+  name: 'firebase-resolver',
+  resolveId(id: string) {
+    if (id === 'firebase' || id.startsWith('firebase/')) {
+      return { id, external: true }
+    }
+  },
+}
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [firebasePlugin, react()],
   server: {
     port: 3000,
     strictPort: false,
