@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env CI=true GENERATE_SOURCEMAP=false DISABLE_ESLINT_PLUGIN=true SKIP_PREFLIGHT_CHECK=true NODE_OPTIONS=--max-old-space-size=4096 react-scripts build",
+    "build": "node build-optimized.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
