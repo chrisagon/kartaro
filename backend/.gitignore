@@ -15,7 +15,8 @@ backend/node_modules
 /cache
 /frontend/public/images
 /backend/cache
-/backend/logs   
+/backend/logs
+/backend/data   
 /.firebase
 
 # misc
@@ -26,7 +27,7 @@ backend/node_modules
 .env.production.local
 .env
 decklab-b70b8-firebase-adminsdk-fbsvc-e992f37797.json
-
+backend/data/database.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
