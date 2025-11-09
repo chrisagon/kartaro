@@ -102,7 +102,7 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
         <Box sx={{ mr: 3, cursor: 'pointer' }} onClick={() => navigate('/')}>
           <Box
             component="img"
-            src={`${process.env.PUBLIC_URL}/decklab-logo.png`}
+            src={`${import.meta.env.BASE_URL}decklab-logo.png`}
             alt="DECKLAB Logo"
             sx={{ height: 40, verticalAlign: 'middle' }}
           />

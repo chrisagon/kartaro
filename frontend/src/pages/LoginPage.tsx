@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { TextField, Button, Container, Typography, Box } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -63,6 +64,12 @@ const LoginPage: React.FC = () => {
           >
             Sign In
           </Button>
+          <Typography variant="body2" align="center">
+            Don't have an account?{' '}
+            <Link component={RouterLink} to="/register">
+              Sign up here
+            </Link>
+          </Typography>
         </Box>
       </Box>
     </Container>

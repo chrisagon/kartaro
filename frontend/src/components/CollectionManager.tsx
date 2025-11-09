@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CardData, CardCollection } from '../types/app';
-import * as ApiService from '../services/ApiService';
+import { useCollections, useApp } from '../context/AppContext';
 
 interface CollectionManagerProps {
   cards: CardData[];
@@ -17,6 +17,8 @@ const CollectionManager: React.FC<CollectionManagerProps> = ({
 }) => {
   const [collectionName, setCollectionName] = useState(currentCollection?.name || '');
   const [isSaving, setIsSaving] = useState(false);
+  const { createCollection, updateCollection } = useCollections();
+  const { state } = useApp();
 
   // Update the collection name when currentCollection changes
   React.useEffect(() => {
@@ -37,10 +39,13 @@ const CollectionManager: React.FC<CollectionManagerProps> = ({
 
       if (currentCollection) {
         // Update existing collection
-        savedCollection = await ApiService.updateCollection({
+        savedCollection = await updateCollection({
           ...currentCollection,
           name: collectionName.trim(),
-          cards: cards
+          cards: cards,
+          theme: currentCollection.theme ?? state.generationMetadata?.theme,
+          publicTarget: currentCollection.publicTarget ?? state.generationMetadata?.publicTarget,
+          context: currentCollection.context ?? state.generationMetadata?.context,
         });
         if (onCollectionUpdated) {
           onCollectionUpdated(savedCollection);
@@ -48,10 +53,13 @@ const CollectionManager: React.FC<CollectionManagerProps> = ({
         alert('Collection updated successfully!');
       } else {
         // Create new collection
-        savedCollection = await ApiService.createCollection({
+        savedCollection = await createCollection({
           name: collectionName.trim(),
           cards: cards,
-          isPublic: false
+          isPublic: false,
+          theme: state.generationMetadata?.theme,
+          publicTarget: state.generationMetadata?.publicTarget,
+          context: state.generationMetadata?.context,
         });
         onCollectionCreated(savedCollection);
         alert('Collection created successfully!');

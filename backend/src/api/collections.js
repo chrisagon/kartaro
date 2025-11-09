@@ -2,6 +2,7 @@ const express = require('express');
 const { saveCollection, getCollections, getCollectionById, updateCollection, deleteCollection } = require('../services/LocalDatabaseService');
 const authMiddleware = require('../middleware/auth');
 const { uploadImageToStorage } = require('../services/R2Service');
+const pdfService = require('../services/PdfService');
 
 const toArrayBuffer = (payload) => {
   if (!payload) {
@@ -153,4 +154,4 @@ const createCollectionsRouter = (pdfService) => {
   return router;
 };
 
-module.exports = createCollectionsRouter;
+module.exports = createCollectionsRouter(pdfService);

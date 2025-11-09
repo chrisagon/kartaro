@@ -1,9 +1,32 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const fs = require('fs');
 
 // Initialize database connection
 const dbPath = process.env.DATABASE_PATH || path.join(__dirname, '..', '..', 'data', 'database.db');
+const dbDir = path.dirname(dbPath);
+
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
+}
+
 const db = new sqlite3.Database(dbPath);
+
+let isDbClosed = false;
+
+const closeDatabase = () => {
+  if (isDbClosed) {
+    return;
+  }
+
+  db.close((err) => {
+    if (err) {
+      console.error('Error closing database connection:', err);
+    }
+  });
+
+  isDbClosed = true;
+};
 
 // Enable foreign keys
 db.run('PRAGMA foreign_keys = ON');
@@ -11,6 +34,38 @@ db.run('PRAGMA foreign_keys = ON');
 // Helper function to generate random ID
 const ensureRandomId = () => {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+};
+
+const ensureUserExists = async (userId) => {
+  if (!userId) {
+    throw new Error('User ID is required to ensure existence');
+  }
+
+  await initializeSchema();
+
+  return new Promise((resolve, reject) => {
+    db.get('SELECT id FROM users WHERE id = ? LIMIT 1', [userId], (err, row) => {
+      if (err) {
+        return reject(err);
+      }
+
+      if (row) {
+        return resolve(row.id);
+      }
+
+      const now = new Date().toISOString();
+      db.run(
+        'INSERT INTO users (id, username, password, created_at, updated_at) VALUES (?, ?, ?, ?, ?)',
+        [userId, userId, '', now, now],
+        function(insertErr) {
+          if (insertErr) {
+            return reject(insertErr);
+          }
+          resolve(userId);
+        }
+      );
+    });
+  });
 };
 
 // Initialize database schema
@@ -67,6 +122,7 @@ const normaliseCollectionPayload = (userId, collectionData) => {
 
 const saveCollection = async (userId, collectionData) => {
   await initializeSchema();
+  await ensureUserExists(userId);
   const collection = normaliseCollectionPayload(userId, collectionData);
 
   return new Promise((resolve, reject) => {
@@ -229,19 +285,17 @@ const getUserByUsername = async (username) => {
 
 // Gracefully close database connection on process exit
 process.on('exit', () => {
-  db.close();
+  closeDatabase();
 });
 
 process.on('SIGINT', () => {
-  db.close(() => {
-    process.exit(0);
-  });
+  closeDatabase();
+  process.exit(0);
 });
 
 process.on('SIGTERM', () => {
-  db.close(() => {
-    process.exit(0);
-  });
+  closeDatabase();
+  process.exit(0);
 });
 
 module.exports = {

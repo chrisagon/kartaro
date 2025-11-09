@@ -57,21 +57,28 @@ export const ModernHeader: React.FC<ModernHeaderProps> = ({
 
   const handleGeneratePdf = async () => {
     const cards = state.cards || [];
-    if (cards.length > 0) {
-      try {
-        const pdfBlob = await api.generatePdfForCards(cards);
-        const url = window.URL.createObjectURL(pdfBlob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = `cartes-${Date.now()}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-      } catch (error) {
-        console.error('Erreur lors de la génération du PDF:', error);
-      }
+    if (cards.length === 0 || state.isGeneratingPdf) {
+      return;
+    }
+
+    try {
+      const pdfBlob = await api.generatePdfForCards(cards, {
+        metadata: state.generationMetadata ?? undefined,
+        name: state.currentCollection?.name ?? state.generationMetadata?.theme,
+        description: state.currentCollection?.description,
+      });
+
+      const url = window.URL.createObjectURL(pdfBlob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = `${state.currentCollection?.name || 'cards'}-${Date.now()}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error('Erreur lors de la génération du PDF:', error);
     }
   };
 

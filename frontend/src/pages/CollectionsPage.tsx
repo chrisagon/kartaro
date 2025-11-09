@@ -57,7 +57,16 @@ const CollectionsPage: React.FC = () => {
         fullCollection = await ApiService.getCollectionById(collection.id);
       }
 
-      await generatePdfFromCollection(fullCollection);
+      if (!fullCollection.cards || fullCollection.cards.length === 0) {
+        alert('Cette collection ne contient aucune carte à exporter.');
+        setPrintingId(null);
+        return;
+      }
+
+      await generatePdfFromCollection({
+        ...fullCollection,
+        cards: fullCollection.cards,
+      });
     } catch (err) {
       console.error('Failed to generate PDF:', err);
       alert('Failed to generate PDF. Please try again.');
@@ -78,8 +87,8 @@ const CollectionsPage: React.FC = () => {
   return (
     <div className="collections-page">
       <div className="collections-header">
-        <h1>My Collections Library</h1>
-        <Link to="/" className="btn-back">← Back to Generator</Link>
+        <h1>Mes Collections de decks de cartes</h1>
+        <Link to="/" className="btn-back">← Retour</Link>
       </div>
 
       {collections.length > 0 ? (

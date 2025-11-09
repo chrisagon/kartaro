@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CardData, CardCollection, GenerateCardsMetrics } from '../types/app';
 import * as ApiService from '../services/ApiService';
-import { generatePdfFromCards } from '../services/PdfService';
 import InputForm from '../components/InputForm';
 import CardGrid from '../components/CardGrid';
 import CardEditor from '../components/CardEditor';
@@ -18,6 +17,9 @@ const MainPage: React.FC = () => {
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [isSavingQuick, setIsSavingQuick] = useState(false);
   const [metrics, setMetrics] = useState<GenerateCardsMetrics | null>(null);
+  const [lastTheme, setLastTheme] = useState<string>('');
+  const [lastContext, setLastContext] = useState<string>('');
+  const [lastPublicTarget, setLastPublicTarget] = useState<string>('');
 
   // Fetch collections on component mount
   useEffect(() => {
@@ -41,6 +43,9 @@ const MainPage: React.FC = () => {
       if (Array.isArray(result?.cards)) {
         setCards(result.cards);
         setMetrics(result.metrics);
+        setLastTheme(theme);
+        setLastContext(context);
+        setLastPublicTarget('');
       } else {
         alert('Received an invalid response from the server.');
         setCards([]);
@@ -93,7 +98,25 @@ const MainPage: React.FC = () => {
 
     setIsGeneratingPdf(true);
     try {
-      await generatePdfFromCards(cards, `cards-${Date.now()}.pdf`);
+      const pdfBlob = await ApiService.generatePdfForCards(cards, {
+        metadata: {
+          theme: lastTheme,
+          publicTarget: lastPublicTarget,
+          context: lastContext,
+        },
+        name: lastTheme || 'collection',
+      });
+
+      const url = window.URL.createObjectURL(pdfBlob);
+      const filenameBase = lastTheme ? lastTheme.replace(/[^a-z0-9]+/gi, '-').toLowerCase() : 'cards';
+      const link = document.createElement('a');
+      link.style.display = 'none';
+      link.href = url;
+      link.download = `${filenameBase}-${Date.now()}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');

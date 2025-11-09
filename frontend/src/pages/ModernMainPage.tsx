@@ -26,12 +26,12 @@ import ModernInputForm from '../components/ModernInputForm';
 import ModernCardGrid from '../components/ModernCardGrid';
 import GenerationMetrics from '../components/GenerationMetrics';
 import { useCards, useCollections, useApp, useGeneration } from '../context/AppContext';
-import { generatePdfFromCards } from '../services/PdfService';
 import * as ApiService from '../services/ApiService';
+import { generatePdfFromCards } from '../services/PdfService';
 
 export const ModernMainPage: React.FC = () => {
   const { cards = [] } = useCards();
-  const { getCollections } = useCollections();
+  const { getCollections, createCollection } = useCollections();
   const { state } = useApp();
   const { imageGenerationProgress } = useGeneration();
   
@@ -57,10 +57,13 @@ export const ModernMainPage: React.FC = () => {
 
     setIsSavingQuick(true);
     try {
-      await ApiService.createCollection({
+      await createCollection({
         name: collectionName.trim(),
         cards: cards,
-        isPublic: false
+        isPublic: false,
+        theme: state.generationMetadata?.theme,
+        publicTarget: state.generationMetadata?.publicTarget,
+        context: state.generationMetadata?.context,
       });
       await getCollections();
       setSaveDialogOpen(false);
@@ -78,7 +81,11 @@ export const ModernMainPage: React.FC = () => {
 
     setIsGeneratingPdf(true);
     try {
-      await generatePdfFromCards(cards, `cards-${Date.now()}.pdf`);
+      await generatePdfFromCards(cards, {
+        metadata: state.generationMetadata ?? undefined,
+        name: state.currentCollection?.name ?? state.generationMetadata?.theme,
+        description: state.currentCollection?.description,
+      });
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');

@@ -4,6 +4,7 @@ import { useAuth } from './AuthContext';
 import { AppState, AppAction, AppSettings, ApiContextType } from '../types/app';
 import { CardData, CardCollection } from '../types/app';
 import * as ApiService from '../services/ApiService';
+import { generatePdfFromCards as buildPdfFromCards } from '../services/PdfService';
 
 // État initial de l'application
 const initialState: AppState = {
@@ -17,6 +18,7 @@ const initialState: AppState = {
   lastGenerationResult: null,
   metrics: null,
   imageGenerationProgress: null,
+  generationMetadata: null,
   settings: {
     darkMode: false,
     animations: true,
@@ -108,6 +110,9 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
         settings: { ...state.settings, ...action.payload }
       };
 
+    case 'SET_GENERATION_METADATA':
+      return { ...state, generationMetadata: action.payload };
+
     case 'SET_CURRENT_VIEW':
       return { ...state, currentView: action.payload };
 
@@ -137,17 +142,30 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const { currentUser } = useAuth();
   const [state, dispatch] = useReducer(appReducer, initialState);
 
+  const generationMetadata = state.generationMetadata;
+
   const api: ApiContextType = useMemo(() => ({
     generateContext: async (theme, publicTarget) => {
       const result = await ApiService.generateContext(theme, publicTarget);
       return result;
     },
-        generateCards: async (theme, context, numCards, stylePreset) => {
+        generateCards: async (theme, context, numCards, stylePreset, metadataOverride) => {
       dispatch({ type: 'SET_GENERATING', payload: true });
       dispatch({ type: 'SET_CARDS', payload: [] }); // Clear previous cards
       dispatch({ type: 'SET_METRICS', payload: null });
       dispatch({ type: 'SET_GENERATION_RESULT', payload: null });
       dispatch({ type: 'SET_IMAGE_GENERATION_PROGRESS', payload: { current: 0, total: numCards || 0 } });
+
+      let metadata = metadataOverride ?? null;
+      if (!metadata && (theme || context)) {
+        metadata = {
+          theme,
+          publicTarget: generationMetadata?.publicTarget ?? '',
+          context,
+        };
+      }
+
+      dispatch({ type: 'SET_GENERATION_METADATA', payload: metadata || null });
 
       try {
         // 1. Generate text content first
@@ -218,12 +236,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       return collection;
     },
     createCollection: async (collectionData) => {
-      const newCollection = await ApiService.createCollection(collectionData);
+      const collectionWithMetadata = {
+        ...collectionData,
+        theme: collectionData.theme ?? generationMetadata?.theme,
+        publicTarget: collectionData.publicTarget ?? generationMetadata?.publicTarget,
+        context: collectionData.context ?? generationMetadata?.context,
+      };
+
+      const newCollection = await ApiService.createCollection(collectionWithMetadata);
       dispatch({ type: 'ADD_COLLECTION', payload: newCollection });
       return newCollection;
     },
     updateCollection: async (collection) => {
-      const updatedCollection = await ApiService.updateCollection(collection);
+      const collectionWithMetadata = {
+        ...collection,
+        theme: collection.theme ?? generationMetadata?.theme,
+        publicTarget: collection.publicTarget ?? generationMetadata?.publicTarget,
+        context: collection.context ?? generationMetadata?.context,
+      };
+
+      const updatedCollection = await ApiService.updateCollection(collectionWithMetadata);
       dispatch({ type: 'UPDATE_COLLECTION', payload: updatedCollection });
       return updatedCollection;
     },
@@ -231,15 +263,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       await ApiService.deleteCollection(id);
       dispatch({ type: 'DELETE_COLLECTION', payload: id });
     },
-    generatePdfForCards: async (cards) => {
+    generatePdfForCards: async (cards, options = {}) => {
       dispatch({ type: 'SET_GENERATING_PDF', payload: true });
       try {
-        return await ApiService.generatePdfForCards(cards);
+        const mergedOptions = {
+          ...options,
+          metadata: options.metadata ?? generationMetadata ?? null,
+        };
+        await buildPdfFromCards(cards, {
+          ...mergedOptions,
+          filename: options.name
+            ? `${options.name.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}-${Date.now()}.pdf`
+            : undefined,
+        });
       } finally {
         dispatch({ type: 'SET_GENERATING_PDF', payload: false });
       }
     },
-  }), [dispatch]);
+  }), [dispatch, generationMetadata?.theme, generationMetadata?.publicTarget, generationMetadata?.context]);
 
   useEffect(() => {
     if (currentUser) {

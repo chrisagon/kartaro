@@ -1,5 +1,6 @@
 const express = require('express');
 const { generateCards, generateCardsTextOnly, regenerateCardImage, generateContextFromThemeAndPublic } = require('../services/GeminiService');
+const pdfService = require('../services/PdfService');
 
 const router = express.Router();
 const authMiddleware = require('../middleware/auth');
@@ -101,6 +102,46 @@ router.post('/generate-context', authMiddleware, async (req, res) => {
   } catch (error) {
         console.error('Erreur lors de la génération du contexte:', error);
     res.status(500).json({ error: error.message });
+  }
+});
+
+// Generate a PDF for unsaved cards with metadata
+router.post('/generate-pdf', authMiddleware, async (req, res) => {
+    const { cards, metadata = {}, name, description } = req.body || {};
+
+  if (!Array.isArray(cards) || cards.length === 0) {
+        return res.status(400).json({ error: 'Cards are required to generate a PDF.' });
+  }
+
+  const { theme = '', publicTarget = '', context = '' } = metadata || {};
+  const collectionName = name || theme || 'Collection';
+
+  const collectionPayload = {
+        name: collectionName,
+        description: description || '',
+        cards,
+        theme,
+        publicTarget,
+        context,
+  };
+
+  try {
+    const pdfBuffer = await pdfService.generatePdf(collectionPayload, {
+            assetBaseUrl: process.env.PDF_ASSET_BASE_URL,
+    });
+
+    const safeFileName = `${collectionName}`
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'collection';
+
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename=${safeFileName}.pdf`);
+        res.send(pdfBuffer);
+  } catch (error) {
+        console.error('Error generating PDF for cards:', error);
+    res.status(500).json({ error: 'Failed to generate PDF.' });
   }
 });
 

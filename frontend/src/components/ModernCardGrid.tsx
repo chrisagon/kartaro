@@ -26,7 +26,6 @@ import { useCards, useApp } from '../context/AppContext';
 import { CardData } from '../types/app';
 import ModernCard from './ModernCard';
 import { CardEditModal } from './CardEditModal';
-import { generatePdfFromCards } from '../services/PdfService';
 
 interface ModernCardGridProps {
   viewMode?: 'grid' | 'list';
@@ -40,7 +39,7 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { cards = [], selectedCard, setSelectedCard, updateCard } = useCards();
-  const { state } = useApp();
+  const { state, api } = useApp();
   const [editingCard, setEditingCard] = useState<{ card: CardData; index: number } | null>(null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [compressionQuality, setCompressionQuality] = useState<'high' | 'medium' | 'low'>('medium');
@@ -62,12 +61,22 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
   };
 
   const handleDownloadPdf = async () => {
-    if (cards.length === 0 || isGeneratingPdf) return;
+    if (isGeneratingPdf) {
+      return;
+    }
+
+    if (!cards || cards.length === 0) {
+      alert('Cette collection ne contient aucune carte à exporter.');
+      return;
+    }
 
     setIsGeneratingPdf(true);
     try {
-      const config = getCompressionConfig();
-      await generatePdfFromCards(cards, `cards-${Date.now()}.pdf`, config);
+      await api.generatePdfForCards(cards, {
+        metadata: state.generationMetadata ?? undefined,
+        name: state.currentCollection?.name ?? state.generationMetadata?.theme,
+        description: state.currentCollection?.description,
+      });
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');

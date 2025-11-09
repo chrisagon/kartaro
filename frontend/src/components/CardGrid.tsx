@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Button } from '@mui/material';
 import { CardData } from '../types/app';
-import * as ApiService from '../services/ApiService';
+import { generatePdfFromCards } from '../services/PdfService';
 import Card from './Card';
 import { CardEditModal } from './CardEditModal';
 import './CardGrid.css';
@@ -32,18 +33,14 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, onUpdateCard
 
     setIsGeneratingPdf(true);
     try {
-      const pdfBlob = await ApiService.generatePdfForCards(cards);
-
-      // Télécharger le PDF
-      const url = window.URL.createObjectURL(pdfBlob);
-      const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = url;
-      a.download = `generated-cards-${Date.now()}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
+      await generatePdfFromCards(cards, {
+        metadata: theme || context ? {
+          theme: theme ?? '',
+          publicTarget: '',
+          context: context ?? '',
+        } : undefined,
+        name: theme,
+      });
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
@@ -59,21 +56,17 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, onUpdateCard
   return (
     <div className="card-grid-container">
       <div className="card-grid-header">
-        <h3>Generated Cards ({cards.length})</h3>
-        <button
-          onClick={generatePdf}
-          disabled={isGeneratingPdf || cards.length === 0}
-          className="pdf-button"
-        >
+        <h3>Deck de cartes ({cards.length})</h3>
+        <Button variant="contained" color="primary" onClick={generatePdf} disabled={isGeneratingPdf || cards.length === 0}>
           {isGeneratingPdf ? (
             <>
               <span className="spinner"></span>
-              Generating PDF...
+              Imprimer PDF...
             </>
           ) : (
-            'Download PDF'
+            'Imprimer PDF'
           )}
-        </button>
+        </Button>
       </div>
       <div className="card-grid">
         {cards.map((card, index) => (

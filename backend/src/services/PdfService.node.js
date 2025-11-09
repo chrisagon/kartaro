@@ -157,6 +157,69 @@ const prepareCollectionForHtml = (collection, options = {}) => ({
   })),
 });
 
+const resolveExecutableFromEnv = () => {
+  const envPath = process.env.PUPPETEER_EXECUTABLE_PATH || process.env.CHROME_PATH;
+
+  if (envPath && fs.existsSync(envPath)) {
+    return envPath;
+  }
+
+  return null;
+};
+
+const resolveLocalExecutableCandidates = () => {
+  if (process.platform === 'win32') {
+    const localAppData = process.env.LOCALAPPDATA || '';
+    return [
+      path.join('C:', 'Program Files', 'Google', 'Chrome', 'Application', 'chrome.exe'),
+      path.join('C:', 'Program Files (x86)', 'Google', 'Chrome', 'Application', 'chrome.exe'),
+      path.join(localAppData, 'Google', 'Chrome', 'Application', 'chrome.exe'),
+      path.join('C:', 'Program Files', 'Microsoft', 'Edge', 'Application', 'msedge.exe'),
+      path.join('C:', 'Program Files (x86)', 'Microsoft', 'Edge', 'Application', 'msedge.exe'),
+    ].filter(Boolean);
+  }
+
+  if (process.platform === 'darwin') {
+    return [
+      '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+      '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+      '/Applications/Chromium.app/Contents/MacOS/Chromium',
+    ];
+  }
+
+  return [
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/google-chrome',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/chromium',
+  ];
+};
+
+const resolveChromiumExecutable = async () => {
+  const envExecutable = resolveExecutableFromEnv();
+  if (envExecutable) {
+    return envExecutable;
+  }
+
+  try {
+    const chromiumExecutable = await chromium.executablePath();
+    if (chromiumExecutable && fs.existsSync(chromiumExecutable)) {
+      return chromiumExecutable;
+    }
+  } catch (error) {
+    console.warn('Chromium executable not available from @sparticuz/chromium-min:', error?.message || error);
+  }
+
+  const candidates = resolveLocalExecutableCandidates();
+  for (const candidate of candidates) {
+    if (candidate && fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  throw new Error('Unable to locate a Chromium/Chrome executable. Set PUPPETEER_EXECUTABLE_PATH or install Chrome locally.');
+};
+
 class PdfService {
   static async generatePdf(collection, options = {}) {
     try {
@@ -178,8 +241,9 @@ class PdfService {
 
   static async renderPdf(collection, isFallback, options = {}) {
     const userDataDir = createTempUserDataDir();
+    const executablePath = await resolveChromiumExecutable();
     const browser = await puppeteer.launch({
-      executablePath: await chromium.executablePath(),
+      executablePath,
       headless: chromium.headless,
       args: chromium.args,
       ignoreHTTPSErrors: true,

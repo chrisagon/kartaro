@@ -93,7 +93,17 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
     setError(null);
 
     try {
-      await generateCards(theme.trim(), context.trim(), numCards, stylePreset);
+      await generateCards(
+        theme.trim(),
+        context.trim(),
+        numCards,
+        stylePreset,
+        {
+          theme: theme.trim(),
+          publicTarget: publicTarget.trim(),
+          context: context.trim(),
+        }
+      );
     } catch (err) {
       setError('Erreur lors de la génération. Veuillez réessayer.');
       console.error('Erreur de génération:', err);

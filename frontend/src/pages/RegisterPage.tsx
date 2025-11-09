@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { TextField, Button, Container, Typography, Box } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 const RegisterPage: React.FC = () => {
   const { signup } = useAuth();
@@ -76,6 +77,12 @@ const RegisterPage: React.FC = () => {
           >
             Sign Up
           </Button>
+          <Typography variant="body2" align="center">
+            Already have an account?{' '}
+            <Link component={RouterLink} to="/login">
+              Sign in here
+            </Link>
+          </Typography>
         </Box>
       </Box>
     </Container>

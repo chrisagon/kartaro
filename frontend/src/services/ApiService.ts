@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getAuth } from 'firebase/auth';
-import { CardData, CardCollection, GenerationResult } from '../types/app';
+import { CardData, CardCollection, GenerationResult, GeneratePdfOptions } from '../types/app';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
 
@@ -103,11 +103,24 @@ export function deleteCollection(id: string): Promise<void> {
   });
 }
 
-export async function generatePdfForCards(cards: CardData[]): Promise<Blob> {
+export async function generatePdfForCards(cards: CardData[], options: GeneratePdfOptions = {}): Promise<Blob> {
+  const token = await getAuthToken();
+
   const response = await axios.post(
     `${API_BASE_URL}/cards/generate-pdf`,
-    { cards },
-    { responseType: 'blob' }
+    {
+      cards,
+      metadata: options.metadata ?? null,
+      name: options.name,
+      description: options.description,
+    },
+    {
+      responseType: 'blob',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+    }
   );
   return response.data;
 }

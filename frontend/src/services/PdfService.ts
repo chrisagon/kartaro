@@ -1,6 +1,6 @@
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { CardData, CardCollection } from '../types/app';
+import { CardData, CardCollection, GenerationMetadata, GeneratePdfOptions } from '../types/app';
 import { getCategoryColor, hexToRgb } from '../constants/categories';
 
 // Configuration de compression
@@ -13,6 +13,474 @@ const COMPRESSION_CONFIG = {
   enableCompression: true,
   // Niveau de compression PDF (0 = pas de compression, 9 = compression maximale)
   pdfCompression: 6,
+};
+
+interface GenerateCardsPdfOptions extends GeneratePdfOptions {
+  filename?: string;
+  compressionConfig?: { imageQuality: number; maxImageSize: number };
+}
+
+const COVER_COLORS = {
+  accent: { r: 231, g: 116, b: 9 },
+  background: { r: 255, g: 255, b: 255 },
+  panelFill: { r: 255, g: 255, b: 255 },
+  panelBorder: { r: 226, g: 232, b: 240 },
+  panelText: { r: 31, g: 41, b: 51 },
+  subtitle: { r: 100, g: 116, b: 139 },
+};
+
+const DEFAULT_STRINGS = {
+  title: 'Collection',
+  publicTarget: 'General audience',
+  contextFallback: 'No additional context provided.',
+};
+
+const LINE_HEIGHT = 6;
+const BULLET_INDENT = 4;
+
+const HEADING_FONT_SIZES: Record<number, number> = {
+  1: 20,
+  2: 17,
+  3: 14,
+  4: 12,
+  5: 11,
+  6: 11,
+};
+
+const getHeadingFontSize = (level: number) => HEADING_FONT_SIZES[level] ?? 11;
+
+interface TextSegment {
+  text: string;
+  bold: boolean;
+}
+
+interface FormattedLine {
+  segments: TextSegment[];
+  bullet: boolean;
+  indent: boolean;
+  headingLevel?: number;
+}
+
+const appendSegment = (segments: TextSegment[], segment: TextSegment) => {
+  if (!segment.text) {
+    return;
+  }
+
+  const last = segments[segments.length - 1];
+  if (last && last.bold === segment.bold) {
+    last.text += segment.text;
+  } else {
+    segments.push({ ...segment });
+  }
+};
+
+const parseBoldSegments = (text: string): TextSegment[] => {
+  if (!text) {
+    return [];
+  }
+
+  const segments: TextSegment[] = [];
+  const regex = /\*\*(.+?)\*\*/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      appendSegment(segments, { text: text.slice(lastIndex, match.index), bold: false });
+    }
+    appendSegment(segments, { text: match[1], bold: true });
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    appendSegment(segments, { text: text.slice(lastIndex), bold: false });
+  }
+
+  return segments.length > 0 ? segments : [{ text, bold: false }];
+};
+
+const wrapSegments = (
+  pdf: jsPDF,
+  segments: TextSegment[],
+  availableWidth: number
+): TextSegment[][] => {
+  if (segments.length === 0) {
+    return [[]];
+  }
+
+  const lines: TextSegment[][] = [];
+  let currentSegments: TextSegment[] = [];
+  let currentWidth = 0;
+
+  const pushLine = () => {
+    if (currentSegments.length === 0) {
+      lines.push([]);
+    } else {
+      lines.push(currentSegments);
+    }
+    currentSegments = [];
+    currentWidth = 0;
+  };
+
+  const addToken = (token: string, bold: boolean) => {
+    if (!token) {
+      return;
+    }
+
+    appendSegment(currentSegments, { text: token, bold });
+    pdf.setFont('helvetica', bold ? 'bold' : 'normal');
+    currentWidth += pdf.getTextWidth(token);
+  };
+
+  for (const segment of segments) {
+    const tokens = segment.text.split(/(\s+)/);
+
+    for (const token of tokens) {
+      if (!token) {
+        continue;
+      }
+
+      pdf.setFont('helvetica', segment.bold ? 'bold' : 'normal');
+      const tokenWidth = pdf.getTextWidth(token);
+
+      if (token.trim().length === 0) {
+        if (currentSegments.length === 0) {
+          continue;
+        }
+        if (currentWidth + tokenWidth > availableWidth) {
+          pushLine();
+          continue;
+        }
+        addToken(token, segment.bold);
+        continue;
+      }
+
+      if (tokenWidth > availableWidth) {
+        const parts = pdf.splitTextToSize(token, availableWidth) as string[];
+        for (const part of parts) {
+          if (currentWidth + pdf.getTextWidth(part) > availableWidth && currentSegments.length > 0) {
+            pushLine();
+          }
+          addToken(part, segment.bold);
+        }
+        continue;
+      }
+
+      if (currentWidth + tokenWidth > availableWidth && currentSegments.length > 0) {
+        pushLine();
+      }
+
+      addToken(token, segment.bold);
+    }
+  }
+
+  if (currentSegments.length > 0 || lines.length === 0) {
+    pushLine();
+  }
+
+  return lines;
+};
+
+const prepareMarkdownLines = (
+  pdf: jsPDF,
+  text: string,
+  maxWidth: number
+): FormattedLine[] => {
+  if (!text) {
+    return [];
+  }
+
+  const normalized = text.replace(/\r\n/g, '\n');
+  const rawLines = normalized.split('\n');
+  const formatted: FormattedLine[] = [];
+
+  for (const rawLine of rawLines) {
+    const trimmed = rawLine.trim();
+
+    if (!trimmed) {
+      formatted.push({ segments: [], bullet: false, indent: false });
+      continue;
+    }
+
+    const headingMatch = trimmed.match(/^(#{1,6})\s+/);
+    const headingLevel = headingMatch ? headingMatch[1].length : 0;
+    const isHeading = headingLevel > 0;
+    const isBullet = !isHeading && /^[-*+]\s+/.test(trimmed);
+
+    const content = isHeading
+      ? trimmed.slice(headingMatch?.[0].length ?? 0)
+      : isBullet
+        ? trimmed.replace(/^[-*+]\s+/, '')
+        : rawLine;
+    const segments = parseBoldSegments(content);
+    const availableWidth = isBullet ? maxWidth - BULLET_INDENT : maxWidth;
+    const wrapped = wrapSegments(pdf, segments, Math.max(availableWidth, 1));
+
+    wrapped.forEach((lineSegments, index) => {
+      formatted.push({
+        segments: lineSegments,
+        bullet: isBullet && index === 0,
+        indent: isBullet,
+        headingLevel: isHeading ? headingLevel : undefined,
+      });
+    });
+  }
+
+  return formatted;
+};
+
+const renderFormattedLinesWithinHeight = (
+  pdf: jsPDF,
+  lines: FormattedLine[],
+  x: number,
+  startY: number,
+  bottomY: number,
+  maxWidth: number,
+  lineHeight: number = LINE_HEIGHT,
+) => {
+  if (lines.length === 0 || startY > bottomY) {
+    return { remainingLines: [...lines], nextY: startY };
+  }
+
+  let y = startY;
+  let index = 0;
+  const defaultFontSize = pdf.getFontSize();
+
+  while (index < lines.length) {
+    if (y > bottomY) {
+      break;
+    }
+
+    const line = lines[index];
+    const indentOffset = line.indent ? BULLET_INDENT : 0;
+    let currentX = x + indentOffset;
+    const isHeading = typeof line.headingLevel === 'number';
+    const headingFontSize = isHeading ? getHeadingFontSize(line.headingLevel as number) : defaultFontSize;
+    let lineSpacing = lineHeight;
+
+    if (isHeading) {
+      const spacingFromFont = Math.max(lineHeight + 2, headingFontSize * 0.6);
+      lineSpacing = Math.max(lineSpacing, spacingFromFont);
+      pdf.setFontSize(headingFontSize);
+    } else {
+      pdf.setFontSize(defaultFontSize);
+    }
+
+    if (line.bullet) {
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('•', x + 1, y);
+    }
+
+    if (line.segments.length === 0) {
+      y += lineSpacing;
+      pdf.setFontSize(defaultFontSize);
+      index += 1;
+      continue;
+    }
+
+    for (const segment of line.segments) {
+      const shouldBold = isHeading || segment.bold;
+      pdf.setFont('helvetica', shouldBold ? 'bold' : 'normal');
+      pdf.text(segment.text, currentX, y, { maxWidth });
+      currentX += pdf.getTextWidth(segment.text);
+    }
+
+    y += lineSpacing;
+    pdf.setFontSize(defaultFontSize);
+    index += 1;
+  }
+
+  return {
+    remainingLines: lines.slice(index),
+    nextY: y,
+  };
+};
+
+const drawContextContinuationPage = (
+  pdf: jsPDF,
+  contextLines: FormattedLine[],
+  descriptionLines: FormattedLine[],
+  descriptionHeadingAlreadyPrinted: boolean
+) => {
+  const remainingContext = [...contextLines];
+  const remainingDescription = [...descriptionLines];
+  let descriptionHeadingPrinted = descriptionHeadingAlreadyPrinted;
+
+  const width = pdf.internal.pageSize.getWidth();
+  const height = pdf.internal.pageSize.getHeight();
+  const margin = 20;
+  const contentWidth = width - margin * 2;
+  const bottomY = height - margin;
+
+  pdf.setFillColor(COVER_COLORS.background.r, COVER_COLORS.background.g, COVER_COLORS.background.b);
+  pdf.rect(0, 0, width, height, 'F');
+
+  pdf.setTextColor(COVER_COLORS.panelText.r, COVER_COLORS.panelText.g, COVER_COLORS.panelText.b);
+
+  let currentY = margin;
+
+  if (remainingContext.length > 0) {
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(14);
+    pdf.text('Context (continued)', margin, currentY);
+    currentY += 10;
+
+    pdf.setFont('helvetica', 'normal');
+    pdf.setFontSize(11);
+
+    const contextResult = renderFormattedLinesWithinHeight(
+      pdf,
+      remainingContext,
+      margin,
+      currentY,
+      bottomY,
+      contentWidth
+    );
+
+    remainingContext.splice(0, remainingContext.length, ...contextResult.remainingLines);
+    currentY = contextResult.nextY + 5;
+  }
+
+  if (remainingContext.length > 0) {
+    return {
+      remainingContextLines: remainingContext,
+      remainingDescriptionLines: remainingDescription,
+      descriptionHeadingPrinted,
+    };
+  }
+
+  if (remainingDescription.length > 0 && currentY <= bottomY) {
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(14);
+    const headingLabel = descriptionHeadingPrinted ? 'Description (continued)' : 'Description';
+    pdf.text(headingLabel, margin, currentY);
+    descriptionHeadingPrinted = true;
+    currentY += 10;
+
+    pdf.setFont('helvetica', 'normal');
+    pdf.setFontSize(11);
+
+    const descriptionResult = renderFormattedLinesWithinHeight(
+      pdf,
+      remainingDescription,
+      margin,
+      currentY,
+      bottomY,
+      contentWidth
+    );
+
+    remainingDescription.splice(0, remainingDescription.length, ...descriptionResult.remainingLines);
+  }
+
+  return {
+    remainingContextLines: remainingContext,
+    remainingDescriptionLines: remainingDescription,
+    descriptionHeadingPrinted,
+  };
+};
+
+const drawCoverPage = (
+  pdf: jsPDF,
+  metadata: GenerationMetadata | null | undefined,
+  description?: string,
+  explicitName?: string
+) => {
+  const width = pdf.internal.pageSize.getWidth();
+  const height = pdf.internal.pageSize.getHeight();
+  const margin = 20;
+
+  const panelPadding = 12;
+
+  const theme = metadata?.theme?.trim() || explicitName || DEFAULT_STRINGS.title;
+  const publicTarget = metadata?.publicTarget?.trim() || DEFAULT_STRINGS.publicTarget;
+  const context = metadata?.context?.trim() || DEFAULT_STRINGS.contextFallback;
+
+  pdf.setFillColor(COVER_COLORS.background.r, COVER_COLORS.background.g, COVER_COLORS.background.b);
+  pdf.rect(0, 0, width, height, 'F');
+
+  // Title
+  pdf.setTextColor(COVER_COLORS.accent.r, COVER_COLORS.accent.g, COVER_COLORS.accent.b);
+  pdf.setFont('helvetica', 'bold');
+  pdf.setFontSize(26);
+  const titleLines = pdf.splitTextToSize(theme.toUpperCase(), width - margin * 2);
+  pdf.text(titleLines, width / 2, margin + 12, { align: 'center' });
+
+  // Subtitle (target audience)
+  pdf.setFontSize(14);
+  pdf.setFont('helvetica', 'normal');
+  pdf.setTextColor(COVER_COLORS.subtitle.r, COVER_COLORS.subtitle.g, COVER_COLORS.subtitle.b);
+  pdf.text(`Target audience: ${publicTarget}`, width / 2, margin + 30, { align: 'center' });
+
+  // Panel for context / description
+  const panelX = margin;
+  let panelY = margin + 45;
+  const panelWidth = width - margin * 2;
+  let panelHeight = height - panelY - margin;
+
+  pdf.setFillColor(COVER_COLORS.panelFill.r, COVER_COLORS.panelFill.g, COVER_COLORS.panelFill.b);
+  pdf.setDrawColor(COVER_COLORS.panelBorder.r, COVER_COLORS.panelBorder.g, COVER_COLORS.panelBorder.b);
+  pdf.roundedRect(panelX, panelY, panelWidth, panelHeight, 6, 6, 'FD');
+
+  pdf.setTextColor(COVER_COLORS.panelText.r, COVER_COLORS.panelText.g, COVER_COLORS.panelText.b);
+  pdf.setFont('helvetica', 'bold');
+  pdf.setFontSize(14);
+  pdf.text('Context', panelX + panelPadding, panelY + 18);
+
+  pdf.setFont('helvetica', 'normal');
+  pdf.setFontSize(11);
+  const contextLines = prepareMarkdownLines(pdf, context, panelWidth - panelPadding * 2);
+  const panelBottom = panelY + panelHeight - panelPadding;
+
+  const contextResult = renderFormattedLinesWithinHeight(
+    pdf,
+    contextLines,
+    panelX + panelPadding,
+    panelY + 30,
+    panelBottom,
+    panelWidth - panelPadding * 2
+  );
+
+  const remainingContextLines = contextResult.remainingLines;
+  let currentY = contextResult.nextY;
+
+  const descriptionLines = description && description.trim()
+    ? prepareMarkdownLines(pdf, description.trim(), panelWidth - panelPadding * 2)
+    : [];
+
+  let remainingDescriptionLines = [...descriptionLines];
+  let descriptionHeadingPrinted = false;
+
+  if (descriptionLines.length > 0 && remainingContextLines.length === 0) {
+    const headingY = currentY + 8;
+
+    if (headingY + 10 <= panelBottom) {
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(14);
+      pdf.text('Description', panelX + panelPadding, headingY);
+
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(11);
+
+      const descriptionResult = renderFormattedLinesWithinHeight(
+        pdf,
+        descriptionLines,
+        panelX + panelPadding,
+        headingY + 10,
+        panelBottom,
+        panelWidth - panelPadding * 2
+      );
+
+      remainingDescriptionLines = descriptionResult.remainingLines;
+      currentY = descriptionResult.nextY;
+      descriptionHeadingPrinted = true;
+    }
+  }
+
+  return {
+    remainingContextLines,
+    remainingDescriptionLines,
+    descriptionHeadingPrinted,
+  };
 };
 
 /**
@@ -114,8 +582,7 @@ async function loadImageAsBase64(url: string, config: { imageQuality: number; ma
 
 export async function generatePdfFromCards(
   cards: CardData[],
-  filename: string = 'cards-collection.pdf',
-  compressionConfig?: { imageQuality: number; maxImageSize: number }
+  options: GenerateCardsPdfOptions = {}
 ): Promise<void> {
   const pdf = new jsPDF({
     orientation: 'p',
@@ -141,7 +608,31 @@ export async function generatePdfFromCards(
   const cardHeight = (pageHeight - (2 * margin) - (3 * gapBetweenCards)) / cardsPerColumn;
   
   // Utiliser la configuration de compression fournie ou les valeurs par défaut
-  const finalConfig = compressionConfig || COMPRESSION_CONFIG;
+  const finalConfig = options.compressionConfig || COMPRESSION_CONFIG;
+  const filename = options.filename || `${(options.name || options.metadata?.theme || 'cards').replace(/[^a-z0-9]+/gi, '-').toLowerCase()}-${Date.now()}.pdf`;
+
+  const coverResult = drawCoverPage(pdf, options.metadata ?? null, options.description, options.name);
+
+  let remainingContextLines = coverResult.remainingContextLines;
+  let remainingDescriptionLines = coverResult.remainingDescriptionLines;
+  let descriptionHeadingPrinted = coverResult.descriptionHeadingPrinted;
+
+  while (remainingContextLines.length > 0 || remainingDescriptionLines.length > 0) {
+    pdf.addPage();
+    const continuationResult = drawContextContinuationPage(
+      pdf,
+      remainingContextLines,
+      remainingDescriptionLines,
+      descriptionHeadingPrinted
+    );
+    remainingContextLines = continuationResult.remainingContextLines;
+    remainingDescriptionLines = continuationResult.remainingDescriptionLines;
+    descriptionHeadingPrinted = continuationResult.descriptionHeadingPrinted;
+  }
+
+  if (cards.length > 0) {
+    pdf.addPage();
+  }
   console.log(`🗜️ Configuration de compression: ${Math.round(finalConfig.imageQuality * 100)}% qualité, max ${finalConfig.maxImageSize}px`);
   
   let cardIndex = 0;
@@ -292,13 +783,19 @@ export async function generatePdfFromCards(
 export async function generatePdfFromCollection(
   collection: CardCollection
 ): Promise<void> {
-  const filename = `${collection.name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`;
-  
   if (!collection.cards || collection.cards.length === 0) {
     throw new Error('Collection has no cards to print');
   }
 
-  await generatePdfFromCards(collection.cards, filename);
+  await generatePdfFromCards(collection.cards, {
+    name: collection.name,
+    description: collection.description,
+    metadata: {
+      theme: collection.theme ?? collection.name ?? 'Collection',
+      publicTarget: collection.publicTarget ?? '',
+      context: collection.context ?? '',
+    },
+  });
 }
 
 /**

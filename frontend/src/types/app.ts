@@ -19,6 +19,9 @@ export interface CardCollection {
   updatedAt: Date;
   isPublic: boolean;
   tags?: string[];
+  theme?: string;
+  publicTarget?: string;
+  context?: string;
 }
 
 export interface GenerateCardsMetrics {
@@ -33,6 +36,18 @@ export interface GenerateCardsMetrics {
 export interface GenerationResult {
   cards: CardData[];
   metrics: GenerateCardsMetrics;
+}
+
+export interface GenerationMetadata {
+  theme: string;
+  publicTarget: string;
+  context: string;
+}
+
+export interface GeneratePdfOptions {
+  metadata?: GenerationMetadata | null;
+  name?: string;
+  description?: string;
 }
 
 // Types pour les composants UI
@@ -69,6 +84,7 @@ export interface AppState {
   metrics: GenerateCardsMetrics | null;
   lastGenerationResult: GenerationResult | null;
   imageGenerationProgress: { current: number; total: number } | null;
+  generationMetadata: GenerationMetadata | null;
 
   // Paramètres UI
   settings: AppSettings;
@@ -99,16 +115,23 @@ export type AppAction =
   | { type: 'SET_CURRENT_VIEW'; payload: AppState['currentView'] }
   | { type: 'TOGGLE_SIDEBAR' }
   | { type: 'RESET_STATE' }
+  | { type: 'SET_GENERATION_METADATA'; payload: GenerationMetadata | null }
   | { type: 'SET_IMAGE_GENERATION_PROGRESS'; payload: { current: number; total: number } | null };
 
 // Contexte pour les fonctions API
 export interface ApiContextType {
   generateContext: (theme: string, publicTarget: string) => Promise<{ context: string }>;
-  generateCards: (theme: string, context: string, numCards?: number, stylePreset?: string) => Promise<GenerationResult>;
+  generateCards: (
+    theme: string,
+    context: string,
+    numCards?: number,
+    stylePreset?: string,
+    metadata?: GenerationMetadata
+  ) => Promise<GenerationResult>;
   getCollections: () => Promise<CardCollection[]>;
   getCollectionById: (id: string) => Promise<CardCollection>;
   createCollection: (collection: Omit<CardCollection, 'id' | 'createdAt' | 'updatedAt'>) => Promise<CardCollection>;
   updateCollection: (collection: CardCollection) => Promise<CardCollection>;
   deleteCollection: (id: string) => Promise<void>;
-  generatePdfForCards: (cards: CardData[]) => Promise<Blob>;
+  generatePdfForCards: (cards: CardData[], options?: GeneratePdfOptions) => Promise<void>;
 }
