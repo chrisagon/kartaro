@@ -15,7 +15,8 @@
 /cache
 /frontend/public/images
 /backend/cache
-/backend/logs   
+/backend/logs
+/backend/data   
 /.firebase
 
 # misc
