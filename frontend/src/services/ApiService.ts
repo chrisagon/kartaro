@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getAuth } from 'firebase/auth';
 import { CardData, CardCollection, GenerationResult, GeneratePdfOptions } from '../types/app';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001/api';
 
 const getAuthToken = async () => {
   const auth = getAuth();
