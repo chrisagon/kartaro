@@ -79,6 +79,10 @@ export function getCollections(): Promise<CardCollection[]> {
   return request<CardCollection[]>('/collections');
 }
 
+export function getPublicCollections(): Promise<CardCollection[]> {
+  return request<CardCollection[]>('/collections/public');
+}
+
 export function getCollectionById(id: string): Promise<CardCollection> {
   return request<CardCollection>(`/collections/${id}`);
 }

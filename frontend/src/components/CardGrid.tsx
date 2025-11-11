@@ -10,10 +10,12 @@ interface CardGridProps {
   cards: CardData[];
   theme?: string;
   context?: string;
+  publicTarget?: string;
+  description?: string;
   onUpdateCard?: (index: number, updatedCard: CardData) => void;
 }
 
-const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, onUpdateCard }) => {
+const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, publicTarget, description, onUpdateCard }) => {
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [editingCard, setEditingCard] = useState<{ card: CardData; index: number } | null>(null);
 
@@ -34,12 +36,13 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, onUpdateCard
     setIsGeneratingPdf(true);
     try {
       await generatePdfFromCards(cards, {
-        metadata: theme || context ? {
+        metadata: (theme || context || publicTarget) ? {
           theme: theme ?? '',
-          publicTarget: '',
+          publicTarget: publicTarget ?? '',
           context: context ?? '',
         } : undefined,
         name: theme,
+        description,
       });
     } catch (error) {
       console.error('Error generating PDF:', error);

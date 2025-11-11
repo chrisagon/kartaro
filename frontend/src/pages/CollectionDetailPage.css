@@ -46,6 +46,54 @@
   margin: 5px 0;
 }
 
+.collection-context {
+  margin-top: 12px;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.collection-context-body {
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+.collection-context-body p {
+  margin: 0 0 0.75em 0;
+}
+
+.collection-context-body ul,
+.collection-context-body ol {
+  margin: 0 0 0.75em 1.25em;
+}
+
+.collection-context-body h1,
+.collection-context-body h2,
+.collection-context-body h3,
+.collection-context-body h4,
+.collection-context-body h5,
+.collection-context-body h6 {
+  margin: 1em 0 0.5em;
+  font-weight: 600;
+  color: #333;
+}
+
+.collection-context-body code {
+  background-color: #f4f4f4;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+}
+
+.collection-context-body pre {
+  background-color: #272822;
+  color: #f8f8f2;
+  padding: 12px;
+  border-radius: 6px;
+  overflow: auto;
+  margin: 0 0 1em 0;
+}
+
 .header-actions {
   display: flex;
   gap: 10px;

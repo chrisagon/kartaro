@@ -14,6 +14,10 @@ import {
   TextField,
   CircularProgress,
   Divider,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from '@mui/material';
 import { 
   Add as AddIcon,
@@ -26,8 +30,8 @@ import ModernInputForm from '../components/ModernInputForm';
 import ModernCardGrid from '../components/ModernCardGrid';
 import GenerationMetrics from '../components/GenerationMetrics';
 import { useCards, useCollections, useApp, useGeneration } from '../context/AppContext';
-import * as ApiService from '../services/ApiService';
 import { generatePdfFromCards } from '../services/PdfService';
+import { Visibility } from '../types/app';
 
 export const ModernMainPage: React.FC = () => {
   const { cards = [] } = useCards();
@@ -39,6 +43,7 @@ export const ModernMainPage: React.FC = () => {
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [saveDialogOpen, setSaveDialogOpen] = useState(false);
   const [collectionName, setCollectionName] = useState('');
+  const [collectionVisibility, setCollectionVisibility] = useState<Visibility>('private');
 
   // Chargement initial des collections
   useEffect(() => {
@@ -48,6 +53,7 @@ export const ModernMainPage: React.FC = () => {
   const handleQuickSave = () => {
     setSaveDialogOpen(true);
     setCollectionName('');
+    setCollectionVisibility('private');
   };
 
   const handleSaveConfirm = async () => {
@@ -60,7 +66,7 @@ export const ModernMainPage: React.FC = () => {
       await createCollection({
         name: collectionName.trim(),
         cards: cards,
-        isPublic: false,
+        isPublic: collectionVisibility === 'public',
         theme: state.generationMetadata?.theme,
         publicTarget: state.generationMetadata?.publicTarget,
         context: state.generationMetadata?.context,
@@ -307,6 +313,20 @@ export const ModernMainPage: React.FC = () => {
               }
             }}
           />
+          <Box sx={{ mt: 2 }}>
+            <FormControl fullWidth>
+              <InputLabel id="collection-visibility-label">Visibilité</InputLabel>
+              <Select
+                labelId="collection-visibility-label"
+                value={collectionVisibility}
+                label="Visibilité"
+                onChange={(event) => setCollectionVisibility(event.target.value as Visibility)}
+              >
+                <MenuItem value="private">Privée (visible uniquement par vous)</MenuItem>
+                <MenuItem value="public">Publique (visible par tous)</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setSaveDialogOpen(false)}>Annuler</Button>

@@ -91,12 +91,22 @@ const initializeSchema = () => {
           name TEXT NOT NULL,
           created_at TEXT NOT NULL,
           updated_at TEXT NOT NULL,
+          is_public INTEGER NOT NULL DEFAULT 0,
           data TEXT NOT NULL,
           FOREIGN KEY (user_id) REFERENCES users(id)
         )
       `, (err) => {
         if (err) return reject(err);
       });
+
+      db.run(
+        'ALTER TABLE collections ADD COLUMN is_public INTEGER NOT NULL DEFAULT 0',
+        (err) => {
+          if (err && !/duplicate column name/i.test(err.message)) {
+            return reject(err);
+          }
+        }
+      );
 
       db.run(`
         CREATE INDEX IF NOT EXISTS idx_collections_user ON collections (user_id)
@@ -110,6 +120,7 @@ const initializeSchema = () => {
 
 const normaliseCollectionPayload = (userId, collectionData) => {
   const now = new Date().toISOString();
+  const metadata = collectionData?.metadata || {};
 
   return {
     ...collectionData,
@@ -117,6 +128,11 @@ const normaliseCollectionPayload = (userId, collectionData) => {
     userId,
     createdAt: collectionData.createdAt || now,
     updatedAt: collectionData.updatedAt || now,
+    isPublic: Boolean(collectionData.isPublic),
+    theme: collectionData.theme ?? metadata.theme ?? collectionData.name ?? '',
+    publicTarget: collectionData.publicTarget ?? metadata.publicTarget ?? '',
+    context: collectionData.context ?? metadata.context ?? '',
+    description: collectionData.description ?? metadata.description ?? collectionData.description ?? '',
   };
 };
 
@@ -125,23 +141,53 @@ const saveCollection = async (userId, collectionData) => {
   await ensureUserExists(userId);
   const collection = normaliseCollectionPayload(userId, collectionData);
 
+  const existing = await new Promise((resolve) => {
+    db.get(
+      `SELECT data FROM collections
+         WHERE id = ? AND user_id = ?
+         LIMIT 1`,
+      [collection.id, userId],
+      (err, row) => {
+        if (err || !row) {
+          resolve(null);
+        } else {
+          try {
+            resolve(JSON.parse(row.data));
+          } catch (parseErr) {
+            console.error('Failed to parse existing collection payload:', parseErr);
+            resolve(null);
+          }
+        }
+      }
+    );
+  });
+
+  const collectionToPersist = existing
+    ? {
+        ...existing,
+        ...collection,
+        cards: collection.cards ?? existing.cards ?? [],
+      }
+    : collection;
+
   return new Promise((resolve, reject) => {
     db.run(
-      `INSERT OR REPLACE INTO collections (id, user_id, name, created_at, updated_at, data)
-       VALUES (?, ?, ?, ?, ?, ?)`,
+      `INSERT OR REPLACE INTO collections (id, user_id, name, created_at, updated_at, is_public, data)
+       VALUES (?, ?, ?, ?, ?, ?, ?)` ,
       [
-        collection.id,
-        collection.userId,
-        collection.name,
-        collection.createdAt,
-        collection.updatedAt,
-        JSON.stringify(collection)
+        collectionToPersist.id,
+        collectionToPersist.userId,
+        collectionToPersist.name,
+        collectionToPersist.createdAt,
+        collectionToPersist.updatedAt,
+        collectionToPersist.isPublic ? 1 : 0,
+        JSON.stringify(collectionToPersist)
       ],
       function(err) {
         if (err) {
           reject(err);
         } else {
-          resolve(collection);
+          resolve(collectionToPersist);
         }
       }
     );
@@ -166,6 +212,66 @@ const getCollections = async (userId) => {
       }
     );
   });
+};
+
+const getPublicCollections = async (excludeUserId = null) => {
+  await initializeSchema();
+
+  const sql = excludeUserId
+    ? `SELECT data FROM collections
+         WHERE is_public = 1 AND user_id != ?
+         ORDER BY datetime(created_at) DESC`
+    : `SELECT data FROM collections
+         WHERE is_public = 1
+         ORDER BY datetime(created_at) DESC`;
+
+  const params = excludeUserId ? [excludeUserId] : [];
+
+  return new Promise((resolve, reject) => {
+    db.all(sql, params, (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows.map(row => JSON.parse(row.data)));
+      }
+    });
+  });
+};
+
+const getCollectionByIdAnyUser = async (collectionId) => {
+  await initializeSchema();
+
+  return new Promise((resolve, reject) => {
+    db.get(
+      `SELECT data FROM collections
+         WHERE id = ?
+         LIMIT 1`,
+      [collectionId],
+      (err, row) => {
+        if (err) {
+          reject(err);
+        } else if (!row) {
+          const error = new Error('Collection not found');
+          error.status = 404;
+          reject(error);
+        } else {
+          resolve(JSON.parse(row.data));
+        }
+      }
+    );
+  });
+};
+
+const getPublicCollectionById = async (collectionId) => {
+  const collection = await getCollectionByIdAnyUser(collectionId);
+
+  if (!collection.isPublic) {
+    const error = new Error('Collection is not public');
+    error.status = 403;
+    throw error;
+  }
+
+  return collection;
 };
 
 const getCollectionById = async (userId, collectionId) => {
@@ -306,4 +412,6 @@ module.exports = {
   deleteCollection,
   createUser,
   getUserByUsername,
+  getPublicCollections,
+  getPublicCollectionById,
 };

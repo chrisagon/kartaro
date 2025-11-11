@@ -1,5 +1,13 @@
 const express = require('express');
-const { saveCollection, getCollections, getCollectionById, updateCollection, deleteCollection } = require('../services/LocalDatabaseService');
+const {
+  saveCollection,
+  getCollections,
+  getCollectionById,
+  updateCollection,
+  deleteCollection,
+  getPublicCollections,
+  getPublicCollectionById,
+} = require('../services/LocalDatabaseService');
 const authMiddleware = require('../middleware/auth');
 const { uploadImageToStorage } = require('../services/R2Service');
 const pdfService = require('../services/PdfService');
@@ -44,14 +52,41 @@ const createCollectionsRouter = (pdfService) => {
     }
   });
 
+  // Get all public collections
+  router.get('/public', authMiddleware, async (req, res) => {
+    try {
+      const requesterId = req.user?.uid ?? null;
+      const collections = await getPublicCollections(requesterId);
+      res.json(collections);
+    } catch (error) {
+      console.error('Error fetching public collections:', error);
+      res.status(500).json({ error: 'Failed to fetch public collections.' });
+    }
+  });
+
   // Get a single collection by ID
   router.get('/:id', authMiddleware, async (req, res) => {
     try {
       const userId = req.user.uid;
-      const collection = await getCollectionById(userId, req.params.id);
+      let collection;
+
+      try {
+        collection = await getCollectionById(userId, req.params.id);
+      } catch (ownerError) {
+        if (ownerError.status !== 404) {
+          throw ownerError;
+        }
+
+        try {
+          collection = await getPublicCollectionById(req.params.id);
+        } catch (publicError) {
+          throw publicError;
+        }
+      }
+
       res.json(collection);
     } catch (error) {
-      const status = error.message === 'Collection not found' ? 404 : 500;
+      const status = error.status || (error.message === 'Collection not found' ? 404 : 500);
       res.status(status).json({ error: error.message });
     }
   });
@@ -69,6 +104,7 @@ const createCollectionsRouter = (pdfService) => {
       const updatedCollection = {
         ...collectionData,
         updatedAt: new Date().toISOString(),
+        isPublic: Boolean(collectionData.isPublic),
       };
 
       const savedCollection = await updateCollection(userId, updatedCollection);
@@ -95,6 +131,7 @@ const createCollectionsRouter = (pdfService) => {
         userId,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
+        isPublic: Boolean(collectionData.isPublic),
       };
 
       // First, upload images to R2 and get their URLs

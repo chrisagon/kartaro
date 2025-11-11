@@ -10,6 +10,8 @@ export interface CardData {
   updatedAt: Date;
 }
 
+export type Visibility = 'private' | 'public';
+
 export interface CardCollection {
   id: string;
   name: string;
@@ -18,6 +20,7 @@ export interface CardCollection {
   createdAt: Date;
   updatedAt: Date;
   isPublic: boolean;
+  userId?: string;
   tags?: string[];
   theme?: string;
   publicTarget?: string;
@@ -133,5 +136,6 @@ export interface ApiContextType {
   createCollection: (collection: Omit<CardCollection, 'id' | 'createdAt' | 'updatedAt'>) => Promise<CardCollection>;
   updateCollection: (collection: CardCollection) => Promise<CardCollection>;
   deleteCollection: (id: string) => Promise<void>;
+  getPublicCollections: () => Promise<CardCollection[]>;
   generatePdfForCards: (cards: CardData[], options?: GeneratePdfOptions) => Promise<void>;
 }
