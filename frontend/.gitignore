@@ -18,6 +18,7 @@ frontend/public/images
 backend/cache
 backend/logs
 backend/data
+backend/data/*.db
 /.firebase
 
 # misc

@@ -26,7 +26,6 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@rollup/rollup-win32-x64-msvc": "^4.52.5",
     "@types/node": "^16.18.126",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
