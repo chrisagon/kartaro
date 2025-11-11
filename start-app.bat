@@ -11,7 +11,7 @@ timeout /t 3 /nobreak >nul
 
 echo [2/3] Demarrage du Frontend...
 cd ..\frontend
-start "Frontend Server" cmd /k "npm start"
+start "Frontend Server" cmd /k "npm run dev"
 
 echo [3/3] Ouverture du navigateur...
 timeout /t 5 /nobreak >nul

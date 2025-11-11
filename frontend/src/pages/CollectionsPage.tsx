@@ -3,31 +3,32 @@ import { Link } from 'react-router-dom';
 import { CardCollection } from '../types/app';
 import * as ApiService from '../services/ApiService';
 import { generatePdfFromCollection } from '../services/PdfService';
+import { useCollections } from '../context/AppContext';
 import './CollectionsPage.css';
 
 const CollectionsPage: React.FC = () => {
-  const [collections, setCollections] = useState<CardCollection[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [printingId, setPrintingId] = useState<string | null>(null);
+  const {
+    collections,
+    getCollections,
+    deleteCollection: deleteCollectionFromContext,
+    isLoadingCollections,
+  } = useCollections();
 
   useEffect(() => {
     fetchCollections();
-  }, []);
+  }, [getCollections]);
 
   const fetchCollections = async () => {
     try {
-      setLoading(true);
-      const fetchedCollections = await ApiService.getCollections();
-      setCollections(Array.isArray(fetchedCollections) ? fetchedCollections : []);
+      setError(null);
+      await getCollections();
       setError(null);
     } catch (err) {
       setError('Failed to fetch collections.');
       console.error(err);
-      setCollections([]);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -38,8 +39,7 @@ const CollectionsPage: React.FC = () => {
 
     setDeletingId(id);
     try {
-      await ApiService.deleteCollection(id);
-      setCollections((prevCollections) => (prevCollections || []).filter(col => col.id !== id));
+      await deleteCollectionFromContext(id);
     } catch (err) {
       console.error('Failed to delete collection:', err);
       alert('Failed to delete collection. Please try again.');
@@ -76,7 +76,7 @@ const CollectionsPage: React.FC = () => {
   };
 
 
-  if (loading) {
+  if (isLoadingCollections) {
     return <div>Loading collections...</div>;
   }
 
