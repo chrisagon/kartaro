@@ -223,6 +223,26 @@ const LandingPage: React.FC = () => {
           </Grid>
         </Grid>
 
+        <Box sx={{ display: 'flex', justifyContent: 'center', my: 6 }}>
+          <Box
+            component="iframe"
+            width="100%"
+            height="500px"
+            src="https://embed.app.guidde.com/playbooks/kCvAUVJ78teVkygWMy2dyV?mode=videoOnly"
+            title="Utiliser DeckLab Pour Générer Vos Decks De Cartes Personnalisés"
+            frameBorder="0"
+            referrerPolicy="unsafe-url"
+            allowFullScreen
+            allow="clipboard-write"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-forms allow-same-origin allow-presentation"
+            sx={{
+              borderRadius: 2,
+              maxWidth: 700,
+              boxShadow: 6,
+            }}
+          />
+        </Box>
+
         <Divider sx={{ my: 8 }} />
 
         <Grid container spacing={4} alignItems="center">
