@@ -26,6 +26,7 @@ import CollectionsPage from './pages/CollectionsPage';
 import CollectionDetailPage from './pages/CollectionDetailPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import LandingPage from './pages/LandingPage';
 import { Navigate, Outlet } from 'react-router-dom';
 
 // Composant Scroll to Top
@@ -75,15 +76,17 @@ const AppLayout: React.FC = () => {
       <ModernHeader />
       <Container maxWidth="xl" sx={{ py: 4 }}>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route element={<GuestRoute />}>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
           </Route>
           <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<ModernMainPage />} />
+            <Route path="/app" element={<ModernMainPage />} />
             <Route path="/collections" element={<CollectionsPage />} />
             <Route path="/collections/:id" element={<CollectionDetailPage />} />
           </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Container>
       <ScrollToTop />
