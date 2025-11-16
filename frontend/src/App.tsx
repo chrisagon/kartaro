@@ -19,6 +19,7 @@ import { useAuth } from './context/AuthContext';
 
 // Composants modernisés
 import ModernHeader from './components/ModernHeader';
+import QwadrageChatbot from './components/QwadrageChatbot';
 
 // Pages
 import ModernMainPage from './pages/ModernMainPage';
@@ -90,6 +91,7 @@ const AppLayout: React.FC = () => {
         </Routes>
       </Container>
       <ScrollToTop />
+      <QwadrageChatbot />
     </Box>
   );
 };

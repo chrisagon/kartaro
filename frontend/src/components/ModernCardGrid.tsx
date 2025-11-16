@@ -1,5 +1,5 @@
 // src/components/ModernCardGrid.tsx
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Typography,
   Box,
@@ -14,18 +14,23 @@ import {
   Select,
   SelectChangeEvent,
   Chip,
+  CircularProgress,
+  Tooltip,
 } from '@mui/material';
 import {
   Download as DownloadIcon,
   GridView as GridIcon,
   ViewList as ListIcon,
   Settings as SettingsIcon,
+  Archive as ZipIcon,
 } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCards, useApp } from '../context/AppContext';
 import { CardData } from '../types/app';
 import ModernCard from './ModernCard';
 import { CardEditModal } from './CardEditModal';
+import { exportElementAsPng, renderElementAsDataUrl } from '../utils/exportToPng';
+import JSZip from 'jszip';
 
 interface ModernCardGridProps {
   viewMode?: 'grid' | 'list';
@@ -44,6 +49,9 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [compressionQuality, setCompressionQuality] = useState<'high' | 'medium' | 'low'>('medium');
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<null | HTMLElement>(null);
+  const [isExportingPng, setIsExportingPng] = useState<number | null>(null);
+  const [isExportingZip, setIsExportingZip] = useState(false);
+  const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   const handleCardClick = (card: CardData) => {
     setSelectedCard(selectedCard?.id === card.id ? null : card);
@@ -95,6 +103,56 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
 
   const handleQualityChange = (event: SelectChangeEvent) => {
     setCompressionQuality(event.target.value as 'high' | 'medium' | 'low');
+  };
+
+  const handleExportCardPng = async (card: CardData, index: number) => {
+    const ref = cardRefs.current[card.id];
+    if (!ref) return;
+    setIsExportingPng(index);
+    try {
+      await exportElementAsPng(ref, {
+        fileName: `${card.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_${card.id}.png`,
+        pixelRatio: 2,
+      });
+    } catch (err) {
+      console.error('Erreur export PNG:', err);
+      alert('Échec de l\'export PNG.');
+    } finally {
+      setIsExportingPng(null);
+    }
+  };
+
+  const handleExportCollectionZip = async () => {
+    if (cards.length === 0) {
+      alert('Aucune carte à exporter.');
+      return;
+    }
+    setIsExportingZip(true);
+    const zip = new JSZip();
+    try {
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const ref = cardRefs.current[card.id];
+        if (ref) {
+          const dataUrl = await renderElementAsDataUrl(ref, 2);
+          const base64 = dataUrl.split(',')[1];
+          zip.file(`${card.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_${card.id}.png`, base64, { base64: true });
+        }
+      }
+      const content = await zip.generateAsync({ type: 'blob' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = `${state.currentCollection?.name || 'collection'}_${new Date().toISOString().slice(0, 10)}.zip`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    } catch (err) {
+      console.error('Erreur export ZIP:', err);
+      alert('Échec de l\'export ZIP.');
+    } finally {
+      setIsExportingZip(false);
+    }
   };
 
   // Configuration de compression basée sur le choix utilisateur
@@ -163,6 +221,19 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
             {isMobile ? '' : 'Qualité'}
           </Button>
 
+          {/* Bouton téléchargement ZIP */}
+          <Tooltip title="Télécharger toutes les cartes au format PNG dans un fichier ZIP">
+            <Button
+              variant="outlined"
+              startIcon={isExportingZip ? <CircularProgress size={16} /> : <ZipIcon />}
+              onClick={handleExportCollectionZip}
+              disabled={isExportingZip || cards.length === 0}
+              size={isMobile ? 'small' : 'medium'}
+            >
+              {isExportingZip ? 'Export...' : 'ZIP'}
+            </Button>
+          </Tooltip>
+
           {/* Bouton téléchargement PDF */}
           <Button
             variant="outlined"
@@ -217,9 +288,12 @@ export const ModernCardGrid: React.FC<ModernCardGridProps> = ({
                 }}
               >
                 <ModernCard
+                  ref={(el) => { cardRefs.current[card.id] = el; }}
                   card={card}
                   onClick={() => handleCardClick(card)}
                   onEdit={() => handleEditCard(card, index)}
+                  onExport={() => handleExportCardPng(card, index)}
+                  isExporting={isExportingPng === index}
                   elevation={selectedCard?.id === card.id ? 4 : 2}
                 />
               </motion.div>

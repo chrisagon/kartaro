@@ -1,31 +1,22 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { CardData } from '../types/app';
 import { IconButton } from '@mui/material';
 import { Edit as EditIcon } from '@mui/icons-material';
+import './Card.css';
 
 interface CardProps {
   card: CardData;
   onEdit?: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ card, onEdit }) => {
+const Card = React.forwardRef<HTMLDivElement, CardProps>(({ card, onEdit }, ref) => {
   return (
-    <div style={{ border: '1px solid black', padding: '10px', margin: '10px', width: '200px', position: 'relative' }}>
+    <div ref={ref} className="card-container">
       {onEdit && (
         <IconButton
           onClick={onEdit}
           size="small"
-          sx={{
-            position: 'absolute',
-            top: 8,
-            right: 8,
-            bgcolor: 'background.paper',
-            boxShadow: 1,
-            '&:hover': {
-              bgcolor: 'primary.light',
-              color: 'white',
-            },
-          }}
+          className="edit-button"
         >
           <EditIcon fontSize="small" />
         </IconButton>
@@ -34,7 +25,7 @@ const Card: React.FC<CardProps> = ({ card, onEdit }) => {
         <img
           src={card.image}
           alt={`Illustration for ${card.title}`}
-          style={{ width: '100%', height: 'auto', borderRadius: '6px', marginBottom: '8px' }}
+          className="card-image"
         />
       )}
       <h2>{card.icon} {card.title}</h2>
@@ -42,6 +33,6 @@ const Card: React.FC<CardProps> = ({ card, onEdit }) => {
       <p><em>{card.category}</em></p>
     </div>
   );
-};
+});
 
 export default Card;

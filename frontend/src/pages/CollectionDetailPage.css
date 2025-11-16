@@ -126,6 +126,15 @@
   background-color: #218838;
 }
 
+.btn-zip {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-zip:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
 .btn-back {
   background-color: #6c757d;
   color: white;

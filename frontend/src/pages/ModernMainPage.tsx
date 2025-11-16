@@ -146,7 +146,7 @@ export const ModernMainPage: React.FC = () => {
                 backgroundClip: 'text',
               }}
             >
-              DeckLab : votre laboratoire de Deck IA
+              Kartaro IA : votre laboratoire de Deck IA
             </Typography>
             <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
               Créez des cartes d'apprentissage personnalisées avec l'intelligence artificielle.
