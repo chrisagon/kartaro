@@ -12,7 +12,7 @@ import {
   IconButton,
   CircularProgress,
 } from '@mui/material';
-import { Edit as EditIcon } from '@mui/icons-material';
+import { Edit as EditIcon, Download as DownloadIcon } from '@mui/icons-material';
 import { CardData } from '../types/app';
 import { getCategoryColor } from '../constants/categories';
 
@@ -20,40 +20,62 @@ interface ModernCardProps {
   card: CardData;
   onClick?: () => void;
   onEdit?: () => void;
+  onExport?: () => void;
+  isExporting?: boolean;
   elevation?: number;
 }
 
-export const ModernCard: React.FC<ModernCardProps> = ({
-  card,
-  onClick,
-  onEdit,
-  elevation = 2,
-}) => {
-  const categoryColor = getCategoryColor(card.category);
+export const ModernCard = React.forwardRef<HTMLDivElement, ModernCardProps>(
+  ({ card, onClick, onEdit, onExport, elevation = 2, isExporting = false }, ref) => {
+    const categoryColor = getCategoryColor(card.category);
   
-  return (
-    <Fade in timeout={600}>
-      <MuiCard
-        elevation={elevation}
-        onClick={onClick}
-        sx={{
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          cursor: onClick ? 'pointer' : 'default',
-          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          position: 'relative',
-          '&:hover': {
-            transform: onClick ? 'translateY(-8px)' : 'none',
-            elevation: elevation + 2,
-            boxShadow: 4,
-          },
-          borderRadius: 3,
-          overflow: 'hidden',
-          borderTop: `4px solid ${categoryColor}`,
-        }}
-      >
-        {/* Bouton d'édition */}
+    return (
+      <Fade in timeout={600}>
+        <MuiCard
+          ref={ref}
+          elevation={elevation}
+          onClick={onClick}
+          sx={{
+            height: 420,
+            display: 'flex',
+            flexDirection: 'column',
+            cursor: onClick ? 'pointer' : 'default',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            position: 'relative',
+            '&:hover': {
+              transform: onClick ? 'translateY(-8px)' : 'none',
+              elevation: elevation + 2,
+              boxShadow: 4,
+            },
+            borderRadius: 3,
+            overflow: 'hidden',
+            borderTop: `4px solid ${categoryColor}`,
+          }}
+        >
+          {/* Boutons d'action */}
+          {onExport && (
+            <IconButton
+              onClick={(e) => {
+                e.stopPropagation();
+                onExport();
+              }}
+              size="small"
+              sx={{
+                position: 'absolute',
+                top: 8,
+                left: 8,
+                bgcolor: 'background.paper',
+                boxShadow: 2,
+                zIndex: 1,
+                '&:hover': {
+                  bgcolor: 'primary.main',
+                  color: 'white',
+                },
+              }}
+            >
+              {isExporting ? <CircularProgress size={16} /> : <DownloadIcon fontSize="small" />}
+          </IconButton>
+        )}
         {onEdit && (
           <IconButton
             onClick={(e) => {
@@ -110,11 +132,6 @@ export const ModernCard: React.FC<ModernCardProps> = ({
               gutterBottom
               sx={{
                 fontWeight: 600,
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
                 lineHeight: 1.3,
               }}
             >
@@ -127,11 +144,6 @@ export const ModernCard: React.FC<ModernCardProps> = ({
             color="text.secondary"
             sx={{
               mb: 2,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              display: '-webkit-box',
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: 'vertical',
               lineHeight: 1.5,
             }}
           >
@@ -175,6 +187,8 @@ export const ModernCard: React.FC<ModernCardProps> = ({
       </MuiCard>
     </Fade>
   );
-};
+});
+
+ModernCard.displayName = 'ModernCard';
 
 export default ModernCard;

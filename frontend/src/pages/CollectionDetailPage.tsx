@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CardCollection } from '../types/app';
 import * as ApiService from '../services/ApiService';
@@ -6,6 +6,8 @@ import CardGrid from '../components/CardGrid';
 import { generatePdfFromCollection } from '../services/PdfService';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
+import { renderElementAsDataUrl } from '../utils/exportToPng';
+import JSZip from 'jszip';
 import './CollectionDetailPage.css';
 
 const CollectionDetailPage: React.FC = () => {
@@ -14,6 +16,8 @@ const CollectionDetailPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isPrinting, setIsPrinting] = useState<boolean>(false);
+  const [isExportingZip, setIsExportingZip] = useState<boolean>(false);
+  const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   useEffect(() => {
     if (!id) return;
@@ -88,6 +92,44 @@ const CollectionDetailPage: React.FC = () => {
     }
   };
 
+  const handleExportZip = async () => {
+    if (!collection || !collection.cards || collection.cards.length === 0) {
+      alert('Cette collection ne contient aucune carte à exporter.');
+      return;
+    }
+
+    setIsExportingZip(true);
+    const zip = new JSZip();
+    try {
+      // Attendre un peu que les cartes soient rendues
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      for (let i = 0; i < collection.cards.length; i++) {
+        const card = collection.cards[i];
+        const ref = cardRefs.current[card.id];
+        if (ref) {
+          const dataUrl = await renderElementAsDataUrl(ref, 2);
+          const base64 = dataUrl.split(',')[1];
+          zip.file(`${card.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_${card.id}.png`, base64, { base64: true });
+        }
+      }
+      
+      const content = await zip.generateAsync({ type: 'blob' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = `${collection.name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_${new Date().toISOString().slice(0, 10)}.zip`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    } catch (err) {
+      console.error('Erreur export ZIP:', err);
+      alert('Échec de l\'export ZIP.');
+    } finally {
+      setIsExportingZip(false);
+    }
+  };
+
   return (
     <div className="collection-detail-page">
       <div className="detail-header">
@@ -126,6 +168,14 @@ const CollectionDetailPage: React.FC = () => {
           >
             {isPrinting ? '⏳ Printing...' : '🖨️ Imprimer PDF'}
           </button>
+          <button
+            className="btn btn-zip"
+            onClick={handleExportZip}
+            disabled={isExportingZip}
+            title="Télécharger toutes les cartes au format PNG dans un fichier ZIP"
+          >
+            {isExportingZip ? '⏳ Export...' : '📦 Export ZIP'}
+          </button>
         </div>
       </div>
       <CardGrid
@@ -134,6 +184,7 @@ const CollectionDetailPage: React.FC = () => {
         publicTarget={collection.publicTarget}
         context={collection.context}
         description={collection.description}
+        cardRefs={cardRefs}
       />
     </div>
   );

@@ -357,7 +357,7 @@ const normalizeCategory = (value) => {
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Negative prompt for image generation
-const Negative_prompt = `sketch, low quality, worst quality, text, signature, jpeg artifacts, bad anatomy, heterochromia, simple, 3d, painting, blurry, undefined, white eyes, glowing`;
+const Negative_prompt = `sketch, nostalgia, low quality, worst quality, text, signature, jpeg artifacts, bad anatomy, heterochromia, simple, 3d, painting, blurry, undefined, white eyes, glowing`;
 
 // Generate image with Stability AI
 const generateImageWithStability = async (prompt, stylePreset = 'isometric') => {
