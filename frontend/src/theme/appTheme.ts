@@ -6,7 +6,7 @@ export const appTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#e77409', // Orange DECKLAB
+      main: '#e77409', // Orange QWADRAGE
       light: '#ff983f',
       dark: '#c05d00',
       contrastText: '#ffffff',

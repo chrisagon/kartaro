@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { Button } from '@mui/material';
 import { CardData } from '../types/app';
 import { generatePdfFromCards } from '../services/PdfService';
-import Card from './Card';
+import ModernCard from './ModernCard';
 import { CardEditModal } from './CardEditModal';
 import './CardGrid.css';
 
@@ -13,9 +13,10 @@ interface CardGridProps {
   publicTarget?: string;
   description?: string;
   onUpdateCard?: (index: number, updatedCard: CardData) => void;
+  cardRefs?: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
 }
 
-const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, publicTarget, description, onUpdateCard }) => {
+const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, publicTarget, description, onUpdateCard, cardRefs }) => {
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [editingCard, setEditingCard] = useState<{ card: CardData; index: number } | null>(null);
 
@@ -73,10 +74,11 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, theme, context, publicTarget
       </div>
       <div className="card-grid">
         {cards.map((card, index) => (
-          <Card 
+          <ModernCard 
             key={card.id} 
             card={card} 
             onEdit={() => handleEditCard(card, index)}
+            ref={cardRefs ? (el) => { cardRefs.current[card.id] = el; } : undefined}
           />
         ))}
       </div>

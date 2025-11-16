@@ -23,9 +23,9 @@ services:
       - key: BACKEND_BASE_URL
         value: https://decklab-backend.onrender.com/
       - key: FRONTEND_BASE_URL
-        value: https://decklab.onrender.com/
+        value: https://qwadrage.onrender.com/
       - key: PDF_ASSET_BASE_URL
-        value: https://decklab.onrender.com/
+        value: https://qwadrage.onrender.com/
       - key: IMAGE_PROVIDER
         value: stability
       - key: GEMINI_TEXT_MODEL
@@ -47,7 +47,7 @@ services:
       mountPath: /opt/render/project/data
       sizeGB: 1
   - type: static
-    name: decklab-frontend
+    name: qwadrage
     rootDir: frontend
     buildCommand: rm -rf node_modules package-lock.json && npm install --include=optional && npm run build
     publishPath: dist

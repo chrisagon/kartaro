@@ -1,0 +1,26 @@
+.card-container {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.edit-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.edit-button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
