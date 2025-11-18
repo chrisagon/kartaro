@@ -36,6 +36,34 @@ const ensureRandomId = () => {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 };
 
+const mapCollectionSummaryRow = (row) => ({
+  id: row.id,
+  userId: row.user_id,
+  name: row.name,
+  description: row.description || '',
+  createdAt: row.created_at,
+  updatedAt: row.updated_at,
+  isPublic: Boolean(row.is_public),
+  theme: row.theme || '',
+  publicTarget: row.publicTarget || '',
+  context: row.context || '',
+  cardCount: row.cardCount != null ? Number(row.cardCount) : undefined,
+});
+
+const COLLECTION_SUMMARY_FIELDS = `
+  id,
+  user_id,
+  name,
+  created_at,
+  updated_at,
+  is_public,
+  json_extract(data, '$.description') as description,
+  json_extract(data, '$.theme') as theme,
+  json_extract(data, '$.publicTarget') as publicTarget,
+  json_extract(data, '$.context') as context,
+  json_array_length(json_extract(data, '$.cards')) as cardCount
+`;
+
 const ensureUserExists = async (userId) => {
   if (!userId) {
     throw new Error('User ID is required to ensure existence');
@@ -199,7 +227,8 @@ const getCollections = async (userId) => {
 
   return new Promise((resolve, reject) => {
     db.all(
-      `SELECT data FROM collections
+      `SELECT ${COLLECTION_SUMMARY_FIELDS}
+       FROM collections
        WHERE user_id = ?
        ORDER BY datetime(created_at) DESC`,
       [userId],
@@ -207,7 +236,7 @@ const getCollections = async (userId) => {
         if (err) {
           reject(err);
         } else {
-          resolve(rows.map(row => JSON.parse(row.data)));
+          resolve(rows.map(mapCollectionSummaryRow));
         }
       }
     );
@@ -218,10 +247,12 @@ const getPublicCollections = async (excludeUserId = null) => {
   await initializeSchema();
 
   const sql = excludeUserId
-    ? `SELECT data FROM collections
+    ? `SELECT ${COLLECTION_SUMMARY_FIELDS}
+         FROM collections
          WHERE is_public = 1 AND user_id != ?
          ORDER BY datetime(created_at) DESC`
-    : `SELECT data FROM collections
+    : `SELECT ${COLLECTION_SUMMARY_FIELDS}
+         FROM collections
          WHERE is_public = 1
          ORDER BY datetime(created_at) DESC`;
 
@@ -232,7 +263,7 @@ const getPublicCollections = async (excludeUserId = null) => {
       if (err) {
         reject(err);
       } else {
-        resolve(rows.map(row => JSON.parse(row.data)));
+        resolve(rows.map(mapCollectionSummaryRow));
       }
     });
   });
