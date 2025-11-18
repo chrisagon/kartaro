@@ -39,7 +39,7 @@ router.post('/generate-image', authMiddleware, async (req, res) => {
   }
 });
 
-// Route pour générer les cartes
+// Route pour générer les cartes en streaming
 router.post('/generate', authMiddleware, async (req, res) => {
     const { theme, context, numCards, stylePreset } = req.body;
 
@@ -47,22 +47,28 @@ router.post('/generate', authMiddleware, async (req, res) => {
         return res.status(400).json({ error: 'Theme and context are required' });
   }
 
-  // Validate numCards (optional, default from env, min 1, max 200)
-  const cardsToGenerate = numCards
-    ? Math.min(Math.max(parseInt(numCards, 10), 1), 200)
-    : undefined;
-
-  // Validate stylePreset (optional, default to 'isometric', must be one of the allowed values)
+  const cardsToGenerate = numCards ? Math.min(Math.max(parseInt(numCards, 10), 1), 200) : undefined;
   const allowedStylePresets = ['anime', 'comic-book', 'digital-art', 'enhance', 'fantasy-art', 'isometric', 'pixel-art'];
-  const validStylePreset = stylePreset && allowedStylePresets.includes(stylePreset)
-    ? stylePreset
-    : 'isometric';
+  const validStylePreset = stylePreset && allowedStylePresets.includes(stylePreset) ? stylePreset : 'isometric';
 
   try {
-    const result = await generateCards(theme, context, cardsToGenerate, validStylePreset);
-        res.json(result);
+        res.setHeader('Content-Type', 'application/x-ndjson');
+        res.setHeader('Transfer-Encoding', 'chunked');
+
+    const cardStream = generateCards(theme, context, cardsToGenerate, validStylePreset);
+
+    for await (const chunk of cardStream) {
+            res.write(JSON.stringify(chunk) + '\n');
+    }
+
+        res.end();
   } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error('Error in card generation stream:', error.message);
+    if (!res.headersSent) {
+            res.status(500).json({ error: 'Failed to generate cards.' });
+    } else {
+            res.end();
+    }
   }
 });
 
