@@ -134,18 +134,17 @@ const createCollectionsRouter = (pdfService) => {
         isPublic: Boolean(collectionData.isPublic),
       };
 
-      // First, upload images to R2 and get their URLs
-      const cardsWithImageUrls = await Promise.all(
-        newCollection.cards.map(async (card) => {
-          try {
-            const imageUrl = await uploadImageToStorage(card.image, userId, newCollection.id);
-            return { ...card, image: imageUrl };
-          } catch (error) {
-            console.error(`Failed to upload image for card "${card.title}":`, error);
-            return card; // Keep original base64 if upload fails
-          }
-        })
-      );
+      // Upload images to R2 sequentially to avoid memory overload
+      const cardsWithImageUrls = [];
+      for (const card of newCollection.cards) {
+        try {
+          const imageUrl = await uploadImageToStorage(card.image, userId, newCollection.id);
+          cardsWithImageUrls.push({ ...card, image: imageUrl });
+        } catch (error) {
+          console.error(`Failed to upload image for card "${card.title}":`, error);
+          cardsWithImageUrls.push(card); // Keep original base64 if upload fails
+        }
+      }
 
       const collectionToSave = {
         ...newCollection,
