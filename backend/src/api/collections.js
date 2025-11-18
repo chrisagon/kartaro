@@ -141,7 +141,7 @@ const createCollectionsRouter = (pdfService) => {
           const imageUrl = await uploadImageToStorage(card.image, userId, newCollection.id);
           cardsWithImageUrls.push({ ...card, image: imageUrl });
         } catch (error) {
-          console.error(`Failed to upload image for card "${card.title}":`, error);
+          console.error('Failed to upload image for card "%s":', card.title, error);
           cardsWithImageUrls.push(card); // Keep original base64 if upload fails
         }
       }
