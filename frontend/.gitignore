@@ -14,7 +14,7 @@ backend/node_modules
 /build
 /dist
 /cache
-frontend/public/images
+frontend/public/images/collections
 backend/cache
 backend/logs
 backend/data

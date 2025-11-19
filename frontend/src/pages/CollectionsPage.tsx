@@ -98,7 +98,7 @@ const CollectionsPage: React.FC = () => {
               <div className="collection-info">
                 <h3>{collection.name}</h3>
                 <p className="collection-meta">
-                  {collection.cards?.length || 0} cards
+                  {(collection.cardCount ?? collection.cards?.length ?? 0)} cards
                 </p>
                 {collection.description && (
                   <p className="collection-description">{collection.description}</p>

@@ -1,5 +1,5 @@
 // @ts-nocheck - Ignorer les erreurs TypeScript liées à MUI v7 Grid API
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -9,6 +9,8 @@ import {
   Container,
   Divider,
   Grid,
+  Dialog,
+  DialogContent,
   Stack,
   Table,
   TableBody,
@@ -67,9 +69,21 @@ const intelligenceBoosters = [
 
 const landingChips = ['Consultants', 'Facilitateurs', 'Product teams', 'Formateurs'];
 
+const sampleIllustrations = {
+  hero: {
+    src: `${import.meta.env.BASE_URL}images/echantillon_cartes_2.png`,
+    alt: 'Exemples de cartes collaboratives Kartaro - série 2',
+  },
+  personalization: {
+    src: `${import.meta.env.BASE_URL}images/echantillon_cartes_1.png`,
+    alt: 'Exemples de cartes collaboratives Kartaro - série 1',
+  },
+};
+
 const LandingPage: React.FC = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
+  const [openImage, setOpenImage] = useState<{ src: string; alt: string } | null>(null);
 
   useEffect(() => {
     if (currentUser) {
@@ -91,6 +105,17 @@ const LandingPage: React.FC = () => {
         }}
       >
         <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: { xs: 6, md: 8 } }}>
+            <Box
+              component="img"
+              src={`${import.meta.env.BASE_URL}logo-kartaro-transparent.png`}
+              alt="Logo Kartaro"
+              sx={{
+                width: { xs: 180, sm: 220, md: 260 },
+                maxWidth: '100%',
+              }}
+            />
+          </Box>
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} md={7}>
               <Chip label="Kartaro IA" color="primary" sx={{ mb: 3, fontWeight: 600 }} />
@@ -98,7 +123,7 @@ const LandingPage: React.FC = () => {
                 Fatigué de perdre des heures à créer des jeux de cartes collaboratifs ?
               </Typography>
               <Typography variant="h6" color="text.secondary" paragraph>
-                Kartaro IA mixe l’IA générative et la méthode Kartaro pour créer des decks
+                Kartaro IA mixe l’IA générative et la méthode Kartado pour créer des decks
                 uniques en minutes. Plus de brainstorm interminable : juste de la créativité boostée !
               </Typography>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ my: 4 }}>
@@ -125,33 +150,54 @@ const LandingPage: React.FC = () => {
               </Stack>
             </Grid>
             <Grid item xs={12} md={5}>
-              <Card sx={{ borderRadius: 4, boxShadow: 6 }}>
-                <CardContent>
-                  <Stack spacing={2}>
-                    <Typography variant="h6" color="primary" sx={{ fontWeight: 700 }}>
-                      Votre allié ludique et intelligent
-                    </Typography>
-                    <Stack direction="row" spacing={1} alignItems="center">
-                      <Bolt color="warning" />
-                      <Typography variant="body1">
-                        30 % des idées essentielles révélées en un clin d’œil.
+              <Stack spacing={3}>
+                <Card sx={{ borderRadius: 4, boxShadow: 6 }}>
+                  <CardContent>
+                    <Stack spacing={2}>
+                      <Typography variant="h6" color="primary" sx={{ fontWeight: 700 }}>
+                        Votre allié ludique et intelligent
                       </Typography>
+                      <Stack direction="row" spacing={1} alignItems="center">
+                        <Bolt color="warning" />
+                        <Typography variant="body1">
+                          30 % des idées essentielles révélées en un clin d’œil.
+                        </Typography>
+                      </Stack>
+                      <Stack direction="row" spacing={1} alignItems="center">
+                        <Brush color="info" />
+                        <Typography variant="body1">
+                          Univers visuels sur mesure, prêts à être manipulés.
+                        </Typography>
+                      </Stack>
+                      <Stack direction="row" spacing={1} alignItems="center">
+                        <RocketLaunch color="success" />
+                        <Typography variant="body1">
+                          Passez de l’idée à l’action en quelques minutes.
+                        </Typography>
+                      </Stack>
                     </Stack>
-                    <Stack direction="row" spacing={1} alignItems="center">
-                      <Brush color="info" />
-                      <Typography variant="body1">
-                        Univers visuels sur mesure, prêts à être manipulés.
-                      </Typography>
-                    </Stack>
-                    <Stack direction="row" spacing={1} alignItems="center">
-                      <RocketLaunch color="success" />
-                      <Typography variant="body1">
-                        Passez de l’idée à l’action en quelques minutes.
-                      </Typography>
-                    </Stack>
-                  </Stack>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+                <Box
+                  component="img"
+                  src={sampleIllustrations.hero.src}
+                  alt={sampleIllustrations.hero.alt}
+                  loading="lazy"
+                  onClick={() => setOpenImage(sampleIllustrations.hero)}
+                  sx={{
+                    width: '100%',
+                    maxWidth: 420,
+                    borderRadius: 4,
+                    boxShadow: 8,
+                    cursor: 'zoom-in',
+                    alignSelf: { xs: 'center', md: 'flex-end' },
+                    transition: 'transform 0.3s ease',
+                    '&:hover': {
+                      transform: 'scale(1.02)',
+                    },
+                  }}
+                />
+              </Stack>
             </Grid>
           </Grid>
         </Container>
@@ -191,8 +237,29 @@ const LandingPage: React.FC = () => {
 
         <Divider sx={{ my: 8 }} />
 
-                <Grid container spacing={4}>
-                    <Grid item xs={12} md={5}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+          <Box
+            component="img"
+            src={sampleIllustrations.personalization.src}
+            alt={sampleIllustrations.personalization.alt}
+            loading="lazy"
+            onClick={() => setOpenImage(sampleIllustrations.personalization)}
+            sx={{
+              width: '100%',
+              maxWidth: 700,
+              borderRadius: 4,
+              boxShadow: 8,
+              cursor: 'zoom-in',
+              transition: 'transform 0.3s ease',
+              '&:hover': {
+                transform: 'scale(1.01)',
+              },
+            }}
+          />
+        </Box>
+
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={5}>
             <Typography variant="h4" color="primary" gutterBottom>
               Personnalisation
             </Typography>
@@ -327,6 +394,23 @@ Kartado                </Typography>
           </Grid>
         </Grid>
       </Container>
+      {openImage && (
+        <Dialog
+          maxWidth="xl"
+          open={Boolean(openImage)}
+          onClose={() => setOpenImage(null)}
+          fullWidth
+        >
+          <DialogContent sx={{ p: 0 }}>
+            <Box
+              component="img"
+              src={openImage.src}
+              alt={openImage.alt}
+              sx={{ width: '100%', display: 'block' }}
+            />
+          </DialogContent>
+        </Dialog>
+      )}
     </Box>
   );
 };
