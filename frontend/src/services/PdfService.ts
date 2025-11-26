@@ -1,5 +1,6 @@
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import axios from 'axios';
 import { CardData, CardCollection, GenerationMetadata, GeneratePdfOptions } from '../types/app';
 import { getCategoryColor, hexToRgb } from '../constants/categories';
 
@@ -19,6 +20,8 @@ interface GenerateCardsPdfOptions extends GeneratePdfOptions {
   filename?: string;
   compressionConfig?: { imageQuality: number; maxImageSize: number };
 }
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001/api';
 
 const COVER_COLORS = {
   accent: { r: 231, g: 116, b: 9 },

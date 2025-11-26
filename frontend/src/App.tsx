@@ -9,12 +9,13 @@ import {
   Fab,
   Zoom,
   useScrollTrigger,
+  Chip,
 } from '@mui/material';
 import { KeyboardArrowUp as ScrollUpIcon } from '@mui/icons-material';
 
 // Thème et contexte
 import { appTheme, darkTheme } from './theme/appTheme';
-import { AppProvider, useApp } from './context/AppContext';
+import { AppProvider, useApp, useUsage } from './context/AppContext';
 import { useAuth } from './context/AuthContext';
 
 // Composants modernisés
@@ -28,6 +29,9 @@ import CollectionDetailPage from './pages/CollectionDetailPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import LandingPage from './pages/LandingPage';
+import TermsPage from './pages/TermsPage';
+import MentionsLegalesPage from './pages/MentionsLegalesPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import { Navigate, Outlet } from 'react-router-dom';
 
 // Composant Scroll to Top
@@ -72,12 +76,32 @@ const GuestRoute: React.FC = () => {
 
 // Layout principal avec le nouveau thème
 const AppLayout: React.FC = () => {
+  const { currentUser } = useAuth();
+  const { usage, isLoadingUsage } = useUsage();
+
+  const creditsLabel = isLoadingUsage
+    ? 'Crédits : ...'
+    : `Crédits : ${usage?.creditsBalance ?? '—'}`;
+
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
       <ModernHeader />
       <Container maxWidth="xl" sx={{ py: 4 }}>
+        {currentUser && (
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+            <Chip
+              label={creditsLabel}
+              color="primary"
+              variant="outlined"
+              size="small"
+            />
+          </Box>
+        )}
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/cgu" element={<TermsPage />} />
+          <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+          <Route path="/politique-confidentialite" element={<PrivacyPolicyPage />} />
           <Route element={<GuestRoute />}>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />

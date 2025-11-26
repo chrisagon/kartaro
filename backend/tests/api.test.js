@@ -6,12 +6,32 @@ const bodyParser = require('body-parser');
 const mockGenerateCards = jest.fn();
 const mockSaveCollection = jest.fn();
 const mockUploadImage = jest.fn();
+const mockGetUserUsage = jest.fn().mockResolvedValue({
+  userId: 'test-user',
+  creditsBalance: 999,
+  totalImagesGenerated: 0,
+  totalCardsGenerated: 0,
+  totalCollectionsSaved: 0,
+  totalPdfsExported: 0,
+  totalCreditsSpent: 0,
+});
+const mockApplyCreditChangeAndUsage = jest.fn().mockResolvedValue({
+  userId: 'test-user',
+  creditsBalance: 999,
+  totalImagesGenerated: 0,
+  totalCardsGenerated: 0,
+  totalCollectionsSaved: 0,
+  totalPdfsExported: 0,
+  totalCreditsSpent: 0,
+});
 
 jest.mock('../src/services/GeminiService', () => ({
   generateCards: mockGenerateCards,
 }));
 jest.mock('../src/services/LocalDatabaseService', () => ({
   saveCollection: mockSaveCollection,
+  getUserUsage: mockGetUserUsage,
+  applyCreditChangeAndUsage: mockApplyCreditChangeAndUsage,
 }));
 jest.mock('../src/services/R2Service', () => ({
   uploadImageToStorage: mockUploadImage,

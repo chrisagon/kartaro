@@ -1,82 +1,114 @@
 // @ts-nocheck - Ignorer les erreurs TypeScript liées à MUI v7 Grid API
 import React, { useEffect, useState } from 'react';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Chip,
-  Container,
-  Divider,
-  Grid,
-  Dialog,
-  DialogContent,
-  Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Typography,
-} from '@mui/material';
-import { ArrowForward, Bolt, Brush, RocketLaunch } from '@mui/icons-material';
+import { Box, Button, Card, CardContent, Container, Dialog, DialogContent, Divider, Grid, Stack, Typography } from '@mui/material';
+import { ArrowForward } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const categories = [
+const palette = {
+  primary: '#ff8a3c',
+  primaryHover: '#e77409',
+  primaryLight: '#fff2e5',
+  text: '#1f1f1f',
+  textSecondary: '#5f6368',
+  bg: '#ffffff',
+  bgAlt: '#fff9f5',
+  border: 'rgba(0,0,0,0.08)',
+};
+
+const navLinks = [
+  { label: 'Mission', href: '#mission' },
+  { label: 'Solution', href: '#solution' },
+  { label: 'Pour qui ?', href: '#personas' },
+  { label: 'Blog', href: 'https://medium.com/@kartaro/', external: true },
+];
+
+const missionIssues = [
   {
-    label: 'Objets / Matériel',
-    description: 'Liste les ressources concrètes pour l’analyse.',
+    icon: '😴',
+    title: "Manque d'engagement",
+    description: 'Les participants restent passifs et n’osent pas contribuer.',
   },
   {
-    label: 'Exemples de Lieux',
-    description: 'Oriente les participants dans le contexte.',
+    icon: '⏱️',
+    title: 'Préparation complexe',
+    description: 'Concevoir un atelier efficace demande beaucoup de temps et d’énergie.',
   },
   {
-    label: 'Personnes et Métiers',
-    description: 'Identifie acteurs et rôles clés.',
-  },
-  {
-    label: 'Processus de Travail',
-    description: 'Montre comment les tâches s’enchaînent.',
-  },
-  {
-    label: 'Concepts Liés',
-    description: 'Stimule la réflexion profonde.',
+    icon: '💡',
+    title: 'Résultats limités',
+    description: "Les idées restent superficielles et l'apprentissage s’estompe vite.",
   },
 ];
 
-const personalizationHighlights = [
+const solutionFeatures = [
   {
-    title: 'Volume Flexible',
-    description: 'De 8 à 100 cartes pour un simple index ou un cadrage complexe.',
+    icon: '⚡',
+    title: 'Prise en main rapide',
+    description: 'Guides d’animation clairs pour démarrer immédiatement.',
   },
   {
-    title: 'Styles Graphiques',
-    description: 'Anime, Comic Book, Digital Art, Fantasy… Rendez l’abstrait concret.',
+    icon: '🎯',
+    title: 'Thématiques variées',
+    description: 'Design thinking, créativité, cohésion… pour tous vos contextes.',
   },
   {
-    title: 'Édition Fine',
-    description: 'Modifiez chaque carte (texte, image, docs) pour un fit parfait.',
+    icon: '🤝',
+    title: 'Engagement garanti',
+    description: 'Méthodologies éprouvées pour lever les freins et mobiliser tous les profils.',
+  },
+  {
+    icon: '📊',
+    title: 'Résultats tangibles',
+    description: 'Productions concrètes et partageables dès la fin de chaque session.',
+  },
+  {
+    icon: '🔄',
+    title: 'Modulable et évolutif',
+    description: 'Personnalisez vos jeux et enrichissez votre bibliothèque au fil du temps.',
   },
 ];
 
-const intelligenceBoosters = [
-  'Tangibles & Fun : déclenchent des conversations ludiques.',
-  'Structurées & Flexibles : cartographie, tri et priorisation facilités.',
-  'Inclusives : un langage partagé pour résoudre les problèmes ensemble.',
+const personas = [
+  {
+    icon: '🎯',
+    title: 'Facilitateurs',
+    description: 'Vous animez des ateliers de design thinking ou de créativité.',
+    benefits: [
+      'Structurez vos sessions efficacement',
+      'Engagez tous les profils',
+      'Stimulez la spontanéité et l’innovation',
+      'Gardez le contrôle tout en libérant la créativité',
+    ],
+  },
+  {
+    icon: '📚',
+    title: 'Enseignants',
+    description: 'Vous cherchez à rendre vos cours plus participatifs.',
+    benefits: [
+      'Captez l’attention de toute la classe',
+      'Favorisez l’apprentissage actif',
+      'Rendez les concepts abstraits concrets',
+      'Créez des moments mémorables',
+    ],
+  },
+  {
+    icon: '🚀',
+    title: 'Formateurs',
+    description: 'Vous accompagnez des professionnels en entreprise ou en centre.',
+    benefits: [
+      'Boostez l’engagement des stagiaires',
+      'Ancrez l’apprentissage dans l’action',
+      'Intégrez la gamification facilement',
+      'Obtenez des feedbacks instantanés',
+    ],
+  },
 ];
-
-const landingChips = ['Consultants', 'Facilitateurs', 'Product teams', 'Formateurs'];
 
 const sampleIllustrations = {
   hero: {
     src: `${import.meta.env.BASE_URL}images/echantillon_cartes_2.png`,
-    alt: 'Exemples de cartes collaboratives Kartaro - série 2',
-  },
-  personalization: {
-    src: `${import.meta.env.BASE_URL}images/echantillon_cartes_1.png`,
-    alt: 'Exemples de cartes collaboratives Kartaro - série 1',
+    alt: 'Exemples de cartes collaboratives Kartaro',
   },
 };
 
@@ -94,90 +126,119 @@ const LandingPage: React.FC = () => {
   const handleCta = () => navigate('/login');
 
   return (
-    <Box sx={{ backgroundColor: 'background.default', color: 'text.primary' }}>
+    <Box sx={{ backgroundColor: palette.bg, color: palette.text }}>
       <Box
+        component="header"
         sx={{
-          background: (theme) =>
-            theme.palette.mode === 'dark'
-              ? 'radial-gradient(circle at top, rgba(33,150,243,0.25), transparent 60%)'
-              : 'linear-gradient(135deg, #f3f6ff 0%, #ffffff 55%)',
-          py: { xs: 8, md: 12 },
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
+          borderBottom: `1px solid ${palette.border}`,
+          backdropFilter: 'blur(12px)',
+          backgroundColor: 'rgba(255, 255, 255, 0.92)',
         }}
       >
         <Container maxWidth="lg">
-          <Box sx={{ display: 'flex', justifyContent: 'center', mb: { xs: 6, md: 8 } }}>
-            <Box
-              component="img"
-              src={`${import.meta.env.BASE_URL}logo-kartaro-transparent.png`}
-              alt="Logo Kartaro"
-              sx={{
-                width: { xs: 180, sm: 220, md: 260 },
-                maxWidth: '100%',
-              }}
-            />
-          </Box>
-          <Grid container spacing={6} alignItems="center">
-            <Grid item xs={12} md={7}>
-              <Chip label="Kartaro IA" color="primary" sx={{ mb: 3, fontWeight: 600 }} />
-              <Typography variant="h3" component="h1" gutterBottom>
-                Fatigué de perdre des heures à créer des jeux de cartes collaboratifs ?
-              </Typography>
-              <Typography variant="h6" color="text.secondary" paragraph>
-                Kartaro IA mixe l’IA générative et la méthode Kartado pour créer des decks
-                uniques en minutes. Plus de brainstorm interminable : juste de la créativité boostée !
-              </Typography>
-              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ my: 4 }}>
-                <Button
-                  variant="contained"
-                  size="large"
-                  endIcon={<ArrowForward />}
-                  onClick={handleCta}
-                >
-                  Se connecter gratuitement
-                </Button>
-                <Button variant="outlined" size="large" onClick={() => navigate('/register')}>
-                  Créer un compte
-                </Button>
-              </Stack>
-              <Typography variant="body1" sx={{ fontStyle: 'italic' }}>
-                « Un formateur a créé un deck sur la gestion de projet en 15 min, libérant son équipe
-                pour des débats productifs ! »
-              </Typography>
-              <Stack direction="row" spacing={1.5} sx={{ mt: 3, flexWrap: 'wrap' }}>
-                {landingChips.map((chip) => (
-                  <Chip key={chip} label={chip} variant="outlined" />
+          <Grid container alignItems="center" py={2} spacing={2}>
+            <Grid item xs={6} md={3}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Box
+                  component="img"
+                  src={`${import.meta.env.BASE_URL}logo-kartaro-transparent.png`}
+                  alt="Logo Kartaro"
+                  sx={{ width: 44 }}
+                />
+                <Typography variant="h6" fontWeight={700} color={palette.text}>
+                  Kartaro
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item md={6} sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
+              <Stack direction="row" spacing={3} component="nav">
+                {navLinks.map((link) => (
+                  <Button
+                    key={link.href}
+                    component="a"
+                    href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
+                    sx={{ color: palette.text, textTransform: 'none', fontWeight: 500 }}
+                  >
+                    {link.label}
+                  </Button>
                 ))}
               </Stack>
             </Grid>
-            <Grid item xs={12} md={5}>
-              <Stack spacing={3}>
-                <Card sx={{ borderRadius: 4, boxShadow: 6 }}>
-                  <CardContent>
-                    <Stack spacing={2}>
-                      <Typography variant="h6" color="primary" sx={{ fontWeight: 700 }}>
-                        Votre allié ludique et intelligent
-                      </Typography>
-                      <Stack direction="row" spacing={1} alignItems="center">
-                        <Bolt color="warning" />
-                        <Typography variant="body1">
-                          30 % des idées essentielles révélées en un clin d’œil.
-                        </Typography>
-                      </Stack>
-                      <Stack direction="row" spacing={1} alignItems="center">
-                        <Brush color="info" />
-                        <Typography variant="body1">
-                          Univers visuels sur mesure, prêts à être manipulés.
-                        </Typography>
-                      </Stack>
-                      <Stack direction="row" spacing={1} alignItems="center">
-                        <RocketLaunch color="success" />
-                        <Typography variant="body1">
-                          Passez de l’idée à l’action en quelques minutes.
-                        </Typography>
-                      </Stack>
-                    </Stack>
-                  </CardContent>
-                </Card>
+            <Grid item xs={6} md={3} sx={{ textAlign: 'right' }}>
+              <Button
+                variant="contained"
+                onClick={handleCta}
+                endIcon={<ArrowForward />}
+                sx={{
+                  backgroundColor: palette.primary,
+                  '&:hover': { backgroundColor: palette.primaryHover },
+                  borderRadius: 2,
+                  textTransform: 'none',
+                }}
+              >
+                Essayer Kartaro
+              </Button>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      <Box
+        component="section"
+        id="hero"
+        sx={{
+          py: { xs: 8, md: 12 },
+          background: `linear-gradient(135deg, ${palette.primaryLight} 0%, #ffffff 100%)`,
+        }}
+      >
+        <Container maxWidth="lg">
+          <Grid container spacing={6} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
+                Transformez vos <Box component="span" color={palette.primary}>ateliers</Box> en expériences mémorables
+              </Typography>
+              <Typography variant="h6" color={palette.textSecondary} paragraph>
+                Des jeux de cartes interactifs pour stimuler la créativité, renforcer la collaboration et dynamiser vos animations.
+              </Typography>
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mt: 4 }}>
+                <Button
+                  variant="contained"
+                  onClick={handleCta}
+                  endIcon={<ArrowForward />}
+                  sx={{
+                    backgroundColor: palette.primary,
+                    '&:hover': { backgroundColor: palette.primaryHover },
+                    borderRadius: 3,
+                    textTransform: 'none',
+                    px: 4,
+                  }}
+                >
+                  Découvrir Kartaro
+                </Button>
+                <Button
+                  variant="outlined"
+                  component="a"
+                  href="#solution"
+                  sx={{
+                    borderColor: palette.primary,
+                    color: palette.primary,
+                    borderRadius: 3,
+                    textTransform: 'none',
+                    px: 4,
+                    '&:hover': { backgroundColor: palette.primaryLight, borderColor: palette.primary },
+                  }}
+                >
+                  Comment ça marche ?
+                </Button>
+              </Stack>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <Box
                   component="img"
                   src={sampleIllustrations.hero.src}
@@ -186,228 +247,301 @@ const LandingPage: React.FC = () => {
                   onClick={() => setOpenImage(sampleIllustrations.hero)}
                   sx={{
                     width: '100%',
-                    maxWidth: 420,
+                    maxWidth: 520,
                     borderRadius: 4,
-                    boxShadow: 8,
+                    boxShadow: '0 20px 60px rgba(0,0,0,0.15)',
                     cursor: 'zoom-in',
-                    alignSelf: { xs: 'center', md: 'flex-end' },
                     transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.02)',
-                    },
+                    '&:hover': { transform: 'scale(1.02)' },
                   }}
                 />
-              </Stack>
+              </Box>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ py: { xs: 8, md: 10 } }}>
-        <Grid container spacing={6}>
-          <Grid item xs={12} md={6}>
-            <Typography variant="h4" gutterBottom>
-              Créez votre univers en un clin d’œil
-            </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph>
-              L’IA devient votre partenaire créatif : entrez votre thème et votre public, elle génère
-              un contexte structuré basé sur les piliers du Kartado. Vous gardez le contrôle :
-              vérifiez, enrichissez ou simplifiez.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Table size="small" sx={{ borderRadius: 3, overflow: 'hidden', boxShadow: 3 }}>
-              <TableHead>
-                <TableRow>
-                  <TableCell sx={{ fontWeight: 700 }}>Catégorie Kartado</TableCell>
-                  <TableCell sx={{ fontWeight: 700 }}>Rôle</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {categories.map((category) => (
-                  <TableRow key={category.label}>
-                    <TableCell>{category.label}</TableCell>
-                    <TableCell>{category.description}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Grid>
-        </Grid>
-
-        <Divider sx={{ my: 8 }} />
-
-        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+      <Box component="section" id="mission" sx={{ backgroundColor: palette.bgAlt, py: { xs: 8, md: 10 } }}>
+        <Container maxWidth="lg">
+          <Typography variant="h4" align="center" fontWeight={700} gutterBottom>
+            Notre mission
+          </Typography>
+          <Typography variant="body1" align="center" color={palette.textSecondary} sx={{ maxWidth: 720, mx: 'auto', mb: 6 }}>
+            Permettre des animations plus créatives et interactives en offrant des outils qui stimulent la réflexion et la collaboration.
+          </Typography>
           <Box
-            component="img"
-            src={sampleIllustrations.personalization.src}
-            alt={sampleIllustrations.personalization.alt}
-            loading="lazy"
-            onClick={() => setOpenImage(sampleIllustrations.personalization)}
             sx={{
-              width: '100%',
-              maxWidth: 700,
-              borderRadius: 4,
-              boxShadow: 8,
-              cursor: 'zoom-in',
-              transition: 'transform 0.3s ease',
-              '&:hover': {
-                transform: 'scale(1.01)',
-              },
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              flexWrap: { xs: 'nowrap', md: 'wrap' },
+              gap: 3,
             }}
-          />
-        </Box>
+          >
+            {missionIssues.map((issue) => (
+              <Card
+                key={issue.title}
+                sx={{
+                  borderRadius: 3,
+                  flex: { xs: '1 1 auto', md: '1 1 calc(33% - 24px)' },
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
+                }}
+              >
+                <CardContent>
+                  <Box
+                    sx={{
+                      width: 56,
+                      height: 56,
+                      borderRadius: 2,
+                      backgroundColor: palette.primaryLight,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 26,
+                      mb: 3,
+                    }}
+                  >
+                    {issue.icon}
+                  </Box>
+                  <Typography variant="h6" gutterBottom>
+                    {issue.title}
+                  </Typography>
+                  <Typography color={palette.textSecondary}>{issue.description}</Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
+        </Container>
+      </Box>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={5}>
-            <Typography variant="h4" color="primary" gutterBottom>
-              Personnalisation
-            </Typography>
-            <Typography variant="h4" gutterBottom>
-              Forgez des cartes uniques et impactantes
-            </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph>
-              Vos cartes deviennent des artefacts magiques : tangibles, portables et persistants,
-              elles libèrent les esprits pour une analyse fluide.
-            </Typography>
-          </Grid>
-                    <Grid item xs={12} md={7}>
-            <Grid container spacing={3}>
-              {personalizationHighlights.map((highlight) => (
-                <Grid item xs={12} sm={4} key={highlight.title}>
-                  <Card sx={{ borderRadius: 3, height: '100%' }}>
-                    <CardContent>
+      <Box component="section" id="solution" sx={{ py: { xs: 8, md: 10 } }}>
+        <Container maxWidth="lg">
+          <Typography variant="h4" align="center" fontWeight={700} gutterBottom>
+            La solution Kartaro
+          </Typography>
+          <Typography variant="body1" align="center" color={palette.textSecondary} sx={{ maxWidth: 720, mx: 'auto', mb: 6 }}>
+            Une gamme de jeux de cartes clés en main pour animer vos sessions avec impact.
+          </Typography>
+          <Grid container spacing={6} alignItems="stretch">
+            <Grid item xs={12} md={6}>
+              <Stack spacing={3}>
+                {solutionFeatures.map((feature) => (
+                  <Stack direction="row" spacing={2} key={feature.title} alignItems="flex-start">
+                    <Box
+                      sx={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: 2,
+                        backgroundColor: palette.primary,
+                        color: '#fff',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 24,
+                      }}
+                    >
+                      {feature.icon}
+                    </Box>
+                    <Box>
                       <Typography variant="h6" gutterBottom>
-                        {highlight.title}
+                        {feature.title}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {highlight.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
+                      <Typography color={palette.textSecondary}>{feature.description}</Typography>
+                    </Box>
+                  </Stack>
+                ))}
+              </Stack>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Card sx={{ borderRadius: 4, height: '100%', backgroundColor: palette.primaryLight, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', p: 4 }}>
+                <Typography color={palette.textSecondary}>
+                  <strong>Kartaro =</strong>
+                  <br />
+                  Kart (carte) + Ado (action/processus)
+                  <br />
+                  Le processus de création par les cartes
+                </Typography>
+              </Card>
             </Grid>
           </Grid>
-        </Grid>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', my: 6 }}>
+          <Stack spacing={2} sx={{ mt: 8, textAlign: 'center' }}>
+            <Typography variant="h5" fontWeight={600}>
+              Comment l'utiliser ?
+            </Typography>
+            <Typography variant="body1" color={palette.textSecondary}>
+              Découvrez en vidéo comment générer, personnaliser et lancer vos decks en quelques minutes.
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+              <Box
+                component="iframe"
+                width="700px"
+                height="400px"
+                src="https://embed.app.guidde.com/playbooks/kCvAUVJ78teVkygWMy2dyV?mode=videoOnly"
+                title="Utiliser Kartaro Pour Générer Vos Decks De Cartes Personnalisés"
+                frameBorder="0"
+                referrerPolicy="unsafe-url"
+                allowFullScreen
+                allow="clipboard-write"
+                sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-forms allow-same-origin allow-presentation"
+                sx={{ borderRadius: 2, maxWidth: '100%' }}
+              />
+            </Box>
+          </Stack>
+        </Container>
+      </Box>
+
+      <Box component="section" id="personas" sx={{ backgroundColor: palette.bgAlt, py: { xs: 8, md: 10 } }}>
+        <Container maxWidth="lg">
+          <Typography variant="h4" align="center" fontWeight={700} gutterBottom>
+            Kartaro s’adresse à vous
+          </Typography>
+          <Typography variant="body1" align="center" color={palette.textSecondary} sx={{ maxWidth: 720, mx: 'auto', mb: 6 }}>
+            Que vous soyez facilitateur, enseignant ou formateur, Kartaro s’adapte à votre pratique.
+          </Typography>
           <Box
-            component="iframe"
-            width="100%"
-            height="500px"
-            src="https://embed.app.guidde.com/playbooks/kCvAUVJ78teVkygWMy2dyV?mode=videoOnly"
-            title="Utiliser Kartado Pour Générer Vos Decks De Cartes Personnalisés"
-            frameBorder="0"
-            referrerPolicy="unsafe-url"
-            allowFullScreen
-            allow="clipboard-write"
-            sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-forms allow-same-origin allow-presentation"
             sx={{
-              borderRadius: 2,
-              maxWidth: 700,
-              boxShadow: 6,
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              flexWrap: { xs: 'nowrap', md: 'wrap' },
+              gap: 4,
             }}
-          />
-        </Box>
+          >
+            {personas.map((persona) => (
+              <Card
+                key={persona.title}
+                sx={{
+                  borderRadius: 3,
+                  flex: { xs: '1 1 auto', md: '1 1 calc(33% - 32px)' },
+                  textAlign: 'center',
+                  boxShadow: '0 12px 32px rgba(0,0,0,0.1)',
+                }}
+              >
+                <CardContent>
+                  <Box
+                    sx={{
+                      width: 90,
+                      height: 90,
+                      borderRadius: '50%',
+                      backgroundColor: palette.primary,
+                      color: '#fff',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 36,
+                      mx: 'auto',
+                      mb: 3,
+                    }}
+                  >
+                    {persona.icon}
+                  </Box>
+                  <Typography variant="h6" gutterBottom>
+                    {persona.title}
+                  </Typography>
+                  <Typography color={palette.textSecondary} paragraph>
+                    {persona.description}
+                  </Typography>
+                  <Divider sx={{ my: 2 }} />
+                  <Stack component="ul" spacing={1} sx={{ listStyle: 'none', m: 0, p: 0, textAlign: 'left' }}>
+                    {persona.benefits.map((benefit) => (
+                      <Typography key={benefit} component="li" color={palette.textSecondary} sx={{ position: 'relative', pl: 3 }}>
+                        <Box component="span" sx={{ position: 'absolute', left: 0, color: palette.primary }}>
+                          ✓
+                        </Box>
+                        {benefit}
+                      </Typography>
+                    ))}
+                  </Stack>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
+        </Container>
+      </Box>
 
-        <Divider sx={{ my: 8 }} />
+      <Box component="section" id="contact" sx={{
+        py: { xs: 8, md: 10 },
+        textAlign: 'center',
+        background: `linear-gradient(135deg, ${palette.primary} 0%, ${palette.primaryHover} 100%)`,
+        color: '#fff',
+      }}>
+        <Container maxWidth="md">
+          <Typography variant="h4" fontWeight={700} gutterBottom>
+            Prêt à révolutionner vos ateliers ?
+          </Typography>
+          <Typography variant="h6" sx={{ mb: 4, opacity: 0.95 }}>
+            Rejoignez les facilitateurs, enseignants et formateurs qui utilisent déjà Kartaro.
+          </Typography>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
+            <Button
+              variant="contained"
+              onClick={handleCta}
+              sx={{
+                backgroundColor: '#fff',
+                color: palette.primary,
+                '&:hover': { backgroundColor: palette.primaryLight },
+                borderRadius: 999,
+                px: 4,
+                textTransform: 'none',
+              }}
+            >
+              Demander une démo
+            </Button>
+            <Button
+              variant="outlined"
+              component="a"
+              href="mailto:contact@kartaro.com"
+              sx={{
+                borderColor: '#fff',
+                color: '#fff',
+                borderRadius: 999,
+                px: 4,
+                textTransform: 'none',
+                '&:hover': { backgroundColor: 'rgba(255,255,255,0.12)' },
+              }}
+            >
+              contact@kartaro.com
+            </Button>
+          </Stack>
+        </Container>
+      </Box>
 
-                <Grid container spacing={4} alignItems="center">
-                    <Grid item xs={12} md={6}>
-            <Typography variant="h4" color="primary" gutterBottom>
-              Intelligence collective
+      <Box component="footer" sx={{ backgroundColor: palette.text, color: '#fff', py: 4 }}>
+        <Container maxWidth="lg">
+          <Stack spacing={2} alignItems="center">
+            <Typography align="center" sx={{ opacity: 0.8 }}>
+              {new Date().getFullYear()} Kartaro – Des ateliers créatifs qui stimulent la réflexion et la collaboration.
             </Typography>
-            <Typography variant="h4" gutterBottom>
-              Boostez vos ateliers collaboratifs
-            </Typography>
-            <Stack spacing={2}>
-              {intelligenceBoosters.map((text) => (
-                <Card key={text} sx={{ borderRadius: 3 }}>
-                  <CardContent>
-                    <Typography>{text}</Typography>
-                  </CardContent>
-                </Card>
-              ))}
-            </Stack>
-          </Grid>
-                    <Grid item xs={12} md={6}>
-            <Card sx={{ borderRadius: 4, height: '100%' }}>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Transparence et confiance
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Nos méthodes sont testées par des pros, avec transparence totale sur le processus.
-                  Les cartes servent de starters de conversations idéales pour Ouverture, Exploration
-                  et Finalisation.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-
-        <Divider sx={{ my: 8 }} />
-
-                <Grid container spacing={4} alignItems="center">
-                    <Grid item xs={12} md={7}>
-            <Typography variant="h4" color="primary" gutterBottom>
-              Action
-            </Typography>
-            <Typography variant="h4" gutterBottom>
-              Prêt à passer à l’action ?
-            </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph>
-              Exporte ton Deck final au format PDF pour des ateliers physiques ou sauvegarde
-              tes collections en ligne pour les réutiliser facilement.
-            </Typography>
-            <Stack spacing={1.5} sx={{ mb: 4 }}>
-              <Typography>• Export PDF prêt à imprimer.</Typography>
-              <Typography>• Collections en ligne toujours accessibles.</Typography>
-              <Typography>
-                • Bonus exclusif : template + guide PDF sur l’animation Kartado (valeur 49 €).
-              </Typography>
-            </Stack>
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-              <Button variant="contained" size="large" onClick={handleCta}>
-                Créer mon premier deck
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ textAlign: 'center' }}>
+              <Button
+                component="a"
+                href="/cgu"
+                sx={{ color: '#fff', textTransform: 'none', opacity: 0.9 }}
+              >
+                CGU
               </Button>
-              <Button variant="text" size="large" onClick={() => navigate('/register')}>
-                Je découvre l’app
+              <Button
+                component="a"
+                href="/mentions-legales"
+                sx={{ color: '#fff', textTransform: 'none', opacity: 0.9 }}
+              >
+                Mentions légales
+              </Button>
+              <Button
+                component="a"
+                href="/politique-confidentialite"
+                sx={{ color: '#fff', textTransform: 'none', opacity: 0.9 }}
+              >
+                Politique de confidentialité
               </Button>
             </Stack>
-          </Grid>
-                    <Grid item xs={12} md={5}>
-            <Card sx={{ borderRadius: 4, boxShadow: 4 }}>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Offre limitée
-                </Typography>
-                <Typography variant="body1" paragraph>
-                  Pour les 50 premiers inscrits : un template gratuit + guide PDF sur l’animation
-Kartado                </Typography>
-                <Typography variant="subtitle2" color="text.secondary">
-                  Crée ton premier deck gratuit en 2 clics. Commence maintenant – offre limitée !
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
+          </Stack>
+        </Container>
+      </Box>
+
       {openImage && (
-        <Dialog
-          maxWidth="xl"
-          open={Boolean(openImage)}
-          onClose={() => setOpenImage(null)}
-          fullWidth
-        >
+        <Dialog maxWidth="xl" open onClose={() => setOpenImage(null)} fullWidth>
           <DialogContent sx={{ p: 0 }}>
-            <Box
-              component="img"
-              src={openImage.src}
-              alt={openImage.alt}
-              sx={{ width: '100%', display: 'block' }}
-            />
+            <Box component="img" src={openImage.src} alt={openImage.alt} sx={{ width: '100%', display: 'block' }} />
           </DialogContent>
         </Dialog>
       )}

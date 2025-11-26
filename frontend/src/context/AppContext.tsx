@@ -15,10 +15,12 @@ const initialState: AppState = {
   isGenerating: false,
   isGeneratingPdf: false,
   isLoadingCollections: false,
+  isLoadingUsage: false,
   lastGenerationResult: null,
   metrics: null,
   imageGenerationProgress: null,
   generationMetadata: null,
+  creditsUsage: null,
   settings: {
     darkMode: false,
     animations: true,
@@ -97,6 +99,12 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
 
     case 'SET_LOADING_COLLECTIONS':
       return { ...state, isLoadingCollections: action.payload };
+
+    case 'SET_LOADING_USAGE':
+      return { ...state, isLoadingUsage: action.payload };
+
+    case 'SET_USAGE_SUMMARY':
+      return { ...state, creditsUsage: action.payload };
 
     case 'SET_METRICS':
       return { ...state, metrics: action.payload };
@@ -280,13 +288,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         dispatch({ type: 'SET_GENERATING_PDF', payload: false });
       }
     },
+    getUsageSummary: async () => {
+      dispatch({ type: 'SET_LOADING_USAGE', payload: true });
+      try {
+        const summary = await ApiService.getUsageSummary();
+        dispatch({ type: 'SET_USAGE_SUMMARY', payload: summary });
+        return summary;
+      } finally {
+        dispatch({ type: 'SET_LOADING_USAGE', payload: false });
+      }
+    },
   }), [dispatch, generationMetadata?.theme, generationMetadata?.publicTarget, generationMetadata?.context]);
 
   useEffect(() => {
     if (currentUser) {
       api.getCollections();
+      api.getUsageSummary();
     } else {
       dispatch({ type: 'SET_COLLECTIONS', payload: [] });
+      dispatch({ type: 'SET_USAGE_SUMMARY', payload: null });
     }
   }, [currentUser, api]);
 
@@ -348,6 +368,15 @@ export const useGeneration = () => {
     generateCards: api.generateCards,
     generateContext: api.generateContext,
     generatePdfForCards: api.generatePdfForCards,
+  };
+};
+
+export const useUsage = () => {
+  const { state, api } = useApp();
+  return {
+    usage: state.creditsUsage,
+    isLoadingUsage: state.isLoadingUsage,
+    refreshUsage: api.getUsageSummary,
   };
 };
 

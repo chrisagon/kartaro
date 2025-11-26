@@ -1,0 +1,151 @@
+openapi: 3.0.0
+info:
+  title: Fresquia Credit & Usage API
+  version: 0.1.0
+
+paths:
+  /api/users/me/usage:
+    get:
+      summary: Get current user's credit and usage summary
+      tags: [usage]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Usage summary for the authenticated user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  creditsBalance:
+                    type: integer
+                  totalImagesGenerated:
+                    type: integer
+                  totalCardsGenerated:
+                    type: integer
+                  totalCollectionsSaved:
+                    type: integer
+                  totalPdfsExported:
+                    type: integer
+                  totalCreditsSpent:
+                    type: integer
+        '401':
+          description: Unauthorized
+
+  /api/admin/users/{userId}/credits/adjust:
+    post:
+      summary: Adjust credits for a given user (admin only)
+      tags: [admin]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                delta:
+                  type: integer
+                  description: Signed amount of credits to add or remove
+                source:
+                  type: string
+                  description: Logical origin of the adjustment (e.g. admin_grant)
+                reason:
+                  type: string
+              required: [delta, source]
+      responses:
+        '200':
+          description: Updated usage summary for the target user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageSummary'
+        '403':
+          description: Forbidden (not an admin)
+
+  /api/admin/users/{userId}/credit-transactions:
+    get:
+      summary: List credit transactions for a user (admin only)
+      tags: [admin]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 50
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of credit transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CreditTransaction'
+        '403':
+          description: Forbidden (not an admin)
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    UsageSummary:
+      type: object
+      properties:
+        creditsBalance:
+          type: integer
+        totalImagesGenerated:
+          type: integer
+        totalCardsGenerated:
+          type: integer
+        totalCollectionsSaved:
+          type: integer
+        totalPdfsExported:
+          type: integer
+        totalCreditsSpent:
+          type: integer
+
+    CreditTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        type:
+          type: string
+          enum: [earn, spend, adjust]
+        source:
+          type: string
+        credits:
+          type: integer
+        payload:
+          type: object
+          additionalProperties: true
+        createdAt:
+          type: string
+          format: date-time

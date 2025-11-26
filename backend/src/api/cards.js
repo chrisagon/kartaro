@@ -1,12 +1,14 @@
 const express = require('express');
 const { generateCards, generateCardsTextOnly, regenerateCardImage, generateContextFromThemeAndPublic } = require('../services/GeminiService');
 const pdfService = require('../services/PdfService');
+const { requireCredits, consumeCredits } = require('../middleware/standaloneCredits');
+// const CreditService = require('../services/CreditService');
 
 const router = express.Router();
 const authMiddleware = require('../middleware/auth');
 
 // Nouvelle route pour générer uniquement le texte des cartes
-router.post('/generate-text', authMiddleware, async (req, res) => {
+router.post('/generate-text', authMiddleware, requireCredits('context_generation', { allowZero: true }), async (req, res) => {
     const { theme, context, numCards } = req.body;
 
   if (!theme) {
@@ -23,7 +25,14 @@ router.post('/generate-text', authMiddleware, async (req, res) => {
 });
 
 // Nouvelle route pour générer l'image d'une seule carte
-router.post('/generate-image', authMiddleware, async (req, res) => {
+router.post('/generate-image', 
+  authMiddleware, 
+  /* requireCredits('image_regeneration', { numImages: 1 }),
+  consumeCredits('image_regeneration', { 
+    source: 'image_generation',
+    payload: { operation: 'single_image_generation' }
+  }), */
+  async (req, res) => {
     const { card, theme, context, stylePreset } = req.body;
 
   if (!card || !theme) {
@@ -40,7 +49,16 @@ router.post('/generate-image', authMiddleware, async (req, res) => {
 });
 
 // Route pour générer les cartes en streaming
-router.post('/generate', authMiddleware, async (req, res) => {
+router.post('/generate', 
+  authMiddleware, 
+  // TODO: Re-enable credit middleware once it's properly implemented
+  // requireCredits('image_generation', { numImages: (req) => req.body.numCards || 10 }),
+  // consumeCredits('image_generation', { 
+  //   numImages: (req) => req.body.numCards || 10,
+  //   source: 'image_generation',
+  //   payload: { operation: 'batch_image_generation' }
+  // }),
+  async (req, res) => {
     const { theme, context, numCards, stylePreset } = req.body;
 
   if (!theme || !context) {
@@ -73,15 +91,21 @@ router.post('/generate', authMiddleware, async (req, res) => {
 });
 
 // Regenerate image for a single card
-router.post('/regenerate-image', authMiddleware, async (req, res) => {
+router.post('/regenerate-image', 
+  authMiddleware, 
+  /* requireCredits('image_regeneration', { numImages: 1 }),
+  consumeCredits('image_regeneration', { 
+    source: 'image_generation',
+    payload: { operation: 'image_regeneration' }
+  }), */
+  async (req, res) => {
     const { card, theme, context, stylePreset } = req.body;
 
   if (!card || !card.title) {
         return res.status(400).json({ error: 'Card data is required' });
   }
 
-  // Validate stylePreset (optional, default to 'isometric', must be one of the allowed values)
-  const allowedStylePresets = ['anime', 'comic-book', 'digital-art', 'enhance', 'fantasy-art', 'isometric', 'pixel-art'];
+  const allowedStylePresets = ['anime', 'comic', 'digital-art', 'enhance', 'fantasy-art', 'isometric', 'pixel-art'];
   const validStylePreset = stylePreset && allowedStylePresets.includes(stylePreset)
     ? stylePreset
     : 'isometric';
@@ -95,24 +119,38 @@ router.post('/regenerate-image', authMiddleware, async (req, res) => {
 });
 
 // Route pour générer le contexte
-router.post('/generate-context', authMiddleware, async (req, res) => {
-    const { theme, publicTarget } = req.body;
+router.post('/generate-context', 
+  authMiddleware, 
+  /* requireCredits('context_generation'),
+  consumeCredits('context_generation', { 
+    source: 'context_generation',
+    payload: { operation: 'context_generation' }
+  }), */
+  async (req, res) => {
+  const { theme, publicTarget } = req.body;
 
   if (!theme || !publicTarget) {
-        return res.status(400).json({ error: 'Le thème et le public sont requis.' });
+    return res.status(400).json({ error: 'Le thème et le public sont requis.' });
   }
 
   try {
     const context = await generateContextFromThemeAndPublic(theme, publicTarget);
-        res.json({ context });
+    res.json({ context });
   } catch (error) {
-        console.error('Erreur lors de la génération du contexte:', error);
-    res.status(500).json({ error: error.message });
+    console.error('Erreur lors de la génération du contexte:', error);
+    res.status(500).json({ error: error.message || 'Failed to generate context.' });
   }
 });
 
 // Generate a PDF for unsaved cards with metadata
-router.post('/generate-pdf', authMiddleware, async (req, res) => {
+router.post('/generate-pdf', 
+  authMiddleware, 
+  /* requireCredits('pdf_export', { allowZero: true }),
+  consumeCredits('pdf_export', { 
+    source: 'pdf_export',
+    payload: { operation: 'pdf_export' }
+  }), */
+  async (req, res) => {
     const { cards, metadata = {}, name, description } = req.body || {};
 
   if (!Array.isArray(cards) || cards.length === 0) {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getAuth } from 'firebase/auth';
-import { CardData, CardCollection, GenerationResult, GeneratePdfOptions } from '../types/app';
+import { CardData, CardCollection, GenerationResult, GeneratePdfOptions, UsageSummary } from '../types/app';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001/api';
 
@@ -15,7 +15,7 @@ const getAuthToken = async () => {
 
 async function request<T>(url: string, options?: any, isPublic = false): Promise<T> {
   try {
-        const token = isPublic ? null : await getAuthToken();
+    const token = isPublic ? null : await getAuthToken();
 
     const headers: any = {
       'Content-Type': 'application/json',
@@ -34,7 +34,15 @@ async function request<T>(url: string, options?: any, isPublic = false): Promise
     return response.data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
-      throw new Error(error.response?.data?.message || error.message);
+      const status = error.response?.status;
+      const data = error.response?.data as any;
+      const message = data?.error || data?.message || error.message;
+
+      const apiError: any = new Error(message);
+      if (status) apiError.status = status;
+      if (data?.code) apiError.code = data.code;
+      apiError.raw = data;
+      throw apiError;
     }
     throw error;
   }
@@ -52,6 +60,10 @@ export function generateCardsText(theme: string, context: string, numCards?: num
     method: 'POST',
     data: { theme, context, numCards },
   });
+}
+
+export function getUsageSummary(): Promise<UsageSummary> {
+  return request<UsageSummary>('/users/me/usage');
 }
 
 export function generateCardImage(card: CardData, theme: string, context: string, stylePreset?: string): Promise<{ imageUrl: string }> {

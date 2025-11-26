@@ -104,8 +104,12 @@ export const ModernInputForm: React.FC<ModernInputFormProps> = ({ onGenerate }) 
           context: context.trim(),
         }
       );
-    } catch (err) {
-      setError('Erreur lors de la génération. Veuillez réessayer.');
+    } catch (err: any) {
+      if (err && err.code === 'INSUFFICIENT_CREDITS') {
+        setError("Crédits insuffisants pour générer ces cartes. Contactez un administrateur pour recharger votre compte.");
+      } else {
+        setError(err instanceof Error ? err.message : 'Erreur lors de la génération. Veuillez réessayer.');
+      }
       console.error('Erreur de génération:', err);
     }
   };

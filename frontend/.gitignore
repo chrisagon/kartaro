@@ -19,6 +19,7 @@ backend/cache
 backend/logs
 backend/data
 backend/data/*.db
+backend/tests
 /.firebase
 
 # misc

@@ -1,16 +1,17 @@
 const express = require('express');
-const {
-  saveCollection,
-  getCollections,
-  getCollectionById,
-  updateCollection,
-  deleteCollection,
-  getPublicCollections,
-  getPublicCollectionById,
-} = require('../services/LocalDatabaseService');
-const authMiddleware = require('../middleware/auth');
-const { uploadImageToStorage } = require('../services/R2Service');
+const LocalDatabaseService = require('../services/LocalDatabaseService');
+const { 
+  getCollectionsByUserId, 
+  getCollectionById, 
+  createCollection, 
+  updateCollection, 
+  deleteCollection 
+} = LocalDatabaseService;
 const pdfService = require('../services/PdfService');
+// const { requireCredits, consumeCredits } = require('../middleware/credits');
+
+const router = express.Router();
+const authMiddleware = require('../middleware/auth');
 
 const toArrayBuffer = (payload) => {
   if (!payload) {
@@ -115,49 +116,57 @@ const createCollectionsRouter = (pdfService) => {
   });
 
   // Save a new collection for the authenticated user
-  router.post('/', authMiddleware, async (req, res) => {
-    try {
-      const userId = req.user.uid;
-      const collectionData = req.body;
+  router.post('/', 
+    authMiddleware, 
+    /* requireCredits('collection_save'),
+    consumeCredits('collection_save', { 
+      source: 'collection_save',
+      payload: { operation: 'collection_save' }
+    }), */
+    async (req, res) => {
+      try {
+        const userId = req.user.uid;
+        const collectionData = req.body;
 
-      if (!collectionData || !collectionData.name || !collectionData.cards) {
-        return res.status(400).json({ error: 'Collection name and cards are required.' });
-      }
-
-      // Add user-specific data and timestamps
-      const newCollection = {
-        ...collectionData,
-        id: collectionData.id || Date.now().toString(),
-        userId,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        isPublic: Boolean(collectionData.isPublic),
-      };
-
-      // Upload images to R2 sequentially to avoid memory overload
-      const cardsWithImageUrls = [];
-      for (const card of newCollection.cards) {
-        try {
-          const imageUrl = await uploadImageToStorage(card.image, userId, newCollection.id);
-          cardsWithImageUrls.push({ ...card, image: imageUrl });
-        } catch (error) {
-          console.error('Failed to upload image for card "%s":', card.title, error);
-          cardsWithImageUrls.push(card); // Keep original base64 if upload fails
+        if (!collectionData || !collectionData.name || !collectionData.cards) {
+          return res.status(400).json({ error: 'Collection name and cards are required.' });
         }
+
+        // Add user-specific data and timestamps
+        const newCollection = {
+          ...collectionData,
+          id: collectionData.id || Date.now().toString(),
+          userId,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          isPublic: Boolean(collectionData.isPublic),
+        };
+
+        // Upload images to R2 sequentially to avoid memory overload
+        const cardsWithImageUrls = [];
+        for (const card of newCollection.cards) {
+          try {
+            const imageUrl = await uploadImageToStorage(card.image, userId, newCollection.id);
+            cardsWithImageUrls.push({ ...card, image: imageUrl });
+          } catch (error) {
+            console.error('Failed to upload image for card "%s":', card.title, error);
+            cardsWithImageUrls.push(card); // Keep original base64 if upload fails
+          }
+        }
+
+        const collectionToSave = {
+          ...newCollection,
+          cards: cardsWithImageUrls,
+        };
+
+        const savedCollection = await saveCollection(userId, collectionToSave);
+        res.status(201).json(savedCollection);
+      } catch (error) {
+        console.error('Error saving collection:', error);
+        res.status(500).json({ error: 'Failed to save collection.' });
       }
-
-      const collectionToSave = {
-        ...newCollection,
-        cards: cardsWithImageUrls,
-      };
-
-      const savedCollection = await saveCollection(userId, collectionToSave);
-      res.status(201).json(savedCollection);
-    } catch (error) {
-      console.error('Error saving collection:', error);
-      res.status(500).json({ error: 'Failed to save collection.' });
     }
-  });
+  );
 
   // Delete a collection by ID
   router.delete('/:id', authMiddleware, async (req, res) => {
@@ -171,21 +180,31 @@ const createCollectionsRouter = (pdfService) => {
   });
 
   // Generate PDF for a collection by ID
-  router.get('/:id/pdf', authMiddleware, async (req, res) => {
-    try {
-      const userId = req.user.uid;
-      const collection = await getCollectionById(userId, req.params.id);
-      const pdfBuffer = await pdfService.generatePdf(collection, {
-        assetBaseUrl: process.env.PDF_ASSET_BASE_URL,
-      });
-      res.setHeader('Content-Type', 'application/pdf');
-      res.setHeader('Content-Disposition', `attachment; filename=${collection.name}.pdf`);
-      res.send(pdfBuffer);
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      res.status(500).json({ error: 'Failed to generate PDF' });
+  router.get('/:id/pdf', 
+    authMiddleware, 
+    /* requireCredits('pdf_export', { allowZero: true }),
+    consumeCredits('pdf_export', {
+      source: 'pdf_export',
+      payload: { operation: 'collection_pdf_export' }
+    }), */
+    async (req, res) => {
+      try {
+        const userId = req.user.uid;
+        const collection = await getCollectionById(userId, req.params.id);
+
+        const pdfBuffer = await pdfService.generatePdf(collection, {
+          assetBaseUrl: process.env.PDF_ASSET_BASE_URL,
+        });
+
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename=${collection.name}.pdf`);
+        res.send(pdfBuffer);
+      } catch (error) {
+        console.error('Error generating PDF:', error);
+        res.status(500).json({ error: 'Failed to generate PDF' });
+      }
     }
-  });
+  );
 
   return router;
 };

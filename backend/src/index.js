@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const cardsRouter = require('./api/cards');
+const { db } = require('./services/LocalDatabaseService');
 
 const FRONTEND_PUBLIC_DIR = path.join(__dirname, '..', '..', 'frontend', 'public');
 
@@ -52,16 +53,26 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: requestLimit }));
 app.use(bodyParser.urlencoded({ limit: requestLimit, extended: true }));
 
+// Attach database to request for credit middleware
+app.use((req, res, next) => {
+  req.db = db;
+  next();
+});
+
 // Serve cached images and frontend assets
 app.use('/api/images', express.static(path.join(__dirname, 'cache', 'images')));
 app.use('/images', express.static(path.join(FRONTEND_PUBLIC_DIR, 'images')));
 
 const collectionsRouter = require('./api/collections');
 const authRouter = require('./api/auth');
+const usersRouter = require('./api/users');
+const adminRouter = require('./api/adminCredits');
 
 app.use('/api/cards', cardsRouter);
 app.use('/api/collections', collectionsRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/admin', adminRouter);
 
 app.get('/healthz', (req, res) => {
   res.json({ status: 'ok' });

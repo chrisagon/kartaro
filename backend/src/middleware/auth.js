@@ -18,7 +18,8 @@ const authMiddleware = async (req, res, next) => {
       return next();
     }
 
-    const decodedToken = await verifyToken(idToken);
+    // Pass database instance to verifyToken for credit initialization
+    const decodedToken = await verifyToken(idToken, req.db);
     req.user = decodedToken;
     next();
   } catch (error) {

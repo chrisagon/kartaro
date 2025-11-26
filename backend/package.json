@@ -31,7 +31,8 @@
     "lowdb": "^7.0.1",
     "node-fetch": "^2.7.0",
     "puppeteer-core": "^22.10.0",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "stripe": "^17.6.0"
   },
   "devDependencies": {
     "eslint": "^9.36.0",

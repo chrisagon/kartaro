@@ -74,9 +74,13 @@ export const ModernMainPage: React.FC = () => {
       await getCollections();
       setSaveDialogOpen(false);
       setCollectionName('');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error saving collection:', error);
-      alert('Failed to save collection. Please try again.');
+      if (error && error.code === 'INSUFFICIENT_CREDITS') {
+        alert("Crédits insuffisants pour sauvegarder cette collection. Contactez un administrateur pour recharger votre compte.");
+      } else {
+        alert(error instanceof Error ? error.message : 'Failed to save collection. Please try again.');
+      }
     } finally {
       setIsSavingQuick(false);
     }
@@ -92,9 +96,13 @@ export const ModernMainPage: React.FC = () => {
         name: state.currentCollection?.name ?? state.generationMetadata?.theme,
         description: state.currentCollection?.description,
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error generating PDF:', error);
-      alert('Failed to generate PDF. Please try again.');
+      if (error && error.code === 'INSUFFICIENT_CREDITS') {
+        alert("Crédits insuffisants pour générer ce PDF. Contactez un administrateur pour recharger votre compte.");
+      } else {
+        alert(error instanceof Error ? error.message : 'Failed to generate PDF. Please try again.');
+      }
     } finally {
       setIsGeneratingPdf(false);
     }

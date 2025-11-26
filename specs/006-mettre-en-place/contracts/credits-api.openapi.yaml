@@ -1,0 +1,576 @@
+openapi: 3.0.3
+info:
+  title: Fresquia Credit Management API
+  description: API for managing credit packs, transactions, and user credit balances
+  version: 1.0.0
+  contact:
+    name: Fresquia Development Team
+
+servers:
+  - url: https://api.fresquia.com
+    description: Production server
+  - url: https://staging-api.fresquia.com
+    description: Staging server
+
+paths:
+  /api/users/me/usage:
+    get:
+      summary: Get current user's credit balance and usage statistics
+      description: Returns the current credit balance and aggregated usage statistics for the authenticated user
+      tags:
+        - User Usage
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: User usage statistics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageSummary'
+              examples:
+                user_with_credits:
+                  summary: User with available credits
+                  value:
+                    credits_balance: 45.2
+                    total_images_generated: 12
+                    total_cards_generated: 8
+                    total_collections_saved: 2
+                    total_pdfs_exported: 1
+                    total_credits_spent: 4.8
+                    last_activity_at: "2025-11-26T15:30:00Z"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /api/payments/purchase-pack:
+    post:
+      summary: Purchase a credit pack
+      description: Initiates the purchase of a credit pack through Stripe Checkout
+      tags:
+        - Payments
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchasePackRequest'
+            examples:
+              purchase_pro_pack:
+                summary: Purchase Pro pack
+                value:
+                  pack_id: 2
+                  success_url: "https://app.fresquia.com/billing/success"
+                  cancel_url: "https://app.fresquia.com/billing/cancel"
+      responses:
+        '200':
+          description: Purchase initiated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchasePackResponse'
+              examples:
+                checkout_created:
+                  summary: Stripe Checkout session created
+                  value:
+                    checkout_url: "https://checkout.stripe.com/pay/cs_test_a1B2c3D4e5F6"
+                    payment_intent_id: "pi_1J2k3l4m5n6o7p8q"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Credit pack not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/payments/webhook:
+    post:
+      summary: Handle Stripe webhook events
+      description: Processes webhook events from Stripe for payment completion and other payment-related events
+      tags:
+        - Payments
+      security: [] # Webhooks are authenticated via signature
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Stripe webhook event payload
+      responses:
+        '200':
+          description: Webhook processed successfully
+        '400':
+          description: Invalid webhook signature or malformed payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/admin/users/{userId}:
+    get:
+      summary: Get detailed user information (Admin only)
+      description: Retrieves comprehensive user details including credit balance and usage statistics
+      tags:
+        - Admin
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Firebase UID of the target user
+      responses:
+        '200':
+          description: User details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminUserDetails'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/admin/users/{userId}/transactions:
+    get:
+      summary: Get user's credit transaction history (Admin only)
+      description: Retrieves paginated list of credit transactions for a specific user
+      tags:
+        - Admin
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Firebase UID of the target user
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            minimum: 1
+            maximum: 100
+          description: Number of transactions per page
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+          description: Page offset for pagination
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [initial_grant, purchase, consumption, refund, admin_adjust]
+          description: Filter transactions by type
+      responses:
+        '200':
+          description: Transaction history retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionHistory'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/admin/users/{userId}/credits/adjust:
+    post:
+      summary: Adjust user credits manually (Admin only)
+      description: Manually add or remove credits from a user's account
+      tags:
+        - Admin
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Firebase UID of the target user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdjustCreditsRequest'
+            examples:
+              add_credits:
+                summary: Add credits to user account
+                value:
+                  amount: 50
+                  reason: "Customer service compensation"
+                  source: "admin_adjust"
+      responses:
+        '200':
+          description: Credits adjusted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdjustCreditsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    UsageSummary:
+      type: object
+      properties:
+        credits_balance:
+          type: number
+          format: float
+          description: Current credit balance
+          example: 45.2
+        total_images_generated:
+          type: integer
+          description: Total number of images generated
+          example: 12
+        total_cards_generated:
+          type: integer
+          description: Total number of cards generated
+          example: 8
+        total_collections_saved:
+          type: integer
+          description: Total number of collections saved
+          example: 2
+        total_pdfs_exported:
+          type: integer
+          description: Total number of PDFs exported
+          example: 1
+        total_credits_spent:
+          type: number
+          format: float
+          description: Total credits consumed
+          example: 4.8
+        last_activity_at:
+          type: string
+          format: date-time
+          description: Timestamp of last user activity
+          example: "2025-11-26T15:30:00Z"
+      required:
+        - credits_balance
+        - total_images_generated
+        - total_cards_generated
+        - total_collections_saved
+        - total_pdfs_exported
+        - total_credits_spent
+
+    PurchasePackRequest:
+      type: object
+      properties:
+        pack_id:
+          type: integer
+          description: ID of the credit pack to purchase
+          example: 2
+        success_url:
+          type: string
+          format: uri
+          description: URL to redirect to after successful payment
+          example: "https://app.fresquia.com/billing/success"
+        cancel_url:
+          type: string
+          format: uri
+          description: URL to redirect to after cancelled payment
+          example: "https://app.fresquia.com/billing/cancel"
+      required:
+        - pack_id
+        - success_url
+        - cancel_url
+
+    PurchasePackResponse:
+      type: object
+      properties:
+        checkout_url:
+          type: string
+          format: uri
+          description: Stripe Checkout URL for payment completion
+          example: "https://checkout.stripe.com/pay/cs_test_a1B2c3D4e5F6"
+        payment_intent_id:
+          type: string
+          description: Stripe Payment Intent ID
+          example: "pi_1J2k3l4m5n6o7p8q"
+      required:
+        - checkout_url
+        - payment_intent_id
+
+    AdminUserDetails:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Firebase UID of the user
+          example: "firebase_uid_123"
+        email:
+          type: string
+          format: email
+          description: User's email address
+          example: "user@example.com"
+        display_name:
+          type: string
+          description: User's display name
+          example: "John Doe"
+        credits_balance:
+          type: number
+          format: float
+          description: Current credit balance
+          example: 45.2
+        total_images_generated:
+          type: integer
+          description: Total number of images generated
+          example: 12
+        total_cards_generated:
+          type: integer
+          description: Total number of cards generated
+          example: 8
+        total_collections_saved:
+          type: integer
+          description: Total number of collections saved
+          example: 2
+        total_pdfs_exported:
+          type: integer
+          description: Total number of PDFs exported
+          example: 1
+        total_credits_spent:
+          type: number
+          format: float
+          description: Total credits consumed
+          example: 4.8
+        is_admin:
+          type: boolean
+          description: Whether user has admin privileges
+          example: false
+        created_at:
+          type: string
+          format: date-time
+          description: Account creation timestamp
+          example: "2025-11-01T10:00:00Z"
+        last_activity_at:
+          type: string
+          format: date-time
+          description: Last activity timestamp
+          example: "2025-11-26T15:30:00Z"
+      required:
+        - user_id
+        - email
+        - credits_balance
+        - is_admin
+        - created_at
+
+    CreditTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Transaction identifier
+          example: "txn_123"
+        type:
+          type: string
+          enum: [initial_grant, purchase, consumption, refund, admin_adjust]
+          description: Type of transaction
+          example: "purchase"
+        source:
+          type: string
+          description: Source of the transaction
+          example: "stripe"
+        amount:
+          type: number
+          format: float
+          description: Credit amount (positive for additions, negative for consumption)
+          example: 125
+        payload:
+          type: object
+          description: Additional metadata about the transaction
+          example:
+            pack_name: "Pro"
+            pack_credits: 85
+        created_at:
+          type: string
+          format: date-time
+          description: Transaction timestamp
+          example: "2025-11-26T15:30:00Z"
+      required:
+        - id
+        - type
+        - source
+        - amount
+        - created_at
+
+    TransactionHistory:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditTransaction'
+          description: List of credit transactions
+        total:
+          type: integer
+          description: Total number of transactions
+          example: 2
+        has_more:
+          type: boolean
+          description: Whether more transactions are available
+          example: false
+      required:
+        - transactions
+        - total
+        - has_more
+
+    AdjustCreditsRequest:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: float
+          description: Credit amount to adjust (positive to add, negative to remove)
+          example: 50
+        reason:
+          type: string
+          description: Reason for the adjustment
+          example: "Customer service compensation"
+        source:
+          type: string
+          description: Source identifier for the adjustment
+          example: "admin_adjust"
+      required:
+        - amount
+        - reason
+        - source
+
+    AdjustCreditsResponse:
+      type: object
+      properties:
+        credits_balance:
+          type: number
+          format: float
+          description: Updated credit balance
+          example: 95.2
+        transaction_id:
+          type: string
+          description: ID of the created transaction
+          example: "txn_125"
+      required:
+        - credits_balance
+        - transaction_id
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "Not enough credits"
+        code:
+          type: string
+          description: Error code
+          example: "INSUFFICIENT_CREDITS"
+        message:
+          type: string
+          description: Detailed error description
+          example: "You need 5 more credits to complete this operation"
+        details:
+          type: object
+          description: Additional error details
+          example:
+            required: 5
+            available: 2.4
+            operation: "image_generation"
+            suggestion: "Purchase more credits to continue"
+      required:
+        - error
+        - code
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            invalid_request:
+              summary: Invalid request parameters
+              value:
+                error: "Invalid request"
+                code: "INVALID_REQUEST"
+                message: "The request parameters are invalid"
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            auth_required:
+              summary: Authentication required
+              value:
+                error: "Authentication required"
+                code: "UNAUTHORIZED"
+                message: "Please provide valid authentication credentials"
+
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            admin_required:
+              summary: Admin access required
+              value:
+                error: "Admin access required"
+                code: "FORBIDDEN"
+                message: "This endpoint requires administrator privileges"
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Firebase ID token for authentication
+
+tags:
+  - name: User Usage
+    description: User credit balance and usage statistics
+  - name: Payments
+    description: Credit pack purchases and payment processing
+  - name: Admin
+    description: Administrative user management operations

@@ -54,6 +54,16 @@ export interface GeneratePdfOptions {
   description?: string;
 }
 
+// Résumé d'usage et de crédits retourné par le backend
+export interface UsageSummary {
+  creditsBalance: number;
+  totalImagesGenerated: number;
+  totalCardsGenerated: number;
+  totalCollectionsSaved: number;
+  totalPdfsExported: number;
+  totalCreditsSpent: number;
+}
+
 // Types pour les composants UI
 export interface InputFormData {
   theme: string;
@@ -83,12 +93,14 @@ export interface AppState {
   isGenerating: boolean;
   isGeneratingPdf: boolean;
   isLoadingCollections: boolean;
+  isLoadingUsage: boolean;
 
   // Métriques et résultats
   metrics: GenerateCardsMetrics | null;
   lastGenerationResult: GenerationResult | null;
   imageGenerationProgress: { current: number; total: number } | null;
   generationMetadata: GenerationMetadata | null;
+  creditsUsage: UsageSummary | null;
 
   // Paramètres UI
   settings: AppSettings;
@@ -120,7 +132,9 @@ export type AppAction =
   | { type: 'TOGGLE_SIDEBAR' }
   | { type: 'RESET_STATE' }
   | { type: 'SET_GENERATION_METADATA'; payload: GenerationMetadata | null }
-  | { type: 'SET_IMAGE_GENERATION_PROGRESS'; payload: { current: number; total: number } | null };
+  | { type: 'SET_IMAGE_GENERATION_PROGRESS'; payload: { current: number; total: number } | null }
+  | { type: 'SET_USAGE_SUMMARY'; payload: UsageSummary | null }
+  | { type: 'SET_LOADING_USAGE'; payload: boolean };
 
 // Contexte pour les fonctions API
 export interface ApiContextType {
@@ -139,4 +153,5 @@ export interface ApiContextType {
   deleteCollection: (id: string) => Promise<void>;
   getPublicCollections: () => Promise<CardCollection[]>;
   generatePdfForCards: (cards: CardData[], options?: GeneratePdfOptions) => Promise<void>;
+  getUsageSummary: () => Promise<UsageSummary>;
 }
