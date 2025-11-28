@@ -215,83 +215,54 @@ Generate exactly ${NUM_CARDS} cards with diverse categories.`;
   }
 };
 
-const generateCards = async (theme, context, numCards = null, stylePreset = 'isometric') => {
+const generateCards = async function* (theme, context, numCards = null, stylePreset = 'isometric') {
   if (!genAI) {
     throw new Error('Gemini client is not initialised. Please set GEMINI_API_KEY.');
   }
 
-  const metrics = {
-    textRequests: 0,
-    imageRequests: 0,
-    imageFailures: 0,
-  };
-
   try {
-    const textModel = genAI.getGenerativeModel({ model: TEXT_MODEL });
-
-    // Use provided numCards or fallback to env variable (default 10)
-    const NUM_CARDS = numCards !== null 
-      ? numCards 
-      : parseInt(process.env.NUM_CARDS_TO_GENERATE || '10', 10);
-    
-    const prompt = `Generate a JSON array of exactly ${NUM_CARDS} workshop cards for the theme "${theme}" and context "${context}".
-
-Categories available: Process, Steps, Components, Actions, Bonus and Malus, Categories and Criteria, Locations/Sites and Things/Objects, Personas, Concepts.
-
-Each card must have:
-- title: A clear, concise title
-- description: A detailed description (2-3 sentences)
-- icon: A relevant emoji
-- category: One of the categories above
-
-Respond with ONLY a valid JSON array, no markdown, no explanations:
-[
-  {
-    "title": "Card title",
-    "description": "Card description",
-    "icon": "🎯",
-    "category": "Concept"
-  }
-]
-
-Generate exactly ${NUM_CARDS} cards with diverse categories.`;
-
-    metrics.textRequests += 1;
-
-    const result = await textModel.generateContent({
-      contents: [
-        {
-          role: 'user',
-          parts: [{ text: prompt }],
-        },
-      ],
-    });
-    const response = await result.response;
-    const text = await response.text();
-
     const cards = await generateCardsTextOnly(theme, context, numCards);
-    metrics.textRequests = 1; // Already counted in generateCardsTextOnly, but let's keep it here for the main function
 
-    const enrichedCards = await appendImagesToCards(
-      cards,
-      theme,
-      context,
-      metrics,
-      stylePreset,
-    );
+    // Yield text-only cards first
+    yield { type: 'cards', data: cards };
 
-    const serializedCards = JSON.stringify(enrichedCards);
-    const responseBytes = Buffer.byteLength(serializedCards, 'utf8');
-    metrics.responseBytes = responseBytes;
-    metrics.responseKilobytes = Number((responseBytes / 1024).toFixed(2));
-    metrics.totalRequests = metrics.textRequests + metrics.imageRequests;
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+      let image = FALLBACK_IMAGE_DATA_URL; // Default to fallback
 
-    return {
-      cards: enrichedCards,
-      metrics,
-    };
+      try {
+        if (IMAGE_PROVIDER === 'stability' && STABILITY_API_KEY) {
+          const prompt = await buildImagePrompt(card, theme, context);
+          console.log(`Generating image ${i + 1}/${cards.length} for "${card.title}"...`);
+          image = await generateImageWithStability(prompt, stylePreset);
+          console.log(`✓ Image generated for "${card.title}"`);
+        } else {
+          console.warn('Stability AI not configured. Using fallback image.');
+        }
+      } catch (imageError) {
+        console.error(
+          `Failed to generate image for card "${card.title}", using fallback:`,
+          imageError.message || imageError,
+        );
+      }
+
+      // Yield each card's image update
+      yield {
+        type: 'image',
+        data: {
+          cardId: card.id,
+          image,
+        },
+      };
+
+      if (i < cards.length - 1) {
+        const delay = parseInt(process.env.IMAGE_DELAY_MS || '1000', 10);
+        console.log(`Waiting ${delay / 1000}s before next request...`);
+        await sleep(delay);
+      }
+    }
   } catch (error) {
-    console.error('Error generating cards from Gemini:', error.message || error);
+    console.error('Error generating cards stream from Gemini:', error.message || error);
     throw new Error('Failed to generate cards via external service.');
   }
 };

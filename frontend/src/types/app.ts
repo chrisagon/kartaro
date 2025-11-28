@@ -17,6 +17,7 @@ export interface CardCollection {
   name: string;
   description?: string;
   cards?: CardData[];
+  cardCount?: number;
   createdAt: Date;
   updatedAt: Date;
   isPublic: boolean;
