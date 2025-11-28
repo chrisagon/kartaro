@@ -511,17 +511,17 @@ const LandingPage: React.FC = () => {
             <Grid item xs={12} md={6}>
               <Box sx={{ textAlign: { xs: 'left', md: 'right' } }}>
                 <Typography variant="body2" sx={{ mb: 1 }}>
-                  <Link href="/cgu" color="primary" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                  <Link href="#/cgu" color="primary" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                     Conditions Générales d'Utilisation
                   </Link>
                 </Typography>
                 <Typography variant="body2" sx={{ mb: 1 }}>
-                  <Link href="/mentions-legales" color="primary" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                  <Link href="#/mentions-legales" color="primary" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                     Mentions Légales
                   </Link>
                 </Typography>
                 <Typography variant="body2" sx={{ mb: 1 }}>
-                  <Link href="/politique-confidentialite" color="primary" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                  <Link href="#/politique-confidentialite" color="primary" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                     Politique de Confidentialité
                   </Link>
                 </Typography>
