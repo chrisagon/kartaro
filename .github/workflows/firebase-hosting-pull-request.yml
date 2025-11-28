@@ -14,8 +14,3 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm install
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DECKLAB_B70B8 }}
-          projectId: decklab-b70b8
