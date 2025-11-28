@@ -9,6 +9,7 @@ import {
   Fab,
   Zoom,
   useScrollTrigger,
+  Chip,
 } from '@mui/material';
 import { KeyboardArrowUp as ScrollUpIcon } from '@mui/icons-material';
 
@@ -28,6 +29,9 @@ import CollectionDetailPage from './pages/CollectionDetailPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import LandingPage from './pages/LandingPage';
+import CGU from './pages/CGU';
+import MentionsLegales from './pages/MentionsLegales';
+import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import { Navigate, Outlet } from 'react-router-dom';
 
 // Composant Scroll to Top
@@ -72,12 +76,27 @@ const GuestRoute: React.FC = () => {
 
 // Layout principal avec le nouveau thème
 const AppLayout: React.FC = () => {
+  const { currentUser } = useAuth();
+
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
       <ModernHeader />
       <Container maxWidth="xl" sx={{ py: 4 }}>
+        {currentUser && (
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+            <Chip
+              label={'Crédits : —'}
+              color="primary"
+              variant="outlined"
+              size="small"
+            />
+          </Box>
+        )}
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/cgu" element={<CGU />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
+          <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
           <Route element={<GuestRoute />}>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
